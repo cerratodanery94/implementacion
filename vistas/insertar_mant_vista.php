@@ -290,10 +290,7 @@ alert("texto cambiado");
         
         <form action="../modelos/insertar_mant_modelo.php" method="POST" role="form" name="Form_registrar">
               
-                <div class="form-group">
-                  <label for="exampleInputEmail1">USUARIO</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="USUARIO"  name="usuario" id="usum">
-                </div>
+                
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">NOMBRES</label>
@@ -303,6 +300,10 @@ alert("texto cambiado");
                 <div class="form-group">
                   <label for="exampleInputPassword1">APELLIDOS</label>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="APELLIDO"  name="apellidos" id="apellido">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">USUARIO</label>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="USUARIO"  name="usuario" id="usum">
                 </div>
 
                 <div class="form-group">

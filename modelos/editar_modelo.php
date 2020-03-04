@@ -1,4 +1,55 @@
 <?php
+require'../modelos/conectar.php';
+if(isset($_GET['id'])){
+    $id=$_GET['id'];
+    $sql="SELECT * FROM TBL_USUARIO WHERE USU_CODIGO= :id";
+	$resultado=$conexion->prepare($sql);	
+    $resultado->execute(array(":id"=>$id));
+   if ($resultado->rowCount()>=1) {
+       $fila=$resultado->fetch();
+       $id_u=$fila['USU_CODIGO'];
+       $usuario=$fila['USU_USUARIO'];
+       $nombre=$fila['USU_NOMBRES'];
+       $apellido=$fila['USU_APELLIDOS'];
+       $estado=$fila['USU_ESTADO'];
+       $rol=$fila['ROL_CODIGO'];
+       $correo=$fila['USU_CORREO'];
+   }
+}
+if (isset($_POST['nombres']) && isset($_POST['apellidos'])) {
+    $id1=$_POST['id1'];
+    $usuarioa=strtoupper($_POST['usuarioa']);
+    $nombres=strtoupper($_POST['nombres']);
+    $usuarion=strtoupper($_POST['usuarion']);
+    $apellidos=strtoupper($_POST['apellidos']);
+    $estado1=strtoupper($_POST['estado']);
+		$correon=$_POST['correon'];
+    $rol1=$_POST['rol_usuario'];
+    if ($usuarioa!=$usuarion) {
+      $consulta3=$conexion->prepare("SELECT * FROM tbl_usuario WHERE USU_USUARIO=:user");
+      $consulta3->execute(array(":user"=>$usuarion));
+      if($consulta3->rowCount()>=1){
+        //echo "ERROR: USUARIO  YA EXISTE";
+        echo '<script>alert("ERROR: USUARIO  YA EXISTE");location.href="../vistas/mostrar_vista.php"</script>';
+				exit();
+			}else{
+        $usuariof=$usuarion;
+			}
+    } else {
+      $usuariof=$usuarioa;
+    }
+    $consulta2=$conexion->prepare("UPDATE tbl_usuario SET USU_USUARIO=:usuario, USU_NOMBRES=:nombre,USU_APELLIDOS=:apellido,USU_ESTADO=:estado,ROL_CODIGO=:rol,USU_CORREO=:correo WHERE USU_CODIGO=:id");
+			$consulta2->execute(array(":usuario"=>$usuariof,":nombre"=>$nombres,":apellido"=>$apellidos,":estado"=>$estado1,":rol"=>$rol1,":correo"=>$correon,":id"=>$id1));
+            
+            if($consulta2){
+             echo '<script>alert("SE HA ACTUALIZADO REGISTRO CORRECTAMENTE");location.href="../vistas/mostrar_vista.php"</script>';
+            }else{
+              echo '<script>alert("ERROR NO SE ACTUALIZO REGISTRO");location.href="../vistas/mostrar_vista.php"</script>';
+            }
+
+}
+?> 
+<?php
 session_start();
 require_once "../modelos/conectar.php"; 
 $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
@@ -60,8 +111,9 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>10
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">  
-            <span class="hidden-xs">SALIR</span>
+            <a href="../modelos/cerrar_sesion_modelo.php">  
+            <i class="fa fa-sign-out"></i>
+            SALIR
             </a>
             <ul class="dropdown-menu">
             </ul>
@@ -262,7 +314,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>10
     
     <div class="row">
 
-           <div class="col-md-6">
+           <div class="col-md-5 ">
     <section class="content">
       <!-- Default box -->
       <div class="box">
@@ -270,9 +322,97 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>10
           <h3 class="box-title">EDITAR USUARIO</h3>
         </div>
         <div class="box-body">
-        <?php
-			    require_once "../modelos/actualizar_mant_modelo.php";
-		    ?>
+        <form action="" method="POST"  name="Formactualizar_mant">
+                <div class="form-group">
+                 <input type="hidden"  class="form-control " name="id1" value="<?php echo $id_u;?>" >
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputPassword1">NOMBRES</label>
+                  <input type="text"style="text-transform:uppercase" class="form-control apellidos" placeholder="NOMBRE"  name="nombres" id="nombre" value="<?php echo $nombre?>" >
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputPassword1">APELLIDOS</label>
+                  <input type="text" style="text-transform:uppercase" class="form-control nombres" placeholder="APELLIDO"  name="apellidos" id="apellido" value="<?php echo $apellido?>" >
+                </div>
+                <div class="form-group">
+                  <input type="hidden" style="text-transform:uppercase" class="form-control nombres" placeholder="USUARIO"  name="usuarioa" id="usuarioa" value="<?php echo $usuario?>">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">USUARIO</label>
+                  <input type="text" style="text-transform:uppercase" class="form-control nombres" placeholder="USUARIO"  name="usuarion" id="usuarion" value="<?php echo $usuario?>">
+                </div>
+                <div class="form-group">
+                <label for="exampleInputPassword1">ESTADO</label>
+                <select class="form-control" name="estado" id="combox2">
+                 <option value="0">SELECCIONE EL ESTADO:</option>
+                 <option value="NUEVO"
+                 <?php
+                 if ($estado=='NUEVO') {
+                    echo 'selected';
+                 }
+                 ?>
+                 >NUEVO</option>
+                 <option value="ACTIVO"
+                 <?php
+                 if ($estado=='ACTIVO') {
+                    echo 'selected';
+                 }
+                 ?>
+                 >ACTIVO</option>
+                 <option value="BLOQUEADO"
+                 <?php
+                 if ($estado=='BLOQUEADO') {
+                    echo 'selected';
+                 }
+                 ?>
+                 >BLOQUEADO</option>
+                 <option value="VACACIONES"
+                 <?php
+                 if ($estado=='VACACIONES') {
+                    echo 'selected';
+                 }
+                 ?>
+                 >VACACIONES</option>
+                </select>
+                </div>
+                <div class="form-group">
+                <label for="exampleInputPassword1">ROL</label>
+                <select class="form-control" name="rol_usuario" id="combox">
+                 <option value="0">SELECCIONE ROL:</option>
+                 <option value="1"
+                 <?php
+                 if ($rol==1) {
+                    echo 'selected';
+                 }
+                 ?>
+                 >ADMINISTRADOR</option>
+                 <option value="2"
+                 <?php
+                 if ($rol==2) {
+                    echo 'selected';
+                 }
+                 ?>
+                 >DEFAULT</option>
+      
+                </select>
+                </div>
+
+                <div class="form-group">
+                <label for="exampleInputPassword1">CORREO</label>
+                  <input type="email" class="form-control correo" placeholder="CORREO" name="correon" id="correon" value="<?php echo $correo?>" >
+                </div>
+                </div>
+                <div class="box-footer">
+                <div class="col text-center">
+                <div Id="alerta_mant"></div>
+    
+                <button type="button" name="update" class="btn btn-primary" onclick="Validar_actualizar_mant();">ACTUALIZAR</button>
+                </div>
+                </div>
+            </form>
+            
         </div>
         <!-- /.box-body --> 
         <!-- /.box-footer-->

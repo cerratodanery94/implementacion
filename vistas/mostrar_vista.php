@@ -1,7 +1,9 @@
 <?php
 session_start();
+if (!isset($_SESSION["id_us"])) {
+  header('location:../vistas/login_vista.php');
+}
 require_once "../modelos/conectar.php"; 
-   
 $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
 VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
 $resultado2=$conexion->prepare($sql2);	
@@ -95,7 +97,8 @@ alert("texto cambiado");
         <ul class="nav navbar-nav">
           <li class="dropdown user user-menu">
             <a href="../modelos/cerrar_sesion_modelo.php">  
-            <span class="hidden-xs">SALIR</span>
+            <i class="fa fa-sign-out"></i>
+            SALIR
             </a>
             <ul class="dropdown-menu">
             </ul>
@@ -324,13 +327,28 @@ alert("texto cambiado");
                 </tr>
                 </thead>
                 <tbody>
-                <?php
-                require_once "../modelos/mostrar_modelo.php";
-                    require_once "../modelos/conectar.php";
-                    if(isset($_GET['USU_CODIGO'])){
-                     require_once "../modelos/eliminar_mant_modelo.php";
-                   }
-                ?>
+               <?php
+               require '../modelos/conectar.php';
+               $consulta=$conexion->prepare("SELECT * FROM tbl_usuario");
+               $consulta->execute();
+                 while($fila=$consulta->fetch()){?>
+                 <tr>
+                 <td><?php echo $fila['USU_CODIGO']?></td>
+					       <td><?php echo $fila['ROL_CODIGO']?></td>
+					       <td><?php echo $fila['USU_USUARIO']?></td>
+                 <td><?php echo $fila['USU_NOMBRES']?></td>
+					       <td><?php echo $fila['USU_APELLIDOS']?></td>
+					       <td><?php echo $fila['USU_ESTADO']?></td>
+                 <td><?php echo $fila['USU_CORREO']?></td>
+                 <td>
+					       <a href='../modelos/editar_modelo.php?id=<?php echo $fila["USU_CODIGO"]?>' class="btn bg-orange btn-flat margin">
+                 <i class='fa fa-pencil'></i></a>
+                 <a href='../modelos/eliminar_modelo.php?id=<?php echo $fila["USU_CODIGO"]?>' onclick="return confdelete();" class="btn bg-maroon bnt-flat margin">
+					       <i class='fa fa-trash'></i></a> 
+					       </td>
+                 </tr>
+                 <?php } ?>
+              
                 </tbody>
                 <tfoot>
                 <tr>
@@ -392,7 +410,18 @@ alert("texto cambiado");
 <!-- page script -->
 <script>
   $(function () {
-    $("#example1").DataTable();
+    $('#example1').DataTable({
+      language: {
+        sSearch: "Buscar:",
+        sInfo:           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        sLengthMenu:     "Mostrar _MENU_ registros",
+        oPaginate: {
+                    "sFirst":    "Primero",
+                    "sLast":     "Último",
+                    "sNext":     "Siguiente",
+                    "sPrevious": "Anterior" //traduccion de tabla
+                }
+    }});
     $('#example2').DataTable({
       "paging": true,
       "pagelength":3,

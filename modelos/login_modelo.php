@@ -51,7 +51,7 @@ try{
 						$resultado7=$conexion->prepare($sql7);	
 						$resultado7->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>2,":accion"=>'CONSULTA',":descr"=>'VERIFICA LAS CREDENCIALES DEL USUARIO',":fecha"=>date("Y-m-d H:m:s")));
 
-						header("location:../vistas/insertar_mant_vista.php"); 
+						header("location:../vistas/mostrar_vista.php"); 
 					}elseif ($_SESSION["est"]=="ACTIVO" and $_SESSION["ROL"]==2) {
 						$sql10="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
 						VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
