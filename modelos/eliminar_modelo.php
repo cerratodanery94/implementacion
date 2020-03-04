@@ -1,4 +1,5 @@
-<?php
+<?php 
+session_start();
 require'../modelos/conectar.php';
 if(isset($_GET['id'])){
     $id=$_GET['id'];

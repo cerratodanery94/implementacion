@@ -11,7 +11,7 @@ try{
 	$resultado->execute(array(":login"=>$login));
 	session_start();
 	if (!isset($_SESSION['cont_inte'])){
-		$_SESSION['cont_inte']=1;
+		$_SESSION['cont_inte']=0;
 		 } 
 		 $sql5='SELECT * FROM TBL_PARAMETROS WHERE PARMT_CODIGO=2';
 	        $resultado5=$conexion->query($sql5);	
