@@ -141,6 +141,11 @@
                         formulario.nombres.value="";
                         return false;
                     }
+                        else if (Validar_espacio2(formulario.nombres.value)==false){  
+                            document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
+                            formulario.nombres.focus();
+                            return false;
+                            }
                     else if (validar_texto (formulario.nombres.value)==false){
                         document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRES NO PUEDE CONTENER NUMEROS</div>';
                         formulario.nombres.focus();
@@ -153,6 +158,8 @@
                             formulario.nombres.value="";
                             return false;
                             }
+                           
+
                     else{
                             document.getElementById("alerta").innerHTML="";
                         }
@@ -164,6 +171,11 @@
                             formulario.apellidos.value="";
                             return false;
                         }
+                            else if (Validar_espacio2(formulario.apellidos.value)==false){  
+                                document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
+                                formulario.apellidos.focus();
+                                return false;
+                                }
                         else if (validar_texto (formulario.apellidos.value)==false){  
                             document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO APELLIDOS NO PUEDE CONTENER NUMEROS</div>';
                             formulario.apellidos.focus();
@@ -176,6 +188,7 @@
                                 formulario.apellidos.value="";
                                 return false;
                                 }
+                                
                             else{
                                 document.getElementById("alerta").innerHTML="";
                             }
@@ -244,8 +257,8 @@
                             formulario_vista.login.focus();
                             return false; 
                             }
-                            else if (validar_texto(formulario_vista.login.value)==false){
-                                document.getElementById("alerta2").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRE DE USUARIO  NO PUEDE CONTENER NUMEROS</div>';
+                            else if (Validar_espacio(formulario_vista.login.value)==false){  
+                                document.getElementById("alerta2").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRE DE USUARIO NO DEBE CONTENER ESPACIOS</div>';
                                 formulario_vista.login.focus();
                                 formulario_vista.login.value="";
                                 return false;
@@ -256,18 +269,15 @@
                                     formulario_vista.login.value="";
                                     return false;
                                     }
-                                    else if (Validar_espacio2(formulario_vista.login.value)==false){  
-                                        document.getElementById("alerta2").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRE DE USUARIO NO DEBE CONTENER  MÁS DE(2) ESPACIOS</div>';
-                                        formulario_vista.login.focus();
-                                        formulario_vista.login.value="";
-                                        return false;
-                                        }
-                                        else if (Validar_espacio(formulario_vista.login.value)==false){  
-                                            document.getElementById("alerta2").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRE DE USUARIO NO DEBE CONTENER ESPACIOS</div>';
-                                            formulario_vista.login.focus();
-                                            formulario_vista.login.value="";
-                                            return false;
-                                            }
+                            else if (validar_texto(formulario_vista.login.value)==false){
+                                document.getElementById("alerta2").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRE DE USUARIO  NO PUEDE CONTENER NUMEROS</div>';
+                                formulario_vista.login.focus();
+                                formulario_vista.login.value="";
+                                return false;
+                                }
+                              
+                                    
+                                       
                                         //VALIDACION DEL CAMPO CONTRASEÑA
                                         if (formulario_vista.contra2.value=="") {
                                             //alert('Campos vacios');
@@ -281,7 +291,7 @@
                                             return false;
                                             }
                                             else if (Validar_espacio2(formulario_vista.contra2.value)==false){  
-                                                document.getElementById("alerta2").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO CONTRASEÑA NO DEBE DE CONTENER ESPACIO</div>';
+                                                document.getElementById("alerta2").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
                                                 formulario_vista.contra2.focus();
                                                 formulario_vista.contra2.value="";
                                                 return false;
@@ -303,6 +313,18 @@
                             formulario_recuperar.usuario2.focus();
                             return false; 
                             }
+                            else if (Validar_espacio2(formulario_recuperar.usuario2.value)==false){  
+                                document.getElementById("alerta3").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
+                                formulario_recuperar.usuario2.focus();
+                                formulario_recuperar.usuario2.value="";
+                                return false;
+                                }
+                                else if (Validar_espacio(formulario_recuperar.usuario2.value)==false){  
+                                    document.getElementById("alerta3").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRE DE USUARIO NO DEBE CONTENER ESPACIOS</div>';
+                                    formulario_recuperar.usuario2.focus();
+                                    formulario_recuperar.usuario2.value="";
+                                    return false;
+                                    }
                             else if (validar_texto(formulario_recuperar.usuario2.value)==false){
                                 document.getElementById("alerta3").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRE DE USUARIO  NO PUEDE CONTENER NUMEROS</div>';
                                 formulario_recuperar.usuario2.focus();
@@ -315,18 +337,7 @@
                                     formulario_recuperar.usuario2.value="";
                                     return false;
                                     }
-                                    else if (Validar_espacio2(formulario_recuperar.usuario2.value)==false){  
-                                        document.getElementById("alerta3").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRE DE USUARIO NO DEBE CONTENER MÁS DE(2) ESPACIOS</div>';
-                                        formulario_recuperar.usuario2.focus();
-                                        formulario_recuperar.usuario2.value="";
-                                        return false;
-                                        }
-                                        else if (Validar_espacio(formulario_recuperar.usuario2.value)==false){  
-                                            document.getElementById("alerta3").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRE DE USUARIO NO DEBE CONTENER ESPACIOS</div>';
-                                            formulario_recuperar.usuario2.focus();
-                                            formulario_recuperar.usuario2.value="";
-                                            return false;
-                                            }
+                                   
                             formulario_recuperar.submit();
                       }
  //VALIDACIONES DE REESTABLECER CONTRASEÑA 
@@ -339,24 +350,25 @@
                         formulario_reestablecer.nueva_contra.focus();
                         return false; 
                         }
+                        else if (Validar_espacio (formulario_reestablecer.nueva_contra.value)==false){  
+                            document.getElementById("alerta4").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>EL CAMPO  NUEVA CONTRASEÑA NO DEBE DE CONTENER ESPACIOS</div>';
+                            formulario_reestablecer.nueva_contra.focus();
+                            formulario_reestablecer.nueva_contra.value="";
+                            return false;
+                            }
+                            else if (Validar_espacio2(formulario_reestablecer.nueva_contra.value)==false){  
+                                document.getElementById("alerta4").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
+                                formulario_reestablecer.nueva_contra.focus();
+                                formulario_reestablecer.nueva_contra.value="";
+                                return false;
+                                }
                         else if (validar_limitcontraseña (formulario_reestablecer.nueva_contra.value)==false){  
                             document.getElementById("alerta4").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>EL CAMPO NUEVA CONTRASEÑA DEBE DE CONTENER AL MENOS(8) CARACTERES</div>';
                             formulario_reestablecer.nueva_contra.focus();
                             formulario_reestablecer.nueva_contra.value="";
                             return false;
                             }
-                            else if (Validar_espacio (formulario_reestablecer.nueva_contra.value)==false){  
-                                document.getElementById("alerta4").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>EL CAMPO  NUEVA CONTRASEÑA NO DEBE DE CONTENER ESPACIOS</div>';
-                                formulario_reestablecer.nueva_contra.focus();
-                                formulario_reestablecer.nueva_contra.value="";
-                                return false;
-                                }
-                                else if (Validar_espacio2(formulario_reestablecer.nueva_contra.value)==false){  
-                                    document.getElementById("alerta4").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>EL CAMPO NUEVA CONTRASEÑA NO DEBE DE CONTENER ESPACIOS</div>';
-                                    formulario_reestablecer.nueva_contra.focus();
-                                    formulario_reestablecer.nueva_contra.value="";
-                                    return false;
-                                    }
+                           
                              //CONTRASEÑAS COINCIDAN
                             if(formulario_reestablecer.nueva_contra.value != formulario_reestablecer.confirmar_contra2.value){
                             document.getElementById("alerta4").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CONTRASEÑAS NO COINCIDEN </div>';
@@ -381,7 +393,7 @@
                                     return false;
                                     }
                                     else if (Validar_espacio2(formulario_reestablecer.confirmar_contra2.value)==false){  
-                                        document.getElementById("alerta4").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>EL CAMPO NUEVA CONTRASEÑA NO DEBE DE CONTENER ESPACIOS</div>';
+                                        document.getElementById("alerta4").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
                                         formulario_reestablecer.confirmar_contra2.focus();
                                         formulario_reestablecer.confirmar_contra2.value="";
                                         return false;
@@ -441,6 +453,12 @@
                 formulario_man.nombre.value="";
                 return false;
             }
+            else if (Validar_espacio2 (formulario_man.nombre.value)==false){
+                document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
+                formulario_man.nombre.focus();
+                formulario_man.nombre.value="";
+                return false;
+                }
             else if (validar_texto (formulario_man.nombre.value)==false){
                 document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRES NO PUEDE CONTENER NUMEROS</div>';
                 formulario_man.nombre.focus();
@@ -453,12 +471,7 @@
                     formulario_man.nombre.value="";
                     return false;
                     }
-                    else if (Validar_espacio2 (formulario_man.nombre.value)==false){
-                        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE CARACTERES EN EL CAMPO</div>';
-                        formulario_man.nombre.focus();
-                        formulario_man.nombre.value="";
-                        return false;
-                        }
+                    
             else{
                     document.getElementById("alerta").innerHTML="";
                 }
@@ -475,6 +488,13 @@
                     formulario_man.apellido.value="";
                     return false;
                 }
+
+                else if (Validar_espacio2 (formulario_man.apellido.value)==false){
+                    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
+                    formulario_man.apellido.focus();
+                    formulario_man.apellido.value="";
+                    return false;
+                    }
                 else if (validar_texto (formulario_man.apellido.value)==false){  
                     document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO APELLIDOS NO PUEDE CONTENER NUMEROS</div>';
                     formulario_man.apellido.focus();
@@ -484,15 +504,10 @@
                     else if (validar_tamaño (formulario_man.apellido.value)==false){
                         document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE CARACTERES EN EL CAMPO APELLIDOS</div>';
                         formulario_man.apellido.focus();
-                        formulario_man.apellido.value="";
+                
                         return false;
                         }
-                        else if (Validar_espacio2 (formulario_man.apellido.value)==false){
-                            document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE CARACTERES EN EL CAMPO</div>';
-                            formulario_man.apellido.focus();
-                            formulario_man.apellido.value="";
-                            return false;
-                            }
+                      
 
                             //validar campo Rol
                             
@@ -533,8 +548,6 @@
        
     formulario_man.submit();
 }
-                      
-                        
                     
 //VALIDAR FORMULARIO CAMBIAR CONTRASEÑA
              function Validar_rescambiar() {
@@ -559,7 +572,7 @@
             return false;
             }
             else if (Validar_espacio2(formulario_cam.nueva_contra.value)==false){  
-            document.getElementById("alerta7").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>EL CAMPO NUEVA CONTRASEÑA NO DEBE DE CONTENER ESPACIOS</div>';
+            document.getElementById("alerta7").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
             formulario_cam.nueva_contra.focus();
             formulario_cam.nueva_contra.value="";
             return false;
@@ -579,7 +592,7 @@
             return false;
             }
             else if (Validar_espacio2(formulario_cam.confirmar_contra2.value)==false){  
-            document.getElementById("alerta7").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>EL CAMPO CONFIRMAR CONTRASEÑA NO DEBE DE CONTENER ESPACIOS</div>';
+            document.getElementById("alerta7").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
             formulario_cam.confirmar_contra2.focus();
             formulario_cam.confirmar_contra2.value="";
             return false;
@@ -612,24 +625,25 @@ function Validar_resres() {
    formulario_cam.nueva_contra.focus();
    return false; 
    }
+   else if (Validar_espacio (formulario_cam.nueva_contra.value)==false){  
+    document.getElementById("alerta7").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>EL CAMPO  NUEVA CONTRASEÑA NO DEBE DE CONTENER ESPACIOS</div>';
+    formulario_cam.nueva_contra.focus();
+    formulario_cam.nueva_contra.value="";
+    return false;
+    }
+    else if (Validar_espacio2(formulario_cam.nueva_contra.value)==false){  
+    document.getElementById("alerta7").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
+    formulario_cam.nueva_contra.focus();
+    formulario_cam.nueva_contra.value="";
+    return false;
+    }
    else if (validar_limitcontraseña (formulario_cam.nueva_contra.value)==false){  
    document.getElementById("alerta7").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>EL CAMPO NUEVA CONTRASEÑA DEBE DE CONTENER AL MENOS(8) CARACTERES</div>';
    formulario_cam.nueva_contra.focus();
    formulario_cam.nueva_contra.value="";
    return false;
    }
-   else if (Validar_espacio (formulario_cam.nueva_contra.value)==false){  
-   document.getElementById("alerta7").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>EL CAMPO  NUEVA CONTRASEÑA NO DEBE DE CONTENER ESPACIOS</div>';
-   formulario_cam.nueva_contra.focus();
-   formulario_cam.nueva_contra.value="";
-   return false;
-   }
-   else if (Validar_espacio2(formulario_cam.nueva_contra.value)==false){  
-   document.getElementById("alerta7").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>EL CAMPO NUEVA CONTRASEÑA NO DEBE DE CONTENER ESPACIOS</div>';
-   formulario_cam.nueva_contra.focus();
-   formulario_cam.nueva_contra.value="";
-   return false;
-   }
+  
    
    //VALIDAR CONFIRMAR CONTRASEÑA
    if (formulario_cam.confirmar_contra2.value=="") {
@@ -645,7 +659,7 @@ function Validar_resres() {
    return false;
    }
    else if (Validar_espacio2(formulario_cam.confirmar_contra2.value)==false){  
-   document.getElementById("alerta7").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>EL CAMPO CONFIRMAR CONTRASEÑA NO DEBE DE CONTENER ESPACIOS</div>';
+   document.getElementById("alerta7").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
    formulario_cam.confirmar_contra2.focus();
    formulario_cam.confirmar_contra2.value="";
    return false;
@@ -680,7 +694,11 @@ if (formulario_pr.respuesta.value==""){
    formulario_pr.respuesta.focus();
    return false;
 }
-
+else if (Validar_espacio2(formulario_pr.respuesta.value)==false){  
+    document.getElementById("alerta8").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
+    formulario_pr.respuesta.focus();
+    return false;
+    }
 formulario_pr.submit();
 
 }
@@ -699,6 +717,11 @@ function validar_recu(){
        formulario_rec.respuesta2.focus();
        return false;
     }
+    else if (Validar_espacio2(formulario_rec.respuesta2.value)==false){  
+        document.getElementById("alerta8").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
+        formulario_rec.respuesta2.focus();
+        return false;
+        }
     formulario_rec.submit();
     }
     //VALIDAR ACTUALIZAR MANTENIMIENTO:
@@ -711,30 +734,26 @@ function validar_recu(){
         Formulario_actualizar_mant.usuarion.value="";
         return false; 
           }
+          else if (Validar_espacio(Formulario_actualizar_mant.usuarion.value)==false){  
+            document.getElementById("alerta_mant").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO USUARIO NO DEBE CONTENER ESPACIOS</div>';
+            Formulario_actualizar_mant.usuarion.focus();
+            Formulario_actualizar_mant.usuarion.value="";
+            return false;
+             }
         else if (validar_longitud(Formulario_actualizar_mant.usuarion.value)==false){
         document.getElementById("alerta_mant").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO USUARIO DEBE CONTENER AL MENOS (6) CARACTERES</div>';
         Formulario_actualizar_mant.usuarion.focus();
         Formulario_actualizar_mant.usuarion.value="";
         return false;
         }
-       else if (Validar_espacio(Formulario_actualizar_mant.usuarion.value)==false){  
-       document.getElementById("alerta_mant").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO USUARIO NO DEBE CONTENER ESPACIOS</div>';
-       Formulario_actualizar_mant.usuarion.focus();
-       Formulario_actualizar_mant.usuarion.value="";
-       return false;
-        }
+   
        else if (validar_texto (Formulario_actualizar_mant.usuarion.value)==false){
           document.getElementById("alerta_mant").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO USUARIO NO PUEDE CONTENER NUMEROS</div>';
           Formulario_actualizar_mant.usuarion.focus();
           Formulario_actualizar_mant.usuarion.value="";
           return false;
        }
-       else if (Validar_espacio2(Formulario_actualizar_mant.usuarion.value)==false){  
-          document.getElementById("alerta_mant").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO </div>';
-          Formulario_actualizar_mant.usuarion.focus();
-          Formulario_actualizar_mant.usuarion.value="";
-          return false;
-        }
+      
         //validar campo nombre
         if (Formulario_actualizar_mant.nombre.value=="") {
           //alert('Campos vacios');
@@ -743,6 +762,12 @@ function validar_recu(){
           Formulario_actualizar_mant.nombre.value="";
           return false;
       }
+      else if (Validar_espacio2 (Formulario_actualizar_mant.nombre.value)==false){
+        document.getElementById("alerta_mant").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
+        Formulario_actualizar_mant.nombre.focus();
+      
+        return false;
+        }
       else if (validar_texto (Formulario_actualizar_mant.nombre.value)==false){
           document.getElementById("alerta_mant").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRES NO PUEDE CONTENER NUMEROS</div>';
           Formulario_actualizar_mant.nombre.focus();
@@ -755,12 +780,7 @@ function validar_recu(){
               Formulario_actualizar_mant.nombre.value="";
           return false;
               }
-              else if (Validar_espacio2 (Formulario_actualizar_mant.nombre.value)==false){
-                  document.getElementById("alerta_mant").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
-                  Formulario_actualizar_mant.nombre.focus();
-                  Formulario_actualizar_mant.nombre.value=""
-                  return false;
-                  }
+             
                  
               //Validar campo apellido:
               if (Formulario_actualizar_mant.apellido.value=="") {
@@ -770,6 +790,13 @@ function validar_recu(){
                   Formulario_actualizar_mant.apellido.value="";
                   return false;
               }
+
+              else if (Validar_espacio2 (Formulario_actualizar_mant.apellido.value)==false){
+                document.getElementById("alerta_mant").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
+                Formulario_actualizar_mant.apellido.focus();
+                Formulario_actualizar_mant.apellido.value="";
+                return false;
+                }
               else if (validar_texto (Formulario_actualizar_mant.apellido.value)==false){
                   document.getElementById("alerta_mant").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO APELLIDO NO PUEDE CONTENER NUMEROS</div>';
                   Formulario_actualizar_mant.apellido.focus();
@@ -782,12 +809,7 @@ function validar_recu(){
                       Formulario_actualizar_mant.apellido.value="";
                   return false;
                       }
-                      else if (Validar_espacio2 (Formulario_actualizar_mant.apellido.value)==false){
-                          document.getElementById("alerta_mant").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
-                          Formulario_actualizar_mant.apellido.focus();
-                          Formulario_actualizar_mant.apellido.value="";
-                          return false;
-                          }
+                    
                           
           //Validar campo estado
         if (Formulario_actualizar_mant.combox2.value==0){
