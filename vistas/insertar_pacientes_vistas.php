@@ -1,24 +1,17 @@
 <?php
 session_start();
-if (!isset($_SESSION["id_us"])) {
-  header('location:../vistas/login_vista.php');
-}
-require_once "../modelos/conectar.php"; 
+require '../modelos/conectar.php';
 $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
 VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
-$resultado2=$conexion->prepare($sql2);	
-$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA DE MOSTRAR USUARIOS MANTENIMIENTO',":fecha"=>date("Y-m-d H:m:s")));         
-$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
-VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
-$resultado2=$conexion->prepare($sql2);	
-$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11,":accion"=>'CONSULTA',":descr"=>'MUESTRA LA LISTA DE USUARIOS  QUE HAY MANTENIMIENTO',":fecha"=>date("Y-m-d H:m:s")));
+  $resultado2=$conexion->prepare($sql2);	
+$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA DE INSERTAR MANTENIMIENTO',":fecha"=>date("Y-m-d H:m:s")));
 ?>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Mostrar Usuarios</title>
+  <title>Registrar Usuarios</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -27,27 +20,12 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="../vistas/plugins/datatables/dataTables.bootstrap.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../vistas/dist/css/AdminLTE.min.css">
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
+ 
   <link rel="stylesheet" href="../vistas/dist/css/skins/_all-skins.min.css">
-<script>
-   function confdelete(){
-    var respuesta= confirm("¿Esta seguro de eliminar el registro?");
-    if (respuesta==true){
-      return true;
-    }else{
-      return false;
-    }
-  }
 
-</script>
 </head>
-
-
 <body class="hold-transition skin-blue sidebar-mini">
 <script type="text/javascript">
 $(function() {
@@ -60,7 +38,7 @@ require_once "../modelos/conectar.php";
 $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
 VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
 $resultado2=$conexion->prepare($sql2);	
-$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11,":accion"=>'SALIO',":descr"=>'SALIO DE PANTALLA MOSTRAR MANTENIMIENTO',":fecha"=>date("Y-m-d H:m:s")));         
+$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,":accion"=>'SALIO',":descr"=>'SALIO DE PANTALLA MANTENIMIENTO',":fecha"=>date("Y-m-d H:m:s")));         
 
 ?>
 
@@ -71,11 +49,10 @@ alert("texto cambiado");
 
 </script>
 
-
-
+<!-- Site wrapper -->
 <div class="wrapper">
 
-  <header class="main-header">
+  <header class="main-header ">
     <!-- Logo -->
     <a href="../../index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -97,8 +74,7 @@ alert("texto cambiado");
         <ul class="nav navbar-nav">
           <li class="dropdown user user-menu">
             <a href="../modelos/cerrar_sesion_modelo.php">  
-            <i class="fa fa-sign-out"></i>
-            SALIR
+            <span class="hidden-xs">SALIR</span>
             </a>
             <ul class="dropdown-menu">
             </ul>
@@ -134,32 +110,20 @@ alert("texto cambiado");
        <!-- Titulo de Usuario -->
       <li class="treeview">
         <a href="#">
-          <i class="fa fa-user"></i>
-          <span>Usuarios</span>
+          <i class="fa fa-users"></i>
+          <span>Pacientes</span>
         </a>
         <!-- subtitulos de Usuario -->
         <ul class="treeview-menu">
-          <li><a href="../vistas/insertar_mant_vista.php"><i class="fa fa-plus-square"></i>Crear Usuarios</a></li>
-          <li><a href="../vistas/mostrar_vista.php"><i class="fa fa-minus-square"></i>lista de usuarios</a></li>
-         
+          <li><a href="../vistas/insertar_mant_vista.php"><i class="fa fa-plus-square"></i>Agregar Paciente</a></li>
+          <li><a href="../vistas/mostrar_vista.php"id="text"><i class="fa fa-minus-square"></i> Lista de Pacientes</a></li>
+          <li><a href="#"><i class="fa fa-check-square-o"></i> Actualizar Paciente</a></li>
+          
 
         </ul>
       </li>
        <!-- Titulo de Empleados -->
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-users"></i>
-          <span>Empleados</span>
-
-        </a>
-        <!-- subtitulos de Empleados -->
-        <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-plus-square"></i>Añadir Empleado</a></li>
-          <li><a href="#"><i class="fa fa-minus-square"></i> Eliminar Empleado</a></li>
-          <li><a href="#"><i class="fa fa-check-square-o"></i> Actualizar Empleado</a></li>
-
-        </ul>
-      </li>
+      
       <!-- Titulo de Citas -->
       <li class="treeview">
         <a href="#">
@@ -176,20 +140,7 @@ alert("texto cambiado");
         </ul>
       </li>
       <!-- Titulo de Pacientes -->
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-users"></i>
-          <span>Pacientes</span>
-
-        </a>
-        <!-- subtitulos de Pacientes -->
-        <ul class="treeview-menu">
-        <li><a href="insertar_pacientes_vistas.php"><i class="fa fa-plus-square"></i> Agregar Paciente</a></li>
-          <li><a href="#"><i class="fa fa-eye"></i>Ver todos los pacientes</a></li>
-          <li><a href="#"><i class="fa fa-check-square-o"></i> Actualizar Paciente</a></li>
-
-        </ul>
-      </li>
+     
       <!-- Titulo de Expedientes -->
       <li class="treeview">
         <a href="#">
@@ -265,27 +216,7 @@ alert("texto cambiado");
         </ul>
       </li>
 
-    <!-- Titulo de Admin -->
-    <li class="treeview">
-        <a href="#">
-          <i class="fa fa-credit-card-alt"></i>
-          <span>Administrador</span>
-
-        </a>
-        <!-- subtitulos de ventas -->
-        <ul class="treeview-menu">
-          <li><a href="administradores.php"><i class="fa fa-circle-o"></i>Agregar Administrador</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Agregar Venta</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Actualizar Ventas</a></li>
- 
-        
-        
-        
-      
-       
-        
-        
-      </ul>
+   
     </section>
     <!-- /.sidebar -->
   </aside>
@@ -297,82 +228,126 @@ alert("texto cambiado");
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        LISTA DE USUARIOS
-        
+      REGISTRO DE PACIENTES 
+        <small>Llena el formulario para crear un Paciente</small>
       </h1>
+      
       
     </section>
 
     <!-- Main content -->
+    
+    <div class="row">
+
+           <div class="col-md-6">
     <section class="content">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">ADMINISTRA LOS USUARIOS EN ESTA SECCION </h3>
-            </div>
-            <!--llamar funciones-->
-            <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th >ID USUARIO</th>
-                  <th>ROL</th>
-                  <th>USUARIO</th>
-                  <th>NOMBRES</th>
-                  <th>APELLIDOS</th>
-                  <th>ESTADO</th>
-                  <th>CORREO</th>
-                  <th>ACCIONES</th>
-                </tr>
-                </thead>
-                <tbody>
-               <?php
-               require '../modelos/conectar.php';
-               $consulta=$conexion->prepare("SELECT * FROM tbl_usuario");
-               $consulta->execute();
-                 while($fila=$consulta->fetch()){?>
-                 <tr>
-                 <td><?php echo $fila['USU_CODIGO']?></td>
-					       <td><?php echo $fila['ROL_CODIGO']?></td>
-					       <td><?php echo $fila['USU_USUARIO']?></td>
-                 <td><?php echo $fila['USU_NOMBRES']?></td>
-					       <td><?php echo $fila['USU_APELLIDOS']?></td>
-					       <td><?php echo $fila['USU_ESTADO']?></td>
-                 <td><?php echo $fila['USU_CORREO']?></td>
-                 <td>
-					       <a href='../modelos/editar_modelo.php?id=<?php echo $fila["USU_CODIGO"]?>' class="btn bg-orange btn-flat margin">
-                 <i class='fa fa-pencil'></i></a>
-                 <a href='../modelos/eliminar_modelo.php?id=<?php echo $fila["USU_CODIGO"]?>' onclick="return confdelete();" class="btn bg-maroon bnt-flat margin">
-					       <i class='fa fa-trash'></i></a> 
-					       </td>
-                 </tr>
-                 <?php } ?>
-              
-                </tbody>
-                <tfoot>
-                <tr>
-                <th>ID USUARIO</th>
-                  <th>ROL</th>
-                  <th>USUARIO</th>
-                  <th>NOMBRES</th>
-                  <th>APELLIDOS</th>
-                  <th>ESTADO</th>
-                  <th>CORREO</th>
-                  <th>ACCIONES</th>
-                </tr>
-                </tfoot>
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
+
+      <!-- Default box -->
+      <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title">CREAR UN USUARIO</h3>
+
+          
         </div>
-        <!-- /.col -->
+        <div class="box-body">
+        
+        <form action="../modelos/insertar_mant_modelo.php" method="POST" role="form" name="Form_registrar">
+              
+                <div class="form-group">
+                  <label for="exampleInputEmail1">NOMBRES</label>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="NOMBRES"  name="usuario" id="usum">
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputPassword1">APELLIDOS</label>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control apellidos" placeholder="APELLIDOS"  name="nombres" id="nombre" >
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputPassword1">EDAD</label>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="EDAD"  name="apellidos" id="apellido">
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputPassword1">NUMERO DE IDENTIDAD</label>
+                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE IDENTIDAD" name="fecha_creacion" id="fecha_creacion"  >
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputPassword1">RTN</label>
+                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE RTN" name="fecha_creacion" id="fecha_creacion"  >
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputPassword1">PROFESION</label>
+                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="PROFESION" name="fecha_creacion" id="fecha_creacion"  >
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputPassword1">PASAPORTE</label>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="PASAPORTE"  name="apellidos" id="apellido">
+                </div>
+     
+                <div class="form-group">
+                  <label for="exampleInputPassword1">NUMERO DE CELULAR</label>
+                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE CELULAR" name="fecha_creacion" id="fecha_creacion"  >
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputPassword1">NUMERO DE TELEFONO FIJO</label>
+                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE TELEFONO FIJO" name="fecha_creacion" id="fecha_creacion">
+                </div>
+                  
+                
+                <div class="form-group">
+                  <label for="exampleInputPassword1">FECHA DE NACIMIENTO</label>
+                  <input type="text" autocomplete="off" class="form-control nombres" placeholder="FECHA DE NACIMIENTO" name="fecha_creacion" id="fecha_creacion">
+                </div>
+                
+      
+                <div class="form-group">
+                  <label for="exampleInputPassword1">CORREO</label>
+                  <input type="email" autocomplete="off" class="form-control correo" placeholder="CORREO" name="correo" id="correo" >
+                </div>
+
+                <div class="form-group">
+                <label for="exampleInputPassword1">GENERO</label>
+                <select class="form-control" name="rol_usuario" id="combox">
+        <option value="0">SELECCIONE GENERO:</option>
+                <?php
+        require '../modelos/conectar.php';
+          $resultado = $conexion -> query ("SELECT * FROM TBL_ROL");
+          while ($registro=$resultado->fetch(PDO::FETCH_ASSOC)) {
+            echo '<option value="'.$registro[""].'">'.$registro[""].'</option>';
+          }
+        ?>
+        </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Direccion</label>
+                </div>
+                <textarea name="textarea" rows="10" cols="50">Write something here</textarea>
+
+                <div id="alerta"></div>
+
+              <div class="box-footer">
+              <div class="col text-center">
+                <button type="button" class="btn btn-primary" onclick="validar_matenimiento();">CREAR</button>
+                </div>
+              </div>
+            </form>
+        </div>
+        <!-- /.box-body -->
+        
+        <!-- /.box-footer-->
       </div>
-      <!-- /.row -->
-    </section>
+      <!-- /.box -->
+
+    
     <!-- /.content -->
+    </div>
+    </div>
   </div>
   <!-- /.content-wrapper -->
 
@@ -391,14 +366,11 @@ alert("texto cambiado");
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-
+<script src="../vistas/js/validaciones.js"></script>
 <!-- jQuery 2.2.3 -->
 <script src="../vistas/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="../vistas/bootstrap/js/bootstrap.min.js"></script>
-<!-- DataTables -->
-<script src="../vistas/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../vistas/plugins/datatables/dataTables.bootstrap.min.js"></script>
 <!-- SlimScroll -->
 <script src="../vistas/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
@@ -407,31 +379,5 @@ alert("texto cambiado");
 <script src="../vistas/dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../vistas/dist/js/demo.js"></script>
-<!-- page script -->
-<script>
-  $(function () {
-    $('#example1').DataTable({
-      language: {
-        sSearch: "Buscar:",
-        sInfo:           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-        sLengthMenu:     "Mostrar _MENU_ registros",
-        oPaginate: {
-                    "sFirst":    "Primero",
-                    "sLast":     "Último",
-                    "sNext":     "Siguiente",
-                    "sPrevious": "Anterior" //traduccion de tabla
-                }
-    }});
-    $('#example2').DataTable({
-      "paging": true,
-      "pagelength":3,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
-    });
-  });
-</script>
 </body>
 </html>
