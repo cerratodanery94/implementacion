@@ -273,10 +273,11 @@ alert("texto cambiado");
     </section>
 
     <!-- Main content -->
-    
-    <div class="row">
+    <div class="col-100 forgot">
+    <div style='float:center;margin:auto;width:500px;' class="row">
 
-           <div class="col-md-6">
+           <div class="col-md-10">
+           </div>
     <section class="content">
 
       <!-- Default box -->

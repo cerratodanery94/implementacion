@@ -311,10 +311,11 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>10
     </section>
 
     <!-- Main content -->
-    
-    <div class="row">
+    <div class="col-100 forgot">
+    <div style='float:center;margin:auto;width:500px;' class="row">
 
-           <div class="col-md-5 ">
+           <div class="col-md-10">
+           </div>
     <section class="content">
       <!-- Default box -->
       <div class="box">

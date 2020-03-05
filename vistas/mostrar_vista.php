@@ -329,7 +329,7 @@ alert("texto cambiado");
                 <tbody>
                <?php
                require '../modelos/conectar.php';
-               $consulta=$conexion->prepare("SELECT * FROM tbl_usuario");
+               $consulta=$conexion->prepare("SELECT * FROM tbl_usuario where USU_CODIGO<>1");
                $consulta->execute();
                  while($fila=$consulta->fetch()){?>
                  <tr>
