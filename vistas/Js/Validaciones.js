@@ -138,7 +138,6 @@
                         //alert('Campos vacios');
                         document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRES VACIO</div>';
                         formulario.nombres.focus();
-                        formulario.nombres.value="";
                         return false;
                     }
                         else if (Validar_espacio2(formulario.nombres.value)==false){  
@@ -155,7 +154,6 @@
                         else if (validar_tamaño (formulario.nombres.value)==false){
                             document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE CARACTERES EN EL CAMPO</div>';
                             formulario.nombres.focus();
-                            formulario.nombres.value="";
                             return false;
                             }
                            
@@ -168,7 +166,6 @@
                             //alert('Campos vacios');
                             document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO APELLIDOS VACIO</div>';
                             formulario.apellidos.focus();
-                            formulario.apellidos.value="";
                             return false;
                         }
                             else if (Validar_espacio2(formulario.apellidos.value)==false){  
@@ -179,13 +176,11 @@
                         else if (validar_texto (formulario.apellidos.value)==false){  
                             document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO APELLIDOS NO PUEDE CONTENER NUMEROS</div>';
                             formulario.apellidos.focus();
-                            formulario.apellidos.value="";
                             return false;
                             }
                             else if (validar_tamaño (formulario.apellidos.value)==false){
                                 document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE CARACTERES EN EL CAMPO APELLIDOS</div>';
                                 formulario.apellidos.focus();
-                                formulario.apellidos.value="";
                                 return false;
                                 }
                                 
@@ -197,25 +192,21 @@
                                 //alert('Campos vacios');
                                 document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO USUARIO VACIO</div>';
                                 formulario.usuario.focus();
-                                formulario.usuario.value="";
                                 return false;  
                                 }
                                 else if (validar_longitud(formulario.usuario.value)==false){  
                                     document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO USUARIO DEBE CONTENER AL MENOS (6) CARACTERES</div>';
                                     formulario.usuario.focus();
-                                    formulario.usuario.value="";
                                     return false;
                                  }
                                  else if (Validar_espacio(formulario.usuario.value)==false){  
                                     document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO USUARIO NO DEBE CONTENER ESPACIOS</div>';
                                     formulario.usuario.value="";
-                                    formulario.usuario.focus();
                                     return false;
                                  }
                                  else if (validar_texto (formulario.usuario.value)==false){
                                     document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRES NO PUEDE CONTENER NUMEROS</div>';
                                     formulario.usuario.focus();
-                                    formulario.usuario.value="";
                                     return false;
                                     }
 
@@ -260,19 +251,16 @@
                             else if (Validar_espacio(formulario_vista.login.value)==false){  
                                 document.getElementById("alerta2").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRE DE USUARIO NO DEBE CONTENER ESPACIOS</div>';
                                 formulario_vista.login.focus();
-                                formulario_vista.login.value="";
                                 return false;
                                 }
                                 else if (validar_tamaño(formulario_vista.login.value)==false){
                                     document.getElementById("alerta2").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>EL CAMPO NOMBRE DE USUARIO DEBE DE CONTENER AL MENOS (6) CARACTERES</div>';
                                     formulario_vista.login.focus();
-                                    formulario_vista.login.value="";
                                     return false;
                                     }
                             else if (validar_texto(formulario_vista.login.value)==false){
                                 document.getElementById("alerta2").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRE DE USUARIO  NO PUEDE CONTENER NUMEROS</div>';
                                 formulario_vista.login.focus();
-                                formulario_vista.login.value="";
                                 return false;
                                 }
                               
@@ -293,13 +281,11 @@
                                             else if (Validar_espacio2(formulario_vista.contra2.value)==false){  
                                                 document.getElementById("alerta2").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
                                                 formulario_vista.contra2.focus();
-                                                formulario_vista.contra2.value="";
                                                 return false;
                                                 }
                                                 else if (Validar_espacio(formulario_vista.contra2.value)==false){  
                                                     document.getElementById("alerta2").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO CONTRASEÑA NO DEBE DE CONTENER ESPACIO</div>';
                                                     formulario_vista.contra2.focus();
-                                                    formulario_vista.contra2.value="";
                                                     return false;
                                                     }
                             formulario_vista.submit();
@@ -316,25 +302,21 @@
                             else if (Validar_espacio2(formulario_recuperar.usuario2.value)==false){  
                                 document.getElementById("alerta3").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
                                 formulario_recuperar.usuario2.focus();
-                                formulario_recuperar.usuario2.value="";
                                 return false;
                                 }
                                 else if (Validar_espacio(formulario_recuperar.usuario2.value)==false){  
                                     document.getElementById("alerta3").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRE DE USUARIO NO DEBE CONTENER ESPACIOS</div>';
                                     formulario_recuperar.usuario2.focus();
-                                    formulario_recuperar.usuario2.value="";
                                     return false;
                                     }
                             else if (validar_texto(formulario_recuperar.usuario2.value)==false){
                                 document.getElementById("alerta3").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRE DE USUARIO  NO PUEDE CONTENER NUMEROS</div>';
                                 formulario_recuperar.usuario2.focus();
-                                formulario_recuperar.usuario2.value="";
                                 return false;
                                 }
                                 else if (validar_tamaño(formulario_recuperar.usuario2.value)==false){
                                     document.getElementById("alerta3").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>EL CAMPO NOMBRE DE USUARIO DEBE DE CONTENER AL MENOS (6) CARACTERES</div>';
                                     formulario_recuperar.usuario2.focus();
-                                    formulario_recuperar.usuario2.value="";
                                     return false;
                                     }
                                    
@@ -412,30 +394,79 @@
  
  function validar_matenimiento(){
     var formulario_man=document.Form_registrar;
-//validar campo usuario
+
+//VALIDAR NOMBRE(VACIO QUE NO CONTENGA NUMEROS)
+    
+if (formulario_man.nombre.value=="") {
+    //alert('Campos vacios');
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRES VACIO</div>';
+    formulario_man.nombre.focus();
+    return false;
+}
+else if (Validar_espacio2 (formulario_man.nombre.value)==false){
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
+    formulario_man.nombre.focus();
+    return false;
+    }
+else if (validar_texto (formulario_man.nombre.value)==false){
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRES NO PUEDE CONTENER NUMEROS</div>';
+    formulario_man.nombre.focus();
+    return false;
+    }
+    else if (validar_tamaño (formulario_man.nombre.value)==false){
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE CARACTERES EN EL CAMPO</div>';
+        formulario_man.nombre.focus();
+        return false;
+        }
+        
+else{
+        document.getElementById("alerta").innerHTML="";
+    }
+
+//VALIDAR CAMPO APELLIDO
+    if (formulario_man.apellido.value=="") {
+        //alert('Campos vacios');
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO APELLIDOS VACIO</div>';
+        formulario_man.apellido.focus();
+        return false;
+    }
+
+    else if (Validar_espacio2 (formulario_man.apellido.value)==false){
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
+        formulario_man.apellido.focus();
+        return false;
+        }
+    else if (validar_texto (formulario_man.apellido.value)==false){  
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO APELLIDOS NO PUEDE CONTENER NUMEROS</div>';
+        formulario_man.apellido.focus();
+        return false;
+        }
+        else if (validar_tamaño (formulario_man.apellido.value)==false){
+            document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE CARACTERES EN EL CAMPO APELLIDOS</div>';
+            formulario_man.apellido.focus();
+    
+            return false;
+            }
+    //validar campo usuario
     if (formulario_man.usum.value==""){
          document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO USUARIO SE ENCUENTRA VACIO</div>';
          formulario_man.usum.focus();
-         formulario_man.usum.value="";
           return false; 
  
     }
     else if (validar_longitud(formulario_man.usum.value)==false){
         document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO USUARIO DEBE CONTENER AL MENOS (6) CARACTERES</div>';
         formulario_man.usum.focus();
-        
         return false;
         }
         else if (Validar_espacio(formulario_man.usum.value)==false){  
             document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO USUARIO NO DEBE CONTENER ESPACIOS</div>';
-            formulario_man.usum.value="";
             formulario_man.usum.focus();
             return false;
          }
          else if (validar_texto (formulario_man.usum.value)==false){
             document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRES NO PUEDE CONTENER NUMEROS</div>';
             formulario_man.usum.focus();
-            formulario_man.usum.value="";
             return false;
             }
 
@@ -444,70 +475,6 @@
         }
 
 
-//VALIDAR NOMBRE(VACIO QUE NO CONTENGA NUMEROS)
-    
-        if (formulario_man.nombre.value=="") {
-                //alert('Campos vacios');
-                document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRES VACIO</div>';
-                formulario_man.nombre.focus();
-                formulario_man.nombre.value="";
-                return false;
-            }
-            else if (Validar_espacio2 (formulario_man.nombre.value)==false){
-                document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
-                formulario_man.nombre.focus();
-                formulario_man.nombre.value="";
-                return false;
-                }
-            else if (validar_texto (formulario_man.nombre.value)==false){
-                document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRES NO PUEDE CONTENER NUMEROS</div>';
-                formulario_man.nombre.focus();
-                formulario_man.nombre.value="";
-                return false;
-                }
-                else if (validar_tamaño (formulario_man.nombre.value)==false){
-                    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE CARACTERES EN EL CAMPO</div>';
-                    formulario_man.nombre.focus();
-                    formulario_man.nombre.value="";
-                    return false;
-                    }
-                    
-            else{
-                    document.getElementById("alerta").innerHTML="";
-                }
-
-
-
-
-
-//VALIDAR CAMPO APELLIDO
-                if (formulario_man.apellido.value=="") {
-                    //alert('Campos vacios');
-                    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO APELLIDOS VACIO</div>';
-                    formulario_man.apellido.focus();
-                    formulario_man.apellido.value="";
-                    return false;
-                }
-
-                else if (Validar_espacio2 (formulario_man.apellido.value)==false){
-                    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
-                    formulario_man.apellido.focus();
-                    formulario_man.apellido.value="";
-                    return false;
-                    }
-                else if (validar_texto (formulario_man.apellido.value)==false){  
-                    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO APELLIDOS NO PUEDE CONTENER NUMEROS</div>';
-                    formulario_man.apellido.focus();
-                    formulario_man.apellido.value="";
-                    return false;
-                    }
-                    else if (validar_tamaño (formulario_man.apellido.value)==false){
-                        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE CARACTERES EN EL CAMPO APELLIDOS</div>';
-                        formulario_man.apellido.focus();
-                
-                        return false;
-                        }
-                      
 
                             //validar campo Rol
                             
@@ -562,19 +529,16 @@
             else if (validar_limitcontraseña (formulario_cam.nueva_contra.value)==false){  
             document.getElementById("alerta7").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>EL CAMPO NUEVA CONTRASEÑA DEBE DE CONTENER AL MENOS(8) CARACTERES</div>';
             formulario_cam.nueva_contra.focus();
-            formulario_cam.nueva_contra.value="";
             return false;
             }
             else if (Validar_espacio (formulario_cam.nueva_contra.value)==false){  
             document.getElementById("alerta7").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>EL CAMPO  NUEVA CONTRASEÑA NO DEBE DE CONTENER ESPACIOS</div>';
             formulario_cam.nueva_contra.focus();
-            formulario_cam.nueva_contra.value="";
             return false;
             }
             else if (Validar_espacio2(formulario_cam.nueva_contra.value)==false){  
             document.getElementById("alerta7").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
             formulario_cam.nueva_contra.focus();
-            formulario_cam.nueva_contra.value="";
             return false;
             }
             
@@ -588,20 +552,16 @@
             else if (Validar_espacio (formulario_cam.confirmar_contra2.value)==false){  
             document.getElementById("alerta7").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>EL CAMPO  CONFIRMAR CONTRASEÑA NO DEBE DE CONTENER ESPACIOS</div>';
             formulario_cam.confirmar_contra2.focus();
-            formulario_cam.confirmar_contra2.value="";
             return false;
             }
             else if (Validar_espacio2(formulario_cam.confirmar_contra2.value)==false){  
             document.getElementById("alerta7").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
             formulario_cam.confirmar_contra2.focus();
-            formulario_cam.confirmar_contra2.value="";
             return false;
             }
              //CONTRASEÑAS COINCIDAN
              if(formulario_cam.nueva_contra.value != formulario_cam.confirmar_contra2.value){
                 document.getElementById("alerta7").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CONTRASEÑAS NO COINCIDEN </div>';
-                formulario_cam.nueva_contra.value="";
-                formulario_cam.confirmar_contra2.value="";
                 formulario_cam.nueva_contra.focus();
                 
                 return false;
@@ -628,19 +588,16 @@ function Validar_resres() {
    else if (Validar_espacio (formulario_cam.nueva_contra.value)==false){  
     document.getElementById("alerta7").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>EL CAMPO  NUEVA CONTRASEÑA NO DEBE DE CONTENER ESPACIOS</div>';
     formulario_cam.nueva_contra.focus();
-    formulario_cam.nueva_contra.value="";
     return false;
     }
     else if (Validar_espacio2(formulario_cam.nueva_contra.value)==false){  
     document.getElementById("alerta7").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
     formulario_cam.nueva_contra.focus();
-    formulario_cam.nueva_contra.value="";
     return false;
     }
    else if (validar_limitcontraseña (formulario_cam.nueva_contra.value)==false){  
    document.getElementById("alerta7").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>EL CAMPO NUEVA CONTRASEÑA DEBE DE CONTENER AL MENOS(8) CARACTERES</div>';
    formulario_cam.nueva_contra.focus();
-   formulario_cam.nueva_contra.value="";
    return false;
    }
   
@@ -655,20 +612,16 @@ function Validar_resres() {
    else if (Validar_espacio (formulario_cam.confirmar_contra2.value)==false){  
    document.getElementById("alerta7").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>EL CAMPO  CONFIRMAR CONTRASEÑA NO DEBE DE CONTENER ESPACIOS</div>';
    formulario_cam.confirmar_contra2.focus();
-   formulario_cam.confirmar_contra2.value="";
    return false;
    }
    else if (Validar_espacio2(formulario_cam.confirmar_contra2.value)==false){  
    document.getElementById("alerta7").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
    formulario_cam.confirmar_contra2.focus();
-   formulario_cam.confirmar_contra2.value="";
    return false;
    }
     //CONTRASEÑAS COINCIDAN
     if(formulario_cam.nueva_contra.value != formulario_cam.confirmar_contra2.value){
        document.getElementById("alerta7").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CONTRASEÑAS NO COINCIDEN </div>';
-       formulario_cam.nueva_contra.value="";
-       formulario_cam.confirmar_contra2.value="";
        formulario_cam.nueva_contra.focus();
        
        return false;
@@ -731,26 +684,22 @@ function validar_recu(){
         if (Formulario_actualizar_mant.usuarion.value==""){
         document.getElementById("alerta_mant").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO USUARIO SE ENCUENTRA VACIO</div>';
         Formulario_actualizar_mant.usuarion.focus();
-        Formulario_actualizar_mant.usuarion.value="";
         return false; 
           }
           else if (Validar_espacio(Formulario_actualizar_mant.usuarion.value)==false){  
             document.getElementById("alerta_mant").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO USUARIO NO DEBE CONTENER ESPACIOS</div>';
             Formulario_actualizar_mant.usuarion.focus();
-            Formulario_actualizar_mant.usuarion.value="";
             return false;
              }
         else if (validar_longitud(Formulario_actualizar_mant.usuarion.value)==false){
         document.getElementById("alerta_mant").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO USUARIO DEBE CONTENER AL MENOS (6) CARACTERES</div>';
         Formulario_actualizar_mant.usuarion.focus();
-        Formulario_actualizar_mant.usuarion.value="";
         return false;
         }
    
        else if (validar_texto (Formulario_actualizar_mant.usuarion.value)==false){
           document.getElementById("alerta_mant").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO USUARIO NO PUEDE CONTENER NUMEROS</div>';
           Formulario_actualizar_mant.usuarion.focus();
-          Formulario_actualizar_mant.usuarion.value="";
           return false;
        }
       
@@ -759,7 +708,6 @@ function validar_recu(){
           //alert('Campos vacios');
           document.getElementById("alerta_mant").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRES VACIO</div>';
           Formulario_actualizar_mant.nombre.focus();
-          Formulario_actualizar_mant.nombre.value="";
           return false;
       }
       else if (Validar_espacio2 (Formulario_actualizar_mant.nombre.value)==false){
@@ -771,13 +719,11 @@ function validar_recu(){
       else if (validar_texto (Formulario_actualizar_mant.nombre.value)==false){
           document.getElementById("alerta_mant").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRES NO PUEDE CONTENER NUMEROS</div>';
           Formulario_actualizar_mant.nombre.focus();
-          Formulario_actualizar_mant.nombre.value="";
           return false;
           }
           else if (validar_tamaño (Formulario_actualizar_mant.nombre.value)==false){
               document.getElementById("alerta_mant").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE CARACTERES EN EL CAMPO</div>';
               Formulario_actualizar_mant.nombre.focus();
-              Formulario_actualizar_mant.nombre.value="";
           return false;
               }
              
@@ -787,26 +733,22 @@ function validar_recu(){
                   //alert('Campos vacios');
                   document.getElementById("alerta_mant").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO APELLIDO VACIO</div>';
                   Formulario_actualizar_mant.apellido.focus();
-                  Formulario_actualizar_mant.apellido.value="";
                   return false;
               }
 
               else if (Validar_espacio2 (Formulario_actualizar_mant.apellido.value)==false){
                 document.getElementById("alerta_mant").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
                 Formulario_actualizar_mant.apellido.focus();
-                Formulario_actualizar_mant.apellido.value="";
                 return false;
                 }
               else if (validar_texto (Formulario_actualizar_mant.apellido.value)==false){
                   document.getElementById("alerta_mant").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO APELLIDO NO PUEDE CONTENER NUMEROS</div>';
                   Formulario_actualizar_mant.apellido.focus();
-                  Formulario_actualizar_mant.apellido.value="";
                   return false;
                   }
                   else if (validar_tamaño (Formulario_actualizar_mant.apellido.value)==false){
                       document.getElementById("alerta_mant").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE CARACTERES EN EL CAMPO</div>';
                       Formulario_actualizar_mant.apellido.focus();
-                      Formulario_actualizar_mant.apellido.value="";
                   return false;
                       }
                     
@@ -831,19 +773,16 @@ function validar_recu(){
                   if (Formulario_actualizar_mant.correon.value=="") {
                       //alert('Campos vacios');
                       document.getElementById("alerta_mant").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO CORREO VACIO</div>';
-                      Formulario_actualizar_mant.correon.value=="";
                       Formulario_actualizar_mant.correon.focus();
                       return false;  
                   }
                   else if (validar_tamaño (Formulario_actualizar_mant.correon.value)==false){
                       document.getElementById("alerta_mant").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE CARACTERES EN EXCESO EN EL CAMPO CORREO</div>';
-                      Formulario_actualizar_mant.correon.value=="";
                       Formulario_actualizar_mant.correon.focus();
                       return false; 
                       }
                        else if (Validar_correo(Formulario_actualizar_mant.correon.value)== false){
                           document.getElementById("alerta_mant").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>PORFAVOR INGRESAR UN CORREO VALIDO</div>';
-                          Formulario_actualizar_mant.correon.value=="";
                           Formulario_actualizar_mant.correon.focus();
 
                           return false; 

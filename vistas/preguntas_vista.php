@@ -10,7 +10,6 @@ $resultado2=$conexion->prepare($sql2);
 $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>4,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA DE REGISTRAR PREGUNTAS',":fecha"=>date("Y-m-d H:m:s")));            
 ?>
 
-?>
 <!DOCTYPE html>
 <html>
 <head>
