@@ -60,7 +60,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_u"],":objeto"=>9,"
         <input id="confirmar_contra2" autocomplete="off" type="password" class="form-control nombres" placeholder="CONFIRMAR CONTRASEÑA" name="confirmar_contrap">
         <div class="input-group-append">
         <div class="input-group">
-        <button id="show_password" class="btn btn-primary" type="submit" onclick="mostrarPassword_recuperarcontra2()"><span class="fa fa-eye-slash icon4"></span></button>
+        <button id="show_password" class="btn btn-primary" type="button" onclick="mostrarPassword_recuperarcontra2()"><span class="fa fa-eye-slash icon4"></span></button>
   
         </div>
         </div>
