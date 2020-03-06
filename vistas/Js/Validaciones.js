@@ -119,7 +119,8 @@
               }
               //VALIDAR DOS ESPACIOS
               function Validar_espacio2(parametro){
-                var Espacio= /([ ]{2,})|[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
+                var Espacio= /([ ]{2,})/;
+                // var Espacio= /([ ]{2,})|[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
                 if(Espacio.test(parametro)){
                     return false;
                 }
@@ -128,6 +129,16 @@
                 }
             }
 
+            function validar_contra3(parametro){
+                var p_contra=/^(?=.*\d)(?=.*[-!$%@#^&*()_+|~=`{}\[\]:";'<>?,.\/])(?=.*[a-z])(?=.*[A-Z]).{8,12}$/;
+                // var p_contra=/^(?=.*\d)(?=.*[!@#$&])(?=.*[a-z])(?=.*[A-Z]).{8,12}$/;
+
+                if (!p_contra.test(parametro)){
+                    return false;
+                }else{
+                    return true;
+                }
+            }
 
 //VALIDACIONES DE MODULO DE REGISTRO
                 function validar_registro() {
@@ -335,52 +346,50 @@
                         else if (Validar_espacio (formulario_reestablecer.nueva_contra.value)==false){  
                             document.getElementById("alerta4").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>EL CAMPO  NUEVA CONTRASEÑA NO DEBE DE CONTENER ESPACIOS</div>';
                             formulario_reestablecer.nueva_contra.focus();
-                            formulario_reestablecer.nueva_contra.value="";
                             return false;
                             }
                             else if (Validar_espacio2(formulario_reestablecer.nueva_contra.value)==false){  
                                 document.getElementById("alerta4").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
                                 formulario_reestablecer.nueva_contra.focus();
-                                formulario_reestablecer.nueva_contra.value="";
                                 return false;
                                 }
-                        else if (validar_limitcontraseña (formulario_reestablecer.nueva_contra.value)==false){  
-                            document.getElementById("alerta4").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>EL CAMPO NUEVA CONTRASEÑA DEBE DE CONTENER AL MENOS(8) CARACTERES</div>';
-                            formulario_reestablecer.nueva_contra.focus();
-                            formulario_reestablecer.nueva_contra.value="";
-                            return false;
+                                else if (validar_contra3 (formulario_reestablecer.nueva_contra.value)==false){
+                                    document.getElementById("alerta4").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LA CONTRASEÑA PERMITIDA DEBE SER LO MAS ROBUSTA POSIBLE, AL MENOS DEBE CONTENER 1 LETRA MINUSCULA, 1 LETRA MAYUSCULA, 1 CARÁCTER ESPECIAL, 1 NUMERO Y DEBE CONTENER 8 CARACTERES MINIMO.</div>';
+                                    formulario_reestablecer.nueva_contra.focus();
+                                    return false;
                             }
                            
-                             //CONTRASEÑAS COINCIDAN
-                            if(formulario_reestablecer.nueva_contra.value != formulario_reestablecer.confirmar_contra2.value){
-                            document.getElementById("alerta4").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CONTRASEÑAS NO COINCIDEN </div>';
-                            formulario_reestablecer.nueva_contra.value="";
-                            formulario_reestablecer.confirmar_contra2_contra.value="";
-                            formulario_reestablecer.nueva_contra.focus();
-                            formulario_reestablecer.confirmar_contra2.focus();
-                            return false;
-                        }
-                         //VALIDAR CONFIRMAR CONTRASEÑA
-                         if (formulario_reestablecer.confirmar_contra2.value=="") {
-                            //alert('Campos vacios');
+                             
+                          //VALIDAR CONFIRMAR CONTRASEÑA
+                          if (formulario_reestablecer.confirmar_contra2.value=="") {
                             //NUEVA CONTRASEÑAS
                             document.getElementById("alerta4").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO CONFIRMAR CONTRASEÑA SE ENCUENTRA VACIO</div>';
-                            formulario_reestablecer.confirmar_contra.focus();
+                            formulario_reestablecer.confirmar_contra2.focus();
                             return false; 
                             }
                                 else if (Validar_espacio (formulario_reestablecer.confirmar_contra2.value)==false){  
                                     document.getElementById("alerta4").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>EL CAMPO  NUEVA CONTRASEÑA NO DEBE DE CONTENER ESPACIOS</div>';
                                     formulario_reestablecer.confirmar_contra2.focus();
-                                    formulario_reestablecer.confirmar_contra2.value="";
                                     return false;
                                     }
                                     else if (Validar_espacio2(formulario_reestablecer.confirmar_contra2.value)==false){  
                                         document.getElementById("alerta4").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
                                         formulario_reestablecer.confirmar_contra2.focus();
-                                        formulario_reestablecer.confirmar_contra2.value="";
                                         return false;
                                         }
-
+                                        else if (validar_contra3 (formulario_reestablecer.confirmar_contra2.value)==false){
+                                            document.getElementById("alerta4").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LA CONTRASEÑA PERMITIDA DEBE SER LO MAS ROBUSTA POSIBLE, AL MENOS DEBE CONTENER 1 LETRA MINUSCULA, 1 LETRA MAYUSCULA, 1 CARÁCTER ESPECIAL, 1 NUMERO Y DEBE CONTENER 8 CARACTERES MINIMO.</div>';
+                                            formulario_reestablecer.confirmar_contra2.focus();
+                                            return false;
+                                        }
+                             
+                                        //CONTRASEÑAS COINCIDAN
+                            if(formulario_reestablecer.nueva_contra.value != formulario_reestablecer.confirmar_contra2.value){
+                                document.getElementById("alerta4").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CONTRASEÑAS NO COINCIDEN </div>';
+                                formulario_reestablecer.nueva_contra.focus();
+                                formulario_reestablecer.confirmar_contra2.focus();
+                                return false;
+                            }
                         formulario_reestablecer.submit();
                         
 
@@ -526,11 +535,7 @@ else{
             formulario_cam.nueva_contra.focus();
             return false; 
             }
-            else if (validar_limitcontraseña (formulario_cam.nueva_contra.value)==false){  
-            document.getElementById("alerta7").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>EL CAMPO NUEVA CONTRASEÑA DEBE DE CONTENER AL MENOS(8) CARACTERES</div>';
-            formulario_cam.nueva_contra.focus();
-            return false;
-            }
+           
             else if (Validar_espacio (formulario_cam.nueva_contra.value)==false){  
             document.getElementById("alerta7").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>EL CAMPO  NUEVA CONTRASEÑA NO DEBE DE CONTENER ESPACIOS</div>';
             formulario_cam.nueva_contra.focus();
@@ -541,7 +546,11 @@ else{
             formulario_cam.nueva_contra.focus();
             return false;
             }
-            
+            else if (validar_contra3 (formulario_cam.nueva_contra.value)==false){
+                document.getElementById("alerta7").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LA CONTRASEÑA PERMITIDA DEBE SER LO MAS ROBUSTA POSIBLE, AL MENOS DEBE CONTENER 1 LETRA MINUSCULA, 1 LETRA MAYUSCULA, 1 CARÁCTER ESPECIAL, 1 NUMERO Y DEBE CONTENER 8 CARACTERES MINIMO.</div>';
+                formulario_cam.nueva_contra.focus();
+                return false;
+            }
             //VALIDAR CONFIRMAR CONTRASEÑA
             if (formulario_cam.confirmar_contra2.value=="") {
             //NUEVA CONTRASEÑA
@@ -558,6 +567,11 @@ else{
             document.getElementById("alerta7").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
             formulario_cam.confirmar_contra2.focus();
             return false;
+            }
+            else if (validar_contra3 (formulario_cam.confirmar_contra2.value)==false){
+                document.getElementById("alerta7").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LA CONTRASEÑA PERMITIDA DEBE SER LO MAS ROBUSTA POSIBLE, AL MENOS DEBE CONTENER 1 LETRA MINUSCULA, 1 LETRA MAYUSCULA, 1 CARÁCTER ESPECIAL, 1 NUMERO Y DEBE CONTENER 8 CARACTERES MINIMO.</div>';
+                formulario_cam.confirmar_contra2.focus();
+                return false;
             }
              //CONTRASEÑAS COINCIDAN
              if(formulario_cam.nueva_contra.value != formulario_cam.confirmar_contra2.value){
@@ -595,10 +609,10 @@ function Validar_resres() {
     formulario_cam.nueva_contra.focus();
     return false;
     }
-   else if (validar_limitcontraseña (formulario_cam.nueva_contra.value)==false){  
-   document.getElementById("alerta7").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>EL CAMPO NUEVA CONTRASEÑA DEBE DE CONTENER AL MENOS(8) CARACTERES</div>';
-   formulario_cam.nueva_contra.focus();
-   return false;
+    else if (validar_contra3 (formulario_cam.nueva_contra.value)==false){
+        document.getElementById("alerta7").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LA CONTRASEÑA PERMITIDA DEBE SER LO MAS ROBUSTA POSIBLE, AL MENOS DEBE CONTENER 1 LETRA MINUSCULA, 1 LETRA MAYUSCULA, 1 CARÁCTER ESPECIAL, 1 NUMERO Y DEBE CONTENER 8 CARACTERES MINIMO.</div>';
+        formulario_cam.nueva_contra.focus();
+        return false;
    }
   
    
@@ -619,6 +633,11 @@ function Validar_resres() {
    formulario_cam.confirmar_contra2.focus();
    return false;
    }
+   else if (validar_contra3 (formulario_cam.confirmar_contra2.value)==false){
+    document.getElementById("alerta7").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LA CONTRASEÑA PERMITIDA DEBE SER LO MAS ROBUSTA POSIBLE, AL MENOS DEBE CONTENER 1 LETRA MINUSCULA, 1 LETRA MAYUSCULA, 1 CARÁCTER ESPECIAL, 1 NUMERO Y DEBE CONTENER 8 CARACTERES MINIMO.</div>';
+    formulario_cam.nueva_contra2.focus();
+    return false;
+}
     //CONTRASEÑAS COINCIDAN
     if(formulario_cam.nueva_contra.value != formulario_cam.confirmar_contra2.value){
        document.getElementById("alerta7").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CONTRASEÑAS NO COINCIDEN </div>';
