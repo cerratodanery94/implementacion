@@ -107,23 +107,35 @@ alert("texto cambiado");
       <ul class="sidebar-menu">
         <li class="header">Barra de Navengacion</li>
        
-       <!-- Titulo de Usuario -->
-      <li class="treeview">
+
+
+        <li class="treeview">
         <a href="#">
-          <i class="fa fa-users"></i>
-          <span>Pacientes</span>
+          <i class="fa fa-user"></i>
+          <span>Usuarios</span>
         </a>
         <!-- subtitulos de Usuario -->
         <ul class="treeview-menu">
-          <li><a href="../vistas/insertar_mant_vista.php"><i class="fa fa-plus-square"></i>Agregar Paciente</a></li>
-          <li><a href="../vistas/mostrar_vista.php"id="text"><i class="fa fa-minus-square"></i> Lista de Pacientes</a></li>
-          <li><a href="#"><i class="fa fa-check-square-o"></i> Actualizar Paciente</a></li>
-          
+          <li><a href="../vistas/insertar_mant_vista.php"><i class="fa fa-plus-square"></i>Crear Usuarios</a></li>
+          <li><a href="../vistas/mostrar_vista.php"id="text"><i class="fa fa-minus-square"></i> Lista de Usuarios</a></li>
+        </ul>
+      </li>  
+
+
+       <!-- Titulo de Empleados -->
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-users"></i>
+          <span>Empleados</span>
+
+        </a>
+        <!-- subtitulos de Empleados -->
+        <ul class="treeview-menu">
+          <li><a href="../vistas/insertar_empleado_vista.php"><i class="fa fa-plus-square"></i>Añadir Empleado</a></li>
+          <li><a href="#"><i class="fa fa-check-square-o"></i> Mostrar Empleado</a></li>
 
         </ul>
       </li>
-       <!-- Titulo de Empleados -->
-      
       <!-- Titulo de Citas -->
       <li class="treeview">
         <a href="#">
@@ -140,7 +152,20 @@ alert("texto cambiado");
         </ul>
       </li>
       <!-- Titulo de Pacientes -->
-     
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-users"></i>
+          <span>Pacientes</span>
+
+        </a>
+        <!-- subtitulos de Pacientes -->
+        <ul class="treeview-menu">
+        <li><a href="../vistas/insertar_pacientes_vistas.php"><i class="fa fa-plus-square"></i> Agregar Paciente</a></li>
+          <li><a href="#"><i class="fa fa-eye"></i>Ver todos los pacientes</a></li>
+          
+
+        </ul>
+      </li>
       <!-- Titulo de Expedientes -->
       <li class="treeview">
         <a href="#">
@@ -216,7 +241,27 @@ alert("texto cambiado");
         </ul>
       </li>
 
-   
+    <!-- Titulo de Admin -->
+    <li class="treeview">
+        <a href="#">
+          <i class="fa fa-credit-card-alt"></i>
+          <span>Administrador</span>
+
+        </a>
+        <!-- subtitulos de ventas -->
+        <ul class="treeview-menu">
+          <li><a href="administradores.php"><i class="fa fa-circle-o"></i>Agregar Administrador</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> Agregar Venta</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> Actualizar Ventas</a></li>
+ 
+        
+        
+        
+      
+       
+        
+        
+      </ul>
     </section>
     <!-- /.sidebar -->
   </aside>
@@ -228,113 +273,113 @@ alert("texto cambiado");
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-      REGISTRO DE PACIENTES 
-        <small>Llena el formulario para crear un Paciente</small>
+      MANTENIMIENTO REGISTRAR
+        <small>Llena el formulario para crear un Usuario</small>
       </h1>
       
       
     </section>
 
     <!-- Main content -->
-    
-    <div class="row">
+    <div class="col-100 forgot">
+    <div style='float:center;margin:auto;width:500px;' class="row">
 
-           <div class="col-md-6">
+           <div class="col-md-10">
+           </div>
     <section class="content">
 
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">CREAR UN USUARIO</h3>
+          <h3 class="box-title">CREAR UN PACIENTES</h3>
 
           
         </div>
         <div class="box-body">
         
-        <form action="../modelos/insertar_mant_modelo.php" method="POST" role="form" name="Form_registrar">
-              
-                <div class="form-group">
+        <form action="../modelos/insertar_empleado_modelo.php"  method="POST" name="form_empleados">
+        <div class="form-group">
                   <label for="exampleInputEmail1">NOMBRES</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="NOMBRES"  name="usuario" id="usum">
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="NOMBRES"  name="nombres" id="nombres">
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">APELLIDOS</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control apellidos" placeholder="APELLIDOS"  name="nombres" id="nombre" >
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control apellidos" placeholder="APELLIDOS"  name="apellidos" id="apellidos" >
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">EDAD</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="EDAD"  name="apellidos" id="apellido">
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="EDAD"  name="edad" id="edad">
                 </div>
 
-
                 <div class="form-group">
-                  <label for="exampleInputPassword1">NUMERO DE IDENTIDAD</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE IDENTIDAD" name="fecha_creacion" id="fecha_creacion"  >
+                  <label for="exampleInputPassword1">IDENTIDAD</label>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="IDENTIDAD"  name="numero_de_identidad"" id="numero_de_identidad"">
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">RTN</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE RTN" name="fecha_creacion" id="fecha_creacion"  >
+                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE RTN" name="rtn" id="rtn"  >
                 </div>
 
                 <div class="form-group">
-                  <label for="exampleInputPassword1">PROFESION</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="PROFESION" name="fecha_creacion" id="fecha_creacion"  >
+                  <label for="exampleInputPassword1">CARGO</label>
+                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="CARGO" name="cargo" id="cargo"  >
+                </div>
+
+                
+                <div class="form-group">
+                  <label for="exampleInputPassword1"> CELULAR</label>
+                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE TELEFONO CELULAR" name="numero_de_celular" id="numero_de_celular">
                 </div>
 
                 <div class="form-group">
-                  <label for="exampleInputPassword1">PASAPORTE</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="PASAPORTE"  name="apellidos" id="apellido">
-                </div>
-     
-                <div class="form-group">
-                  <label for="exampleInputPassword1">NUMERO DE CELULAR</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE CELULAR" name="fecha_creacion" id="fecha_creacion"  >
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputPassword1">NUMERO DE TELEFONO FIJO</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE TELEFONO FIJO" name="fecha_creacion" id="fecha_creacion">
+                  <label for="exampleInputPassword1"> TELEFONO FIJO</label>
+                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE TELEFONO FIJO" name="numero_de_telefono_fijo" id="numero_de_telefono_fijo">
                 </div>
                   
                 
                 <div class="form-group">
                   <label for="exampleInputPassword1">FECHA DE NACIMIENTO</label>
-                  <input type="text" autocomplete="off" class="form-control nombres" placeholder="FECHA DE NACIMIENTO" name="fecha_creacion" id="fecha_creacion">
+                  <input type="date" autocomplete="off" class="form-control nombres" placeholder="FECHA DE NACIMIENTO" name="fecha_de_nacimiento" id="fecha_de_nacimiento">
                 </div>
-                
-      
+
+                <div class="form-group">
+                  <label for="exampleInputPassword1">FECHA DE CONTRATACION</label>
+                  <input type="date" autocomplete="off" class="form-control nombres" placeholder="FECHA DE CONTRATACION" name="fecha_de_contratacion" id="fecha_de_contratacion">
+                </div>
+
                 <div class="form-group">
                   <label for="exampleInputPassword1">CORREO</label>
                   <input type="email" autocomplete="off" class="form-control correo" placeholder="CORREO" name="correo" id="correo" >
                 </div>
 
                 <div class="form-group">
-                <label for="exampleInputPassword1">GENERO</label>
-                <select class="form-control" name="rol_usuario" id="combox">
-        <option value="0">SELECCIONE GENERO:</option>
-                <?php
-        require '../modelos/conectar.php';
-          $resultado = $conexion -> query ("SELECT * FROM TBL_ROL");
-          while ($registro=$resultado->fetch(PDO::FETCH_ASSOC)) {
-            echo '<option value="'.$registro[""].'">'.$registro[""].'</option>';
-          }
-        ?>
-        </select>
+                  <label for="exampleInputPassword1">NACIONALIDAD</label>
+                  <input type="text" autocomplete="off" class="form-control correo" placeholder="NACIONALIDAD" name="nacionalidad" id="nacionalidad" >
                 </div>
+                 
+                <div class="form-group">
+                <label for="exampleInputPassword1">GENERO</label>
+                <select class="form-control" name="genero" id="genero">
+                 <option value="0">SELECCIONE EL GENERO:</option>
+                 <option value="MUJER">FEMENINO</option>
+                 <option value="MASCULINO">MASCULINO</option>
+                 <option value="OTRO">OTRO</option>
 
+                </select>
+                </div>
+                
                 <div class="form-group">
                   <label for="exampleInputPassword1">Direccion</label>
                 </div>
-                <textarea name="textarea" rows="10" cols="50">Write something here</textarea>
-
+                <textarea name="direccion" id="direccion" rows="10" cols="50">DIRECCION:</textarea>    
+                <div class="box-footer">
+              
+                <div class="col text-center">
                 <div id="alerta"></div>
-
-              <div class="box-footer">
-              <div class="col text-center">
-                <button type="button" class="btn btn-primary" onclick="validar_matenimiento();">CREAR</button>
+                <button type="submit" onclick="validar_empleados();" class="btn btn-primary">CREAR</button>
                 </div>
               </div>
             </form>

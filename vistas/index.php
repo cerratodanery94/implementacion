@@ -82,7 +82,7 @@ if (!isset($_SESSION["id_us"])) {
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">Barra de Navengacion</li>
-       
+      
        <!-- Titulo de Empleados -->
       <li class="treeview">
         <a href="#">
@@ -92,9 +92,8 @@ if (!isset($_SESSION["id_us"])) {
         </a>
         <!-- subtitulos de Empleados -->
         <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-plus-square"></i>Añadir Empleado</a></li>
-          <li><a href="#"><i class="fa fa-minus-square"></i> Eliminar Empleado</a></li>
-          <li><a href="#"><i class="fa fa-check-square-o"></i> Actualizar Empleado</a></li>
+          <li><a href="../vistas/insertar_empleado_vista.php"><i class="fa fa-plus-square"></i>Añadir Empleado</a></li>
+          <li><a href="#"><i class="fa fa-check-square-o"></i> Mostrar Empleado</a></li>
 
         </ul>
       </li>
@@ -122,9 +121,9 @@ if (!isset($_SESSION["id_us"])) {
         </a>
         <!-- subtitulos de Pacientes -->
         <ul class="treeview-menu">
+        <li><a href="../vistas/insertar_pacientes_vistas.php"><i class="fa fa-plus-square"></i> Agregar Paciente</a></li>
           <li><a href="#"><i class="fa fa-eye"></i>Ver todos los pacientes</a></li>
-          <li><a href="#"><i class="fa fa-plus-square"></i> Agregar Paciente</a></li>
-          <li><a href="#"><i class="fa fa-check-square-o"></i> Actualizar Paciente</a></li>
+          
 
         </ul>
       </li>

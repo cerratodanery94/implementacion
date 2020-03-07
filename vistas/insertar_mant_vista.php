@@ -107,8 +107,9 @@ alert("texto cambiado");
       <ul class="sidebar-menu">
         <li class="header">Barra de Navengacion</li>
        
-       <!-- Titulo de Usuario -->
-      <li class="treeview">
+
+
+        <li class="treeview">
         <a href="#">
           <i class="fa fa-user"></i>
           <span>Usuarios</span>
@@ -117,10 +118,10 @@ alert("texto cambiado");
         <ul class="treeview-menu">
           <li><a href="../vistas/insertar_mant_vista.php"><i class="fa fa-plus-square"></i>Crear Usuarios</a></li>
           <li><a href="../vistas/mostrar_vista.php"id="text"><i class="fa fa-minus-square"></i> Lista de Usuarios</a></li>
-          
-
         </ul>
-      </li>
+      </li>  
+
+
        <!-- Titulo de Empleados -->
       <li class="treeview">
         <a href="#">
@@ -130,9 +131,8 @@ alert("texto cambiado");
         </a>
         <!-- subtitulos de Empleados -->
         <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-plus-square"></i>Añadir Empleado</a></li>
-          <li><a href="#"><i class="fa fa-minus-square"></i> Eliminar Empleado</a></li>
-          <li><a href="#"><i class="fa fa-check-square-o"></i> Actualizar Empleado</a></li>
+          <li><a href="../vistas/insertar_empleado_vista.php"><i class="fa fa-plus-square"></i>Añadir Empleado</a></li>
+          <li><a href="#"><i class="fa fa-check-square-o"></i> Mostrar Empleado</a></li>
 
         </ul>
       </li>
@@ -160,9 +160,9 @@ alert("texto cambiado");
         </a>
         <!-- subtitulos de Pacientes -->
         <ul class="treeview-menu">
+        <li><a href="../vistas/insertar_pacientes_vistas.php"><i class="fa fa-plus-square"></i> Agregar Paciente</a></li>
           <li><a href="#"><i class="fa fa-eye"></i>Ver todos los pacientes</a></li>
-          <li><a href="#"><i class="fa fa-plus-square"></i> Agregar Paciente</a></li>
-          <li><a href="#"><i class="fa fa-check-square-o"></i> Actualizar Paciente</a></li>
+          
 
         </ul>
       </li>
@@ -253,6 +253,14 @@ alert("texto cambiado");
           <li><a href="administradores.php"><i class="fa fa-circle-o"></i>Agregar Administrador</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Agregar Venta</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Actualizar Ventas</a></li>
+ 
+        
+        
+        
+      
+       
+        
+        
       </ul>
     </section>
     <!-- /.sidebar -->
