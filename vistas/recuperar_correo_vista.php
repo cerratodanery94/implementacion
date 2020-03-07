@@ -20,36 +20,35 @@
   <script src="../vistas/Js/jquery-3.4.1.min.js"></script>
 </head>
 <body class="hold-transition register-page">
+
 <div class="register-box">
   <div class="register-logo">
-    <b>Recuperar Contraseña</b>
+    <b>Recuperación de Contraseña</b>
   </div>
   <div class="register-box-body">
-    <p class="login-box-msg">RECUPERAR CONTRASEÑA</p>
-
-    <form  method="POST" name="Form_recuperar">
+    <p>Ingresa su nombre usuario para la recuperacion de contraseña por correo electronico</p>
+    <form action="../modelos/recuperar_correo_modelo.php" method="POST" name="Form_recuperar">
     <div class="form-group has-feedback">
-       
-        <input id="usuario2" autocomplete="off" type="text" class="form-control nombres" style="text-transform:uppercase" placeholder="INGRESE USUARIO" name="usuario2">
+        <input  autocomplete="off" type="text" class="form-control nombres"  placeholder="USUARIO"  style="text-transform:uppercase" name="usuario2" id="usuario2">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
-     
       <div class="row">
       <div id ="alerta3"></div>
-        <div class="col text-center">
-        <div><button type="button" name="correo" class="btn btn-primary btn-correo"onclick="Validar_recuperar(); document.Form_recuperar.action = '../modelos/recuperar_correo_modelo.php'; document.Form_recuperar.submit()">RECUPERAR POR CORREO</button>
-        </div>
-      </div>
-      <br>
       <div class="col text-center">
-        <div><button type="button" name="preguntas" class="btn btn-primary btn-preguntas "onclick="Validar_recuperar();document.Form_recuperar.action = '../modelos/recuperar_preguntas_modelo.php'; document.Form_recuperar.submit()">RECUPERAR POR PREGUNTAS</button>
-        </div>
+      <button type="button" class="btn btn-primary" onclick="Validar_recuperar()";>Enviar correo</button>
       </div>
+      </div>
+      <!-- /.box-body -->
+     
+
     </form>
+    
+    
   </div>
   <!-- /.form-box -->
-</div>
-<!-- /.register-box -->
+  
+</div><!-- /.register-box -->
+
 
 <!-- jQuery 2.2.3 -->
 <script src="../vistas/plugins/jQuery/jquery-2.2.3.min.js"></script>

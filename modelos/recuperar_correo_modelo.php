@@ -29,7 +29,7 @@ try{
         $num_rows = $resultado->fetchColumn();
             
         if ($num_rows==0){ 
-            echo '<script>alert("INTENTELO DE NUEVO");window.location= "../vistas/recuperar_correo.php"</script>';
+            echo '<script>alert("INTENTELO DE NUEVO");window.location= "../vistas/recuperar_correo_vista.php"</script>';
         }else{
     
             $sql2="UPDATE TBL_USUARIO SET USU_TOKEN=:token,USU_FECHA_TOKEN=:fecha_vencimiento WHERE USU_USUARIO=:usuario2";
@@ -90,7 +90,7 @@ try{
     
         $mail->send();
 
-        echo '<script>alert("SE HA ENVIADO UN CORREO ELECTRONICO PARA EL CAMBIO DE CONTRASEÑA. POR FAVOR VERIFICA LA INFORMACION ENVIADA.");window.location= "../vistas/recuperar_correo.php"</script>';
+        echo '<script>alert("SE HA ENVIADO UN CORREO ELECTRONICO PARA EL CAMBIO DE CONTRASEÑA. POR FAVOR VERIFICA LA INFORMACION ENVIADA.");window.location= "../vistas/recuperar_correo_vista.php"</script>';
     
             $num_rows->closeCursor();
             $resultado2->closeCursor();

@@ -62,9 +62,9 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>4,
         
         <!-- /.col -->
         <div class="col text-center">
-       
+       <button type="button" class="btn btn-primary" onclick="validar_pre();">SIGUIENTE</button>
         <div>
-        <button type="button" class="btn btn-primary" onclick="validar_pre();">SIGUIENTE</button>
+        
     </div>
            <!-- /.col -->
       </div>

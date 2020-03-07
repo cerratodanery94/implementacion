@@ -8,7 +8,7 @@ try{
         $num_rows = $resultado->fetchColumn();
             
         if ($num_rows==0){ 
-            echo '<script>alert("INTENTELO DE NUEVO");window.location= "../vistas/recuperar_correo.php"</script>';
+            echo '<script>alert("INTENTELO DE NUEVO");window.location= "../vistas/recuperar_preg_vista.php"</script>';
         }else{
             $sql2="SELECT * FROM TBL_USUARIO  WHERE USU_USUARIO=:usuario2";
             $resultado2=$conexion->prepare($sql2);

@@ -40,7 +40,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_u"],":objeto"=>8,"
   <div class="register-box-body">
     <p style="text-align: justify">Ingrese una pregunta y una respuesta de las que recuerde haber registrado para restablecer contraseña</p><br>
 
-    <form action="../modelos/recuperar_preguntas_modelo2.php" method="POST" name="form_recu" >
+    <form action="../modelos/verificar_preguntas_modelo.php" method="POST" name="form_recu" >
     <div class="form-group has-feedback">
     <select class="form-control" name="id_pre2" id="combox2">
         <option value="0">SELECCIONE UNA PREGUNTA:</option>
