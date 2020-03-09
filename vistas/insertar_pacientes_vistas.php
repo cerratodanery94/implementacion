@@ -22,7 +22,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../vistas/dist/css/AdminLTE.min.css">
- 
+  <link rel="stylesheet" href="../vistas/Plugins/sweetalert/dist/sweetalert2.min.css">
   <link rel="stylesheet" href="../vistas/dist/css/skins/_all-skins.min.css">
 
 </head>
@@ -290,7 +290,7 @@ alert("texto cambiado");
         </div>
         <div class="box-body">
         
-        <form action="../modelos/insertar_paciente_modelo.php"  method="POST" >
+        <form action=" "  method="POST" >
         <div class="form-group">
                   <label for="exampleInputEmail1">NOMBRES</label>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="NOMBRES"  name="nombres" id="nombres">
@@ -411,5 +411,9 @@ alert("texto cambiado");
 <script src="../vistas/dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../vistas/dist/js/demo.js"></script>
+<script src="../vistas/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
+
 </body>
 </html>
+
+<?php require"../modelos/insertar_paciente_modelo.php" ?>

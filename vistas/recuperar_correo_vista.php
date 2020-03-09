@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="../vistas/dist/css/AdminLTE.min.css">
   <!-- iCheck -->
   <link rel="stylesheet" href="../vistas/plugins/iCheck/square/blue.css">
-
+  <link rel="stylesheet" href="../vistas/Plugins/sweetalert/dist/sweetalert2.min.css">
   <script src="../vistas/Js/jquery-3.4.1.min.js"></script>
 </head>
 <body class="hold-transition register-page">
@@ -27,7 +27,7 @@
   </div>
   <div class="register-box-body">
     <p>Ingresa su nombre usuario para la recuperacion de contraseña por correo electronico</p>
-    <form action="../modelos/recuperar_correo_modelo.php" method="POST" name="Form_recuperar">
+    <form action=" " method="POST" name="Form_recuperar">
     <div class="form-group has-feedback">
         <input  autocomplete="off" type="text" class="form-control nombres"  placeholder="USUARIO"  style="text-transform:uppercase" name="usuario2" id="usuario2">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -54,7 +54,8 @@
 <script src="../vistas/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="../vistas/Js/Validaciones.js"></script>
-
+<script src="../vistas/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
 <script src="../vistas/plugins/iCheck/icheck.min.js"></script>
 </body>
 </html>
+<?php require"../modelos/recuperar_correo_modelo.php" ?>

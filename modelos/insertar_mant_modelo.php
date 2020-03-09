@@ -1,5 +1,4 @@
 <?php	
-session_start();
 // Importar clases PHPMailer en el espacio de nombres global
 // Deben estar en la parte superior de su script, no dentro de una función
 use PHPMailer\PHPMailer\PHPMailer;
@@ -18,29 +17,35 @@ $pass ="";
 for($i=0;$i<8;$i++) {
 $pass .=substr($caracteres,rand(0,53),1);
 }
-$idrol=$_POST['rol_usuario'];
-$nombres= strtoupper ($_POST["nombres"]);
-$apellidos=strtoupper ( $_POST["apellidos"]);
-$usuario= strtoupper($_POST["usuario"]);
-$pass_cifrado=password_hash($pass,PASSWORD_DEFAULT,array("cost"=>12));
-$estado="NUEVO";
-$fecha_creacion= date("Y-m-d H:m:s");
-$fecha_vencimiento= date("Y-m-d H:m:s",strtotime("+1 years"));
-
-$correo= $_POST["correo"];
 
 	try{
-	
-      
-
 		require '../modelos/conectar.php';
+		if (isset($_POST['rol_usuario']) && isset($_POST['nombres']) && isset($_POST['apellidos']) && isset($_POST['usuario']) && isset($_POST['correo'])) {
+		$idrol=$_POST['rol_usuario'];
+		$nombres= strtoupper ($_POST["nombres"]);
+		$apellidos=strtoupper ( $_POST["apellidos"]);
+		$usuario= strtoupper($_POST["usuario"]);
+		$pass_cifrado=password_hash($pass,PASSWORD_DEFAULT,array("cost"=>12));
+		$estado="NUEVO";
+		$fecha_creacion= date("Y-m-d H:m:s");
+		$fecha_vencimiento= date("Y-m-d H:m:s",strtotime("+1 years"));
+		$correo= $_POST["correo"];
+
 		$consulta=$conexion->prepare("SELECT * FROM TBL_USUARIO WHERE USU_USUARIO='$usuario'");
         $consulta->execute();
         $num_rows = $consulta->fetchColumn();
         
        if ($num_rows>0){ 
-		   echo '<script>alert("Usuario  ya se encuentran registrados ");location.href= "../vistas/insertar_mant_vista.php"</script>';
-		    
+		   //echo '<script>alert("Usuario  ya se encuentran registrados ");location.href= "../vistas/insertar_mant_vista.php"</script>';
+		   echo '<script> Swal.fire({
+			position: "top-end",
+			icon: "error",
+			title: "USUARIO YA SE ENCUENTRA REGISTRADO",
+			showConfirmButton: false,
+			timer: 3000
+		  })
+		  </script>';
+
        }else{	
 		$template_correo=file_get_contents('../vistas/template_correo.php');
 		$template_correo=str_replace("{{pass}}",$pass,$template_correo);
@@ -78,16 +83,35 @@ $correo= $_POST["correo"];
 		$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,":accion"=>'NUEVO',":descr"=>'CREO UN USUARIO EN MANTENIMIENTO',":fecha"=>$fecha_vencimiento));
 		
 	   if ($resultado) {
-		echo '<script>alert("Se ha registrado exitosamente,revise su correo electronico");location.href= "../vistas/insertar_mant_vista.php"</script>';
-			
+		//echo '<script>alert("Se ha registrado exitosamente,revise su correo electronico");location.href= "../vistas/insertar_mant_vista.php"</script>';
+		echo '<script>Swal.fire({
+		position: "top-end",
+		icon: "success",
+		title: "¡BIEN!",
+		text:"SE REGISTRO CORRECTAMENTE AL USUARIO",
+		showConfirmButton: false,
+		timer: 3000
+	  })
+		</script>';
 	   } else {
-		echo '<script>alert("Error al registrarse");location.href= "../vistas/insertar_mant_vista.php"</script>';	
-		}
+		
+	//echo '<script>alert("Error al registrarse");location.href= "../vistas/insertar_mant_vista.php"</script>';	
+	echo '<script> Swal.fire({
+		position: "top-end",
+		icon: "Error",
+		title: "¡ALGO SALIÓ MAL!",
+		text:"ERROR AL REGISTRARSE",
+		showConfirmButton: false,
+		timer: 3000
+	  })
+	  </script>';
 
-		
-		
+}
+
 		$resultado->closeCursor();
 		$resultado2->closeCursor();
+	}
+	
 	}
 	}catch(Exception $e){			
 		

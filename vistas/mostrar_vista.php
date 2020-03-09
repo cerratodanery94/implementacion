@@ -31,6 +31,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
   <link rel="stylesheet" href="../vistas/plugins/datatables/dataTables.bootstrap.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../vistas/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="../vistas/Plugins/sweetalert/dist/sweetalert2.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../vistas/dist/css/skins/_all-skins.min.css">
@@ -43,11 +44,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
       return false;
     }
   }
-
 </script>
 </head>
-
-
 <body class="hold-transition skin-blue sidebar-mini">
 <script type="text/javascript">
 $(function() {
@@ -70,8 +68,6 @@ alert("texto cambiado");
 });	
 
 </script>
-
-
 
 <div class="wrapper">
 
@@ -129,11 +125,10 @@ alert("texto cambiado");
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
-        <li class="header">Barra de Navengacion</li>
+        <li class="header">Barra de Navegacion</li>
        
-
-
-        <li class="treeview">
+       <!-- Titulo de Usuario -->
+      <li class="treeview">
         <a href="#">
           <i class="fa fa-user"></i>
           <span>Usuarios</span>
@@ -141,11 +136,11 @@ alert("texto cambiado");
         <!-- subtitulos de Usuario -->
         <ul class="treeview-menu">
           <li><a href="../vistas/insertar_mant_vista.php"><i class="fa fa-plus-square"></i>Crear Usuarios</a></li>
-          <li><a href="../vistas/mostrar_vista.php"id="text"><i class="fa fa-minus-square"></i> Lista de Usuarios</a></li>
+          <li><a href="../vistas/mostrar_vista.php"><i class="fa fa-minus-square"></i>lista de usuarios</a></li>
+         
+
         </ul>
-      </li>  
-
-
+      </li>
        <!-- Titulo de Empleados -->
       <li class="treeview">
         <a href="#">
@@ -155,8 +150,9 @@ alert("texto cambiado");
         </a>
         <!-- subtitulos de Empleados -->
         <ul class="treeview-menu">
-          <li><a href="../vistas/insertar_empleado_vista.php"><i class="fa fa-plus-square"></i>Añadir Empleado</a></li>
-          <li><a href="#"><i class="fa fa-check-square-o"></i> Mostrar Empleado</a></li>
+          <li><a href="#"><i class="fa fa-plus-square"></i>Añadir Empleado</a></li>
+          <li><a href="#"><i class="fa fa-minus-square"></i> Eliminar Empleado</a></li>
+          <li><a href="#"><i class="fa fa-check-square-o"></i> Actualizar Empleado</a></li>
 
         </ul>
       </li>
@@ -184,9 +180,9 @@ alert("texto cambiado");
         </a>
         <!-- subtitulos de Pacientes -->
         <ul class="treeview-menu">
-        <li><a href="../vistas/insertar_pacientes_vistas.php"><i class="fa fa-plus-square"></i> Agregar Paciente</a></li>
+        <li><a href="insertar_pacientes_vistas.php"><i class="fa fa-plus-square"></i> Agregar Paciente</a></li>
           <li><a href="#"><i class="fa fa-eye"></i>Ver todos los pacientes</a></li>
-          
+          <li><a href="#"><i class="fa fa-check-square-o"></i> Actualizar Paciente</a></li>
 
         </ul>
       </li>
@@ -278,13 +274,6 @@ alert("texto cambiado");
           <li><a href="#"><i class="fa fa-circle-o"></i> Agregar Venta</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Actualizar Ventas</a></li>
  
-        
-        
-        
-      
-       
-        
-        
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -406,6 +395,7 @@ alert("texto cambiado");
 <!-- AdminLTE App -->
 <script src="../vistas/dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
+<script src="../vistas/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
 <script src="../vistas/dist/js/demo.js"></script>
 <!-- page script -->
 <script>
@@ -435,3 +425,4 @@ alert("texto cambiado");
 </script>
 </body>
 </html>
+

@@ -16,6 +16,7 @@ require '../controladores/funciones.php';
 $mail = new PHPMailer(true);
 
 try{
+    if (isset($_POST['usuario2'])) {
     $usuario2=strtoupper(htmlentities(addslashes($_POST["usuario2"])));
     $token=generar_token();
     $fecha_ven_token=date('Y-m-d H:m:s',strtotime('+24 hours'));
@@ -29,7 +30,16 @@ try{
         $num_rows = $resultado->fetchColumn();
             
         if ($num_rows==0){ 
-            echo '<script>alert("INTENTELO DE NUEVO");window.location= "../vistas/recuperar_correo_vista.php"</script>';
+           // echo '<script>alert("INTENTELO DE NUEVO");window.location= "../vistas/recuperar_correo_vista.php"</script>';
+             echo '<script> Swal.fire({
+                position: "center",
+                icon: "error",
+                title: "¡ALGO SALIÓ MAL!",
+                text:"ERROR AL RECUPERAR CONTRASEÑA, INTENTELO DE NUEVO",
+                showConfirmButton: false,
+                timer: 3000
+              })
+              </script>';
         }else{
     
             $sql2="UPDATE TBL_USUARIO SET USU_TOKEN=:token,USU_FECHA_TOKEN=:fecha_vencimiento WHERE USU_USUARIO=:usuario2";
@@ -53,8 +63,8 @@ try{
 						VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
 						$resultado8=$conexion->prepare($sql8);	
                         $resultado8->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_usu"],":objeto"=>6,":accion"=>'INGRESO',":descr"=>'INGRESO A LA PANTALLA RECUPERAR CONTRA',":fecha"=>date("Y-m-d H:m:s")));
-                        $sql9="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
-						VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
+                        $sql9="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA)
+			            VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
 						$resultado9=$conexion->prepare($sql9);	
 						$resultado9->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_usu"],":objeto"=>6,":accion"=>'CONSULTA',":descr"=>'VERIFICA LAS CREDENCIALES DEL USUARIO',":fecha"=>date("Y-m-d H:m:s")));
          $template=file_get_contents('../vistas/template.php');
@@ -90,13 +100,17 @@ try{
     
         $mail->send();
 
-        echo '<script>alert("SE HA ENVIADO UN CORREO ELECTRONICO PARA EL CAMBIO DE CONTRASEÑA. POR FAVOR VERIFICA LA INFORMACION ENVIADA.");window.location= "../vistas/recuperar_correo_vista.php"</script>';
-    
-            $num_rows->closeCursor();
-            $resultado2->closeCursor();
-            $resultado3->closeCursor();  
-  
-
+        //echo '<script>alert("SE HA ENVIADO UN CORREO ELECTRONICO PARA EL CAMBIO DE CONTRASEÑA. POR FAVOR VERIFICA LA INFORMACION ENVIADA.");window.location= "../vistas/recuperar_correo_vista.php"</script>';
+        echo '<script>Swal.fire({
+			title: "BIEN!",
+			text: "SE HA ENVIADO UN CORREO ELECTRONICO PARA EL CAMBIO DE CONTRASEÑA. POR FAVOR VERIFICA LA INFORMACION ENVIADA",
+			icon: "success",
+			type: "success"
+			}).then(function() {
+			window.location = "../vistas/recuperar_correo_vista.php";
+			});
+		</script>';
+}
 }catch(Exception $e){
     die('Error: ' . $e->GetMessage());
     echo "Codigo del error" . $e->getCode();

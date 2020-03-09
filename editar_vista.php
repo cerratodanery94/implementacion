@@ -1,17 +1,17 @@
 <?php
 session_start();
-require '../modelos/conectar.php';
+require_once "../modelos/conectar.php"; 
 $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
 VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
-  $resultado2=$conexion->prepare($sql2);	
-$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA DE INSERTAR MANTENIMIENTO',":fecha"=>date("Y-m-d H:m:s")));
+$resultado2=$conexion->prepare($sql2);	
+$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>10,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA DE ACTUALIZAR USUARIOS MANTENIMIENTO',":fecha"=>date("Y-m-d H:m:s")));            
 ?>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Registrar Empleado</title>
+  <title>Editar Usuarios</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -24,31 +24,18 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
   <link rel="stylesheet" href="../vistas/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="../vistas/Plugins/sweetalert/dist/sweetalert2.min.css">
   <link rel="stylesheet" href="../vistas/dist/css/skins/_all-skins.min.css">
-
+<script >
+  function confdelete(){
+    var respuesta= confirm("¿Esta seguro de eliminar el registro?");
+    if (respuesta==true){
+      return true;
+    }else{
+      return false;
+    }
+  }
+</script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-<script type="text/javascript">
-$(function() {
-$("#text").change(function(){
-
-  <?php
-session_start();
-require_once "../modelos/conectar.php"; 
-   
-$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
-VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
-$resultado2=$conexion->prepare($sql2);	
-$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,":accion"=>'SALIO',":descr"=>'SALIO DE PANTALLA MANTENIMIENTO',":fecha"=>date("Y-m-d H:m:s")));         
-
-?>
-
-alert("texto cambiado");
-});
-
-});	
-
-</script>
-
 <!-- Site wrapper -->
 <div class="wrapper">
 
@@ -74,7 +61,8 @@ alert("texto cambiado");
         <ul class="nav navbar-nav">
           <li class="dropdown user user-menu">
             <a href="../modelos/cerrar_sesion_modelo.php">  
-            <span class="hidden-xs">SALIR</span>
+            <i class="fa fa-sign-out"></i>
+            SALIR
             </a>
             <ul class="dropdown-menu">
             </ul>
@@ -107,9 +95,8 @@ alert("texto cambiado");
       <ul class="sidebar-menu">
         <li class="header">Barra de Navengacion</li>
        
-
-
-        <li class="treeview">
+       <!-- Titulo de Usuario -->
+      <li class="treeview">
         <a href="#">
           <i class="fa fa-user"></i>
           <span>Usuarios</span>
@@ -117,11 +104,11 @@ alert("texto cambiado");
         <!-- subtitulos de Usuario -->
         <ul class="treeview-menu">
           <li><a href="../vistas/insertar_mant_vista.php"><i class="fa fa-plus-square"></i>Crear Usuarios</a></li>
-          <li><a href="../vistas/mostrar_vista.php"id="text"><i class="fa fa-minus-square"></i> Lista de Usuarios</a></li>
+          <li><a href="../vistas/mostrar_vista.php"><i class="fa fa-minus-square"></i> Lista de Usuarios</a></li>
+          
+
         </ul>
-      </li>  
-
-
+      </li>
        <!-- Titulo de Empleados -->
       <li class="treeview">
         <a href="#">
@@ -131,8 +118,9 @@ alert("texto cambiado");
         </a>
         <!-- subtitulos de Empleados -->
         <ul class="treeview-menu">
-          <li><a href="../vistas/insertar_empleado_vista.php"><i class="fa fa-plus-square"></i>Añadir Empleado</a></li>
-          <li><a href="#"><i class="fa fa-check-square-o"></i> Mostrar Empleado</a></li>
+          <li><a href="#"><i class="fa fa-plus-square"></i>Añadir Empleado</a></li>
+          <li><a href="#"><i class="fa fa-minus-square"></i> Eliminar Empleado</a></li>
+          <li><a href="#"><i class="fa fa-check-square-o"></i> Actualizar Empleado</a></li>
 
         </ul>
       </li>
@@ -160,9 +148,9 @@ alert("texto cambiado");
         </a>
         <!-- subtitulos de Pacientes -->
         <ul class="treeview-menu">
-        <li><a href="../vistas/insertar_pacientes_vistas.php"><i class="fa fa-plus-square"></i> Agregar Paciente</a></li>
           <li><a href="#"><i class="fa fa-eye"></i>Ver todos los pacientes</a></li>
-          
+          <li><a href="#"><i class="fa fa-plus-square"></i> Agregar Paciente</a></li>
+          <li><a href="#"><i class="fa fa-check-square-o"></i> Actualizar Paciente</a></li>
 
         </ul>
       </li>
@@ -253,14 +241,6 @@ alert("texto cambiado");
           <li><a href="administradores.php"><i class="fa fa-circle-o"></i>Agregar Administrador</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Agregar Venta</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Actualizar Ventas</a></li>
- 
-        
-        
-        
-      
-       
-        
-        
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -273,8 +253,7 @@ alert("texto cambiado");
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-      REGISTRAR EMPLEADO
-        <small>Llena el formulario para registrar empleado </small>
+        MANTENIMIENTO ACTUALIZAR 
       </h1>
       
       
@@ -287,116 +266,113 @@ alert("texto cambiado");
            <div class="col-md-10">
            </div>
     <section class="content">
-
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">REGISTRO DE DATOS PERSONALES DEL EMPLEADO</h3>
-
-          
+          <h3 class="box-title">EDITAR USUARIO</h3>
         </div>
         <div class="box-body">
-        
-        <form action=" "  method="POST" name="form_empleados">
-        <div class="form-group">
-                  <label for="exampleInputEmail1">NOMBRES</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="NOMBRES"  name="nombres" id="nombres">
+        <form action="" method="POST"  name="Formactualizar_mant">
+                <div class="form-group">
+                 <input type="hidden"  class="form-control " name="id1" value="<?php echo $id_u;?>" >
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputPassword1">NOMBRES</label>
+                  <input type="text"style="text-transform:uppercase" class="form-control apellidos" placeholder="NOMBRE"  name="nombres" id="nombre" value="<?php echo $nombre?>" >
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">APELLIDOS</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control apellidos" placeholder="APELLIDOS"  name="apellidos" id="apellidos" >
+                  <input type="text" style="text-transform:uppercase" class="form-control nombres" placeholder="APELLIDO"  name="apellidos" id="apellido" value="<?php echo $apellido?>" >
                 </div>
-
                 <div class="form-group">
-                  <label for="exampleInputPassword1">EDAD</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="EDAD"  name="edad" id="edad">
+                  <input type="hidden" style="text-transform:uppercase" class="form-control nombres" placeholder="USUARIO"  name="usuarioa" id="usuarioa" value="<?php echo $usuario?>">
                 </div>
-
                 <div class="form-group">
-                  <label for="exampleInputPassword1">IDENTIDAD</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="IDENTIDAD"  name="numero_de_identidad"" id="numero_de_identidad"">
+                  <label for="exampleInputEmail1">USUARIO</label>
+                  <input type="text" style="text-transform:uppercase" class="form-control nombres" placeholder="USUARIO"  name="usuarion" id="usuarion" value="<?php echo $usuario?>">
                 </div>
-
                 <div class="form-group">
-                  <label for="exampleInputPassword1">RTN</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE RTN" name="rtn" id="rtn"  >
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputPassword1">CARGO</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="CARGO" name="cargo" id="cargo"  >
-                </div>
-
-                
-                <div class="form-group">
-                  <label for="exampleInputPassword1"> CELULAR</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE TELEFONO CELULAR" name="numero_de_celular" id="numero_de_celular">
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputPassword1"> TELEFONO FIJO</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE TELEFONO FIJO" name="numero_de_telefono_fijo" id="numero_de_telefono_fijo">
-                </div>
-                  
-                
-                <div class="form-group">
-                  <label for="exampleInputPassword1">FECHA DE NACIMIENTO</label>
-                  <input type="date" autocomplete="off" class="form-control nombres" placeholder="FECHA DE NACIMIENTO" name="fecha_de_nacimiento" id="fecha_de_nacimiento">
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputPassword1">FECHA DE CONTRATACION</label>
-                  <input type="date" autocomplete="off" class="form-control nombres" placeholder="FECHA DE CONTRATACION" name="fecha_de_contratacion" id="fecha_de_contratacion">
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputPassword1">CORREO</label>
-                  <input type="email" autocomplete="off" class="form-control correo" placeholder="CORREO" name="correo" id="correo" >
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputPassword1">NACIONALIDAD</label>
-                  <input type="text" autocomplete="off" class="form-control correo" placeholder="NACIONALIDAD" name="nacionalidad" id="nacionalidad" >
-                </div>
-                 
-                <div class="form-group">
-                <label for="exampleInputPassword1">GENERO</label>
-                <select class="form-control" name="genero" id="genero">
-                 <option value="0">SELECCIONE EL GENERO:</option>
-                 <option value="MUJER">FEMENINO</option>
-                 <option value="MASCULINO">MASCULINO</option>
-                 <option value="OTRO">OTRO</option>
-
+                <label for="exampleInputPassword1">ESTADO</label>
+                <select class="form-control" name="estado" id="combox2">
+                 <option value="0">SELECCIONE EL ESTADO:</option>
+                 <option value="NUEVO"
+                 <?php
+                 if ($estado=='NUEVO') {
+                    echo 'selected';
+                 }
+                 ?>
+                 >NUEVO</option>
+                 <option value="ACTIVO"
+                 <?php
+                 if ($estado=='ACTIVO') {
+                    echo 'selected';
+                 }
+                 ?>
+                 >ACTIVO</option>
+                 <option value="BLOQUEADO"
+                 <?php
+                 if ($estado=='BLOQUEADO') {
+                    echo 'selected';
+                 }
+                 ?>
+                 >BLOQUEADO</option>
+                 <option value="VACACIONES"
+                 <?php
+                 if ($estado=='VACACIONES') {
+                    echo 'selected';
+                 }
+                 ?>
+                 >VACACIONES</option>
                 </select>
                 </div>
-                
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Direccion</label>
+                <label for="exampleInputPassword1">ROL</label>
+                <select class="form-control" name="rol_usuario" id="combox">
+                 <option value="0">SELECCIONE ROL:</option>
+                 <option value="1"
+                 <?php
+                 if ($rol==1) {
+                    echo 'selected';
+                 }
+                 ?>
+                 >ADMINISTRADOR</option>
+                 <option value="2"
+                 <?php
+                 if ($rol==2) {
+                    echo 'selected';
+                 }
+                 ?>
+                 >DEFAULT</option>
+      
+                </select>
                 </div>
-                <textarea name="direccion" id="direccion" rows="10" cols="50">DIRECCION:</textarea>    
+
+                <div class="form-group">
+                <label for="exampleInputPassword1">CORREO</label>
+                  <input type="email" class="form-control correo" placeholder="CORREO" name="correon" id="correon" value="<?php echo $correo?>" >
+                </div>
+                </div>
                 <div class="box-footer">
-              
                 <div class="col text-center">
-                <div id="alerta"></div>
-                <button type="submit" onclick="validar_empleados();" class="btn btn-primary">CREAR</button>
+                <div Id="alerta_mant"></div>
+    
+                <button type="button" name="update" class="btn btn-primary" onclick="Validar_actualizar_mant();">ACTUALIZAR</button>
                 </div>
-              </div>
+                </div>
             </form>
+            
         </div>
-        <!-- /.box-body -->
-        
+        <!-- /.box-body --> 
         <!-- /.box-footer-->
       </div>
       <!-- /.box -->
-
-    
     <!-- /.content -->
     </div>
     </div>
   </div>
   <!-- /.content-wrapper -->
-
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.3.8
@@ -412,7 +388,7 @@ alert("texto cambiado");
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-<script src="../vistas/js/validaciones.js"></script>
+
 <!-- jQuery 2.2.3 -->
 <script src="../vistas/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
@@ -423,9 +399,10 @@ alert("texto cambiado");
 <script src="../vistas/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../vistas/dist/js/app.min.js"></script>
+<script src="../vistas/Js/Validaciones.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="../vistas/dist/js/demo.js"></script>
 <script src="../vistas/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
+<script src="../vistas/dist/js/demo.js"></script>
 </body>
-</html>
-<?php require"../modelos/insertar_empleado_modelo.php" ?>
+</html> 
+
