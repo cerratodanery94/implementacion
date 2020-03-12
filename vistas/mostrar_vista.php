@@ -31,43 +31,14 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
   <link rel="stylesheet" href="../vistas/plugins/datatables/dataTables.bootstrap.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../vistas/dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="../vistas/Plugins/sweetalert/dist/sweetalert2.min.css">
+  <link rel="stylesheet" href="../vistas/plugins/sweetalert/dist/sweetalert2.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../vistas/dist/css/skins/_all-skins.min.css">
-<script>
-   function confdelete(){
-    var respuesta= confirm("¿Esta seguro de eliminar el registro?");
-    if (respuesta==true){
-      return true;
-    }else{
-      return false;
-    }
-  }
-</script>
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-<script type="text/javascript">
-$(function() {
-$("#text").change(function(){
 
-  <?php
-session_start();
-require_once "../modelos/conectar.php"; 
-   
-$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
-VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
-$resultado2=$conexion->prepare($sql2);	
-$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11,":accion"=>'SALIO',":descr"=>'SALIO DE PANTALLA MOSTRAR MANTENIMIENTO',":fecha"=>date("Y-m-d H:m:s")));         
-
-?>
-
-alert("texto cambiado");
-});
-
-});	
-
-</script>
 
 <div class="wrapper">
 
@@ -332,7 +303,7 @@ alert("texto cambiado");
                  <td>
 					       <a href='../modelos/editar_modelo.php?id=<?php echo $fila["USU_CODIGO"]?>' class="btn bg-orange btn-flat margin">
                  <i class='fa fa-pencil'></i></a>
-                 <a href='../modelos/eliminar_modelo.php?id=<?php echo $fila["USU_CODIGO"]?>' onclick="return confdelete();" class="btn bg-maroon bnt-flat margin">
+                 <a href='../modelos/eliminar_modelo.php?id=<?php echo $fila["USU_CODIGO"]?>'  class="btn btne bg-maroon bnt-flat margin">
 					       <i class='fa fa-trash'></i></a> 
 					       </td>
                  </tr>
@@ -352,6 +323,9 @@ alert("texto cambiado");
                 </tr>
                 </tfoot>
               </table>
+              <?php if (isset($_GET['m'])) : ?>
+                <div class="flash-data" data-flashdata="<?= $_GET['m']; ?>"></div>
+              <?php endif; ?>
             </div>
             <!-- /.box-body -->
           </div>
@@ -397,6 +371,34 @@ alert("texto cambiado");
 <!-- AdminLTE for demo purposes -->
 <script src="../vistas/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
 <script src="../vistas/dist/js/demo.js"></script>
+<script>
+   $('.btne').on('click',function(e){
+     e.preventDefault();
+     const href=$(this).attr('href')
+     Swal.fire({
+  title: '¿ESTA SEGURO DE ELIMINAR ESTE USUARIO?',
+  text: "¡NO PODRÁS REVERTIR ESTO!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'ELIMINAR',
+  cancelButtonText: 'CANCELAR',
+}).then((result) => {
+  if (result.value) {
+    document.location.href=href;
+  }
+})
+   })
+   const flashdata=$('.flash-data').data('flashdata')
+   if (flashdata) {
+    swal.fire({
+       icon:'success',
+       title:'ELIMINADO',
+       text:'SE HA ELIMINADO USUARIO CORRECTAMENTE'
+     })
+   }
+</script>
 <!-- page script -->
 <script>
   $(function () {

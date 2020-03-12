@@ -11,11 +11,7 @@ if(isset($_GET['id'])){
         $resultado2=$conexion->prepare($sql2);	
         $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11,":accion"=>'DELETE',":descr"=>'ELIMINO UN USUARIO EN MANTENIMIENTO',":fecha"=>date("Y-m-d H:m:s")));
         
-    if($consulta3){
-        echo '<script>alert("SE HA ELIMINADO REGISTRO CORRECTAMENTE");location.href="../vistas/mostrar_vista.php"</script>';
-    }else{
-        echo '<script>alert("ERROR NO SE ELIMINADO EL REGISTRO");location.href="../vistas/mostrar_vista.php"</script>';
-    }
+    header('location:../vistas/mostrar_vista.php?m=1');
 }
 
 ?>
