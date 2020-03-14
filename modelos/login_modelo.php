@@ -22,6 +22,7 @@ try{
 		while($registro=$resultado->fetch(PDO::FETCH_ASSOC)){			
 				if (password_verify($password,$registro['USU_PASSWORD'])) {
 					$_SESSION["id_us"]=$registro['USU_CODIGO'];
+					$_SESSION["usu"]=$registro['USU_USUARIO'];
 					$_SESSION["est"]=$registro['USU_ESTADO'];
 					$_SESSION["ROL"]=$registro['ROL_CODIGO'];
 					$contador++;

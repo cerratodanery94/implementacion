@@ -87,7 +87,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
           <img src="../vistas/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Doctora </p>
+          <p><?php echo $_SESSION["usu"];?></p>
         
         </div>
       </div>
