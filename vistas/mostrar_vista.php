@@ -301,9 +301,9 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
 					       <td><?php echo $fila['USU_ESTADO']?></td>
                  <td><?php echo $fila['USU_CORREO']?></td>
                  <td>
-					       <a href='../modelos/editar_modelo.php?id=<?php echo $fila["USU_CODIGO"]?>' class="btn bg-orange btn-flat margin">
+					       <a href='../modelos/editar_usu_modelo.php?id=<?php echo $fila["USU_CODIGO"]?>' class="btn bg-orange btn-flat margin">
                  <i class='fa fa-pencil'></i></a>
-                 <a href='../modelos/eliminar_modelo.php?id=<?php echo $fila["USU_CODIGO"]?>'  class="btn btne bg-maroon bnt-flat margin">
+                 <a href='../modelos/eliminar_usu_modelo.php?id=<?php echo $fila["USU_CODIGO"]?>'  class="btn btne bg-maroon bnt-flat margin">
 					       <i class='fa fa-trash'></i></a> 
 					       </td>
                  </tr>

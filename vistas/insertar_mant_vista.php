@@ -399,4 +399,4 @@ alert("texto cambiado");
 <script src="../vistas/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
 </body>
 </html>
-<?php require"../modelos/insertar_mant_modelo.php" ?>
+<?php require "../modelos/insertar_mant_modelo.php" ?>
