@@ -38,7 +38,7 @@ $pass .=substr($caracteres,rand(0,53),1);
        if ($num_rows>0){ 
 		   //echo '<script>alert("Usuario  ya se encuentran registrados ");location.href= "../vistas/insertar_mant_vista.php"</script>';
 		   echo '<script> Swal.fire({
-			position: "top-end",
+			position: "center",
 			icon: "error",
 			title: "USUARIO YA SE ENCUENTRA REGISTRADO",
 			showConfirmButton: false,
@@ -84,15 +84,17 @@ $pass .=substr($caracteres,rand(0,53),1);
 		
 	   if ($resultado) {
 		//echo '<script>alert("Se ha registrado exitosamente,revise su correo electronico");location.href= "../vistas/insertar_mant_vista.php"</script>';
-		echo '<script>Swal.fire({
-		position: "center",
-		icon: "success",
-		title: "¡BIEN!",
-		text:"SE REGISTRO CORRECTAMENTE AL USUARIO",
-		showConfirmButton: false,
-		timer: 3000
-	    })
-		</script>';
+		echo '<script>
+                    Swal.fire({
+                    title: "¡BIEN!",
+                    position: "center",
+                    text: "SE REGISTRO CORRECTAMENTE EL USUARIO",
+                    icon: "success",
+                    type: "success"
+                    }).then(function() {
+                    window.location = "../vistas/mostrar_vista.php";
+                    });
+                  </script>';
 	   } else {
 		
 	//echo '<script>alert("Error al registrarse");location.href= "../vistas/insertar_mant_vista.php"</script>';	
@@ -105,7 +107,9 @@ $pass .=substr($caracteres,rand(0,53),1);
 		timer: 3000
 	  })
 	  </script>';
+
 }
+
 		$resultado->closeCursor();
 		$resultado2->closeCursor();
 	}

@@ -1,4 +1,5 @@
 <?php
+try {
 require '../modelos/conectar.php';
 if(isset($_GET['id'])){
     $id=$_GET['id'];
@@ -16,7 +17,10 @@ if(isset($_GET['id'])){
        $correo=$fila['USU_CORREO'];
    }
 }
-
+} catch (Exception $e) {
+  die('Error: ' . $e->GetMessage());
+	echo "Codigo del error" . $e->getCode();
+}
 ?> 
 <?php
 session_start();

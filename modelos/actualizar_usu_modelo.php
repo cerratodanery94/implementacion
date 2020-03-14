@@ -1,5 +1,6 @@
 <?php
-if (isset($_POST['nombres']) && isset($_POST['apellidos'])) {
+try {
+  if (isset($_POST['nombres']) && isset($_POST['apellidos'])) {
     $id1=$_POST['id1'];
     $usuarioa=strtoupper($_POST['usuarioa']);
     $nombres=strtoupper($_POST['nombres']);
@@ -31,7 +32,8 @@ if (isset($_POST['nombres']) && isset($_POST['apellidos'])) {
     $consulta2=$conexion->prepare("UPDATE tbl_usuario SET USU_USUARIO=:usuario, USU_NOMBRES=:nombre,USU_APELLIDOS=:apellido,USU_ESTADO=:estado,ROL_CODIGO=:rol,USU_CORREO=:correo WHERE USU_CODIGO=:id");
 			$consulta2->execute(array(":usuario"=>$usuariof,":nombre"=>$nombres,":apellido"=>$apellidos,":estado"=>$estado1,":rol"=>$rol1,":correo"=>$correon,":id"=>$id1));
             if($consulta2){
-                echo '<script>Swal.fire({
+                echo '<script>
+                    Swal.fire({
                     title: "¡BIEN!",
                     position: "center",
                     text: "SE HA ACTUALIZADO REGISTRO CORRECTAMENTE",
@@ -42,7 +44,8 @@ if (isset($_POST['nombres']) && isset($_POST['apellidos'])) {
                     });
                   </script>';
             }else{
-              echo '<script> Swal.fire({
+              echo '<script> 
+                Swal.fire({
                 position: "center",
                 icon: "Error",
                 title: "¡ALGO SALIÓ MAL!",
@@ -52,6 +55,10 @@ if (isset($_POST['nombres']) && isset($_POST['apellidos'])) {
                 })
                 </script>';
             }
-
 }
+} catch (Exception $e) {
+  die('Error: ' . $e->GetMessage());
+	echo "Codigo del error" . $e->getCode();	
+}
+
 ?>
