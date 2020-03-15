@@ -301,7 +301,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">NACIONALIDAD</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NACIONALIDAD" name="nacionalidad" id="nacionalidad"  >
+                  <input type="text" style="text-transform:uppercase" autocomplete="off" class="form-control nombres"placeholder="NACIONALIDAD" name="nacionalidad" id="nacionalidad"  >
                 </div>
 
                 <div class="form-group">
@@ -353,12 +353,17 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
    
                 <div class="form-group">
                   <label for="exampleInputPassword1">Direccion</label>
+
+                  <textarea class="form-control" name="direccion" id="direccion" rows="10" cols="50"  >      
+                
+                </textarea >
                 </div>
-                <textarea name="direccion" id="direccion" rows="10" cols="50">DIRECCION:</textarea>    
+                  
             
                 <div class="box-footer">
               <div class="col text-center">
                 <button type="submit"  name= "insertar_paciente" class="btn btn-primary">CREAR</button>
+                <a href="../vistas/mostrar_pacientes_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
                 </div>
               </div>
             </form>

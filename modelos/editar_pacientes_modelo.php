@@ -329,7 +329,7 @@ try {
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">NACIONALIDAD</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NACIONALIDAD" name="nacionalidad" id="nacionalidad" value="<?php echo $nacionalidad?>"   >
+                  <input style="text-transform:uppercase" type="text" autocomplete="off" class="form-control nombres"placeholder="NACIONALIDAD" name="nacionalidad" id="nacionalidad" value="<?php echo $nacionalidad?>"   >
                 </div>
 
                 <div class="form-group">
@@ -393,7 +393,7 @@ try {
                 <div class="form-group">
                   <label for="exampleInputPassword1" >Direccion</label>
 
-                  <textarea class="form-control" name="direccion" id="direccion" rows="10" cols="50"  > <?php echo $direccion?>     
+                  <textarea  style="text-transform:uppercase" class="form-control" name="direccion" id="direccion" rows="10" cols="50"  > <?php echo $direccion?>     
                 
                 </textarea >
                 </div>
