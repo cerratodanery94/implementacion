@@ -1,35 +1,42 @@
 <?php
+session_start();
 try {
-require '../modelos/conectar.php';
-if(isset($_GET['id'])){
+  require '../modelos/conectar.php';
+  if(isset($_GET['id'])){
     $id=$_GET['id'];
-    $sql="SELECT * FROM TBL_USUARIO WHERE USU_CODIGO= :id";
-	$resultado=$conexion->prepare($sql);	
+    $sql="SELECT * FROM TBL_PERSONAS WHERE PER_CODIGO= :id";
+  $resultado=$conexion->prepare($sql);	
     $resultado->execute(array(":id"=>$id));
    if ($resultado->rowCount()>=1) {
        $fila=$resultado->fetch();
-       $id_u=$fila['USU_CODIGO'];
-       $usuario=$fila['USU_USUARIO'];
-       $nombre=$fila['USU_NOMBRES'];
-       $apellido=$fila['USU_APELLIDOS'];
-       $estado=$fila['USU_ESTADO'];
-       $rol=$fila['ROL_CODIGO'];
-       $correo=$fila['USU_CORREO'];
+       $id_u=$fila['PER_CODIGO'];
+       $identidad=$fila['PER_NUMERO_IDENTIDAD'];
+       $pasaporte=$fila['PER_PASAPORTE'];
+       $nombres=$fila['PER_NOMBRES'];
+       $apellidos=$fila['PER_APELLIDOS'];
+       $fecha_nacimiento=$fila['PER_FECHA_NACIMIENTO'];
+       $fecha_creacion=$fila['PER_FECHA_CREACION'];
+       $edad=$fila['PER_EDAD'];
+       $genero=$fila['PER_GENERO'];
+       $tel_fijo=$fila['PER_TEL_FIJO'];
+       $celular=$fila['PER_CELULAR'];
+       $cargo=$fila['PER_PROFESION'];
+       $direccion=$fila['PER_DIRECCION'];
+       $correo=$fila['PER_CORREO'];
+       $nacionalidad=$fila['PER_NACIONALIDAD'];
+       $rtn=$fila['PER_RTN'];
+     
    }
-}
+  }
+  
+  
 } catch (Exception $e) {
-  die('Error: ' . $e->GetMessage());
+    die('Error: ' . $e->GetMessage());
 	echo "Codigo del error" . $e->getCode();
 }
+
 ?> 
-<?php
-session_start();
-require_once "../modelos/conectar.php"; 
-$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
-VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
-$resultado2=$conexion->prepare($sql2);	
-$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>10,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA DE ACTUALIZAR USUARIOS MANTENIMIENTO',":fecha"=>date("Y-m-d H:m:s")));            
-?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,8 +53,9 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>10
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../vistas/dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="../vistas/plugins/sweetalert/dist/sweetalert2.min.css">
   <link rel="stylesheet" href="../vistas/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="../vistas/Plugins/sweetalert/dist/sweetalert2.min.css">
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <!-- Site wrapper -->
@@ -261,7 +269,6 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>10
     <!-- /.sidebar -->
   </aside>
 
-
   <!-- =============================================== -->
 
   <!-- Content Wrapper. Contains page content -->
@@ -269,7 +276,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>10
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        MANTENIMIENTO ACTUALIZAR 
+        EDITAR PACIENTES
+        <small>Edita el paciente en esta seccion</small>
       </h1>
       
       
@@ -285,98 +293,119 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>10
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">EDITAR USUARIO</h3>
+          <h3 class="box-title">EDITAR PACIENTE</h3>
         </div>
         <div class="box-body">
-        <form action="" method="POST"  name="Formactualizar_mant">
-                <div class="form-group">
-                 <input type="hidden"  class="form-control " name="id1" value="<?php echo $id_u;?>" >
-                </div>
+        <form action=""  method="POST" name="form_empleados">
+        <div class="form-group">
+                 
+                 <input type="hidden" autocomplete="off" style="text-transform:uppercase" class="form-control nombres"   name="ide" id="ide" value="<?php echo $id_u?>">
+              </div>
 
-                <div class="form-group">
-                  <label for="exampleInputPassword1">NOMBRES</label>
-                  <input type="text"style="text-transform:uppercase" class="form-control apellidos" placeholder="NOMBRE"  name="nombres" id="nombre" value="<?php echo $nombre?>" >
+                  <div class="form-group">
+                 <label for="exampleInputEmail1">NOMBRES</label>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="NOMBRES"  name="nombres" id="nombres"value="<?php echo $nombres?>"   >
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">APELLIDOS</label>
-                  <input type="text" style="text-transform:uppercase" class="form-control nombres" placeholder="APELLIDO"  name="apellidos" id="apellido" value="<?php echo $apellido?>" >
-                </div>
-                <div class="form-group">
-                  <input type="hidden" style="text-transform:uppercase" class="form-control nombres" placeholder="USUARIO"  name="usuarioa" id="usuarioa" value="<?php echo $usuario?>">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">USUARIO</label>
-                  <input type="text" style="text-transform:uppercase" class="form-control nombres" placeholder="USUARIO"  name="usuarion" id="usuarion" value="<?php echo $usuario?>">
-                </div>
-                <div class="form-group">
-                <label for="exampleInputPassword1">ESTADO</label>
-                <select class="form-control" name="estado" id="combox2">
-                 <option value="0">SELECCIONE EL ESTADO:</option>
-                 <option value="NUEVO"
-                 <?php
-                 if ($estado=='NUEVO') {
-                    echo 'selected';
-                 }
-                 ?>
-                 >NUEVO</option>
-                 <option value="ACTIVO"
-                 <?php
-                 if ($estado=='ACTIVO') {
-                    echo 'selected';
-                 }
-                 ?>
-                 >ACTIVO</option>
-                 <option value="BLOQUEADO"
-                 <?php
-                 if ($estado=='BLOQUEADO') {
-                    echo 'selected';
-                 }
-                 ?>
-                 >BLOQUEADO</option>
-                 <option value="VACACIONES"
-                 <?php
-                 if ($estado=='VACACIONES') {
-                    echo 'selected';
-                 }
-                 ?>
-                 >VACACIONES</option>
-                </select>
-                </div>
-                <div class="form-group">
-                <label for="exampleInputPassword1">ROL</label>
-                <select class="form-control" name="rol_usuario" id="combox">
-                 <option value="0">SELECCIONE ROL:</option>
-                 <option value="1"
-                 <?php
-                 if ($rol==1) {
-                    echo 'selected';
-                 }
-                 ?>
-                 >ADMINISTRADOR</option>
-                 <option value="2"
-                 <?php
-                 if ($rol==2) {
-                    echo 'selected';
-                 }
-                 ?>
-                 >DEFAULT</option>
-      
-                </select>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control apellidos" placeholder="APELLIDOS"  name="apellidos" id="apellidos" value="<?php echo $apellidos?>"  >
                 </div>
 
                 <div class="form-group">
-                <label for="exampleInputPassword1">CORREO</label>
-                  <input type="email" class="form-control correo" placeholder="CORREO" name="correon" id="correon" value="<?php echo $correo?>" >
+                  <label for="exampleInputPassword1">EDAD</label>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="EDAD"  name="edad" id="edad" value="<?php echo $edad?>"   >
                 </div>
+
+                <div class="form-group">
+                  <label for="exampleInputPassword1">IDENTIDAD</label>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="EDAD"  name="numero_de_identidad" id="numero_de_identidad" value="<?php echo $identidad?>"  >
                 </div>
-                <div class="box-footer">
+
+                <div class="form-group">
+                  <label for="exampleInputPassword1">RTN</label>
+                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE RTN" name="rtn" id="rtn" value="<?php echo $rtn?>"    >
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputPassword1">NACIONALIDAD</label>
+                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NACIONALIDAD" name="nacionalidad" id="nacionalidad" value="<?php echo $nacionalidad?>"   >
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputPassword1">PROFESION/OCUPACION</label>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres"placeholder="PROFESION" name="profesion" id="profesion" value="<?php echo $cargo?>"    >
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputPassword1">PASAPORTE</label>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="PASAPORTE"  name="pasaporte" id="pasaporte" value="<?php echo $pasaporte?>"  >
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputPassword1"> CELULAR</label>
+                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE CELULAR" name="numero_de_celular" id="numero_de_celular" value="<?php echo $celular?>"  >
+                </div>
+     
+                <div class="form-group">
+                  <label for="exampleInputPassword1"> TELEFONO FIJO</label>
+                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE TELEFONO FIJO" name="numero_de_telefono_fijo" id="numero_de_telefono_fijo" value="<?php echo $tel_fijo?>"  >
+                </div>
+                  
+                
+                <div class="form-group">
+                  <label for="exampleInputPassword1">FECHA DE NACIMIENTO</label>
+                  <input type="date" autocomplete="off" class="form-control nombres" placeholder="FECHA DE NACIMIENTO" name="fecha_de_nacimiento" id="fecha_de_nacimiento"value="<?php echo $fecha_nacimiento?>"  >
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputPassword1">FECHA DE CREACION</label>
+                  <input type="date" autocomplete="off" class="form-control nombres" placeholder="FECHA DE CREACION" name="fecha_creacion" id="fecha_creacion" value="<?php echo $fecha_creacion?>"  >
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputPassword1">CORREO</label>
+                  <input type="email" autocomplete="off" class="form-control correo" placeholder="CORREO" name="correo" id="correo" value="<?php echo $correo?>"   >
+                </div>
+                 
+                <div class="form-group">
+                <label for="exampleInputPassword1">GENERO</label>
+                <select class="form-control" name="genero" id="genero">
+                 <option value="0">SELECCIONE UN GENERO:</option>
+                 <option value="FEMENINO"
+                 <?php
+                 if ($genero=='FEMENINO') {
+                    echo 'selected';
+                 }
+                 ?>
+                 >FEMENINO</option>
+                 <option value="MASCULINO"
+                 <?php
+                 if ($genero=='MASCULINO') {
+                    echo 'selected';
+                 }
+                 ?>
+                 >MASCULINO</option>
+                 
+                </select>
+                </div>
+   
+                <div class="form-group">
+                  <label for="exampleInputPassword1" >Direccion</label>
+
+                  <textarea class="form-control" name="direccion" id="direccion" rows="10" cols="50"  > <?php echo $direccion?>     
+                
+                </textarea >
+                </div>
+                
+                <div class="box-footer"> 
+
                 <div class="col text-center">
-                <div Id="alerta_mant"></div>
-    
-                <button type="button" name="update" class="btn btn-primary" onclick="Validar_actualizar_mant();">ACTUALIZAR</button>
+                <div id="alerta"></div>
+                <button type="submit" name="actualizar_pac" onclick="validar_empleados();" class="btn btn-primary">EDITAR</button>
+                <a href="../vistas/mostrar_empleados_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
                 </div>
-                </div>
+              </div>
             </form>
             
         </div>
@@ -417,9 +446,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>10
 <script src="../vistas/dist/js/app.min.js"></script>
 <script src="../vistas/Js/Validaciones.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="../vistas/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
 <script src="../vistas/dist/js/demo.js"></script>
+<script src="../vistas/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
 </body>
-</html> 
-<?php require "../modelos/actualizar_usu_modelo.php" ?>
-
+</html>
+<?php require "../modelos/actualizar_pacientes_modelo.php" ?>

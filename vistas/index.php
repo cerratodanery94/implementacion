@@ -62,7 +62,6 @@ if (!isset($_SESSION["id_us"])) {
 
   <!-- =============================================== -->
 
-  <!-- Left side column. contains the sidebar -->
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
@@ -72,7 +71,7 @@ if (!isset($_SESSION["id_us"])) {
           <img src="../vistas/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Doctora </p>
+          <p><?php echo $_SESSION["usu"];?></p>
         
         </div>
       </div>
@@ -82,7 +81,21 @@ if (!isset($_SESSION["id_us"])) {
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">Barra de Navengacion</li>
-      
+       
+       <!-- Titulo de Usuario -->
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-user"></i>
+          <span>Usuarios</span>
+        </a>
+        <!-- subtitulos de Usuario -->
+        <ul class="treeview-menu">
+          <li><a href="../vistas/insertar_mant_vista.php"><i class="fa fa-plus-square"></i>Crear Usuarios</a></li>
+          <li><a href="../vistas/mostrar_vista.php"><i class="fa fa-minus-square"></i>lista de usuarios</a></li>
+         
+
+        </ul>
+      </li>
        <!-- Titulo de Empleados -->
       <li class="treeview">
         <a href="#">
@@ -92,26 +105,12 @@ if (!isset($_SESSION["id_us"])) {
         </a>
         <!-- subtitulos de Empleados -->
         <ul class="treeview-menu">
-          <li><a href="../vistas/insertar_empleado_vista.php"><i class="fa fa-plus-square"></i>Añadir Empleado</a></li>
-          <li><a href="#"><i class="fa fa-check-square-o"></i> Mostrar Empleado</a></li>
+        <li><a href="../vistas/insertar_empleado_vista.php"><i class="fa fa-plus-square"></i>Añadir Empleado</a></li>
+          <li><a href="../vistas/mostrar_empleados_vista.php"><i class="fa fa-minus-square"></i> Mostrar Empleado</a></li>
 
         </ul>
       </li>
-      <!-- Titulo de Citas -->
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-calendar"></i>
-          <span>Citas</span>
-
-        </a>
-        <!-- subtitulos de Citas -->
-        <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-eye"></i>Ver las Citas del Dia</a></li>
-          <li><a href="#"><i class="fa fa-plus-square"></i> Agregar Cita</a></li>
-          <li><a href="#"><i class="fa fa-check-square-o"></i> Actualizar Cita</a></li>
-
-        </ul>
-      </li>
+     
       <!-- Titulo de Pacientes -->
       <li class="treeview">
         <a href="#">
@@ -121,10 +120,9 @@ if (!isset($_SESSION["id_us"])) {
         </a>
         <!-- subtitulos de Pacientes -->
         <ul class="treeview-menu">
-        <li><a href="../vistas/insertar_pacientes_vistas.php"><i class="fa fa-plus-square"></i> Agregar Paciente</a></li>
-          <li><a href="#"><i class="fa fa-eye"></i>Ver todos los pacientes</a></li>
+          <li><a href="../vistas/insertar_pacientes_vista.php"><i class="fa fa-plus-square"></i>Añadir Pacientes</a></li>
+          <li><a href="../vistas/mostrar_pacientes_vista.php"><i class="fa fa-minus-square"></i>Mostar Pacientes</a></li>
           
-
         </ul>
       </li>
       <!-- Titulo de Expedientes -->
@@ -138,6 +136,21 @@ if (!isset($_SESSION["id_us"])) {
         <ul class="treeview-menu">
           <li><a href="#"><i class="fa fa-circle-o"></i>Nutricionista</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i>Doctora </a></li>
+
+        </ul>
+      </li>
+       <!-- Titulo de Citas -->
+       <li class="treeview">
+        <a href="#">
+          <i class="fa fa-calendar"></i>
+          <span>Citas</span>
+
+        </a>
+        <!-- subtitulos de Citas -->
+        <ul class="treeview-menu">
+          <li><a href="#"><i class="fa fa-eye"></i>Ver las Citas del Dia</a></li>
+          <li><a href="#"><i class="fa fa-plus-square"></i> Agregar Cita</a></li>
+          <li><a href="#"><i class="fa fa-check-square-o"></i> Actualizar Cita</a></li>
 
         </ul>
       </li>
@@ -215,11 +228,6 @@ if (!isset($_SESSION["id_us"])) {
           <li><a href="#"><i class="fa fa-circle-o"></i> Agregar Venta</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Actualizar Ventas</a></li>
  
-        
-        
-        
-      
-       
         
         
       </ul>

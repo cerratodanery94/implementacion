@@ -102,7 +102,7 @@ $pass .=substr($caracteres,rand(0,53),1);
 		position: "center",
 		icon: "Error",
 		title: "¡ALGO SALIÓ MAL!",
-		text:"ERROR AL REGISTRARSE",
+		text:"ERROR AL REGISTRAR USUARIO",
 		showConfirmButton: false,
 		timer: 3000
 	  })

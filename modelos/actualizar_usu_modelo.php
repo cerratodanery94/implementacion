@@ -49,7 +49,7 @@ try {
                 position: "center",
                 icon: "Error",
                 title: "¡ALGO SALIÓ MAL!",
-                text:"NO SE ACTUALIZO REGISTRO"",
+                text:"NO SE ACTUALIZO REGISTRO",
                 showConfirmButton: false,
                 timer: 3000
                 })

@@ -11,7 +11,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Registrar Empleado</title>
+  <title>Registrar Usuarios</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -22,8 +22,9 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../vistas/dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="../vistas/Plugins/sweetalert/dist/sweetalert2.min.css">
+ 
   <link rel="stylesheet" href="../vistas/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="../vistas/Plugins/sweetalert/dist/sweetalert2.min.css">
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -96,7 +97,7 @@ alert("texto cambiado");
           <img src="../vistas/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Doctora </p>
+          <p><?php echo $_SESSION["usu"];?></p>
         
         </div>
       </div>
@@ -107,9 +108,8 @@ alert("texto cambiado");
       <ul class="sidebar-menu">
         <li class="header">Barra de Navengacion</li>
        
-
-
-        <li class="treeview">
+       <!-- Titulo de Usuario -->
+      <li class="treeview">
         <a href="#">
           <i class="fa fa-user"></i>
           <span>Usuarios</span>
@@ -117,11 +117,11 @@ alert("texto cambiado");
         <!-- subtitulos de Usuario -->
         <ul class="treeview-menu">
           <li><a href="../vistas/insertar_mant_vista.php"><i class="fa fa-plus-square"></i>Crear Usuarios</a></li>
-          <li><a href="../vistas/mostrar_vista.php"id="text"><i class="fa fa-minus-square"></i> Lista de Usuarios</a></li>
+          <li><a href="../vistas/mostrar_vista.php"><i class="fa fa-minus-square"></i>lista de usuarios</a></li>
+         
+
         </ul>
-      </li>  
-
-
+      </li>
        <!-- Titulo de Empleados -->
       <li class="treeview">
         <a href="#">
@@ -131,26 +131,12 @@ alert("texto cambiado");
         </a>
         <!-- subtitulos de Empleados -->
         <ul class="treeview-menu">
-          <li><a href="../vistas/insertar_empleado_vista.php"><i class="fa fa-plus-square"></i>Añadir Empleado</a></li>
-          <li><a href="#"><i class="fa fa-check-square-o"></i> Mostrar Empleado</a></li>
+        <li><a href="../vistas/insertar_empleado_vista.php"><i class="fa fa-plus-square"></i>Añadir Empleado</a></li>
+          <li><a href="../vistas/mostrar_empleados_vista.php"><i class="fa fa-minus-square"></i> Mostrar Empleado</a></li>
 
         </ul>
       </li>
-      <!-- Titulo de Citas -->
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-calendar"></i>
-          <span>Citas</span>
-
-        </a>
-        <!-- subtitulos de Citas -->
-        <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-eye"></i>Ver las Citas del Dia</a></li>
-          <li><a href="#"><i class="fa fa-plus-square"></i> Agregar Cita</a></li>
-          <li><a href="#"><i class="fa fa-check-square-o"></i> Actualizar Cita</a></li>
-
-        </ul>
-      </li>
+     
       <!-- Titulo de Pacientes -->
       <li class="treeview">
         <a href="#">
@@ -160,10 +146,9 @@ alert("texto cambiado");
         </a>
         <!-- subtitulos de Pacientes -->
         <ul class="treeview-menu">
-        <li><a href="../vistas/insertar_pacientes_vistas.php"><i class="fa fa-plus-square"></i> Agregar Paciente</a></li>
-          <li><a href="#"><i class="fa fa-eye"></i>Ver todos los pacientes</a></li>
+          <li><a href="../vistas/insertar_pacientes_vista.php"><i class="fa fa-plus-square"></i>Añadir Pacientes</a></li>
+          <li><a href="../vistas/mostrar_pacientes_vista.php"><i class="fa fa-minus-square"></i>Mostar Pacientes</a></li>
           
-
         </ul>
       </li>
       <!-- Titulo de Expedientes -->
@@ -177,6 +162,21 @@ alert("texto cambiado");
         <ul class="treeview-menu">
           <li><a href="#"><i class="fa fa-circle-o"></i>Nutricionista</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i>Doctora </a></li>
+
+        </ul>
+      </li>
+       <!-- Titulo de Citas -->
+       <li class="treeview">
+        <a href="#">
+          <i class="fa fa-calendar"></i>
+          <span>Citas</span>
+
+        </a>
+        <!-- subtitulos de Citas -->
+        <ul class="treeview-menu">
+          <li><a href="#"><i class="fa fa-eye"></i>Ver las Citas del Dia</a></li>
+          <li><a href="#"><i class="fa fa-plus-square"></i> Agregar Cita</a></li>
+          <li><a href="#"><i class="fa fa-check-square-o"></i> Actualizar Cita</a></li>
 
         </ul>
       </li>
@@ -256,15 +256,11 @@ alert("texto cambiado");
  
         
         
-        
-      
-       
-        
-        
       </ul>
     </section>
     <!-- /.sidebar -->
   </aside>
+
 
   <!-- =============================================== -->
 
@@ -273,8 +269,8 @@ alert("texto cambiado");
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-      REGISTRAR EMPLEADO
-        <small>Llena el formulario para registrar empleado </small>
+      REGISTRO DE EMPLEADOS
+        <small>Llena el formulario para crear un empleado</small>
       </h1>
       
       
@@ -291,13 +287,13 @@ alert("texto cambiado");
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">REGISTRO DE DATOS PERSONALES DEL EMPLEADO</h3>
+          <h3 class="box-title">CREAR EMPLEADO</h3>
 
           
         </div>
         <div class="box-body">
         
-        <form action=" "  method="POST" name="form_empleados">
+        <form action=""  method="POST" name="form_empleados">
         <div class="form-group">
                   <label for="exampleInputEmail1">NOMBRES</label>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="NOMBRES"  name="nombres" id="nombres">
@@ -325,7 +321,7 @@ alert("texto cambiado");
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">CARGO</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="CARGO" name="cargo" id="cargo"  >
+                  <input type="text" style="text-transform:uppercase" autocomplete="off" class="form-control nombres"placeholder="CARGO" name="cargo" id="cargo"  >
                 </div>
 
                 
@@ -357,7 +353,7 @@ alert("texto cambiado");
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">NACIONALIDAD</label>
-                  <input type="text" autocomplete="off" class="form-control correo" placeholder="NACIONALIDAD" name="nacionalidad" id="nacionalidad" >
+                  <input type="text" style="text-transform:uppercase" autocomplete="off" class="form-control correo" placeholder="NACIONALIDAD" name="nacionalidad" id="nacionalidad" >
                 </div>
                  
                 <div class="form-group">
@@ -372,14 +368,20 @@ alert("texto cambiado");
                 </div>
                 
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Direccion</label>
+                  <label for="exampleInputPassword1">Direccion/Domicilo</label>
                 </div>
-                <textarea name="direccion" id="direccion" rows="10" cols="50">DIRECCION:</textarea>    
-                <div class="box-footer">
+                <div class="form-group">
+                  <label for="exampleInputPassword1" >Direccion</label>
+
+                  <textarea style="text-transform:uppercase" class="form-control" name="direccion" id="direccion" rows="10" cols="50"  >     
+                
+                </textarea >
+                </div>
               
                 <div class="col text-center">
                 <div id="alerta"></div>
-                <button type="submit" onclick="validar_empleados();" class="btn btn-primary">CREAR</button>
+                <button type="submit" onclick="validar_empleados();" name="insertar_emp" class="btn btn-primary">CREAR</button>
+                <a href="../vistas/mostrar_empleados_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
                 </div>
               </div>
             </form>
@@ -428,4 +430,4 @@ alert("texto cambiado");
 <script src="../vistas/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
 </body>
 </html>
-<?php require"../modelos/insertar_empleado_modelo.php" ?>
+<?php require "../modelos/insertar_empleado_modelo.php" ?>

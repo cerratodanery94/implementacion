@@ -1,41 +1,26 @@
-<?php
-try {
-require '../modelos/conectar.php';
-if(isset($_GET['id'])){
-    $id=$_GET['id'];
-    $sql="SELECT * FROM TBL_USUARIO WHERE USU_CODIGO= :id";
-	$resultado=$conexion->prepare($sql);	
-    $resultado->execute(array(":id"=>$id));
-   if ($resultado->rowCount()>=1) {
-       $fila=$resultado->fetch();
-       $id_u=$fila['USU_CODIGO'];
-       $usuario=$fila['USU_USUARIO'];
-       $nombre=$fila['USU_NOMBRES'];
-       $apellido=$fila['USU_APELLIDOS'];
-       $estado=$fila['USU_ESTADO'];
-       $rol=$fila['ROL_CODIGO'];
-       $correo=$fila['USU_CORREO'];
-   }
-}
-} catch (Exception $e) {
-  die('Error: ' . $e->GetMessage());
-	echo "Codigo del error" . $e->getCode();
-}
-?> 
+
 <?php
 session_start();
+
+if (!isset($_SESSION["id_us"])) {
+  header('location:../vistas/login_vista.php');
+}
 require_once "../modelos/conectar.php"; 
 $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
 VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
 $resultado2=$conexion->prepare($sql2);	
-$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>10,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA DE ACTUALIZAR USUARIOS MANTENIMIENTO',":fecha"=>date("Y-m-d H:m:s")));            
+$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA DE MOSTRAR USUARIOS MANTENIMIENTO',":fecha"=>date("Y-m-d H:m:s")));         
+$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
+VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
+$resultado2=$conexion->prepare($sql2);	
+$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11,":accion"=>'CONSULTA',":descr"=>'MUESTRA LA LISTA DE USUARIOS  QUE HAY MANTENIMIENTO',":fecha"=>date("Y-m-d H:m:s")));
 ?>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Editar Usuarios</title>
+  <title>Mostrar Usuarios</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -44,16 +29,20 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>10
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../vistas/plugins/datatables/dataTables.bootstrap.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../vistas/dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="../vistas/plugins/sweetalert/dist/sweetalert2.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+   folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../vistas/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="../vistas/Plugins/sweetalert/dist/sweetalert2.min.css">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-<!-- Site wrapper -->
+
 <div class="wrapper">
 
-  <header class="main-header ">
+  <header class="main-header">
     <!-- Logo -->
     <a href="../../index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -262,6 +251,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>10
   </aside>
 
 
+
   <!-- =============================================== -->
 
   <!-- Content Wrapper. Contains page content -->
@@ -269,126 +259,84 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>10
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        MANTENIMIENTO ACTUALIZAR 
+        LISTA DE USUARIOS
+        
       </h1>
-      
       
     </section>
 
     <!-- Main content -->
-    <div class="col-100 forgot">
-    <div style='float:center;margin:auto;width:500px;' class="row">
-
-           <div class="col-md-10">
-           </div>
     <section class="content">
-      <!-- Default box -->
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title">EDITAR USUARIO</h3>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">ADMINISTRA LOS PACIENTES EN ESTA SECCION </h3>
+            </div>
+            <!--llamar funciones-->
+            <div class="box-body">
+           <div>
+             <a href="../vistas/insertar_pacientes_vistas.php" class="btn bg-blue btn-flat margin">AGREGAR PACIENTE <i class="fa fa-plus" aria-hidden="true"></i> </a>
+           </div>
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>NUMERO DE IDENTIDAD</th>
+                  <th>NOMBRES</th>
+                  <th>APELLIDOS</th>
+                  <td>ACCIONES</td>
+                  
+				          
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+               require '../modelos/conectar.php';
+               $consulta=$conexion->prepare("SELECT * FROM tbl_personas where PER_CODIGO<>1");
+               $consulta->execute();
+                 while($fila=$consulta->fetch()){?>
+                 <tr>
+                 <td><?php echo $fila['PER_CODIGO']?></td>
+					       <td><?php echo $fila['PER_NUMERO_IDENTIDAD']?></td>
+					       <td><?php echo $fila['PER_NOMBRES']?></td>
+                 <td><?php echo $fila['PER_APELLIDOS']?></td>
+                 <td>
+                 <a href='../modelos/mostrar_pacientes_modelo.php?id=<?php echo $fila["PER_CODIGO"]?>' class="btn bg-blue btn-flat margin">
+                 <i class='fa fa-eye'></i></a> 
+
+					       <a href='../modelos/editar_pacientes_modelo.php?id=<?php echo $fila["PER_CODIGO"]?>' class="btn bg-orange btn-flat margin">
+                 <i class='fa fa-pencil'></i></a>
+
+                 <a href='../modelos/eliminar_pacientes_modelo.php?id=<?php echo $fila["PER_CODIGO"]?>' class="btn btne bg-maroon bnt-flat margin">
+					       <i class='fa fa-trash'></i></a> 
+					       </td>
+                 </tr>
+                 <?php } ?> 
+                </tbody>
+                <tfoot>
+                <tr>
+                 <th>ID</th>
+                  <th>NUMERO DE IDENTIDAD</th>
+                  <th>NOMBRES</th>
+                  <th>APELLIDOS</th>
+                  <td>ACCIONES</td>
+                </tr>
+                </tfoot>
+              </table>
+              <?php if (isset($_GET['m'])) : ?>
+                <div class="flash-data" data-flashdata="<?= $_GET['m']; ?>"></div>
+              <?php endif; ?>
+          <!-- /.box -->
         </div>
-        <div class="box-body">
-        <form action="" method="POST"  name="Formactualizar_mant">
-                <div class="form-group">
-                 <input type="hidden"  class="form-control " name="id1" value="<?php echo $id_u;?>" >
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputPassword1">NOMBRES</label>
-                  <input type="text"style="text-transform:uppercase" class="form-control apellidos" placeholder="NOMBRE"  name="nombres" id="nombre" value="<?php echo $nombre?>" >
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputPassword1">APELLIDOS</label>
-                  <input type="text" style="text-transform:uppercase" class="form-control nombres" placeholder="APELLIDO"  name="apellidos" id="apellido" value="<?php echo $apellido?>" >
-                </div>
-                <div class="form-group">
-                  <input type="hidden" style="text-transform:uppercase" class="form-control nombres" placeholder="USUARIO"  name="usuarioa" id="usuarioa" value="<?php echo $usuario?>">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">USUARIO</label>
-                  <input type="text" style="text-transform:uppercase" class="form-control nombres" placeholder="USUARIO"  name="usuarion" id="usuarion" value="<?php echo $usuario?>">
-                </div>
-                <div class="form-group">
-                <label for="exampleInputPassword1">ESTADO</label>
-                <select class="form-control" name="estado" id="combox2">
-                 <option value="0">SELECCIONE EL ESTADO:</option>
-                 <option value="NUEVO"
-                 <?php
-                 if ($estado=='NUEVO') {
-                    echo 'selected';
-                 }
-                 ?>
-                 >NUEVO</option>
-                 <option value="ACTIVO"
-                 <?php
-                 if ($estado=='ACTIVO') {
-                    echo 'selected';
-                 }
-                 ?>
-                 >ACTIVO</option>
-                 <option value="BLOQUEADO"
-                 <?php
-                 if ($estado=='BLOQUEADO') {
-                    echo 'selected';
-                 }
-                 ?>
-                 >BLOQUEADO</option>
-                 <option value="VACACIONES"
-                 <?php
-                 if ($estado=='VACACIONES') {
-                    echo 'selected';
-                 }
-                 ?>
-                 >VACACIONES</option>
-                </select>
-                </div>
-                <div class="form-group">
-                <label for="exampleInputPassword1">ROL</label>
-                <select class="form-control" name="rol_usuario" id="combox">
-                 <option value="0">SELECCIONE ROL:</option>
-                 <option value="1"
-                 <?php
-                 if ($rol==1) {
-                    echo 'selected';
-                 }
-                 ?>
-                 >ADMINISTRADOR</option>
-                 <option value="2"
-                 <?php
-                 if ($rol==2) {
-                    echo 'selected';
-                 }
-                 ?>
-                 >DEFAULT</option>
-      
-                </select>
-                </div>
-
-                <div class="form-group">
-                <label for="exampleInputPassword1">CORREO</label>
-                  <input type="email" class="form-control correo" placeholder="CORREO" name="correon" id="correon" value="<?php echo $correo?>" >
-                </div>
-                </div>
-                <div class="box-footer">
-                <div class="col text-center">
-                <div Id="alerta_mant"></div>
-    
-                <button type="button" name="update" class="btn btn-primary" onclick="Validar_actualizar_mant();">ACTUALIZAR</button>
-                </div>
-                </div>
-            </form>
-            
-        </div>
-        <!-- /.box-body --> 
-        <!-- /.box-footer-->
+        <!-- /.col -->
       </div>
-      <!-- /.box -->
+      <!-- /.row -->
+    </section>
     <!-- /.content -->
-    </div>
-    </div>
   </div>
   <!-- /.content-wrapper -->
+
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.3.8
@@ -406,20 +354,76 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>10
 <!-- ./wrapper -->
 
 <!-- jQuery 2.2.3 -->
+
 <script src="../vistas/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="../controladores/funciones.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="../vistas/bootstrap/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="../vistas/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../vistas/plugins/datatables/dataTables.bootstrap.min.js"></script>
 <!-- SlimScroll -->
 <script src="../vistas/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="../vistas/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../vistas/dist/js/app.min.js"></script>
-<script src="../vistas/Js/Validaciones.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="../vistas/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
 <script src="../vistas/dist/js/demo.js"></script>
+<script src="../vistas/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
+<script>
+   $('.btne').on('click',function(e){
+     e.preventDefault();
+     const href=$(this).attr('href')
+     Swal.fire({
+  title: '¿ESTA SEGURO DE ELIMINAR ESTE PACIENTE?',
+  text: "¡NO PODRÁS REVERTIR ESTO!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'ELIMINAR',
+  cancelButtonText: 'CANCELAR',
+}).then((result) => {
+  if (result.value) {
+    document.location.href=href;
+  }
+})
+   })
+   const flashdata=$('.flash-data').data('flashdata')
+   if (flashdata) {
+    swal.fire({
+       icon:'success',
+       title:'ELIMINADO',
+       text:'SE HA ELIMINADO EL PACIENTE CORRECTAMENTE'
+     })
+   }
+</script>
+<!-- page script -->
+<script>
+  $(function () {
+    $('#example1').DataTable({
+      language: {
+        sSearch: "Buscar:",
+        sInfo:           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        sLengthMenu:     "Mostrar _MENU_ registros",
+        oPaginate: {
+                    "sFirst":    "Primero",
+                    "sLast":     "Último",
+                    "sNext":     "Siguiente",
+                    "sPrevious": "Anterior" //traduccion de tabla
+                }
+    }});
+    $('#example2').DataTable({
+      "paging": true,
+      "pagelength":3,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });
+  });
+</script>
 </body>
-</html> 
-<?php require "../modelos/actualizar_usu_modelo.php" ?>
-
+</html>

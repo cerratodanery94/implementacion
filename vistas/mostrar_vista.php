@@ -75,9 +75,6 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
     </nav>
   </header>
 
-  <!-- =============================================== -->
-
-  <!-- Left side column. contains the sidebar -->
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
@@ -96,7 +93,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
-        <li class="header">Barra de Navegacion</li>
+        <li class="header">Barra de Navengacion</li>
        
        <!-- Titulo de Usuario -->
       <li class="treeview">
@@ -121,27 +118,12 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
         </a>
         <!-- subtitulos de Empleados -->
         <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-plus-square"></i>Añadir Empleado</a></li>
-          <li><a href="#"><i class="fa fa-minus-square"></i> Eliminar Empleado</a></li>
-          <li><a href="#"><i class="fa fa-check-square-o"></i> Actualizar Empleado</a></li>
+        <li><a href="../vistas/insertar_empleado_vista.php"><i class="fa fa-plus-square"></i>Añadir Empleado</a></li>
+          <li><a href="../vistas/mostrar_empleados_vista.php"><i class="fa fa-minus-square"></i> Mostrar Empleado</a></li>
 
         </ul>
       </li>
-      <!-- Titulo de Citas -->
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-calendar"></i>
-          <span>Citas</span>
-
-        </a>
-        <!-- subtitulos de Citas -->
-        <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-eye"></i>Ver las Citas del Dia</a></li>
-          <li><a href="#"><i class="fa fa-plus-square"></i> Agregar Cita</a></li>
-          <li><a href="#"><i class="fa fa-check-square-o"></i> Actualizar Cita</a></li>
-
-        </ul>
-      </li>
+     
       <!-- Titulo de Pacientes -->
       <li class="treeview">
         <a href="#">
@@ -151,10 +133,9 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
         </a>
         <!-- subtitulos de Pacientes -->
         <ul class="treeview-menu">
-        <li><a href="insertar_pacientes_vistas.php"><i class="fa fa-plus-square"></i> Agregar Paciente</a></li>
-          <li><a href="#"><i class="fa fa-eye"></i>Ver todos los pacientes</a></li>
-          <li><a href="#"><i class="fa fa-check-square-o"></i> Actualizar Paciente</a></li>
-
+          <li><a href="../vistas/insertar_pacientes_vista.php"><i class="fa fa-plus-square"></i>Añadir Pacientes</a></li>
+          <li><a href="../vistas/mostrar_pacientes_vista.php"><i class="fa fa-minus-square"></i>Mostar Pacientes</a></li>
+          
         </ul>
       </li>
       <!-- Titulo de Expedientes -->
@@ -168,6 +149,21 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
         <ul class="treeview-menu">
           <li><a href="#"><i class="fa fa-circle-o"></i>Nutricionista</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i>Doctora </a></li>
+
+        </ul>
+      </li>
+       <!-- Titulo de Citas -->
+       <li class="treeview">
+        <a href="#">
+          <i class="fa fa-calendar"></i>
+          <span>Citas</span>
+
+        </a>
+        <!-- subtitulos de Citas -->
+        <ul class="treeview-menu">
+          <li><a href="#"><i class="fa fa-eye"></i>Ver las Citas del Dia</a></li>
+          <li><a href="#"><i class="fa fa-plus-square"></i> Agregar Cita</a></li>
+          <li><a href="#"><i class="fa fa-check-square-o"></i> Actualizar Cita</a></li>
 
         </ul>
       </li>
@@ -245,8 +241,13 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
           <li><a href="#"><i class="fa fa-circle-o"></i> Agregar Venta</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Actualizar Ventas</a></li>
  
+        
+        
       </ul>
     </section>
+    <!-- /.sidebar -->
+  </aside>
+
     <!-- /.sidebar -->
   </aside>
 
@@ -273,6 +274,9 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
             </div>
             <!--llamar funciones-->
             <div class="box-body">
+            <div>
+             <a href="../vistas/insertar_mant_vista.php" class="btn bg-blue btn-flat margin">AGREGAR USUARIO <i class="fa fa-plus" aria-hidden="true"></i> </a>
+           </div>
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>

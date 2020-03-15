@@ -1,27 +1,22 @@
 <?php	
-
-
-
-
 	try{
-		require '../modelos/conectar.php';
-		if (isset($_POST['nombres']) && isset($_POST['apellidos'])&& isset($_POST['edad'])&& isset($_POST['numero_de_identidad'])&& isset($_POST['rtn'])&& isset($_POST['cargo'])&& isset($_POST['numero_de_celular'])&& isset($_POST['numero_de_telefono_fijo'])&& isset($_POST['fecha_de_nacimiento'])&& isset($_POST['fecha_de_contratacion'])&& isset($_POST['correo'])&& isset($_POST['nacionalidad'])&& isset($_POST['direccion'])&& isset($_POST['genero'])) {
-
-$nombres=strtoupper($_POST["nombres"]);
-$apellidos= strtoupper ($_POST["apellidos"]);
-$edad=$_POST["edad"];
-$identidad= $_POST["numero_de_identidad"];
-$rtn= $_POST["rtn"];
-$cargo= strtoupper($_POST["cargo"]);
-$numero_de_celular= $_POST["numero_de_celular"];
-$numero_de_telefono_fijo= $_POST["numero_de_telefono_fijo"];
-$fecha_de_nacimiento= $_POST["fecha_de_nacimiento"];
-$fecha_de_contratacion= $_POST["fecha_de_contratacion"];
-$correo= $_POST["correo"];
-$nacionalidad= strtoupper($_POST["nacionalidad"]);
-$direccion=strtoupper($_POST["direccion"]);
-$genero=$_POST["genero"];
-		   
+		require '../modelos/conectar.php'; 
+		if (isset($_POST['insertar_emp']) ) {
+			$nombres=strtoupper($_POST["nombres"]);
+			$apellidos= strtoupper ($_POST["apellidos"]);
+			$edad=$_POST["edad"];
+			$identidad= $_POST["numero_de_identidad"];
+			$rtn= $_POST["rtn"];
+			$cargo= strtoupper($_POST["cargo"]);
+			$numero_de_celular= $_POST["numero_de_celular"];
+			$numero_de_telefono_fijo= $_POST["numero_de_telefono_fijo"];
+			$fecha_de_nacimiento= $_POST["fecha_de_nacimiento"];
+			$fecha_de_contratacion= $_POST["fecha_de_contratacion"];
+			$correo= $_POST["correo"];
+			$nacionalidad= strtoupper($_POST["nacionalidad"]);
+			$direccion=strtoupper($_POST["direccion"]);
+			$genero=$_POST["genero"];
+			
 	   $sql="INSERT INTO TBL_EMPLEADOS (EMP_NUMERO_IDENTIDAD,EMP_NOMBRES,EMP_APELLIDOS,EMP_FECHA_NACIMIENTO,EMP_EDAD,EMP_TEL_FIJO,EMP_CELULAR,EMP_CARGO,EMP_FECHA_CONTRATACION,EMP_GENERO,EMP_CORREO,EMP_DIRECCION,EMP_NACIONALIDAD,EMP_RTN) 
 	   VALUES (:identidad,:nombres,:apellidos,:fecha_nacimiento,:edad,:tel_fijo,:tel_celular,:cargo,:fecha_contratacion,:genero,:correo,:direccion,:nacionalidad,:rtn)";
 	   $resultado=$conexion->prepare($sql);	
@@ -47,38 +42,34 @@ $genero=$_POST["genero"];
 	 	$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,":accion"=>'NUEVO',":descr"=>'CREO UN USUARIO EN MANTENIMIENTO',":fecha"=>$fecha_vencimiento));*/
 		
 	   if ($resultado) {
-		//echo '<script>alert("Se ha registrado exitosamente");location.href= "../vistas/insertar_mant_vista.php"</script>';
-echo '<script>Swal.fire({
-	position: "top-end",
-	title: "BIEN!",
-	text: "SE HA REGISTRADO LOS DATOS DEL EMPLEADO EXITOSAMENTE",
-	icon: "success",
-	type: "success"
-	}).then(function() {
-	window.location = "../vistas/insertar_mant_vista.php";
-	});
-</script>';
+		//echo '<script>alert("Se ha registrado exitosamente");location.href= "../vistas/mostrar_empleados_vista.php"</script>';
+		echo '<script>
+                    Swal.fire({
+                    title: "¡BIEN!",
+                    position: "center",
+                    text: "SE REGISTRADO EMPLEADO CORRECTAMENTE",
+                    icon: "success",
+                    type: "success"
+                    }).then(function() {
+                    window.location = "../vistas/mostrar_empleados_vista.php";
+                    });
+                  </script>';	
 	   } else {
 		//echo '<script>alert("Error al registrarse");location.href= "../vistas/insertar_mant_vista.php"</script>';	
 		echo '<script> Swal.fire({
-			position: "top-end",
-			icon: "error",
-			title: "USUARIO YA SE ENCUENTRA REGISTRADO",
+			position: "center",
+			icon: "Error",
+			title: "¡ALGO SALIÓ MAL!",
+			text:"ERROR AL REGISTRAR EMPLEADO",
 			showConfirmButton: false,
 			timer: 3000
 		  })
 		  </script>';
-	
-	}
-
-		
-		
+		}
 		$resultado->closeCursor();
 		$resultado2->closeCursor();
-	
 	}
 	}catch(Exception $e){			
-		
         die('Error: ' . $e->GetMessage());
 		echo "Codigo del error" . $e->getCode();	
 	}
