@@ -288,7 +288,8 @@ try {
           <h3 class="box-title">EDITAR PACIENTE</h3>
         </div>
         <div class="box-body">
-        <form action=""  method="POST" name="form_empleados">
+        <form action=""  method="POST" name="form_editar_paciente">
+        <div id="alerta1"></div>
         <div class="form-group">
                  
                  <input type="hidden" autocomplete="off" style="text-transform:uppercase" class="form-control nombres"   name="ide" id="ide" value="<?php echo $id_u?>">
@@ -306,17 +307,17 @@ try {
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">EDAD</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="EDAD"  name="edad" id="edad" value="<?php echo $edad?>"   >
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="Ejemplo: 00"  name="edad" id="edad" value="<?php echo $edad?>"   >
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">IDENTIDAD</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="EDAD"  name="numero_de_identidad" id="numero_de_identidad" value="<?php echo $identidad?>"  >
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="Ejemplo: 0000-0000-00000"  name="numero_de_identidad" id="numero_de_identidad" value="<?php echo $identidad?>"  >
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">RTN</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE RTN" name="rtn" id="rtn" value="<?php echo $rtn?>"    >
+                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="Ejemplo: 00000000000000" name="rtn" id="rtn" value="<?php echo $rtn?>"    >
                 </div>
 
                 <div class="form-group">
@@ -336,12 +337,12 @@ try {
 
                 <div class="form-group">
                   <label for="exampleInputPassword1"> CELULAR</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE CELULAR" name="numero_de_celular" id="numero_de_celular" value="<?php echo $celular?>"  >
+                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="Ejemplo: 0000-0000" name="numero_de_celular" id="numero_de_celular" value="<?php echo $celular?>"  >
                 </div>
      
                 <div class="form-group">
                   <label for="exampleInputPassword1"> TELEFONO FIJO</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE TELEFONO FIJO" name="numero_de_telefono_fijo" id="numero_de_telefono_fijo" value="<?php echo $tel_fijo?>"  >
+                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="Ejemplo: 0000-0000" name="numero_de_telefono_fijo" id="numero_de_telefono_fijo" value="<?php echo $tel_fijo?>"  >
                 </div>
                   
                 
@@ -393,8 +394,7 @@ try {
                 <div class="box-footer"> 
 
                 <div class="col text-center">
-                <div id="alerta"></div>
-                <button type="submit"  onclick="validar_empleados();" class="btn btn-primary">EDITAR</button>
+                <button type="button"  onclick="validar_editar_paciente();" class="btn btn-primary">EDITAR</button>
                 <a href="../vistas/mostrar_empleados_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
                 </div>
               </div>
@@ -436,7 +436,7 @@ try {
 <script src="../vistas/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../vistas/dist/js/app.min.js"></script>
-<script src="../vistas/Js/Validaciones.js"></script>
+<script src="../vistas/Js/Validar_sistema.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../vistas/dist/js/demo.js"></script>
 <script src="../vistas/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>

@@ -299,17 +299,17 @@ alert("texto cambiado");
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">EDAD</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="EDAD"  name="edad" id="edad">
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="EJEMPLO: 00"  name="edad" id="edad">
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">IDENTIDAD</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="IDENTIDAD"  name="numero_de_identidad" id="numero_de_identidad"">
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="EJEMPLO: 0000-0000-00000"  name="numero_de_identidad" id="numero_de_identidad"">
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">RTN</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE RTN" name="rtn" id="rtn"  >
+                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="EJEMPLO: 00000000000000" name="rtn" id="rtn"  >
                 </div>
 
                 <div class="form-group">
@@ -320,12 +320,12 @@ alert("texto cambiado");
                 
                 <div class="form-group">
                   <label for="exampleInputPassword1"> CELULAR</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE TELEFONO CELULAR" name="numero_de_celular" id="numero_de_celular">
+                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="EJEMPLO: 0000-0000" name="numero_de_celular" id="numero_de_celular">
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputPassword1"> TELEFONO FIJO</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE TELEFONO FIJO" name="numero_de_telefono_fijo" id="numero_de_telefono_fijo">
+                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="EJEMPLO: 0000-0000" name="numero_de_telefono_fijo" id="numero_de_telefono_fijo">
                 </div>
                   
                 
@@ -373,7 +373,7 @@ alert("texto cambiado");
               
                 <div class="col text-center">
                 <div id="alerta"></div>
-                <button type="button" onclick="validar_empleados();" class="btn btn-primary">CREAR</button>
+                <button type="button" onclick="validar_empleado();" class="btn btn-primary">CREAR</button>
                 <a href="../vistas/mostrar_empleados_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
                 </div>
               </div>
@@ -407,7 +407,7 @@ alert("texto cambiado");
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-<script src="../vistas/js/v2.js"></script>
+<script src="../vistas/js/validar_sistema.js"></script>
 <!-- jQuery 2.2.3 -->
 <script src="../vistas/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
