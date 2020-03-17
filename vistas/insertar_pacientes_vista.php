@@ -273,7 +273,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
         </div>
         <div class="box-body">
         
-        <form action=""  method="POST" >
+        <form action=""  method="POST" name="form_paciente">
+        <div id="alerta1"></div>
         <div class="form-group">
                   <label for="exampleInputEmail1">NOMBRES</label>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="NOMBRES"  name="nombres" id="nombres">
@@ -286,17 +287,17 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">EDAD</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="EDAD"  name="edad" id="edad">
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="EJEMPLO: 00"  name="edad" id="edad">
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">IDENTIDAD</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="EDAD"  name="numero_de_identidad"" id="numero_de_identidad"">
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="EJEMPLO: 0000-0000-00000"  name="numero_de_identidad" id="numero_de_identidad">
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">RTN</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE RTN" name="rtn" id="rtn"  >
+                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="EJEMPLO: 00000000000000" name="rtn" id="rtn"  >
                 </div>
 
                 <div class="form-group">
@@ -316,12 +317,12 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
 
                 <div class="form-group">
                   <label for="exampleInputPassword1"> CELULAR</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE CELULAR" name="numero_de_celular" id="numero_de_celular">
+                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="EJEMPLO:0000-0000" name="numero_de_celular" id="numero_de_celular">
                 </div>
      
                 <div class="form-group">
                   <label for="exampleInputPassword1"> TELEFONO FIJO</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE TELEFONO FIJO" name="numero_de_telefono_fijo" id="numero_de_telefono_fijo">
+                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="EJEMPLO:0000-0000" name="numero_de_telefono_fijo" id="numero_de_telefono_fijo">
                 </div>
                   
                 
@@ -362,7 +363,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
             
                 <div class="box-footer">
               <div class="col text-center">
-                <button type="submit"  class="btn btn-primary">CREAR</button>
+                <button type="button" onclick="validar_paciente();" class="btn btn-primary">CREAR</button>
                 <a href="../vistas/mostrar_pacientes_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
                 </div>
               </div>
@@ -396,7 +397,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-<script src="../vistas/js/validaciones.js"></script>
+<script src="../vistas/js/validar_sistema.js"></script>
 <!-- jQuery 2.2.3 -->
 <script src="../vistas/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
