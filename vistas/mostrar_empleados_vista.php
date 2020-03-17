@@ -159,13 +159,13 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
 
         </ul>
       </li>
-       <!-- Titulo de Citas -->
-       <li class="treeview">
-        <a href="#">
+        <!-- Titulo de Citas -->
+        <li class="treeview">
+        <a href="../vistas/citas_vista.php">
           <i class="fa fa-calendar"></i>
           <span>Citas</span>
-
         </a>
+      </li>
         <!-- subtitulos de Citas -->
         <ul class="treeview-menu">
           <li><a href="#"><i class="fa fa-eye"></i>Ver las Citas del Dia</a></li>

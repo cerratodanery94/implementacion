@@ -171,20 +171,12 @@ try {
 
         </ul>
       </li>
-       <!-- Titulo de Citas -->
-       <li class="treeview">
-        <a href="#">
+        <!-- Titulo de Citas -->
+        <li class="treeview">
+        <a href="../vistas/citas_vista.php">
           <i class="fa fa-calendar"></i>
           <span>Citas</span>
-
         </a>
-        <!-- subtitulos de Citas -->
-        <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-eye"></i>Ver las Citas del Dia</a></li>
-          <li><a href="#"><i class="fa fa-plus-square"></i> Agregar Cita</a></li>
-          <li><a href="#"><i class="fa fa-check-square-o"></i> Actualizar Cita</a></li>
-
-        </ul>
       </li>
       <!-- Titulo de Proveedores -->
       <li class="treeview">
