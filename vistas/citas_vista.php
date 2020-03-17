@@ -530,14 +530,29 @@ session_start();
         left: 'prev,next today',
         center: 'title',
         right: 'month,agendaWeek,agendaDay',
-        
       },
       buttonText: {
-        today: 'today',
-        month: 'month',
-        week: 'week',
-        day: 'day'
+        today: 'dia',
+        month: 'mes',
+        week: 'semana',
+        day: 'dia'
       },
+ allDay:'todo el dia',
+ monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+ monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+ dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+ dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+ dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+ weekHeader: 'Sm',
+ dateFormat: 'dd/mm/yy',
+ firstDay: 1,
+ isRTL: false,
+ showMonthAfterYear: false,
+ yearSuffix: '',
+
+      
+
+      
       
       editable: true,
       droppable: true, // this allows things to be dropped onto the calendar !!!
