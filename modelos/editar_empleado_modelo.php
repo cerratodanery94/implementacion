@@ -388,7 +388,7 @@ try {
                 <div class="col text-center">
                 <div id="alerta"></div>
                 
-                <button type="submit" name="actualizar_empleado"  class="btn btn-primary">ACTUALIZAR</button>
+                <button type="submit"   class="btn btn-primary">ACTUALIZAR</button>
                 <a href="../vistas/mostrar_empleados_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
                 </div>
               </div>

@@ -1,7 +1,7 @@
 <?php	
 	try{
 		require '../modelos/conectar.php'; 
-		if (isset($_POST['insertar_emp']) ) {
+		if (isset($_POST['nombres'])&& isset($_POST['apellidos'])) {
 			$nombres=strtoupper($_POST["nombres"]);
 			$apellidos= strtoupper ($_POST["apellidos"]);
 			$edad=$_POST["edad"];

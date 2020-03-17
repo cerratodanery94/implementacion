@@ -286,6 +286,7 @@ alert("texto cambiado");
         <div class="box-body">
         
         <form action=""  method="POST" name="form_empleados">
+          <div  id="alerta"></div>
         <div class="form-group">
                   <label for="exampleInputEmail1">NOMBRES</label>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="NOMBRES"  name="nombres" id="nombres">
@@ -303,7 +304,7 @@ alert("texto cambiado");
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">IDENTIDAD</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="IDENTIDAD"  name="numero_de_identidad"" id="numero_de_identidad"">
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="IDENTIDAD"  name="numero_de_identidad" id="numero_de_identidad"">
                 </div>
 
                 <div class="form-group">
@@ -372,7 +373,7 @@ alert("texto cambiado");
               
                 <div class="col text-center">
                 <div id="alerta"></div>
-                <button type="submit" onclick="validar_empleados();" name="insertar_emp" class="btn btn-primary">CREAR</button>
+                <button type="button" onclick="validar_empleados();" class="btn btn-primary">CREAR</button>
                 <a href="../vistas/mostrar_empleados_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
                 </div>
               </div>
@@ -406,7 +407,7 @@ alert("texto cambiado");
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-<script src="../vistas/js/validaciones.js"></script>
+<script src="../vistas/js/v2.js"></script>
 <!-- jQuery 2.2.3 -->
 <script src="../vistas/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->

@@ -1,7 +1,7 @@
    <?php
         header('Content-Type: application/json');
        // $pdo=new PDO("mysql:dbname=clime_home;host=127.0.0.1","root","");
-         require'../modelos/conectar.php';
+         require '../modelos/conectar.php';
          //Para guardar la acción en la base o solo leer la información
           $accion=(isset($_GET['accion']))?$_GET['accion']:'leer';
           

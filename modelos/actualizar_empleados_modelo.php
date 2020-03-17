@@ -1,7 +1,7 @@
 <?php
 try {
     require '../modelos/conectar.php';
-    if (isset($_POST['actualizar_empleado'])) {
+    if (isset($_POST['nombres'])&& isset($_POST['apellidos'])) {
         $ide=$_POST['ide'];
         $identidad1=$_POST['numero_de_identidad'];
         $nombres1=strtoupper($_POST['nombres']);

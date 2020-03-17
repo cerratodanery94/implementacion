@@ -362,7 +362,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
             
                 <div class="box-footer">
               <div class="col text-center">
-                <button type="submit"  name= "insertar_paciente" class="btn btn-primary">CREAR</button>
+                <button type="submit"  class="btn btn-primary">CREAR</button>
                 <a href="../vistas/mostrar_pacientes_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
                 </div>
               </div>

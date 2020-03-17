@@ -1,7 +1,7 @@
 <?php
 require '../modelos/conectar.php';
 try {
-    if (isset($_POST['actualizar_pac'])) {
+    if (isset($_POST['nombres'])&& isset($_POST['apellidos'])) {
         $ide=$_POST['ide'];
         $identidad1=$_POST["numero_de_identidad"];
         $pasaporte1=$_POST["pasaporte"];

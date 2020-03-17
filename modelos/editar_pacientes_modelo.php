@@ -394,7 +394,7 @@ try {
 
                 <div class="col text-center">
                 <div id="alerta"></div>
-                <button type="submit" name="actualizar_pac" onclick="validar_empleados();" class="btn btn-primary">EDITAR</button>
+                <button type="submit"  onclick="validar_empleados();" class="btn btn-primary">EDITAR</button>
                 <a href="../vistas/mostrar_empleados_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
                 </div>
               </div>
