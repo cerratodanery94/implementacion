@@ -3,13 +3,22 @@ session_start();
 if (!isset($_SESSION["id_us"])) {
   header('location:../vistas/login_vista.php');
 }
+require_once "../modelos/conectar.php"; 
+$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
+VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
+$resultado2=$conexion->prepare($sql2);	
+$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA DE MOSTRAR USUARIOS MANTENIMIENTO',":fecha"=>date("Y-m-d H:m:s")));         
+$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
+VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
+$resultado2=$conexion->prepare($sql2);	
+$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11,":accion"=>'CONSULTA',":descr"=>'MUESTRA LA LISTA DE USUARIOS  QUE HAY MANTENIMIENTO',":fecha"=>date("Y-m-d H:m:s")));
 ?>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Inicio | ClimeHome</title>
+  <title>Mostrar Usuarios</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -18,17 +27,22 @@ if (!isset($_SESSION["id_us"])) {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../vistas/plugins/datatables/dataTables.bootstrap.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../vistas/dist/css/AdminLTE.min.css">
- 
+  <link rel="stylesheet" href="../vistas/plugins/sweetalert/dist/sweetalert2.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../vistas/dist/css/skins/_all-skins.min.css">
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-<!-- Site wrapper -->
+
+
 <div class="wrapper">
 
-<header class="main-header">
+  <header class="main-header">
     <!-- Logo -->
     <a href="../../index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -219,6 +233,10 @@ if (!isset($_SESSION["id_us"])) {
     </section>
     <!-- /.sidebar -->
   </aside>
+
+    <!-- /.sidebar -->
+  
+
   <!-- =============================================== -->
 
   <!-- Content Wrapper. Contains page content -->
@@ -226,31 +244,83 @@ if (!isset($_SESSION["id_us"])) {
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        BIENVENIDO
-        
+        LISTA DE PROVEEDORES
       </h1>
-      
     </section>
 
     <!-- Main content -->
     <section class="content">
-
-      <!-- Default box -->
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title">PANTALLA PRICIPAL</h3>
-
-          
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">ADMINISTRA LOS USUARIOS EN ESTA SECCION </h3>
+            </div>
+            <!--llamar funciones-->
+            <div class="box-body">
+            <div>
+             <a href="../vistas/insertar_prov_vista.php" class="btn bg-blue btn-flat margin">AGREGAR PROVEEDOR <i class="fa fa-plus" aria-hidden="true"></i> </a>
+           </div>
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th >ID</th>
+                  <th>PROVEEDOR</th>
+                  <th>DIRECCIÓN</th>
+                  <th>CORREO</th>
+                  <th>TELEFONO</th>
+                  <th>REPRESENTANTE</th>
+                  <th>CELULAR</th>
+                  <th>ACCIONES</th>
+                </tr>
+                </thead>
+                <tbody>
+               <?php
+               require '../modelos/conectar.php';
+               $consulta=$conexion->prepare("SELECT * FROM tbl_proveedores ");
+               $consulta->execute();
+                 while($fila=$consulta->fetch()){?>
+                 <tr>
+                  <td><?php echo $fila['PROV_CODIGO']?></td>
+				          <td><?php echo $fila['PROV_NOMBRE']?></td>
+                  <td><?php echo $fila['PROV_DIRECCION']?></td>
+				          <td><?php echo $fila['PROV_CORREO']?></td>
+                  <td><?php echo $fila['PROV_TELEFONO']?></td>
+                  <td><?php echo $fila['PROV_CONTACTO']?></td>
+                  <td><?php echo $fila['PROV_TELEFONO_CONTACTO']?></td>
+                  <td>
+					        <a href='../modelos/editar_prov_modelo.php?id=<?php echo $fila["PROV_CODIGO"]?>' class="btn bg-orange btn-flat margin">
+                  <i class='fa fa-pencil'></i></a>
+                  <a href='../modelos/eliminar_prov_modelo.php?id=<?php echo $fila["PROV_CODIGO"]?>'  class="btn btne bg-maroon bnt-flat margin">
+					        <i class='fa fa-trash'></i></a> 
+				         </td>
+                 </tr>
+                 <?php } ?>
+                </tbody>
+                <tfoot>
+                <tr>
+                   <th >ID</th>
+                  <th>PROVEEDOR</th>
+                  <th>DIRECCIÓN</th>
+                  <th>CORREO</th>
+                  <th>TELEFONO</th>
+                  <th>REPRESENTANTE</th>
+                  <th>CELULAR</th>
+                  <th>ACCIONES</th>
+                </tr>
+                </tfoot>
+              </table>
+              <?php if (isset($_GET['m'])) : ?>
+                <div class="flash-data" data-flashdata="<?= $_GET['m']; ?>"></div>
+              <?php endif; ?>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
         </div>
-        <div class="box-body">
-          Start creating your amazing application!
-        </div>
-        <!-- /.box-body -->
-        
-        <!-- /.box-footer-->
+        <!-- /.col -->
       </div>
-      <!-- /.box -->
-
+      <!-- /.row -->
     </section>
     <!-- /.content -->
   </div>
@@ -260,7 +330,7 @@ if (!isset($_SESSION["id_us"])) {
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.3.8
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">System32</a>.</strong> All rights
+    <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
     reserved.
   </footer>
 
@@ -276,6 +346,9 @@ if (!isset($_SESSION["id_us"])) {
 <script src="../vistas/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="../vistas/bootstrap/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="../vistas/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../vistas/plugins/datatables/dataTables.bootstrap.min.js"></script>
 <!-- SlimScroll -->
 <script src="../vistas/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
@@ -283,6 +356,62 @@ if (!isset($_SESSION["id_us"])) {
 <!-- AdminLTE App -->
 <script src="../vistas/dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
+<script src="../vistas/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
 <script src="../vistas/dist/js/demo.js"></script>
+<script>
+   $('.btne').on('click',function(e){
+     e.preventDefault();
+     const href=$(this).attr('href')
+     Swal.fire({
+  title: '¿ESTA SEGURO DE ELIMINAR ESTE PROVEEDOR?',
+  text: "¡NO PODRÁS REVERTIR ESTO!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'ELIMINAR',
+  cancelButtonText: 'CANCELAR',
+}).then((result) => {
+  if (result.value) {
+    document.location.href=href;
+  }
+})
+   })
+   const flashdata=$('.flash-data').data('flashdata')
+   if (flashdata) {
+    swal.fire({
+       icon:'success',
+       title:'ELIMINADO',
+       text:'SE HA ELIMINADO PROVEEDOR CORRECTAMENTE'
+     })
+   }
+</script>
+<!-- page script -->
+<script>
+  $(function () {
+    $('#example1').DataTable({
+      language: {
+        sSearch: "Buscar:",
+        sInfo:           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        sLengthMenu:     "Mostrar _MENU_ registros",
+        oPaginate: {
+                    "sFirst":    "Primero",
+                    "sLast":     "Último",
+                    "sNext":     "Siguiente",
+                    "sPrevious": "Anterior" //traduccion de tabla
+                }
+    }});
+    $('#example2').DataTable({
+      "paging": true,
+      "pagelength":3,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });
+  });
+</script>
 </body>
 </html>
+

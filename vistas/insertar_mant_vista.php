@@ -30,7 +30,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
 <!-- Site wrapper -->
 <div class="wrapper">
 
-  <header class="main-header ">
+<header class="main-header">
     <!-- Logo -->
     <a href="../../index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -52,7 +52,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
         <ul class="nav navbar-nav">
           <li class="dropdown user user-menu">
             <a href="../modelos/cerrar_sesion_modelo.php">  
-            <span class="hidden-xs">SALIR</span>
+            <i class="fa fa-sign-out"></i>
+            SALIR
             </a>
             <ul class="dropdown-menu">
             </ul>
@@ -61,8 +62,6 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
       </div>
     </nav>
   </header>
-
-  <!-- =============================================== -->
 
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
@@ -82,7 +81,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
-        <li class="header">Barra de Navengacion</li>
+        <li class="header">Barra de Navegación</li>
        
        <!-- Titulo de Usuario -->
       <li class="treeview">
@@ -92,8 +91,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
         </a>
         <!-- subtitulos de Usuario -->
         <ul class="treeview-menu">
-          <li><a href="../vistas/insertar_mant_vista.php"><i class="fa fa-plus-square"></i>Crear Usuarios</a></li>
-          <li><a href="../vistas/mostrar_vista.php"><i class="fa fa-minus-square"></i>lista de usuarios</a></li>
+          <li><a href="../vistas/insertar_mant_vista.php"><i class="fa fa-plus-square"></i>Añadir Usuarios</a></li>
+          <li><a href="../vistas/mostrar_vista.php"><i class="fa fa-list"></i>Lista de Usuarios</a></li>
          
 
         </ul>
@@ -108,7 +107,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
         <!-- subtitulos de Empleados -->
         <ul class="treeview-menu">
         <li><a href="../vistas/insertar_empleado_vista.php"><i class="fa fa-plus-square"></i>Añadir Empleado</a></li>
-          <li><a href="../vistas/mostrar_empleados_vista.php"><i class="fa fa-minus-square"></i> Mostrar Empleado</a></li>
+          <li><a href="../vistas/mostrar_empleados_vista.php"><i class="fa fa-list"></i> Lista de Empleados</a></li>
 
         </ul>
       </li>
@@ -122,8 +121,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
         </a>
         <!-- subtitulos de Pacientes -->
         <ul class="treeview-menu">
-          <li><a href="../vistas/insertar_pacientes_vista.php"><i class="fa fa-plus-square"></i>Añadir Pacientes</a></li>
-          <li><a href="../vistas/mostrar_pacientes_vista.php"><i class="fa fa-minus-square"></i>Mostar Pacientes</a></li>
+          <li><a href="../vistas/insertar_pacientes_vista.php"><i class="fa fa-plus-square"></i>Añadir Paciente</a></li>
+          <li><a href="../vistas/mostrar_pacientes_vista.php"><i class="fa fa-list"></i>Lista de Pacientes</a></li>
           
         </ul>
       </li>
@@ -141,8 +140,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
 
         </ul>
       </li>
-       <!-- Titulo de Citas -->
-       <li class="treeview">
+      <!-- Titulo de Citas -->
+      <li class="treeview">
         <a href="../vistas/citas_vista.php">
           <i class="fa fa-calendar"></i>
           <span>Citas</span>
@@ -157,9 +156,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
           <!-- subtitulos de proveedores -->
         </a>
         <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-circle-o"></i>Ver todos los Proveedores</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Agregar Proveedores</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Actualizar Pro</a></li>
+          <li><a href="../vistas/insertar_prov_vista.php"><i class="fa fa-plus-square"></i>Añadir Proveedor</a></li>
+          <li><a href="../vistas/mostrar_prov_vista.php"><i class="fa fa-list"></i>Lista de Proveedores</a></li>
 
         </ul>
       </li>
@@ -172,9 +170,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
         </a>
         <!-- subtitulos de compras -->
         <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-circle-o"></i>Ver todos las Compras</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Agregar Compras</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Actualizar Compras</a></li>
+        <li><a href="../vistas/insertar_comp_vista.php"><i class="fa fa-plus-square"></i>Añadir Compra</a></li>
+          <li><a href="../vistas/mostrar_comp_vista.php"><i class="fa fa-list"></i>Lista de Compras</a></li>
 
         </ul>
       </li>
@@ -187,9 +184,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
         </a>
         <!-- subtitulos de ventas -->
         <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-circle-o"></i>Ver todos las Ventas</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Agregar Venta</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Actualizar Ventas</a></li>
+        <li><a href="../vistas/insertar_vent_vista.php"><i class="fa fa-plus-square"></i>Añadir venta</a></li>
+          <li><a href="../vistas/mostrar_vent_vista.php"><i class="fa fa-list"></i>Lista de Ventas</a></li>
 
         </ul>
       </li>
@@ -202,10 +198,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
         </a>
         <!-- subtitulos de inventario -->
         <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-circle-o"></i>Ver inventario Disponible</a></li>
-
-          <li><a href="#"><i class="fa fa-circle-o"></i> Actualizar Ventas</a></li>
-
+          <li><a href="#"><i class="fa fa-plus-square"></i>Mostrar Inventario</a></li>
         </ul>
       </li>
 
@@ -218,7 +211,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
         </a>
         <!-- subtitulos de ventas -->
         <ul class="treeview-menu">
-          <li><a href="administradores.php"><i class="fa fa-circle-o"></i>Agregar Administrador</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i>Agregar Administrador</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Agregar Venta</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Actualizar Ventas</a></li>
  

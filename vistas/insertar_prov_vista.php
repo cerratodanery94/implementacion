@@ -1,15 +1,17 @@
 <?php
 session_start();
-if (!isset($_SESSION["id_us"])) {
-  header('location:../vistas/login_vista.php');
-}
+require '../modelos/conectar.php';
+$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
+VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
+  $resultado2=$conexion->prepare($sql2);	
+$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA DE INSERTAR MANTENIMIENTO',":fecha"=>date("Y-m-d H:m:s")));
 ?>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Inicio | ClimeHome</title>
+  <title>Registro de proveedores</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -20,8 +22,8 @@ if (!isset($_SESSION["id_us"])) {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../vistas/dist/css/AdminLTE.min.css">
- 
   <link rel="stylesheet" href="../vistas/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="../vistas/Plugins/sweetalert/dist/sweetalert2.min.css">
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -219,6 +221,8 @@ if (!isset($_SESSION["id_us"])) {
     </section>
     <!-- /.sidebar -->
   </aside>
+
+
   <!-- =============================================== -->
 
   <!-- Content Wrapper. Contains page content -->
@@ -226,24 +230,65 @@ if (!isset($_SESSION["id_us"])) {
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        BIENVENIDO
-        
+    REGISTRO DE PROVEEDORES
+        <small>Llena el formulario para crear un proveedor</small>
       </h1>
+      
       
     </section>
 
     <!-- Main content -->
+    <div class="col-100 forgot">
+    <div style='float:center;margin:auto;width:500px;' class="row">
+
+           <div class="col-md-10">
+           </div>
     <section class="content">
 
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">PANTALLA PRICIPAL</h3>
+          <h3 class="box-title">CREAR PROVEEDOR</h3>
 
           
         </div>
         <div class="box-body">
-          Start creating your amazing application!
+        
+        <form action="" method="POST" role="form" name="Form_registrar_prov">
+                <div class="form-group">
+                  <label for="exampleInputPassword1">PROVEEDOR</label>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="PROVEEDOR"  name="prov" id="prov" >
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">CORREO</label>
+                  <input type="email" autocomplete="off"  class="form-control " placeholder="CORREO"  name="correo" id="correo">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">TELEFONO DEL PROVEEDOR</label>
+                  <input type="text" autocomplete="off" class="form-control " placeholder="TELEFONO DEL PROVEEDOR" name="tel_prov" id="tel_prov">
+                </div>
+                <div class="form-group">
+                <label for="exampleInputPassword1">DIRECCION</label>
+                    <textarea placeholder="DIRECCIÓN DEL PROVEEDOR" style="text-transform:uppercase"  class="form-control " name="direccion" id="direccion" cols="30" rows="5"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">NOMBRE DEL REPRESENTANTE</label>
+                  <input type="text" style="text-transform:uppercase" autocomplete="off" class="form-control" placeholder="NOMBRE DEL REPRESENTANTE" name="nom_repre" id="nom_repre">
+                </div>
+                
+                <div class="form-group">
+                  <label for="exampleInputPassword1">CELULAR DEL REPRESENTANTE</label>
+                  <input type="text" autocomplete="off" class="form-control correo" placeholder="CELULAR DEL REPREDENTANTE" name="cel_repre" id="cel_repre" >
+                </div>
+                <div id="alerta"></div>
+
+              <div class="box-footer">
+              <div class="col text-center">
+                <button type="submit"  class="btn btn-primary">CREAR</button>
+                <a href="../vistas/mostrar_prov_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
+                </div>
+              </div>
+            </form>
         </div>
         <!-- /.box-body -->
         
@@ -251,8 +296,10 @@ if (!isset($_SESSION["id_us"])) {
       </div>
       <!-- /.box -->
 
-    </section>
+    
     <!-- /.content -->
+    </div>
+    </div>
   </div>
   <!-- /.content-wrapper -->
 
@@ -260,7 +307,7 @@ if (!isset($_SESSION["id_us"])) {
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.3.8
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">System32</a>.</strong> All rights
+    <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
     reserved.
   </footer>
 
@@ -271,9 +318,10 @@ if (!isset($_SESSION["id_us"])) {
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-
+<script src="../vistas/js/validaciones.js"></script>
 <!-- jQuery 2.2.3 -->
 <script src="../vistas/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="../vistas/plugins/jQuery/jquery.mask.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="../vistas/bootstrap/js/bootstrap.min.js"></script>
 <!-- SlimScroll -->
@@ -284,5 +332,14 @@ if (!isset($_SESSION["id_us"])) {
 <script src="../vistas/dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../vistas/dist/js/demo.js"></script>
+<script src="../vistas/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
+<script>
+    $(document).ready(function(){
+    $("#tel_prov").mask("0000-0000");
+    $("#cel_repre").mask("0000-0000");
+
+});
+</script>
 </body>
 </html>
+<?php require "../modelos/insertar_prov_modelo.php" ?>
