@@ -267,7 +267,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
         </div>
         <div class="box-body">
         
-        <form action="" method="POST" role="form" name="Form_registrar_prod">
+        <form action="" method="POST" role="form" name="form_producto1">
+      
                 <div class="form-group">
                   <label for="exampleInputPassword1">PRODUCTO</label>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="PRODUCTO"  name="prod" id="prod" >
@@ -284,12 +285,10 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
                 <label for="exampleInputPassword1">FECHA DE VENCIMIENTO</label>
                 <input type="date" autocomplete="off"  class="form-control " placeholder="FECHA DE VENCIMIENTO"  name="f_venc" id="f_venc">
                 </div>
-               
-                <div id="alerta"></div>
-
               <div class="box-footer">
               <div class="col text-center">
-                <button type="submit"  class="btn btn-primary">CREAR</button>
+              <div id="alerta1"></div>
+                <button type="button" onclick="validar_productos();" class="btn btn-primary">CREAR</button>
                 <a href="../vistas/mostrar_prod_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
                 </div>
               </div>
@@ -323,7 +322,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-<script src="../vistas/js/validaciones.js"></script>
+<script src="../vistas/js/validar_sistema.js"></script>
 <!-- jQuery 2.2.3 -->
 <script src="../vistas/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <script src="../vistas/plugins/jQuery/jquery.mask.min.js"></script>
