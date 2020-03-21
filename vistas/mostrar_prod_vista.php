@@ -1,17 +1,24 @@
 <?php
 session_start();
-require '../modelos/conectar.php';
+if (!isset($_SESSION["id_us"])) {
+  header('location:../vistas/login_vista.php');
+}
+require_once "../modelos/conectar.php"; 
 $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
 VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
-  $resultado2=$conexion->prepare($sql2);	
-$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA DE INSERTAR MANTENIMIENTO',":fecha"=>date("Y-m-d H:m:s")));
+$resultado2=$conexion->prepare($sql2);	
+$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA DE MOSTRAR USUARIOS MANTENIMIENTO',":fecha"=>date("Y-m-d H:m:s")));         
+$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
+VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
+$resultado2=$conexion->prepare($sql2);	
+$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11,":accion"=>'CONSULTA',":descr"=>'MUESTRA LA LISTA DE USUARIOS  QUE HAY MANTENIMIENTO',":fecha"=>date("Y-m-d H:m:s")));
 ?>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Registrar Usuarios</title>
+  <title>Mostrar Usuarios</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -20,17 +27,19 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../vistas/plugins/datatables/dataTables.bootstrap.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../vistas/dist/css/AdminLTE.min.css">
- 
+  <link rel="stylesheet" href="../vistas/plugins/sweetalert/dist/sweetalert2.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../vistas/dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="../vistas/Plugins/sweetalert/dist/sweetalert2.min.css">
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 
 
-<!-- Site wrapper -->
 <div class="wrapper">
 
 <header class="main-header">
@@ -164,8 +173,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
 
         </ul>
       </li>
-      <!-- Titulo de Productos -->
-      <li class="treeview">
+        <!-- Titulo de Productos -->
+        <li class="treeview">
         <a href="#">
           <i class="fa fa-medkit"></i>
           <span>Productos</span>
@@ -205,8 +214,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
 
         </ul>
       </li>
-      <!-- Titulo de Inventario -->
-      <li class="treeview">
+     <!-- Titulo de Inventario -->
+     <li class="treeview">
         <a href="#">
           <i class="fa fa-line-chart"></i>
           <span>Inventario</span>
@@ -238,7 +247,6 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
     <!-- /.sidebar -->
   </aside>
 
-
   <!-- =============================================== -->
 
   <!-- Content Wrapper. Contains page content -->
@@ -246,136 +254,82 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-      REGISTRO DE PACIENTES
-        <small>Llena el formulario para crear un paciente</small>
+        LISTA DE PRODUCTOS
+        
       </h1>
-      
       
     </section>
 
     <!-- Main content -->
-    <div class="col-100 forgot">
-    <div style='float:center;margin:auto;width:500px;' class="row">
-
-           <div class="col-md-10">
-           </div>
     <section class="content">
-
-      <!-- Default box -->
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title">CREAR PACIENTE</h3>
-
-          
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">ADMINISTRA LOS PRODUCTOS EN ESTA SECCION </h3>
+            </div>
+            <!--llamar funciones-->
+            <div class="box-body">
+            <div>
+             <a href="../vistas/insertar_prod_vista.php" class="btn bg-blue btn-flat margin">AGREGAR PRODUCTO <i class="fa fa-plus" aria-hidden="true"></i> </a>
+           </div>
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>COD PRODUCTO</th>
+                  <th>PRODUCTO</th>
+                  <th>DESCRIPCIÓN</th>
+                  <th>PRECIO</th>
+                  <th>FECHA DE VENCIMIENTO</th>
+                  <th>ACCIONES</th>
+                </tr>
+                </thead>
+                <tbody>
+               <?php
+               require '../modelos/conectar.php';
+               $consulta=$conexion->prepare("SELECT * FROM tbl_productos");
+               $consulta->execute();
+                 while($fila=$consulta->fetch()){?>
+                 <tr>
+                 <td><?php echo $fila['PROD_CODIGO']?></td>
+				 <td><?php echo $fila['PROD_NOMBRE']?></td>
+                 <td><?php echo $fila['PROD_DESCRIPCION']?></td>
+				 <td><?php echo $fila['PROD_PRECIO']?></td>
+				 <td><?php echo $fila['PROD_FECHA_VENCIMIENTO']?></td>
+                 <td>
+				 <a href='../modelos/editar_prod_modelo.php?id=<?php echo $fila["PROD_CODIGO"]?>' class="btn bg-orange btn-flat margin">
+                 <i class='fa fa-pencil'></i></a>
+                 <a href='../modelos/eliminar_prod_modelo.php?id=<?php echo $fila["PROD_CODIGO"]?>'  class="btn btne bg-maroon bnt-flat margin">
+				 <i class='fa fa-trash'></i></a> 
+				 </td>
+                 </tr>
+                 <?php } ?>
+              
+                </tbody>
+                <tfoot>
+                <tr>
+                  <th>COD PRODUCTO</th>
+                  <th>PRODUCTO</th>
+                  <th>DESCRIPCIÓN</th>
+                  <th>PRECIO</th>
+                  <th>FECHA DE VENCIMIENTO</th>
+                  <th>ACCIONES</th>
+                </tr>
+                </tfoot>
+              </table>
+              <?php if (isset($_GET['m'])) : ?>
+                <div class="flash-data" data-flashdata="<?= $_GET['m']; ?>"></div>
+              <?php endif; ?>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
         </div>
-        <div class="box-body">
-        
-        <form action=""  method="POST" name="form_paciente">
-        <div id="alerta1"></div>
-        <div class="form-group">
-                  <label for="exampleInputEmail1">NOMBRES</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="NOMBRES"  name="nombres" id="nombres">
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputPassword1">APELLIDOS</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control apellidos" placeholder="APELLIDOS"  name="apellidos" id="apellidos" >
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputPassword1">EDAD</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="EJEMPLO: 00"  name="edad" id="edad">
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputPassword1">IDENTIDAD</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="EJEMPLO: 0000-0000-00000"  name="numero_de_identidad" id="numero_de_identidad">
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputPassword1">RTN</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="EJEMPLO: 00000000000000" name="rtn" id="rtn"  >
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputPassword1">NACIONALIDAD</label>
-                  <input type="text" style="text-transform:uppercase" autocomplete="off" class="form-control nombres"placeholder="NACIONALIDAD" name="nacionalidad" id="nacionalidad"  >
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputPassword1">PROFESION/OCUPACION</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres"placeholder="PROFESION" name="profesion" id="profesion"  >
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputPassword1">PASAPORTE</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="PASAPORTE"  name="pasaporte" id="pasaporte">
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputPassword1"> CELULAR</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="EJEMPLO:0000-0000" name="numero_de_celular" id="numero_de_celular">
-                </div>
-     
-                <div class="form-group">
-                  <label for="exampleInputPassword1"> TELEFONO FIJO</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="EJEMPLO:0000-0000" name="numero_de_telefono_fijo" id="numero_de_telefono_fijo">
-                </div>
-                  
-                
-                <div class="form-group">
-                  <label for="exampleInputPassword1">FECHA DE NACIMIENTO</label>
-                  <input type="date" autocomplete="off" class="form-control nombres" placeholder="FECHA DE NACIMIENTO" name="fecha_de_nacimiento" id="fecha_de_nacimiento">
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputPassword1">FECHA DE CREACION</label>
-                  <input type="date" autocomplete="off" class="form-control nombres" placeholder="FECHA DE CREACION" name="fecha_creacion" id="fecha_creacion">
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputPassword1">CORREO</label>
-                  <input type="email" autocomplete="off" class="form-control correo" placeholder="CORREO" name="correo" id="correo" >
-                </div>
-                 
-                <div class="form-group">
-                <label for="exampleInputPassword1">GENERO</label>
-                <select class="form-control" name="genero" id="genero">
-                 <option value="0">SELECCIONE EL GENERO:</option>
-                 <option value="MUJER">FEMENINO</option>
-                 <option value="MASCULINO">MASCULINO</option>
-                 <option value="OTRO">OTRO</option>
-
-                </select>
-                </div>
-   
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Direccion</label>
-
-                  <textarea class="form-control" name="direccion" id="direccion" rows="10" cols="50"  >      
-                
-                </textarea >
-                </div>
-                  
-            
-                <div class="box-footer">
-              <div class="col text-center">
-                <button type="button" onclick="validar_paciente();" class="btn btn-primary">CREAR</button>
-                <a href="../vistas/mostrar_pacientes_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
-                </div>
-              </div>
-            </form>
-        </div>
-        <!-- /.box-body -->
-        
-        <!-- /.box-footer-->
+        <!-- /.col -->
       </div>
-      <!-- /.box -->
-
-    
+      <!-- /.row -->
+    </section>
     <!-- /.content -->
-    </div>
-    </div>
   </div>
   <!-- /.content-wrapper -->
 
@@ -394,11 +348,14 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-<script src="../vistas/js/validar_sistema.js"></script>
+
 <!-- jQuery 2.2.3 -->
 <script src="../vistas/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="../vistas/bootstrap/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="../vistas/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../vistas/plugins/datatables/dataTables.bootstrap.min.js"></script>
 <!-- SlimScroll -->
 <script src="../vistas/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
@@ -406,8 +363,62 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
 <!-- AdminLTE App -->
 <script src="../vistas/dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="../vistas/dist/js/demo.js"></script>
 <script src="../vistas/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
+<script src="../vistas/dist/js/demo.js"></script>
+<script>
+   $('.btne').on('click',function(e){
+     e.preventDefault();
+     const href=$(this).attr('href')
+     Swal.fire({
+  title: '¿ESTA SEGURO DE ELIMINAR ESTE PRODUCTO?',
+  text: "¡NO PODRÁS REVERTIR ESTO!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'ELIMINAR',
+  cancelButtonText: 'CANCELAR',
+}).then((result) => {
+  if (result.value) {
+    document.location.href=href;
+  }
+})
+   })
+   const flashdata=$('.flash-data').data('flashdata')
+   if (flashdata) {
+    swal.fire({
+       icon:'success',
+       title:'ELIMINADO',
+       text:'SE HA ELIMINADO PRODUCTO CORRECTAMENTE'
+     })
+   }
+</script>
+<!-- page script -->
+<script>
+  $(function () {
+    $('#example1').DataTable({
+      language: {
+        sSearch: "Buscar:",
+        sInfo:           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        sLengthMenu:     "Mostrar _MENU_ registros",
+        oPaginate: {
+                    "sFirst":    "Primero",
+                    "sLast":     "Último",
+                    "sNext":     "Siguiente",
+                    "sPrevious": "Anterior" //traduccion de tabla
+                }
+    }});
+    $('#example2').DataTable({
+      "paging": true,
+      "pagelength":3,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });
+  });
+</script>
 </body>
 </html>
-<?php require "../modelos/insertar_pacientes_modelo.php" ?>
+

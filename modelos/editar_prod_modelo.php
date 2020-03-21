@@ -1,17 +1,35 @@
 <?php
 session_start();
-require '../modelos/conectar.php';
-$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
-VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
-  $resultado2=$conexion->prepare($sql2);	
-$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA DE INSERTAR MANTENIMIENTO',":fecha"=>date("Y-m-d H:m:s")));
-?>
+try {
+  require '../modelos/conectar.php';
+  if(isset($_GET['id'])){
+    $id=$_GET['id'];
+    $sql="SELECT * FROM TBL_PRODUCTOS WHERE PROD_CODIGO= :id";
+    $resultado=$conexion->prepare($sql);	
+    $resultado->execute(array(":id"=>$id));
+   if ($resultado->rowCount()>=1) {
+       $fila=$resultado->fetch();
+       $id_p=$fila['PROD_CODIGO'];
+       $prod=$fila['PROD_NOMBRE'];
+       $descrip=$fila['PROD_DESCRIPCION'];
+       $precio=$fila['PROD_PRECIO'];
+       $f_venc=$fila['PROD_FECHA_VENCIMIENTO'];
+     
+   }
+  } 
+  
+} catch (Exception $e) {
+    die('Error: ' . $e->GetMessage());
+	echo "Codigo del error" . $e->getCode();
+}
+
+?> 
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Registrar Usuarios</title>
+  <title>Registro de proveedores</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -22,14 +40,11 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../vistas/dist/css/AdminLTE.min.css">
- 
   <link rel="stylesheet" href="../vistas/dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="../vistas/Plugins/sweetalert/dist/sweetalert2.min.css">
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-
-
 <!-- Site wrapper -->
 <div class="wrapper">
 
@@ -246,8 +261,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-      REGISTRO DE PACIENTES
-        <small>Llena el formulario para crear un paciente</small>
+      EDITAR PRODUCTOS
+        <small>Edita el producto en esta seccion</small>
       </h1>
       
       
@@ -264,104 +279,34 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">CREAR PACIENTE</h3>
+          <h3 class="box-title">EDITAR PRODUCTO</h3>
 
           
         </div>
         <div class="box-body">
-        
-        <form action=""  method="POST" name="form_paciente">
-        <div id="alerta1"></div>
-        <div class="form-group">
-                  <label for="exampleInputEmail1">NOMBRES</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="NOMBRES"  name="nombres" id="nombres">
-                </div>
-
+        <form action="" method="POST" role="form" name="Form_registrar_prod">
+                   <input type="hidden" class="form-control"  name="id_p" id="id_p" value="<?php echo $id_p?>">
                 <div class="form-group">
-                  <label for="exampleInputPassword1">APELLIDOS</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control apellidos" placeholder="APELLIDOS"  name="apellidos" id="apellidos" >
+                  <label for="exampleInputPassword1">PRODUCTO</label>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="PRODUCTO"  name="prod" id="prod" value="<?php echo $prod?>">
                 </div>
-
                 <div class="form-group">
-                  <label for="exampleInputPassword1">EDAD</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="EJEMPLO: 00"  name="edad" id="edad">
+                  <label for="exampleInputEmail1">DESCRIPCIÓN</label>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control " placeholder="DESCRIPCION"  name="descrip" id="descrip" value="<?php echo $descrip?>">
                 </div>
-
                 <div class="form-group">
-                  <label for="exampleInputPassword1">IDENTIDAD</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="EJEMPLO: 0000-0000-00000"  name="numero_de_identidad" id="numero_de_identidad">
+                  <label for="exampleInputPassword1">PRECIO</label>
+                  <input type="text" autocomplete="off" class="form-control " placeholder="PRECIO" name="precio" id="precio"value="<?php echo $precio?>">
                 </div>
-
                 <div class="form-group">
-                  <label for="exampleInputPassword1">RTN</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="EJEMPLO: 00000000000000" name="rtn" id="rtn"  >
+                <label for="exampleInputPassword1">FECHA DE VENCIMIENTO</label>
+                <input type="date" autocomplete="off"  class="form-control " placeholder="FECHA DE VENCIMIENTO"  name="f_venc" id="f_venc" value="<?php echo $f_venc?>">
                 </div>
-
-                <div class="form-group">
-                  <label for="exampleInputPassword1">NACIONALIDAD</label>
-                  <input type="text" style="text-transform:uppercase" autocomplete="off" class="form-control nombres"placeholder="NACIONALIDAD" name="nacionalidad" id="nacionalidad"  >
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputPassword1">PROFESION/OCUPACION</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres"placeholder="PROFESION" name="profesion" id="profesion"  >
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputPassword1">PASAPORTE</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="PASAPORTE"  name="pasaporte" id="pasaporte">
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputPassword1"> CELULAR</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="EJEMPLO:0000-0000" name="numero_de_celular" id="numero_de_celular">
-                </div>
-     
-                <div class="form-group">
-                  <label for="exampleInputPassword1"> TELEFONO FIJO</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="EJEMPLO:0000-0000" name="numero_de_telefono_fijo" id="numero_de_telefono_fijo">
-                </div>
-                  
-                
-                <div class="form-group">
-                  <label for="exampleInputPassword1">FECHA DE NACIMIENTO</label>
-                  <input type="date" autocomplete="off" class="form-control nombres" placeholder="FECHA DE NACIMIENTO" name="fecha_de_nacimiento" id="fecha_de_nacimiento">
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputPassword1">FECHA DE CREACION</label>
-                  <input type="date" autocomplete="off" class="form-control nombres" placeholder="FECHA DE CREACION" name="fecha_creacion" id="fecha_creacion">
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleInputPassword1">CORREO</label>
-                  <input type="email" autocomplete="off" class="form-control correo" placeholder="CORREO" name="correo" id="correo" >
-                </div>
-                 
-                <div class="form-group">
-                <label for="exampleInputPassword1">GENERO</label>
-                <select class="form-control" name="genero" id="genero">
-                 <option value="0">SELECCIONE EL GENERO:</option>
-                 <option value="MUJER">FEMENINO</option>
-                 <option value="MASCULINO">MASCULINO</option>
-                 <option value="OTRO">OTRO</option>
-
-                </select>
-                </div>
-   
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Direccion</label>
-
-                  <textarea class="form-control" name="direccion" id="direccion" rows="10" cols="50"  >      
-                
-                </textarea >
-                </div>
-                  
-            
-                <div class="box-footer">
+                <div id="alerta"></div>
+              <div class="box-footer">
               <div class="col text-center">
-                <button type="button" onclick="validar_paciente();" class="btn btn-primary">CREAR</button>
-                <a href="../vistas/mostrar_pacientes_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
+                <button type="submit"  class="btn btn-primary">ACTUALIZAR</button>
+                <a href="../vistas/mostrar_prod_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
                 </div>
               </div>
             </form>
@@ -394,9 +339,10 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-<script src="../vistas/js/validar_sistema.js"></script>
+<script src="../vistas/js/validaciones.js"></script>
 <!-- jQuery 2.2.3 -->
 <script src="../vistas/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="../vistas/plugins/jQuery/jquery.mask.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="../vistas/bootstrap/js/bootstrap.min.js"></script>
 <!-- SlimScroll -->
@@ -408,6 +354,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
 <!-- AdminLTE for demo purposes -->
 <script src="../vistas/dist/js/demo.js"></script>
 <script src="../vistas/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
+
 </body>
 </html>
-<?php require "../modelos/insertar_pacientes_modelo.php" ?>
+<?php require "../modelos/actualizar_prod_modelo.php" ?>

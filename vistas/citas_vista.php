@@ -173,6 +173,19 @@ session_start();
 
         </ul>
       </li>
+      <!-- Titulo de Productos -->
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-medkit"></i>
+          <span>Productos</span>
+
+        </a>
+        <!-- subtitulos de Productos -->
+        <ul class="treeview-menu">
+        <li><a href="../vistas/insertar_prod_vista.php"><i class="fa fa-plus-square"></i>Añadir producto</a></li>
+          <li><a href="../vistas/mostrar_prod_vista.php"><i class="fa fa-list"></i>Lista de Productos</a></li>
+        </ul>
+      </li>
       <!-- Titulo de compras -->
       <li class="treeview">
         <a href="#">
