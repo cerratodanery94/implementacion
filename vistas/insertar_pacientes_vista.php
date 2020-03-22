@@ -80,8 +80,6 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
         </div>
       </div>
       <!-- search form -->
-     
-      <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">Barra de Navegación</li>
@@ -169,7 +167,6 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
         <a href="#">
           <i class="fa fa-medkit"></i>
           <span>Productos</span>
-
         </a>
         <!-- subtitulos de Productos -->
         <ul class="treeview-menu">
@@ -274,63 +271,63 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
         <div id="alerta1"></div>
         <div class="form-group">
                   <label for="exampleInputEmail1">NOMBRES</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="NOMBRES"  name="nombres" id="nombres">
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="NOMBRES"  name="nombres" id="nombres">
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">APELLIDOS</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control apellidos" placeholder="APELLIDOS"  name="apellidos" id="apellidos" >
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="APELLIDOS"  name="apellidos" id="apellidos" >
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">EDAD</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="EJEMPLO: 00"  name="edad" id="edad">
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="EDAD"  name="edad" id="edad">
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">IDENTIDAD</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="EJEMPLO: 0000-0000-00000"  name="numero_de_identidad" id="numero_de_identidad">
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="IDENTIDAD"  name="numero_de_identidad" id="numero_de_identidad">
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">RTN</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="EJEMPLO: 00000000000000" name="rtn" id="rtn"  >
+                  <input type="text" autocomplete="off" class="form-control" placeholder="RTN" name="rtn" id="rtn"  >
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">NACIONALIDAD</label>
-                  <input type="text" style="text-transform:uppercase" autocomplete="off" class="form-control nombres"placeholder="NACIONALIDAD" name="nacionalidad" id="nacionalidad"  >
+                  <input type="text" style="text-transform:uppercase" autocomplete="off" class="form-control" placeholder="NACIONALIDAD" name="nacionalidad" id="nacionalidad"  >
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">PROFESION/OCUPACION</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres"placeholder="PROFESION" name="profesion" id="profesion"  >
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="PROFESION" name="profesion" id="profesion"  >
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">PASAPORTE</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="PASAPORTE"  name="pasaporte" id="pasaporte">
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="PASAPORTE"  name="pasaporte" id="pasaporte">
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputPassword1"> CELULAR</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="EJEMPLO:0000-0000" name="numero_de_celular" id="numero_de_celular">
+                  <input type="text" autocomplete="off" class="form-control" placeholder="NUMERO DE CELULAR" name="numero_de_celular" id="numero_de_celular">
                 </div>
      
                 <div class="form-group">
                   <label for="exampleInputPassword1"> TELEFONO FIJO</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="EJEMPLO:0000-0000" name="numero_de_telefono_fijo" id="numero_de_telefono_fijo">
+                  <input type="text" autocomplete="off" class="form-control" placeholder="TELEFONO FIJO" name="numero_de_telefono_fijo" id="numero_de_telefono_fijo">
                 </div>
                   
                 
                 <div class="form-group">
                   <label for="exampleInputPassword1">FECHA DE NACIMIENTO</label>
-                  <input type="date" autocomplete="off" class="form-control nombres" placeholder="FECHA DE NACIMIENTO" name="fecha_de_nacimiento" id="fecha_de_nacimiento">
+                  <input type="date" autocomplete="off" class="form-control" placeholder="FECHA DE NACIMIENTO" name="fecha_de_nacimiento" id="fecha_de_nacimiento">
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">FECHA DE CREACION</label>
-                  <input type="date" autocomplete="off" class="form-control nombres" placeholder="FECHA DE CREACION" name="fecha_creacion" id="fecha_creacion">
+                  <input type="date" autocomplete="off" class="form-control" placeholder="FECHA DE CREACION" name="fecha_creacion" id="fecha_creacion">
                 </div>
 
                 <div class="form-group">
@@ -345,16 +342,11 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
                  <option value="MUJER">FEMENINO</option>
                  <option value="MASCULINO">MASCULINO</option>
                  <option value="OTRO">OTRO</option>
-
                 </select>
                 </div>
-   
                 <div class="form-group">
                   <label for="exampleInputPassword1">Direccion</label>
-
-                  <textarea class="form-control" name="direccion" id="direccion" rows="10" cols="50"  >      
-                
-                </textarea >
+                  <textarea placeholder="DIRECCIÓN" style="text-transform:uppercase"  class="form-control"  name="direccion" id="direccion" cols="30" rows="5" ></textarea >
                 </div>
                   
             
@@ -408,6 +400,18 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
 <!-- AdminLTE for demo purposes -->
 <script src="../vistas/dist/js/demo.js"></script>
 <script src="../vistas/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
+<script src="../vistas/plugins/jQuery/jquery.mask.min.js"></script>
+<script>
+    $(document).ready(function(){
+      $("#edad").mask("00");
+    $("#numero_de_identidad").mask("0000-0000-00000");
+    $("#numero_de_celular").mask("0000-0000");
+    $("#numero_de_telefono_fijo").mask("0000-0000");
+    
+});
+</script>
+</body>
+</html>
 </body>
 </html>
 <?php require "../modelos/insertar_pacientes_modelo.php" ?>

@@ -297,73 +297,73 @@ try {
         <div id="alerta1"></div>
         <div class="form-group">
                  
-                 <input type="hidden" autocomplete="off" style="text-transform:uppercase" class="form-control nombres"   name="ide" id="ide" value="<?php echo $id_u?>">
+                 <input type="hidden" autocomplete="off" style="text-transform:uppercase" class="form-control"   name="ide" id="ide" value="<?php echo $id_u?>">
               </div>
 
                   <div class="form-group">
                  <label for="exampleInputEmail1">NOMBRES</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="NOMBRES"  name="nombres" id="nombres"value="<?php echo $nombres?>"   >
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="NOMBRES"  name="nombres" id="nombres"value="<?php echo $nombres?>"   >
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">APELLIDOS</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control apellidos" placeholder="APELLIDOS"  name="apellidos" id="apellidos" value="<?php echo $apellidos?>"  >
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="APELLIDOS"  name="apellidos" id="apellidos" value="<?php echo $apellidos?>"  >
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">EDAD</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="Ejemplo: 00"  name="edad" id="edad" value="<?php echo $edad?>"   >
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="EDAD"  name="edad" id="edad" value="<?php echo $edad?>"   >
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">IDENTIDAD</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="Ejemplo: 0000-0000-00000"  name="numero_de_identidad" id="numero_de_identidad" value="<?php echo $identidad?>"  >
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="IDENTIDAD"  name="numero_de_identidad" id="numero_de_identidad" value="<?php echo $identidad?>"  >
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">RTN</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="Ejemplo: 00000000000000" name="rtn" id="rtn" value="<?php echo $rtn?>"    >
+                  <input type="text" autocomplete="off" class="form-control"placeholder="RTN" name="rtn" id="rtn" value="<?php echo $rtn?>"    >
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">NACIONALIDAD</label>
-                  <input style="text-transform:uppercase" type="text" autocomplete="off" class="form-control nombres"placeholder="NACIONALIDAD" name="nacionalidad" id="nacionalidad" value="<?php echo $nacionalidad?>"   >
+                  <input style="text-transform:uppercase" type="text" autocomplete="off" class="form-control"placeholder="NACIONALIDAD" name="nacionalidad" id="nacionalidad" value="<?php echo $nacionalidad?>"   >
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">PROFESION/OCUPACION</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres"placeholder="PROFESION" name="profesion" id="profesion" value="<?php echo $cargo?>"    >
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control"placeholder="PROFESION" name="profesion" id="profesion" value="<?php echo $cargo?>"    >
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">PASAPORTE</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="PASAPORTE"  name="pasaporte" id="pasaporte" value="<?php echo $pasaporte?>"  >
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="PASAPORTE"  name="pasaporte" id="pasaporte" value="<?php echo $pasaporte?>"  >
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputPassword1"> CELULAR</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="Ejemplo: 0000-0000" name="numero_de_celular" id="numero_de_celular" value="<?php echo $celular?>"  >
+                  <input type="text" autocomplete="off" class="form-control"placeholder="NUMERO DE CELULAR" name="numero_de_celular" id="numero_de_celular" value="<?php echo $celular?>"  >
                 </div>
      
                 <div class="form-group">
                   <label for="exampleInputPassword1"> TELEFONO FIJO</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="Ejemplo: 0000-0000" name="numero_de_telefono_fijo" id="numero_de_telefono_fijo" value="<?php echo $tel_fijo?>"  >
+                  <input type="text" autocomplete="off" class="form-control"placeholder="TELEFONO FIJO" name="numero_de_telefono_fijo" id="numero_de_telefono_fijo" value="<?php echo $tel_fijo?>"  >
                 </div>
                   
                 
                 <div class="form-group">
                   <label for="exampleInputPassword1">FECHA DE NACIMIENTO</label>
-                  <input type="date" autocomplete="off" class="form-control nombres" placeholder="FECHA DE NACIMIENTO" name="fecha_de_nacimiento" id="fecha_de_nacimiento"value="<?php echo $fecha_nacimiento?>"  >
+                  <input type="date" autocomplete="off" class="form-control" placeholder="FECHA DE NACIMIENTO" name="fecha_de_nacimiento" id="fecha_de_nacimiento"value="<?php echo $fecha_nacimiento?>"  >
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">FECHA DE CREACION</label>
-                  <input type="date" autocomplete="off" class="form-control nombres" placeholder="FECHA DE CREACION" name="fecha_creacion" id="fecha_creacion" value="<?php echo $fecha_creacion?>"  >
+                  <input type="date" autocomplete="off" class="form-control" placeholder="FECHA DE CREACION" name="fecha_creacion" id="fecha_creacion" value="<?php echo $fecha_creacion?>"  >
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">CORREO</label>
-                  <input type="email" autocomplete="off" class="form-control correo" placeholder="CORREO" name="correo" id="correo" value="<?php echo $correo?>"   >
+                  <input type="email" autocomplete="off" class="form-control " placeholder="CORREO" name="correo" id="correo" value="<?php echo $correo?>"   >
                 </div>
                  
                 <div class="form-group">
@@ -389,11 +389,8 @@ try {
                 </div>
    
                 <div class="form-group">
-                  <label for="exampleInputPassword1" >Direccion</label>
-
-                  <textarea  style="text-transform:uppercase" class="form-control" name="direccion" id="direccion" rows="10" cols="50"  > <?php echo $direccion?>     
-                
-                </textarea >
+                  <label for="exampleInputPassword1">Direccion</label>
+                  <textarea placeholder="DIRECCIÓN" style="text-transform:uppercase"  class="form-control"  name="direccion" id="direccion" cols="30" rows="5" ><?php echo $direccion?></textarea >
                 </div>
                 
                 <div class="box-footer"> 
@@ -445,6 +442,16 @@ try {
 <!-- AdminLTE for demo purposes -->
 <script src="../vistas/dist/js/demo.js"></script>
 <script src="../vistas/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
+<script src="../vistas/plugins/jQuery/jquery.mask.min.js"></script>
+<script>
+    $(document).ready(function(){
+    $("#edad").mask("00");
+    $("#numero_de_identidad").mask("0000-0000-00000");
+    $("#numero_de_celular").mask("0000-0000");
+    $("#numero_de_telefono_fijo").mask("0000-0000");
+    
+});
+</script>
 </body>
 </html>
 <?php require "../modelos/actualizar_pacientes_modelo.php" ?>
