@@ -1,5 +1,7 @@
+
 <?php
 session_start();
+
 if (!isset($_SESSION["id_us"])) {
   header('location:../vistas/login_vista.php');
 }
@@ -31,14 +33,12 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
   <link rel="stylesheet" href="../vistas/plugins/datatables/dataTables.bootstrap.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../vistas/dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="../vistas/plugins/sweetalert/dist/sweetalert2.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
+   folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../vistas/dist/css/skins/_all-skins.min.css">
-
+  <link rel="stylesheet" href="../vistas/Plugins/sweetalert/dist/sweetalert2.min.css">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-
 
 <div class="wrapper">
 
@@ -268,69 +268,63 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">ADMINISTRA LOS USUARIOS EN ESTA SECCION </h3>
+              <h3 class="box-title">ADMINISTRA LOS EXPEDIENTES EN ESTA SECCION </h3>
             </div>
             <!--llamar funciones-->
             <div class="box-body">
-            <div>
-             <a href="../vistas/insertar_mant_vista.php" class="btn bg-blue btn-flat margin">AGREGAR USUARIO <i class="fa fa-plus" aria-hidden="true"></i> </a>
+           <div>
+             <a href="../vistas/insertar_expedienten_vista.php" class="btn bg-blue btn-flat margin">AGREGAR EXPEDIENTE <i class="fa fa-plus" aria-hidden="true"></i> </a>
            </div>
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th >ID USUARIO</th>
-                  <th>ROL</th>
-                  <th>USUARIO</th>
+                  <th>N° EXP</th>
+                  <th>NUMERO DE IDENTIDAD</th>
                   <th>NOMBRES</th>
                   <th>APELLIDOS</th>
-                  <th>ESTADO</th>
-                  <th>CORREO</th>
-                  <th>ACCIONES</th>
+                  <td>ACCIONES</td>
+                  
+				          
                 </tr>
                 </thead>
                 <tbody>
-               <?php
+                <?php
                require '../modelos/conectar.php';
-               $consulta=$conexion->prepare("SELECT * FROM tbl_usuario where USU_CODIGO<>1");
+               $consulta=$conexion->prepare("SELECT * from tbl_expediente_nutricionista a INNER JOIN tbl_personas b on a.per_codigo = b.per_codigo");
                $consulta->execute();
                  while($fila=$consulta->fetch()){?>
                  <tr>
-                 <td><?php echo $fila['USU_CODIGO']?></td>
-					       <td><?php echo $fila['ROL_CODIGO']?></td>
-					       <td><?php echo $fila['USU_USUARIO']?></td>
-                 <td><?php echo $fila['USU_NOMBRES']?></td>
-					       <td><?php echo $fila['USU_APELLIDOS']?></td>
-					       <td><?php echo $fila['USU_ESTADO']?></td>
-                 <td><?php echo $fila['USU_CORREO']?></td>
+                 
+                 <td><?php echo $fila['NUTRI_CODIGO']?></td>
+					       <td><?php echo $fila['PER_NUMERO_IDENTIDAD']?></td>
+					       <td><?php echo $fila['PER_NOMBRES']?></td>
+                 <td><?php echo $fila['PER_APELLIDOS']?></td>
                  <td>
-					       <a href='../modelos/editar_usu_modelo.php?id=<?php echo $fila["USU_CODIGO"]?>' class="btn bg-orange btn-flat margin">
+                 <a href='../modelos/mostrar_expedienten_modelo.php?id=<?php echo $fila["NUTRI_CODIGO"]?>' class="btn bg-blue btn-flat margin">
+                 <i class='fa fa-eye'></i></a> 
+
+					       <a href='../modelos/editar_expedienten_modelo.php?id=<?php echo $fila["NUTRI_CODIGO"]?>' class="btn bg-orange btn-flat margin">
                  <i class='fa fa-pencil'></i></a>
-                 <a href='../modelos/eliminar_usu_modelo.php?id=<?php echo $fila["USU_CODIGO"]?>'  class="btn btne bg-maroon bnt-flat margin">
+
+                 <a href='../modelos/eliminar_expedienten_modelo.php?id=<?php echo $fila["NUTRI_CODIGO"]?>' class="btn btne bg-maroon bnt-flat margin">
 					       <i class='fa fa-trash'></i></a> 
 					       </td>
                  </tr>
-                 <?php } ?>
-              
+                 <?php } ?> 
                 </tbody>
                 <tfoot>
                 <tr>
-                <th>ID USUARIO</th>
-                  <th>ROL</th>
-                  <th>USUARIO</th>
+                 <th>ID</th>
+                  <th>NUMERO DE IDENTIDAD</th>
                   <th>NOMBRES</th>
                   <th>APELLIDOS</th>
-                  <th>ESTADO</th>
-                  <th>CORREO</th>
-                  <th>ACCIONES</th>
+                  <td>ACCIONES</td>
                 </tr>
                 </tfoot>
               </table>
               <?php if (isset($_GET['m'])) : ?>
                 <div class="flash-data" data-flashdata="<?= $_GET['m']; ?>"></div>
               <?php endif; ?>
-            </div>
-            <!-- /.box-body -->
-          </div>
           <!-- /.box -->
         </div>
         <!-- /.col -->
@@ -358,7 +352,9 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
 <!-- ./wrapper -->
 
 <!-- jQuery 2.2.3 -->
+
 <script src="../vistas/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="../controladores/funciones.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="../vistas/bootstrap/js/bootstrap.min.js"></script>
 <!-- DataTables -->
@@ -371,14 +367,14 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
 <!-- AdminLTE App -->
 <script src="../vistas/dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="../vistas/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
 <script src="../vistas/dist/js/demo.js"></script>
+<script src="../vistas/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
 <script>
    $('.btne').on('click',function(e){
      e.preventDefault();
      const href=$(this).attr('href')
      Swal.fire({
-  title: '¿ESTA SEGURO DE ELIMINAR ESTE USUARIO?',
+  title: '¿ESTA SEGURO DE ELIMINAR ESTE EXPEDIENTE?',
   text: "¡NO PODRÁS REVERTIR ESTO!",
   icon: 'warning',
   showCancelButton: true,
@@ -397,7 +393,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
     swal.fire({
        icon:'success',
        title:'ELIMINADO',
-       text:'SE HA ELIMINADO USUARIO CORRECTAMENTE'
+       text:'SE HA ELIMINADO EL EXPEDIENTE CORRECTAMENTE'
      })
    }
 </script>
@@ -429,4 +425,3 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
 </script>
 </body>
 </html>
-

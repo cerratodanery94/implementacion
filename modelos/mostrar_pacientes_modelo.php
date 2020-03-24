@@ -165,8 +165,10 @@ try {
         </a>
         <!-- subtitulos de Expedientes -->
         <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-circle-o"></i>Nutricionista</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i>Doctora </a></li>
+        <li><a href="../vistas/insertar_expedienten_vista.php"><i class="fa fa-circle-o"></i>Añadir Expediente Nutri</a></li>
+          <li><a href="../vistas/mostrar_expedienten_vista.php"><i class="fa fa-circle-o"></i>Mostrar Expediente Nutri</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i>Añadir Expediente Doc </a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i>Mostrar Expediente Doc </a></li>
 
         </ul>
       </li>
