@@ -62,14 +62,15 @@
               }
 
                //VALIDAR SOLO NUMEROS
-               function Validar_numero(parametro){
-                var Numero=/^[0-9]*$/;
-                if(!Numero.test(parametro)){
-                   return False; 
-                }else{
-                    return True;
-                }
-            }
+            //    function Validar_numero(parametro){
+            //     var Numero=/^{0-9}*$/;
+            //     if(!Numero.test(parametro)){
+            //        return False; 
+            //     }else{
+            //         return True;
+            //     }
+            // }
+            
               //VALIDACION RANGO DE USUARIO
               function validar_longitud(parametro) {
                 if(parametro.length <6  || parametro.length >15  ){

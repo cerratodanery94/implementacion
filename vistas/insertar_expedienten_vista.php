@@ -263,7 +263,9 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
 <!--centro-->
 
 <div class="panel-body" id="formularioregistros">
+
   <form action="../vistas/insertar_expedienten_vista.php" method="get" >
+  <div id="alerta"></div>
   <label for="exampleInputEmail1">BUSCAR PACIENTE</label> <br>
         <input type="text" size="33" maxlength="30"  placeholder="INGRESE UN NUMERO DE IDENTIDAD" name="buscar">
         <button type="submit" class="btn btn-primary" >BUSCAR</button>
@@ -307,10 +309,10 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
           </div>
            
           </form> 
-
-          <form action="" method="post" name="frm_exp">
           
-               
+          <form action="" method="post" name="form_exp">
+          
+         
            <input type="hidden" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="NOMBRES"  name="id" id="id" value="<?php echo $registro['PER_CODIGO']?>"   >
         
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
@@ -350,21 +352,19 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
                   <label for="exampleInputPassword1">FECHA DE CREACION</label>
                   <input type="date" autocomplete="off" class="form-control nombres" placeholder="FECHA DE CREACION" name="fecha_de_creacion" id="fecha_de_creacion">
                 </div>
-         
                 <div class="box-footer">
               <div class="col text-center">
-                <input type="submit"  class="btn btn-primary" value="CREAR" >
+                <button type="button"  class="btn btn-primary" onclick="validar_expediente();" >CREAR</button>
+                <!-- <button type="button"  class="btn btn-primary" onclick="validar_matenimiento();">CREAR</button> -->
                 <a href="../vistas/mostrar_expedienten_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
-                </div>
+               </div>
+              
               </div>
                 </form>
       </div>
         <?php } }  } ?>
-       
-            
-
-        
 </div>
+
 <!--fin centro-->
       </div>
       </div>
@@ -382,7 +382,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
 
  
 
-<script src="../vistas/js/validaciones.js"></script>
+<script src="../vistas/js/validar_sistema.js"></script>
 <!-- jQuery 2.2.3 -->
 <script src="../vistas/plugins/jQuery/jquery-2.2.3.min.js"></script>
 

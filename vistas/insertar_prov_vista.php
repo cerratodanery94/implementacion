@@ -257,7 +257,6 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
         <div class="box-body">
         
         <form action="" method="POST" role="form" name="Form_proveedor">
-        <div id="alerta1"></div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">PROVEEDOR</label>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="PROVEEDOR"  name="prov" id="prov" >
@@ -285,6 +284,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
                 </div>
               <div class="box-footer">
               <div class="col text-center">
+        <div id="alerta1"></div>
+
                 <button type="button" onclick="validar_proveedor();"  class="btn btn-primary">CREAR</button>
                 <a href="../vistas/mostrar_prov_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
                 </div>

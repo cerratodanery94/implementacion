@@ -409,6 +409,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
     $("#numero_de_identidad").mask("0000-0000-00000");
     $("#numero_de_celular").mask("0000-0000");
     $("#numero_de_telefono_fijo").mask("0000-0000");
+    $("#rtn").mask("00000000000000");
     
 });
 </script>
