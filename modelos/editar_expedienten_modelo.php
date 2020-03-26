@@ -290,8 +290,10 @@ try {
       <h3>EXPEDIENTE</h3> 
 </div>
 <!--box-header-->
+<div id="alerta"></div>
 <!--centro-->
 <input type="hidden" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="NOMBRES"  name="id" id="id" value="<?php echo $id_p?>" readonly  >
+
            <div class="form-group col-lg-6 col-md-6 col-xs-12">
              <br>
                   <label for="exampleInputEmail1">NOMBRES</label>
@@ -318,7 +320,7 @@ try {
            
           </form> 
 
-          <form action="" method="post" name="frm_exp"> 
+          <form action="" method="post" name="form_exp"> 
           
                
            <input type="hidden" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="NOMBRES"  name="id_e" id="id_e" value="<?php echo $id_u?> "   >
@@ -364,7 +366,8 @@ try {
          
                 <div class="box-footer">
               <div class="col text-center">
-              <button type="submit"  class="btn btn-primary">ACTUALIZAR</button>
+             
+              <button type="button" onclick="validar_expediente();"  class="btn btn-primary">ACTUALIZAR</button>
                 <a href="../vistas/mostrar_expedienten_vista.php" class="btn bg-red btn-flat margin" >ATRAS</a>
                 </div>
               </div>
@@ -393,7 +396,7 @@ try {
 
  
 
-<script src="../vistas/js/validaciones.js"></script>
+<script src="../vistas/js/validar_sistema.js"></script>
 <!-- jQuery 2.2.3 -->
 <script src="../vistas/plugins/jQuery/jquery-2.2.3.min.js"></script>
 
