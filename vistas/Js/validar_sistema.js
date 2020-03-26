@@ -88,16 +88,7 @@ function validar_telefono(parametro){
             return true;
         }
     }
-  //VALIDAR SOLO NUMEROS
-//   function Validar_numero(parametro){
-//     var Numero=/^[0-9]*$/;
-//     if(!Numero.test(parametro)){
-//        return False; 
-//     }else{
-//         return True;
-//     }
-// }
-
+  
     //VALIDAR IDENTIDAD Y RTN
     function validar_identidad(parametro){
         var patron=/^\d{4}-\d{4}-\d{5}$/; //0000-0000-00000
@@ -111,7 +102,7 @@ function validar_telefono(parametro){
 
       //  VALIDAR RTN
     function validar_rtn(parametro){
-        var patron=/^\d{14}$/; //0000-0000-00000
+        var patron=/^\d{14}$/; //0000000000000
         if (!patron.test(parametro)){
             return false;
         }
@@ -130,9 +121,11 @@ function validar_telefono(parametro){
                     return true;
                 }
             }
-            //VALIDAR PESO
-            function validar_peso(parametro){
-        var patron= /^(\d+)$|^(\d+\.{1}\s{2})$/;
+            //VALIDAR NUMEROS Y LETRAS
+            function validar_numeros(parametro){
+                var patron= /^(\d+|\d+.\d{2,5})$/;
+
+            // var patron= /^(\d+|\d+.\d{2,5})|(?=.*[a-z])(?=.*[A-Z])$/;
             if(!patron.test(parametro)){
                 return false;
             }
@@ -140,6 +133,20 @@ function validar_telefono(parametro){
                 return true;
             }
             }
+
+            //VALIDAR SOLO NUMERO
+            function validar_num(parametro){
+                var patron= /^(\d+|\d+.\d{2,5})$/;
+                if(!patron.test(parametro)){
+                    return false;
+                }
+                else {
+                    return true;
+                }
+                }
+
+
+
         //VALLIDAR FORMULARIO INSERTAR EMPLEADOS VISTA
     function validar_empleado(){
     var formulario=document.form_empleados;
@@ -1036,23 +1043,7 @@ formulario_pro.submit();
         document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO PRODUCTO VACIO</div>';
         formulario.prod.focus();
         return false;
-     }
-    //  else if (Validar_espacio2 (formulario.prod.value)==false){
-    //     document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
-    //     formulario.prod.focus();
-    //     return false;
-    //     }
-    // else if (validar_texto (formulario.prod.value)==false){  
-    //     document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO PRODUCTO NO PUEDE CONTENER NUMEROS</div>';
-    //     formulario.prod.focus();
-    //     return false;
-    //     }
-    //     else if (validar_tamaño (formulario.prod.value)==false){
-    //         document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE CARACTERES EN EL CAMPO PRODUCTO</div>';
-    //         formulario.prod.focus();
-    
-    //         return false;
-    //         }    
+     }   
      //VALIDAR CAMPO DESCRIPCION
      if (fomulario.descrip.value==""){
         document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO DESCRIPCIOM VACIO</div>';
@@ -1095,7 +1086,11 @@ formulario_pro.submit();
         formulario_exp.peso.focus();
         return false;
      }
-
+else if(validar_numeros(formulario_exp.peso.value)==false){
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INGRESAR VALORES NUMERICOS EN EL CAMPO</div>';
+    formulario_exp.peso.focus();
+    return false;
+}
     //VALIDAR ESTATURA
     if (formulario_exp.estatura.value==""){
         document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO ESTATURA VACIO</div>';
@@ -1107,7 +1102,11 @@ formulario_pro.submit();
         formulario_exp.estatura.focus();
         return false;
      }
-
+     else if(validar_numeros(formulario_exp.estatura.value)==false){
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INGRESAR VALORES NUMERICOS EN EL CAMPO</div>';
+        formulario_exp.estatura.focus();
+        return false;
+    }
 //VALIDAR PRESION ARTERIAL
 
 if (formulario_exp.presion_arterial.value==""){
@@ -1120,6 +1119,11 @@ if (formulario_exp.presion_arterial.value==""){
     formulario_exp.presion_arterial.focus();
     return false;
  }
+ else if(validar_numeros(formulario_exp.presion_arterial.value)==false){
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INGRESAR VALORES NUMERICOS EN EL CAMPO</div>';
+    formulario_exp.presion_arterial.focus();
+    return false;
+}
  //VALIDAR TEMPERATURA
  if (formulario_exp.temperatura.value==""){
     document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO TEMPERATURA VACIO</div>';
@@ -1131,30 +1135,24 @@ if (formulario_exp.presion_arterial.value==""){
     formulario_exp.temperatura.focus();
     return false;
  }
+ else if(validar_numeros(formulario_exp.temperatura.value)==false){
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INGRESAR VALORES NUMERICOS EN EL CAMPO</div>';
+    formulario_exp.temperatura.focus();
+    return false;
+}
 //VALIDAR ANTECEDENTES
 if (formulario_exp.antecedentes.value==""){
-    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO ANTECEDENTES VACIO</div>';
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INGRESAR VALORES NUMERICOS EN EL CAMPO</div>';
     formulario_exp.antecedentes.focus();
     return false;
- }
- else if (Validar_espacio2(formulario_exp.antecedentes.value)==false){
-    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIO EN EL CAMPO</div>';
-    formulario_exp.antecedentes.focus();
-    return false;
- }
+}
 
 //VALIDAR DIETA
-
- if (formulario_exp.dieta.value==""){
-    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO DIETA VACIO</div>';
+if (formulario_exp.dieta.value==""){
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INGRESAR VALORES NUMERICOS EN EL CAMPO</div>';
     formulario_exp.dieta.focus();
     return false;
- }
- else if (Validar_espacio2(formulario_exp.dieta.value)==false){
-    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIO EN EL CAMPO</div>';
-    formulario_exp.dieta.focus();
-    return false;
- }
+}
 
  //VALIDAR FECHA
 
