@@ -40,7 +40,7 @@ try {
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Editar Usuarios</title>
+  <title>Mostrar Empleado</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -279,100 +279,90 @@ try {
   </aside>
 
   <!-- =============================================== -->
-
-  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        INFORMACION GENERAL DEL EMPLEADO
+      MOSTRAR INFORMACIÓN DEL EMPLEADO
+        
       </h1>
-      
       
     </section>
 
     <!-- Main content -->
-    <div class="col-100 forgot">
-    <div style='float:center;margin:auto;width:500px;' class="row">
-
-           <div class="col-md-10">
-           </div>
     <section class="content">
-      <!-- Default box -->
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title">EMPLEADO</h3>
-        </div>
-        <div class="box-body">
+      <div class="row">
+        <div class="col-xs-12">
+        <div class="box box-primary">
+            <div class="box-header">
+            </div>
+            <!--llamar funciones-->
+            <div class="box-body">
         <form action=""  method="POST" name="form_empleados">
-        <div class="form-group">
-                 
-                  <input type="hidden" autocomplete="off" style="text-transform:uppercase" class="form-control nombres"   name="ide" id="ide" value="<?php echo $id_u?>" readonly >
-        </div>
+        <input type="hidden" autocomplete="off" style="text-transform:uppercase" class="form-control nombres"   name="ide" id="ide" value="<?php echo $id_u?>" readonly >
 
-             <div class="form-group">
+        <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputEmail1">NOMBRES</label>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="NOMBRES"  name="nombres" id="nombres"value="<?php echo $nombres?>" readonly>
               </div>
-
-                <div class="form-group">
+              <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">APELLIDOS</label>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control apellidos" placeholder="APELLIDOS"  name="apellidos" id="apellidos"value="<?php echo $apellidos?>" readonly>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">EDAD</label>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="EDAD"  name="edad" id="edad" value="<?php echo $edad?>" readonly>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">IDENTIDAD</label>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="IDENTIDAD"  name="numero_de_identidad" id="numero_de_identidad" value="<?php echo $identidad?>" readonly>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">RTN</label>
                   <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE RTN" name="rtn" id="rtn" value="<?php echo $rtn?>" readonly >
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">CARGO</label>
                   <input type="text" autocomplete="off" class="form-control nombres"placeholder="CARGO" name="cargo" id="cargo" value="<?php echo $cargo?>" readonly >
                 </div>
 
                 
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1"> CELULAR</label>
                   <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE TELEFONO CELULAR" name="numero_de_celular" id="numero_de_celular"value="<?php echo $celular?>" readonly>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1"> TELEFONO FIJO</label>
                   <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE TELEFONO FIJO" name="numero_de_telefono_fijo" id="numero_de_telefono_fijo"value="<?php echo $tel_fijo?>" readonly>
                 </div>
                   
                 
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">FECHA DE NACIMIENTO</label>
                   <input type="date" autocomplete="off" class="form-control nombres" placeholder="FECHA DE NACIMIENTO" name="fecha_de_nacimiento" id="fecha_de_nacimiento"value="<?php echo $fecha_nacimiento?>" readonly>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">FECHA DE CONTRATACION</label>
                   <input type="date" autocomplete="off" class="form-control nombres" placeholder="FECHA DE CONTRATACION" name="fecha_de_contratacion" id="fecha_de_contratacion" value="<?php echo $fecha_contratacion?>" readonly>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">CORREO</label>
                   <input type="email" autocomplete="off" class="form-control correo" placeholder="CORREO" name="correo" id="correo" value="<?php echo $correo?>" readonly>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">NACIONALIDAD</label>
                   <input type="text" autocomplete="off" class="form-control correo" placeholder="NACIONALIDAD" name="nacionalidad" id="nacionalidad" value="<?php echo $nacionalidad?>"readonly>
                 </div>
                  
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <label for="exampleInputPassword1">GENERO</label>
                 <select class="form-control" name="genero" id="genero" disabled>
                  <option value="0">SELECCIONE UN GENERO:</option>
@@ -394,43 +384,32 @@ try {
                 </select>
                 </div>
                 
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1" >Direccion</label>
 
                   <textarea class="form-control" name="direccion" id="direccion" rows="10" cols="50" readonly > <?php echo $direccion?>     
                 
                 </textarea >
                 </div>
-
-                
                 <div class="box-footer"> 
-
                 <div class="col text-center">
-                <div id="alerta"></div>
               <a href="../vistas/mostrar_empleados_vista.php" class="btn bg-blue btn-flat margin" >ATRAS</a>
-                </div>
               </div>
-            </form>
-            
-        </div>
-        <!-- /.box-body --> 
-        <!-- /.box-footer-->
+        <!-- /.col -->
       </div>
-      <!-- /.box -->
+      <!-- /.row -->
+    </section>
     <!-- /.content -->
-    </div>
-    </div>
   </div>
   <!-- /.content-wrapper -->
+
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.3.8
+      <b>Version</b> 1.1.0
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
+    <strong>Copyright &copy; 2020<a>SYSTEM 32</a>.</strong> All rights
     reserved.
   </footer>
-
- 
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->

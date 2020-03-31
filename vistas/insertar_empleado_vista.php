@@ -11,7 +11,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Registrar Usuarios</title>
+  <title>Registrar Empleado</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -273,101 +273,89 @@ alert("texto cambiado");
   </aside>
 
   <!-- =============================================== -->
-
-  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-      REGISTRO DE EMPLEADOS
-        <small>Llena el formulario para crear un empleado</small>
+        REGISTRAR EMPLEADO
+        
       </h1>
-      
       
     </section>
 
     <!-- Main content -->
-    <div class="col-100 forgot">
-    <div style='float:center;margin:auto;width:500px;' class="row">
-
-           <div class="col-md-10">
-           </div>
     <section class="content">
-
-      <!-- Default box -->
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title">CREAR EMPLEADO</h3>
-
-          
-        </div>
-        <div class="box-body">
-        
+      <div class="row">
+        <div class="col-xs-12">
+        <div class="box box-primary">
+            <div class="box-header">
+            </div>
+            <!--llamar funciones-->
+            <div class="box-body">
+           <div>
         <form action=""  method="POST" name="form_empleados">
           <div  id="alerta"></div>
-        <div class="form-group">
+          <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputEmail1">NOMBRES</label>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="NOMBRES"  name="nombres" id="nombres">
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">APELLIDOS</label>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="APELLIDOS"  name="apellidos" id="apellidos" >
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">EDAD</label>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="EDAD"  name="edad" id="edad">
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">IDENTIDAD</label>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="IDENTIDAD"  name="numero_de_identidad" id="numero_de_identidad"">
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">RTN</label>
                   <input type="text" autocomplete="off" class="form-control"placeholder="RTN" name="rtn" id="rtn"  >
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">CARGO</label>
                   <input type="text" style="text-transform:uppercase" autocomplete="off" class="form-control"placeholder="CARGO" name="cargo" id="cargo"  >
                 </div>
 
                 
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1"> CELULAR</label>
                   <input type="text" autocomplete="off" class="form-control"placeholder="NUMERO DE CELULAR" name="numero_de_celular" id="numero_de_celular">
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1"> TELEFONO FIJO</label>
                   <input type="text" autocomplete="off" class="form-control"placeholder="TELEFONO FIJO" name="numero_de_telefono_fijo" id="numero_de_telefono_fijo">
                 </div>
-                  
-                
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">FECHA DE NACIMIENTO</label>
                   <input type="date" autocomplete="off" class="form-control" placeholder="FECHA DE NACIMIENTO" name="fecha_de_nacimiento" id="fecha_de_nacimiento">
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">FECHA DE CONTRATACION</label>
                   <input type="date" autocomplete="off" class="form-control" placeholder="FECHA DE CONTRATACION" name="fecha_de_contratacion" id="fecha_de_contratacion">
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">CORREO</label>
                   <input type="email" autocomplete="off" class="form-control" placeholder="CORREO" name="correo" id="correo" >
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">NACIONALIDAD</label>
                   <input type="text" style="text-transform:uppercase" autocomplete="off" class="form-control" placeholder="NACIONALIDAD" name="nacionalidad" id="nacionalidad" >
                 </div>
                  
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <label for="exampleInputPassword1">GENERO</label>
                 <select class="form-control" name="genero" id="genero">
                  <option value="0">SELECCIONE EL GENERO:</option>
@@ -377,14 +365,13 @@ alert("texto cambiado");
 
                 </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">Direccion</label>
                   <textarea placeholder="DIRECCIÓN" style="text-transform:uppercase"  class="form-control"  name="direccion" id="direccion" cols="30" rows="5" ></textarea >
                 </div>
               
                 <div class="col text-center">
-                <div id="alerta"></div>
-                <button type="button" onclick="validar_empleado();" class="btn btn-primary">CREAR</button>
+                <button type="button" onclick="validar_empleado();" class="btn btn-primary btn-flat margin">CREAR</button>
                 <a href="../vistas/mostrar_empleados_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
                 </div>
               </div>
@@ -405,12 +392,11 @@ alert("texto cambiado");
 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.3.8
+      <b>Version</b> 1.1.0
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
+    <strong>Copyright &copy; 2020 <a>SYSTEM 32</a>.</strong> All rights
     reserved.
   </footer>
-
  
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed

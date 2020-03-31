@@ -289,20 +289,28 @@ try {
     </section>
     <!-- /.sidebar -->
   </aside>
-       <div class="content-wrapper">
+       
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        EXPEDIENTE
+        
+      </h1>
+      
+    </section>
+
     <!-- Main content -->
     <section class="content">
-
-      <!-- Default box -->
       <div class="row">
-        <div class="col-md-12">
-      <div class="box">
-<div class="box-header with-border">
-<div class="form-group">
-      <h3>EXPEDIENTE</h3> 
-</div>
-<!--box-header-->
-<!--centro-->
+        <div class="col-xs-12">
+        <div class="box box-primary">
+            <div class="box-header">
+            </div>
+            <!--llamar funciones-->
+            <div class="box-body">
+           <div>
+
 <input type="hidden" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="NOMBRES"  name="id" id="id" value="<?php echo $id_p?>" readonly  >
            <div class="form-group col-lg-6 col-md-6 col-xs-12">
              <br>

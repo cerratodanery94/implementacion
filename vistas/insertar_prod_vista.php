@@ -11,7 +11,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Registro de proveedores</title>
+  <title>Registrar Producto</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -258,52 +258,44 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-    REGISTRO DE PRODUCTOS
-        <small>Llena el formulario para crear un producto</small>
+        REGISTRAR PRODUCTO
+        
       </h1>
-      
       
     </section>
 
     <!-- Main content -->
-    <div class="col-100 forgot">
-    <div style='float:center;margin:auto;width:500px;' class="row">
-
-           <div class="col-md-10">
-           </div>
     <section class="content">
-
-      <!-- Default box -->
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title">CREAR PRODUCTO</h3>
-
-          
-        </div>
-        <div class="box-body">
-        
+      <div class="row">
+        <div class="col-xs-12">
+        <div class="box box-primary">
+            <div class="box-header">
+            </div>
+            <!--llamar funciones-->
+            <div class="box-body">
+           <div>
         <form action="" method="POST" role="form" name="form_producto1">
-      
-                <div class="form-group">
+        <div id="alerta1"></div>
+        <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">PRODUCTO</label>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="PRODUCTO"  name="prod" id="prod" >
                 </div>
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputEmail1">DESCRIPCIÓN</label>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control " placeholder="DESCRIPCION"  name="descrip" id="descrip">
                 </div>
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">PRECIO</label>
                   <input type="text" autocomplete="off" class="form-control " placeholder="PRECIO" name="precio" id="precio">
                 </div>
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <label for="exampleInputPassword1">FECHA DE VENCIMIENTO</label>
                 <input type="date" autocomplete="off"  class="form-control " placeholder="FECHA DE VENCIMIENTO"  name="f_venc" id="f_venc">
                 </div>
               <div class="box-footer">
               <div class="col text-center">
-              <div id="alerta1"></div>
-                <button type="button" onclick="validar_productos();" class="btn btn-primary">CREAR</button>
+             
+                <button type="button" onclick="validar_productos();" class="btn btn-primary  btn-flat margin">AGREGAR</button>
                 <a href="../vistas/mostrar_prod_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
                 </div>
               </div>
@@ -314,21 +306,23 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
         <!-- /.box-footer-->
       </div>
       <!-- /.box -->
-
-    
+      </div>
+      </div>
     <!-- /.content -->
     </div>
     </div>
-  </div>
+
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.3.8
+      <b>Version</b> 1.1.0
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
+    <strong>Copyright &copy; 2020 <a>System 32</a>.</strong> All rights
     reserved.
   </footer>
+
+
 
  
   <!-- /.control-sidebar -->

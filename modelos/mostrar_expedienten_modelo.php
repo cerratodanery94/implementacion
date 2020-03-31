@@ -43,7 +43,7 @@ try {
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Registrar Usuarios</title>
+  <title>Mostrar Expediente</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -291,20 +291,27 @@ try {
     </section>
     <!-- /.sidebar -->
   </aside>
-       <div class="content-wrapper">
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+       MOSTRAR EXPEDIENTE DEL PACIENTE
+        
+      </h1>
+      
+    </section>
+
     <!-- Main content -->
     <section class="content">
-
-      <!-- Default box -->
       <div class="row">
-        <div class="col-md-12">
-      <div class="box">
-<div class="box-header with-border">
-<div class="form-group">
-      <h3>EXPEDIENTE</h3> 
-</div>
-<!--box-header-->
-<!--centro-->
+        <div class="col-xs-12">
+        <div class="box box-primary">
+            <div class="box-header">
+            </div>
+            <!--llamar funciones-->
+            <div class="box-body">
+           <div>
+
 <input type="hidden" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="NOMBRES"  name="id" id="id" value="<?php echo $id_p?>" readonly  >
            <div class="form-group col-lg-6 col-md-6 col-xs-12">
              <br>
@@ -397,6 +404,13 @@ try {
     </section>
     <!-- /.content -->
   </div>
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      <b>Version</b> 1.1.0
+    </div>
+    <strong>Copyright &copy; 2020 <a>System 32</a>.</strong> All rights
+    reserved.
+  </footer>
 
 
   

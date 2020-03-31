@@ -258,68 +258,66 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-    REGISTRO DE PROVEEDORES
-        <small>Llena el formulario para crear un proveedor</small>
+        REGISTRAR PROVEEDOR
+        
       </h1>
-      
       
     </section>
 
     <!-- Main content -->
-    <div class="col-100 forgot">
-    <div style='float:center;margin:auto;width:500px;' class="row">
-
-           <div class="col-md-10">
-           </div>
     <section class="content">
-
-      <!-- Default box -->
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title">CREAR PROVEEDOR</h3>
-
-          
-        </div>
-        <div class="box-body">
+      <div class="row">
+        <div class="col-xs-12">
+        <div class="box box-primary">
+            <div class="box-header">
+            </div>
+            <!--llamar funciones-->
+            <div class="box-body">
+           <div>
         
         <form action="" method="POST" role="form" name="Form_proveedor">
-                <div class="form-group">
+        <div id="alerta1"></div>
+        <div class="form-group col-lg-6 col-md-6 col-xs-12">
+      
                   <label for="exampleInputPassword1">PROVEEDOR</label>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="PROVEEDOR"  name="prov" id="prov" >
                 </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">CORREO</label>
-                  <input type="email" autocomplete="off"  class="form-control " placeholder="CORREO"  name="correo" id="correo">
-                </div>
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">TELEFONO DEL PROVEEDOR</label>
                   <input type="text" autocomplete="off" class="form-control " placeholder="TELEFONO DEL PROVEEDOR" name="tel_prov" id="tel_prov">
                 </div>
-                <div class="form-group">
-                <label for="exampleInputPassword1">DIRECCION</label>
-                    <textarea placeholder="DIRECCIÓN DEL PROVEEDOR" style="text-transform:uppercase"  class="form-control " name="direccion" id="direccion" cols="30" rows="5"></textarea>
-                </div>
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">NOMBRE DEL REPRESENTANTE</label>
                   <input type="text" style="text-transform:uppercase" autocomplete="off" class="form-control" placeholder="NOMBRE DEL REPRESENTANTE" name="nom_repre" id="nom_repre">
                 </div>
                 
-                <div class="form-group">
+              
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">CELULAR DEL REPRESENTANTE</label>
                   <input type="text" autocomplete="off" class="form-control correo" placeholder="CELULAR DEL REPREDENTANTE" name="cel_repre" id="cel_repre" >
                 </div>
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                  <label for="exampleInputEmail1">CORREO</label>
+                  <input type="email" autocomplete="off"  class="form-control " placeholder="CORREO"  name="correo" id="correo">
+                </div>
+               
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <label for="exampleInputPassword1">DIRECCION</label>
+                    <textarea placeholder="DIRECCIÓN DEL PROVEEDOR" style="text-transform:uppercase"  class="form-control " name="direccion" id="direccion" cols="30" rows="5"></textarea>
+                </div>
               <div class="box-footer">
               <div class="col text-center">
-        <div id="alerta1"></div>
+    
 
-                <button type="button" onclick="validar_proveedor();"  class="btn btn-primary">CREAR</button>
+                <button type="button" onclick="validar_proveedor();"  class="btn btn-primary btn-flat margin">CREAR</button>
                 <a href="../vistas/mostrar_prov_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
                 </div>
               </div>
             </form>
         </div>
         <!-- /.box-body -->
-        
+        </div>
+        </div>
         <!-- /.box-footer-->
       </div>
       <!-- /.box -->
@@ -328,14 +326,14 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
     <!-- /.content -->
     </div>
     </div>
-  </div>
+  
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.3.8
+      <b>Version</b> 1.1.0
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
+    <strong>Copyright &copy; 2020 <a>System 32</a>.</strong> All rights
     reserved.
   </footer>
 

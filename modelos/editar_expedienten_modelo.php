@@ -289,23 +289,30 @@ try {
     </section>
     <!-- /.sidebar -->
   </aside>
-       <div class="content-wrapper">
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        ACTUALIZAR INFORMACION DEL EXPEDIENTE
+        
+      </h1>
+      
+    </section>
+
     <!-- Main content -->
     <section class="content">
-
-      <!-- Default box -->
       <div class="row">
-        <div class="col-md-12">
-      <div class="box">
-<div class="box-header with-border">
-<div class="form-group">
-      <h3>EXPEDIENTE</h3> 
-</div>
-<!--box-header-->
-<div id="alerta"></div>
-<!--centro-->
-<input type="hidden" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="NOMBRES"  name="id" id="id" value="<?php echo $id_p?>" readonly  >
+        <div class="col-xs-12">
+        <div class="box box-primary">
+            <div class="box-header">
+            </div>
+            <!--llamar funciones-->
+            <div class="box-body">
+           <div>
 
+
+<input type="hidden" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="NOMBRES"  name="id" id="id" value="<?php echo $id_p?>" readonly  >
+<div id="alerta"></div>
            <div class="form-group col-lg-6 col-md-6 col-xs-12">
              <br>
                   <label for="exampleInputEmail1">NOMBRES</label>
@@ -331,13 +338,10 @@ try {
           </div>
            
           </form> 
-
           <form action="" method="post" name="form_exp"> 
-          
-               
            <input type="hidden" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="NOMBRES"  name="id_e" id="id_e" value="<?php echo $id_u?> "   >
            <input type="hidden" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="NOMBRES"  name="id" id="id" value="<?php echo $id_p?>" readonly  >
-        
+      
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">PESO</label>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="PESO"  name="peso" id="peso" value="<?php echo $peso?>" >
@@ -360,17 +364,12 @@ try {
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">ANTECEDENTES CLINICOS</label>
-
                   <textarea class="form-control" name="antecedentes" id="antecedentes" rows="10" cols="50"  ><?php echo $antecedentes?> </textarea >
                 </div>
-
-
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">DIETA</label>
-
                   <textarea class="form-control" name="dieta" id="dieta" rows="10" cols="50"  > <?php echo $dieta?> </textarea >
                 </div>
-
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">FECHA DE CREACION</label>
                   <input type="text" autocomplete="off" class="form-control nombres" placeholder="FECHA DE CREACION" name="fecha_de_creacion" id="fecha_de_creacion" value="<?php echo $fecha?> " readonly>
@@ -379,7 +378,7 @@ try {
                 <div class="box-footer">
               <div class="col text-center">
              
-              <button type="button" onclick="validar_expediente();"  class="btn btn-primary">ACTUALIZAR</button>
+              <button type="button" onclick="validar_expediente();"  class="btn btn-primary btn-flat margin">ACTUALIZAR</button>
                 <a href="../vistas/mostrar_expedienten_vista.php" class="btn bg-red btn-flat margin" >ATRAS</a>
                 </div>
               </div>

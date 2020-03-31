@@ -31,7 +31,7 @@ try {
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Registro de proveedores</title>
+  <title>Editar proveedor</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -276,64 +276,62 @@ try {
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-    EDITAR PROVEEDORES
-        <small>Edita el proveedor en esta seccion</small>
+        ACTUALIZAR INFORMACIÓN DEL PROVEEDOR
+        
       </h1>
-      
       
     </section>
 
     <!-- Main content -->
-    <div class="col-100 forgot">
-    <div style='float:center;margin:auto;width:500px;' class="row">
-
-           <div class="col-md-10">
-           </div>
     <section class="content">
+      <div class="row">
+        <div class="col-xs-12">
+        <div class="box box-primary">
+            <div class="box-header">
+            </div>
+            <!--llamar funciones-->
+            <div class="box-body">
+           <div>
 
-      <!-- Default box -->
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title">EDITAR PROVEEDOR</h3>
-
-          
-        </div>
-        <div class="box-body">
         
         <form action="" method="POST" role="form" name="Form_act_prov">
-                <div class="form-group">
+        <div id="alerta"></div>
+
                   <input type="hidden" class="form-control" placeholder="PROVEEDOR"  name="id_p" id="id_p" value="<?php echo $id_p?>" >
                 </div>
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+
                   <label for="exampleInputPassword1">PROVEEDOR</label>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="PROVEEDOR"  name="prov" id="prov" value="<?php echo $prov?>" >
                 </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">CORREO</label>
-                  <input type="email" autocomplete="off"  class="form-control " placeholder="CORREO"  name="correo" id="correo" value="<?php echo $correo ?>">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">TELEFONO DEL PROVEEDOR</label>
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <label for="exampleInputPassword1">TELEFONO DEL PROVEEDOR</label>
                   <input type="text" autocomplete="off" class="form-control " placeholder="TELEFONO DEL PROVEEDOR" name="tel_prov" id="tel_prov" value="<?php echo $tel_prov?>">
                 </div>
-                <div class="form-group">
-                <label for="exampleInputPassword1">DIRECCION</label>
-                    <textarea placeholder="DIRECCIÓN DEL PROVEEDOR" style="text-transform:uppercase"  class="form-control " name="direccion" id="direccion" cols="30" rows="5"><?php echo $direccion?></textarea>
-                </div>
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">NOMBRE DEL REPRESENTANTE</label>
                   <input type="text" style="text-transform:uppercase" autocomplete="off" class="form-control" placeholder="NOMBRE DEL REPRESENTANTE" name="nom_repre" id="nom_repre" value="<?php echo $nom_repre?>">
                 </div>
                 
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">CELULAR DEL REPRESENTANTE</label>
                   <input type="text" autocomplete="off" class="form-control correo" placeholder="CELULAR DEL REPREDENTANTE" name="cel_repre" id="cel_repre" value="<?php echo $cel_repre?>">
                 </div>
-                <div id="alerta"></div>
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                  <label for="exampleInputEmail1">CORREO</label>
+                  <input type="email" autocomplete="off"  class="form-control " placeholder="CORREO"  name="correo" id="correo" value="<?php echo $correo ?>">
+                </div>
+              
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <label for="exampleInputPassword1">DIRECCION</label>
+                    <textarea placeholder="DIRECCIÓN DEL PROVEEDOR" style="text-transform:uppercase"  class="form-control " name="direccion" id="direccion" cols="30" rows="5"><?php echo $direccion?></textarea>
+                </div>
+                
+               
 
               <div class="box-footer">
               <div class="col text-center">
-                <button type="submit"  class="btn btn-primary">ACTUALIZAR</button>
+                <button type="submit"  class="btn btn-primary btn-flat margin">ACTUALIZAR</button>
                 <a href="../vistas/mostrar_prov_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
                 </div>
               </div>
@@ -354,11 +352,12 @@ try {
 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.3.8
+      <b>Version</b> 1.1.0
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
+    <strong>Copyright &copy; 2020 <a>System 32</a>.</strong> All rights
     reserved.
   </footer>
+
 
  
   <!-- /.control-sidebar -->

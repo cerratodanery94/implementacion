@@ -252,54 +252,43 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
 
   <!-- =============================================== -->
 
-  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-    REGISTRAR USUARIOS 
-        <small>Llena el formulario para crear un usuario</small>
+        REGISTRAR USUARIO
+        
       </h1>
-      
       
     </section>
 
     <!-- Main content -->
-    <div class="col-100 forgot">
-    <div style='float:center;margin:auto;width:500px;' class="row">
-
-           <div class="col-md-10">
-           </div>
     <section class="content">
-
-      <!-- Default box -->
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title">CREAR USUARIO</h3>
-
-          
-        </div>
-        <div class="box-body">
-        
+      <div class="row">
+        <div class="col-xs-12">
+        <div class="box box-primary">
+            <div class="box-header">
+            </div>
+            <!--llamar funciones-->
+            <div class="box-body">
+           <div>
         <form action="" method="POST" role="form" name="Form_registrar">
-              
-                
-
-                <div class="form-group">
+        <div id="alerta"></div>
+        <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">NOMBRES</label>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control apellidos" placeholder="NOMBRE"  name="nombres" id="nombre" >
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">APELLIDOS</label>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="APELLIDO"  name="apellidos" id="apellido">
                 </div>
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputEmail1">USUARIO</label>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="USUARIO"  name="usuario" id="usum">
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <label for="exampleInputPassword1">ROL</label>
                 <select class="form-control" name="rol_usuario" id="combox">
         <option value="0">SELECCIONE ROL:</option>
@@ -312,52 +301,36 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
         ?>
         </select>
                 </div>
-
-                   
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">FECHA CREACION</label>
                   <input type="text" autocomplete="off" class="form-control nombres" name="fecha_creacion" id="fecha_creacion" value="<?php echo date("m/d/Y"); ?> " readonly>
                 </div>
-
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">FECHA DE VENCIMIENTO</label>
                   <input type="text" autocomplete="off" class="form-control nombres" name="fecha_vencida" id="fecha_vencida"  value="<?php echo date("m/d/Y",strtotime("+1 years")); ?> " readonly>
                 </div>
-                
-      
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">CORREO</label>
                   <input type="email" autocomplete="off" class="form-control correo" placeholder="CORREO" name="correo" id="correo" >
                 </div>
-
-                <div id="alerta"></div>
-
               <div class="box-footer">
               <div class="col text-center">
-                <button type="button"  class="btn btn-primary" onclick="validar_matenimiento();">CREAR</button>
+                <button type="button"  class="btn btn-primary  btn-flat margin" onclick="validar_matenimiento();">CREAR</button>
                 <a href="../vistas/mostrar_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
                 </div>
-              </div>
-            </form>
-        </div>
-        <!-- /.box-body -->
-        
-        <!-- /.box-footer-->
+        <!-- /.col -->
       </div>
-      <!-- /.box -->
-
-    
+      <!-- /.row -->
+    </section>
     <!-- /.content -->
-    </div>
-    </div>
   </div>
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.3.8
+      <b>Version</b> 1.1.0
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
+    <strong>Copyright &copy; 2020 <a>System 32</a>.</strong> All rights
     reserved.
   </footer>
 

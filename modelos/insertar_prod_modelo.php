@@ -2,11 +2,11 @@
 	try{
 		require '../modelos/conectar.php';
         if (isset($_POST['prod']) && 
-        isset($_POST['descrip']) && 
+		isset($_POST['descrip']) && 
         isset($_POST['precio']) && 
         isset($_POST['f_venc']) ) {
 		$prod=strtoupper($_POST["prod"]);
-        $descrip=strtoupper($_POST["descrip"]);
+		$descrip=strtoupper($_POST["descrip"]);
         $precio= $_POST["precio"];
 		$f_venc= $_POST["f_venc"];
 		

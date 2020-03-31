@@ -20,7 +20,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Mostrar Usuarios</title>
+  <title>Mostrar Empleado</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -276,7 +276,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        LISTA DE USUARIOS
+        LISTA DE EMPLEADOS
         
       </h1>
       
@@ -286,9 +286,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
-          <div class="box">
+        <div class="box box-primary">
             <div class="box-header">
-              <h3 class="box-title">ADMINISTRA LOS EMPLEADOS EN ESTA SECCION </h3>
             </div>
             <!--llamar funciones-->
             <div class="box-body">
@@ -379,9 +378,9 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.3.8
+      <b>Version</b> 1.1.0
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
+    <strong>Copyright &copy; 2020 <a>System 32</a>.</strong> All rights
     reserved.
   </footer>
 

@@ -11,7 +11,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Registrar Usuarios</title>
+  <title>Buscar Expediente</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -258,20 +258,26 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
     </section>
     <!-- /.sidebar -->
   </aside>
-       <div class="content-wrapper">
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+       CREAR EXPEDIENTE NUTRICIONAL
+        
+      </h1>
+      
+    </section>
+
     <!-- Main content -->
     <section class="content">
-
-      <!-- Default box -->
       <div class="row">
-        <div class="col-md-12">
-      <div class="box">
-<div class="box-header with-border">
-<div class="form-group">
-      <h3>CREAR EXPEDIENTE</h3> 
-</div>
-<!--box-header-->
-<!--centro-->
+        <div class="col-xs-12">
+        <div class="box box-primary">
+            <div class="box-header">
+            </div>
+            <!--llamar funciones-->
+            <div class="box-body">
+           <div>
 
 <div class="panel-body" id="formularioregistros">
   <form action="../vistas/insertar_expediented_vista.php" method="get" >
@@ -348,7 +354,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
          
                 <div class="box-footer">
               <div class="col text-center">
-              <button type="submit" onclick="validar_paciente();" class="btn btn-primary">CREAR</button>
+              <button type="submit" onclick="validar_paciente();" class="btn btn-primary btn-flat margin">CREAR</button>
                 <a href="../vistas/mostrar_expediented_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
                 </div>
               </div>

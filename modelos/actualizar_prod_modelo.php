@@ -3,7 +3,7 @@ require '../modelos/conectar.php';
 try {
     if (isset($_POST['prod']) && 
         isset($_POST['descrip']) && 
-        isset($_POST['precio']) && 
+        isset($_POST['precio']) &&
         isset($_POST['f_venc']) ) {
             $id_p= $_POST["id_p"];
             $prod=strtoupper($_POST["prod"]);
@@ -22,7 +22,7 @@ try {
       
          $query->execute(array(
            ":prod"=>$prod,
-		   ":descrip"=>$descrip,
+       ":descrip"=>$descrip,
 		   ":precio"=>$precio,
 		   ":f_venc"=>$f_venc,
             ":id_p"=>$id_p

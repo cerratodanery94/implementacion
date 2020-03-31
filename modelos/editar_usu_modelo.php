@@ -273,52 +273,47 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>10
   </aside>
   <!-- =============================================== -->
 
-  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        MANTENIMIENTO ACTUALIZAR 
+        LISTA DE USUARIOS
+        
       </h1>
-      
       
     </section>
 
     <!-- Main content -->
-    <div class="col-100 forgot">
-    <div style='float:center;margin:auto;width:500px;' class="row">
-
-           <div class="col-md-10">
-           </div>
     <section class="content">
-      <!-- Default box -->
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title">EDITAR USUARIO</h3>
-        </div>
-        <div class="box-body">
+      <div class="row">
+        <div class="col-xs-12">
+        <div class="box box-primary">
+            <div class="box-header">
+            </div>
+            <!--llamar funciones-->
+            <div class="box-body">
+           <div>
         <form action="" method="POST"  name="Formactualizar_mant">
-                <div class="form-group">
                  <input type="hidden"  class="form-control " name="id1" value="<?php echo $id_u;?>" >
                 </div>
-
-                <div class="form-group">
+                <div Id="alerta_mant"></div>
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">NOMBRES</label>
                   <input type="text"style="text-transform:uppercase" class="form-control apellidos" placeholder="NOMBRE"  name="nombres" id="nombre" value="<?php echo $nombre?>" >
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">APELLIDOS</label>
                   <input type="text" style="text-transform:uppercase" class="form-control nombres" placeholder="APELLIDO"  name="apellidos" id="apellido" value="<?php echo $apellido?>" >
                 </div>
                 <div class="form-group">
                   <input type="hidden" style="text-transform:uppercase" class="form-control nombres" placeholder="USUARIO"  name="usuarioa" id="usuarioa" value="<?php echo $usuario?>">
                 </div>
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputEmail1">USUARIO</label>
                   <input type="text" style="text-transform:uppercase" class="form-control nombres" placeholder="USUARIO"  name="usuarion" id="usuarion" value="<?php echo $usuario?>">
                 </div>
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <label for="exampleInputPassword1">ESTADO</label>
                 <select class="form-control" name="estado" id="combox2">
                  <option value="0">SELECCIONE EL ESTADO:</option>
@@ -352,7 +347,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>10
                  >VACACIONES</option>
                 </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <label for="exampleInputPassword1">ROL</label>
                 <select class="form-control" name="rol_usuario" id="combox">
                  <option value="0">SELECCIONE ROL:</option>
@@ -374,36 +369,31 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>10
                 </select>
                 </div>
 
-                <div class="form-group">
+                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <label for="exampleInputPassword1">CORREO</label>
                   <input type="email" class="form-control correo" placeholder="CORREO" name="correon" id="correon" value="<?php echo $correo?>" >
                 </div>
                 </div>
                 <div class="box-footer">
                 <div class="col text-center">
-                <div Id="alerta_mant"></div>
+                
     
-                <button type="button" name="update" class="btn btn-primary" onclick="Validar_actualizar_mant();">ACTUALIZAR</button>
+                <button type="button" name="update" class="btn btn-primary btn-flat margin" onclick="Validar_actualizar_mant();">ACTUALIZAR</button>
                 <a href="../vistas/mostrar_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
                 </div>
-                </div>
-            </form>
-            
-        </div>
-        <!-- /.box-body --> 
-        <!-- /.box-footer-->
+        <!-- /.col -->
       </div>
-      <!-- /.box -->
+      <!-- /.row -->
+    </section>
     <!-- /.content -->
-    </div>
-    </div>
   </div>
   <!-- /.content-wrapper -->
+
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.3.8
+      <b>Version</b> 1.1.0
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
+    <strong>Copyright &copy; 2020 <a>System 32</a>.</strong> All rights
     reserved.
   </footer>
 
@@ -414,7 +404,6 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>10
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-
 <!-- jQuery 2.2.3 -->
 <script src="../vistas/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
