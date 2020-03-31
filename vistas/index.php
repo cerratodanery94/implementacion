@@ -110,8 +110,8 @@ if (!isset($_SESSION["id_us"])) {
         </ul>
       </li>
      
-      <!-- Titulo de Pacientes -->
-      <li class="treeview">
+          <!-- Titulo de Pacientes -->
+          <li class="treeview">
         <a href="#">
           <i class="fa fa-users"></i>
           <span>Pacientes</span>
@@ -133,10 +133,10 @@ if (!isset($_SESSION["id_us"])) {
         </a>
         <!-- subtitulos de Expedientes -->
         <ul class="treeview-menu">
-        <li><a href="../vistas/insertar_expedienten_vista.php"><i class="fa fa-circle-o"></i>Añadir Expediente Nutri</a></li>
-          <li><a href="../vistas/mostrar_expedienten_vista.php"><i class="fa fa-circle-o"></i>Mostrar Expediente Nutri</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i>Añadir Expediente Doc </a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i>Mostrar Expediente Doc </a></li>
+        <li><a href="../vistas/insertar_expedienten_vista.php"><i class="fa fa-plus-square"></i>Añadir Expediente Nutri</a></li>
+          <li><a href="../vistas/mostrar_expedienten_vista.php"><i class="fa fa-list"></i>Mostrar Expediente Nutri</a></li>
+          <li><a href="../vistas/insertar_expediented_vista.php"><i class="fa fa-plus-square"></i>Añadir Expediente Doc </a></li>
+          <li><a href="../vistas/mostrar_expediented_vista.php"><i class="fa fa-list"></i>Mostrar Expediente Doc </a></li>
 
         </ul>
       </li>
@@ -227,10 +227,23 @@ if (!isset($_SESSION["id_us"])) {
           <li><a href="#"><i class="fa fa-circle-o"></i>Agregar Administrador</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Agregar Venta</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Actualizar Ventas</a></li>
- 
-        
-        
       </ul>
+
+ <!-- Titulo de Seguridad -->
+ <li class="treeview">
+        <a href="#">
+          <i class="glyphicon glyphicon-lock"></i>
+          <span>Seguridad</span>
+
+        </a>
+        <!-- subtitulos de Seguridad -->
+        <ul class="treeview-menu">
+          <li><a href="../vistas/mostrar_parametros_vista.php"><i class="fa fa-list"></i>Lista de Parámetros</a></li>
+          <li><a href="#"><i class="fa fa-list"></i>Lista de Roles</a></li>
+          <li><a href="#"><i class="glyphicon glyphicon-cloud-upload"></i>Backup</a></li>
+          <li><a href="../vistas/bitacora_vista.php"><i class="fa fa-list"></i>Bitácora</a></li>
+        </ul>
+      </li>
     </section>
     <!-- /.sidebar -->
   </aside>

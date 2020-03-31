@@ -112,8 +112,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
         </ul>
       </li>
      
-      <!-- Titulo de Pacientes -->
-      <li class="treeview">
+           <!-- Titulo de Pacientes -->
+           <li class="treeview">
         <a href="#">
           <i class="fa fa-users"></i>
           <span>Pacientes</span>
@@ -135,10 +135,10 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
         </a>
         <!-- subtitulos de Expedientes -->
         <ul class="treeview-menu">
-        <li><a href="../vistas/insertar_expedienten_vista.php"><i class="fa fa-circle-o"></i>Añadir Expediente Nutri</a></li>
-          <li><a href="../vistas/mostrar_expedienten_vista.php"><i class="fa fa-circle-o"></i>Mostrar Expediente Nutri</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i>Añadir Expediente Doc </a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i>Mostrar Expediente Doc </a></li>
+        <li><a href="../vistas/insertar_expedienten_vista.php"><i class="fa fa-plus-square"></i>Añadir Expediente Nutri</a></li>
+          <li><a href="../vistas/mostrar_expedienten_vista.php"><i class="fa fa-list"></i>Mostrar Expediente Nutri</a></li>
+          <li><a href="../vistas/insertar_expediented_vista.php"><i class="fa fa-plus-square"></i>Añadir Expediente Doc </a></li>
+          <li><a href="../vistas/mostrar_expediented_vista.php"><i class="fa fa-list"></i>Mostrar Expediente Doc </a></li>
 
         </ul>
       </li>
@@ -161,6 +161,19 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
           <li><a href="../vistas/insertar_prov_vista.php"><i class="fa fa-plus-square"></i>Añadir Proveedor</a></li>
           <li><a href="../vistas/mostrar_prov_vista.php"><i class="fa fa-list"></i>Lista de Proveedores</a></li>
 
+        </ul>
+      </li>
+      <!-- Titulo de Productos -->
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-medkit"></i>
+          <span>Productos</span>
+
+        </a>
+        <!-- subtitulos de Productos -->
+        <ul class="treeview-menu">
+        <li><a href="../vistas/insertar_prod_vista.php"><i class="fa fa-plus-square"></i>Añadir producto</a></li>
+          <li><a href="../vistas/mostrar_prod_vista.php"><i class="fa fa-list"></i>Lista de Productos</a></li>
         </ul>
       </li>
       <!-- Titulo de compras -->
@@ -216,10 +229,23 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
           <li><a href="#"><i class="fa fa-circle-o"></i>Agregar Administrador</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Agregar Venta</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Actualizar Ventas</a></li>
- 
-        
-        
       </ul>
+
+ <!-- Titulo de Seguridad -->
+ <li class="treeview">
+        <a href="#">
+          <i class="glyphicon glyphicon-lock"></i>
+          <span>Seguridad</span>
+
+        </a>
+        <!-- subtitulos de Seguridad -->
+        <ul class="treeview-menu">
+          <li><a href="../vistas/mostrar_parametros_vista.php"><i class="fa fa-list"></i>Lista de Parámetros</a></li>
+          <li><a href="#"><i class="fa fa-list"></i>Lista de Roles</a></li>
+          <li><a href="#"><i class="glyphicon glyphicon-cloud-upload"></i>Backup</a></li>
+          <li><a href="../vistas/bitacora_vista.php"><i class="fa fa-list"></i>Bitácora</a></li>
+        </ul>
+      </li>
     </section>
     <!-- /.sidebar -->
   </aside>
