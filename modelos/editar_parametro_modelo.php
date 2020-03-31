@@ -27,7 +27,7 @@ try {
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Editar Usuarios</title>
+  <title>Editar parametro</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -272,45 +272,41 @@ try {
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        EDITAR PARAMETRO
-        <small>Edita el parametro en esta sección</small>
+     ACTUALIZAR PARAMETROS
+        
       </h1>
-      
       
     </section>
 
     <!-- Main content -->
-    <div class="col-100 forgot">
-    <div style='float:center;margin:auto;width:500px;' class="row">
-
-        <div class="col-md-10">
-         </div>
     <section class="content">
-      <!-- Default box -->
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title">EDITAR PARAMETRO</h3>
-        </div>
-        <div class="box-body">
+      <div class="row">
+        <div class="col-xs-12">
+        <div class="box box-primary">
+            <div class="box-header">
+            </div>
+            <!--llamar funciones-->
+            <div class="box-body">
+           <div>
         <form action=""  method="POST" name="form_editar_empleados">
         <div id="alerta"></div>
         <div class="form-group">
         <input type="hidden" autocomplete="off" style="text-transform:uppercase" class="form-control"   name="id_p" id="id_p" value="<?php echo $id_p?>">
         </div>
 
-             <div class="form-group">
+        <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputEmail1">PARAMETRO</label>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="NOMBRES"  name="parametro" id="parametro"value="<?php echo $parametro?>" readonly>
               </div>
 
-                <div class="form-group">
+              <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">DESCRIPCIÓN</label>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="DESCRIPCIÓN"  name="descrip" id="descrip" value="<?php echo $descrip?>"readonly >
                 </div>
 
                 
 
-                <div class="form-group">
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">VALOR</label>
                   <input type="text"  style="text-transform:uppercase" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="VALOR"  name="valor" id="valor" value="<?php echo $valor?>" >
                 </div>
@@ -322,7 +318,7 @@ try {
                 <div class="col text-center">
                 <div id="alerta"></div>
                 
-                <button type="submit"    class="btn btn-primary">ACTUALIZAR</button>
+                <button type="submit"    class="btn btn-primary btn-flat margin">ACTUALIZAR</button>
                 <a href="../vistas/mostrar_parametros_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
                 </div>
               </div>
@@ -337,14 +333,17 @@ try {
     </div>
     </div>
   </div>
+  </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.3.8
+      <b>Version</b> 1.1.0
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
+    <strong>Copyright &copy; 2020 <a>System 32</a>.</strong> All rights
     reserved.
   </footer>
+
+>
 
  
   <!-- /.control-sidebar -->

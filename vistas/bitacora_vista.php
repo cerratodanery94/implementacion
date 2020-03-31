@@ -18,7 +18,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Mostrar Usuarios</title>
+  <title>Bitacora del Sistema</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -267,7 +267,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        BITÁCORA
+     BITÁCORA DEL SISTEMAS
         
       </h1>
       
@@ -277,8 +277,12 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
-          <div class="box">
+        <div class="box box-primary">
             <div class="box-header">
+            </div>
+            <!--llamar funciones-->
+            <div class="box-body">
+           <div>
               <h3 class="box-title">ADMINISTRA LA BITACORA EN ESTA SECCIÓN </h3>
             </div>
             <!--llamar funciones-->

@@ -24,6 +24,7 @@
                   ));
                   echo json_encode($respuesta);
                 break;
+
                 case 'eliminar':
                   //instruccion de eliminar
                   $respuesta=false;
