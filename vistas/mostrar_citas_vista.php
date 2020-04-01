@@ -20,7 +20,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Mostrar Usuarios</title>
+  <title>Mostrar Citas</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -81,7 +81,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="../vistas/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+        <img src="../vistas/img/User_icono1.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p><?php echo $_SESSION["usu"];?></p>
@@ -161,20 +161,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
           <span>Citas</span>
         </a>
       </li>
-      <!-- Titulo de Proveedores -->
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-truck"></i>
-          <span>Proveedores</span>
-
-          <!-- subtitulos de proveedores -->
-        </a>
-        <ul class="treeview-menu">
-          <li><a href="../vistas/insertar_prov_vista.php"><i class="fa fa-plus-square"></i>Añadir Proveedor</a></li>
-          <li><a href="../vistas/mostrar_prov_vista.php"><i class="fa fa-list"></i>Lista de Proveedores</a></li>
-
-        </ul>
-      </li>
+     
       <!-- Titulo de Productos -->
       <li class="treeview">
         <a href="#">
@@ -188,47 +175,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
           <li><a href="../vistas/mostrar_prod_vista.php"><i class="fa fa-list"></i>Lista de Productos</a></li>
         </ul>
       </li>
-      <!-- Titulo de compras -->
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-shopping-cart"></i>
-          <span>Compras</span>
-
-        </a>
-        <!-- subtitulos de compras -->
-        <ul class="treeview-menu">
-        <li><a href="../vistas/insertar_comp_vista.php"><i class="fa fa-plus-square"></i>Añadir Compra</a></li>
-          <li><a href="../vistas/mostrar_comp_vista.php"><i class="fa fa-list"></i>Lista de Compras</a></li>
-
-        </ul>
-      </li>
-      <!-- Titulo de ventas -->
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-credit-card-alt"></i>
-          <span>Ventas</span>
-
-        </a>
-        <!-- subtitulos de ventas -->
-        <ul class="treeview-menu">
-        <li><a href="../vistas/insertar_vent_vista.php"><i class="fa fa-plus-square"></i>Añadir venta</a></li>
-          <li><a href="../vistas/mostrar_vent_vista.php"><i class="fa fa-list"></i>Lista de Ventas</a></li>
-
-        </ul>
-      </li>
-      <!-- Titulo de Inventario -->
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-line-chart"></i>
-          <span>Inventario</span>
-
-        </a>
-        <!-- subtitulos de inventario -->
-        <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-plus-square"></i>Mostrar Inventario</a></li>
-        </ul>
-      </li>
-
+     
     <!-- Titulo de Admin -->
     <li class="treeview">
         <a href="#">
@@ -241,10 +188,24 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
           <li><a href="#"><i class="fa fa-circle-o"></i>Agregar Administrador</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Agregar Venta</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Actualizar Ventas</a></li>
- 
-        
-        
       </ul>
+
+ <!-- Titulo de Seguridad -->
+ <li class="treeview">
+        <a href="#">
+          <i class="glyphicon glyphicon-lock"></i>
+          <span>Seguridad</span>
+
+        </a>
+        <!-- subtitulos de Seguridad -->
+        <ul class="treeview-menu">
+          <li><a href="../vistas/mostrar_parametros_vista.php"><i class="fa fa-list"></i>Lista de Parámetros</a></li>
+          <li><a href="../vistas/mostrar_roles_vista.php"><i class="fa fa-list"></i>Lista de Roles</a></li>
+          <li><a href="#"><i class="glyphicon glyphicon-cloud-upload"></i>Backup</a></li>
+          <li><a href="../vistas/bitacora_vista.php"><i class="fa fa-list"></i>Bitácora</a></li>
+        </ul>
+      </li>
+   
     </section>
     <!-- /.sidebar -->
   </aside>
@@ -256,7 +217,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        LISTA DE CITAS
+     LISTA DE CITAS
         
       </h1>
       
@@ -266,9 +227,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
-          <div class="box">
+        <div class="box box-primary">
             <div class="box-header">
-              <h3 class="box-title">ADMINISTRA LAS CITAS EN ESTA SECCION </h3>
             </div>
             <!--llamar funciones-->
             <div class="box-body">

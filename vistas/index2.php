@@ -67,12 +67,12 @@ if (!isset($_SESSION["id_us"])) {
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="../vistas/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="../vistas/img/User_icono1.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p><?php echo $_SESSION["usu"];?></p>
         
-        </div>
+          </div>
       </div>
       <!-- search form -->
      
@@ -124,8 +124,8 @@ if (!isset($_SESSION["id_us"])) {
           
         </ul>
       </li>
-    <!-- Titulo de Expedientes -->
-    <li class="treeview">
+      <!-- Titulo de Expedientes -->
+      <li class="treeview">
         <a href="#">
           <i class="fa fa-folder-open-o"></i>
           <span>Expedientes</span>
@@ -133,10 +133,10 @@ if (!isset($_SESSION["id_us"])) {
         </a>
         <!-- subtitulos de Expedientes -->
         <ul class="treeview-menu">
-        <li><a href="../vistas/insertar_expedienten_vista.php"><i class="fa fa-plus-square"></i>Añadir Expediente Nutri</a></li>
-          <li><a href="../vistas/mostrar_expedienten_vista.php"><i class="fa fa-list"></i>Mostrar Expediente Nutri</a></li>
-          <li><a href="../vistas/insertar_expediented_vista.php"><i class="fa fa-plus-square"></i>Añadir Expediente Doc </a></li>
-          <li><a href="../vistas/mostrar_expediented_vista.php"><i class="fa fa-list"></i>Mostrar Expediente Doc </a></li>
+        <li><a href="../vistas/insertar_expedienten_vista.php"><i class="fa fa-circle-o"></i>Añadir Expediente Nutri</a></li>
+          <li><a href="../vistas/mostrar_expedienten_vista.php"><i class="fa fa-circle-o"></i>Mostrar Expediente Nutri</a></li>
+          <li><a href="../vistas/insertar_expediented_vista.php"><i class="fa fa-circle-o"></i>Añadir Expediente Doc </a></li>
+          <li><a href="../vistas/mostrar_expediented_vista.php"><i class="fa fa-circle-o"></i>Mostrar Expediente Doc </a></li>
 
         </ul>
       </li>
@@ -145,22 +145,17 @@ if (!isset($_SESSION["id_us"])) {
         <a href="../vistas/citas_vista.php">
           <i class="fa fa-calendar"></i>
           <span>Citas</span>
-        </a>
-      </li>
-      <!-- Titulo de Proveedores -->
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-truck"></i>
-          <span>Proveedores</span>
-
-          <!-- subtitulos de proveedores -->
-        </a>
+          </a>
         <ul class="treeview-menu">
-          <li><a href="../vistas/insertar_prov_vista.php"><i class="fa fa-plus-square"></i>Añadir Proveedor</a></li>
-          <li><a href="../vistas/mostrar_prov_vista.php"><i class="fa fa-list"></i>Lista de Proveedores</a></li>
+          <li><a href="../vistas/insertar_cita_vista.php"><i class="fa fa-plus-square"></i>Añadir cita</a></li>
+          <li><a href="../vistas/mostrar_citas_vista.php"><i class="fa fa-list"></i>Lista de citas</a></li>
 
         </ul>
       </li>
+        </a>
+      </li>
+
+     
       <!-- Titulo de Productos -->
       <li class="treeview">
         <a href="#">
@@ -174,47 +169,7 @@ if (!isset($_SESSION["id_us"])) {
           <li><a href="../vistas/mostrar_prod_vista.php"><i class="fa fa-list"></i>Lista de Productos</a></li>
         </ul>
       </li>
-      <!-- Titulo de compras -->
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-shopping-cart"></i>
-          <span>Compras</span>
-
-        </a>
-        <!-- subtitulos de compras -->
-        <ul class="treeview-menu">
-        <li><a href="../vistas/insertar_comp_vista.php"><i class="fa fa-plus-square"></i>Añadir Compra</a></li>
-          <li><a href="../vistas/mostrar_comp_vista.php"><i class="fa fa-list"></i>Lista de Compras</a></li>
-
-        </ul>
-      </li>
-      <!-- Titulo de ventas -->
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-credit-card-alt"></i>
-          <span>Ventas</span>
-
-        </a>
-        <!-- subtitulos de ventas -->
-        <ul class="treeview-menu">
-        <li><a href="../vistas/insertar_vent_vista.php"><i class="fa fa-plus-square"></i>Añadir venta</a></li>
-          <li><a href="../vistas/mostrar_vent_vista.php"><i class="fa fa-list"></i>Lista de Ventas</a></li>
-
-        </ul>
-      </li>
-      <!-- Titulo de Inventario -->
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-line-chart"></i>
-          <span>Inventario</span>
-
-        </a>
-        <!-- subtitulos de inventario -->
-        <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-plus-square"></i>Mostrar Inventario</a></li>
-        </ul>
-      </li>
-
+     
     <!-- Titulo de Admin -->
     <li class="treeview">
         <a href="#">
@@ -239,15 +194,15 @@ if (!isset($_SESSION["id_us"])) {
         <!-- subtitulos de Seguridad -->
         <ul class="treeview-menu">
           <li><a href="../vistas/mostrar_parametros_vista.php"><i class="fa fa-list"></i>Lista de Parámetros</a></li>
-          <li><a href="#"><i class="fa fa-list"></i>Lista de Roles</a></li>
+          <li><a href="../vistas/mostrar_roles_vista.php"><i class="fa fa-list"></i>Lista de Roles</a></li>
           <li><a href="#"><i class="glyphicon glyphicon-cloud-upload"></i>Backup</a></li>
           <li><a href="../vistas/bitacora_vista.php"><i class="fa fa-list"></i>Bitácora</a></li>
         </ul>
       </li>
+   
     </section>
     <!-- /.sidebar -->
   </aside>
-
   <!-- =============================================== -->
 
   <!-- Content Wrapper. Contains page content -->

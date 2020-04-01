@@ -38,7 +38,7 @@ try {
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Registrar Usuarios</title>
+  <title>Editar cita</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -106,19 +106,19 @@ try {
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="../vistas/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+        <img src="../vistas/img/User_icono1.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p><?php echo $_SESSION["usu"];?></p>
         
-        </div>
+          </div>
       </div>
       <!-- search form -->
      
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
-        <li class="header">Barra de Navengacion</li>
+        <li class="header">Barra de Navegación</li>
        
        <!-- Titulo de Usuario -->
       <li class="treeview">
@@ -128,8 +128,8 @@ try {
         </a>
         <!-- subtitulos de Usuario -->
         <ul class="treeview-menu">
-          <li><a href="../vistas/insertar_mant_vista.php"><i class="fa fa-plus-square"></i>Crear Usuarios</a></li>
-          <li><a href="../vistas/mostrar_vista.php"><i class="fa fa-minus-square"></i>lista de usuarios</a></li>
+          <li><a href="../vistas/insertar_mant_vista.php"><i class="fa fa-plus-square"></i>Añadir Usuarios</a></li>
+          <li><a href="../vistas/mostrar_vista.php"><i class="fa fa-list"></i>Lista de Usuarios</a></li>
          
 
         </ul>
@@ -144,13 +144,13 @@ try {
         <!-- subtitulos de Empleados -->
         <ul class="treeview-menu">
         <li><a href="../vistas/insertar_empleado_vista.php"><i class="fa fa-plus-square"></i>Añadir Empleado</a></li>
-          <li><a href="../vistas/mostrar_empleados_vista.php"><i class="fa fa-minus-square"></i> Mostrar Empleado</a></li>
+          <li><a href="../vistas/mostrar_empleados_vista.php"><i class="fa fa-list"></i> Lista de Empleados</a></li>
 
         </ul>
       </li>
      
-           <!-- Titulo de Pacientes -->
-           <li class="treeview">
+      <!-- Titulo de Pacientes -->
+      <li class="treeview">
         <a href="#">
           <i class="fa fa-users"></i>
           <span>Pacientes</span>
@@ -172,10 +172,10 @@ try {
         </a>
         <!-- subtitulos de Expedientes -->
         <ul class="treeview-menu">
-        <li><a href="../vistas/insertar_expedienten_vista.php"><i class="fa fa-plus-square"></i>Añadir Expediente Nutri</a></li>
-          <li><a href="../vistas/mostrar_expedienten_vista.php"><i class="fa fa-list"></i>Mostrar Expediente Nutri</a></li>
-          <li><a href="../vistas/insertar_expediented_vista.php"><i class="fa fa-plus-square"></i>Añadir Expediente Doc </a></li>
-          <li><a href="../vistas/mostrar_expediented_vista.php"><i class="fa fa-list"></i>Mostrar Expediente Doc </a></li>
+        <li><a href="../vistas/insertar_expedienten_vista.php"><i class="fa fa-circle-o"></i>Añadir Expediente Nutri</a></li>
+          <li><a href="../vistas/mostrar_expedienten_vista.php"><i class="fa fa-circle-o"></i>Mostrar Expediente Nutri</a></li>
+          <li><a href="../vistas/insertar_expediented_vista.php"><i class="fa fa-circle-o"></i>Añadir Expediente Doc </a></li>
+          <li><a href="../vistas/mostrar_expediented_vista.php"><i class="fa fa-circle-o"></i>Mostrar Expediente Doc </a></li>
 
         </ul>
       </li>
@@ -184,22 +184,17 @@ try {
         <a href="../vistas/citas_vista.php">
           <i class="fa fa-calendar"></i>
           <span>Citas</span>
-        </a>
-      </li>
-      <!-- Titulo de Proveedores -->
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-truck"></i>
-          <span>Proveedores</span>
-
-          <!-- subtitulos de proveedores -->
-        </a>
+          </a>
         <ul class="treeview-menu">
-          <li><a href="../vistas/insertar_prov_vista.php"><i class="fa fa-plus-square"></i>Añadir Proveedor</a></li>
-          <li><a href="../vistas/mostrar_prov_vista.php"><i class="fa fa-list"></i>Lista de Proveedores</a></li>
+          <li><a href="../vistas/insertar_cita_vista.php"><i class="fa fa-plus-square"></i>Añadir cita</a></li>
+          <li><a href="../vistas/mostrar_citas_vista.php"><i class="fa fa-list"></i>Lista de citas</a></li>
 
         </ul>
       </li>
+        </a>
+      </li>
+
+     
       <!-- Titulo de Productos -->
       <li class="treeview">
         <a href="#">
@@ -213,47 +208,7 @@ try {
           <li><a href="../vistas/mostrar_prod_vista.php"><i class="fa fa-list"></i>Lista de Productos</a></li>
         </ul>
       </li>
-      <!-- Titulo de compras -->
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-shopping-cart"></i>
-          <span>Compras</span>
-
-        </a>
-        <!-- subtitulos de compras -->
-        <ul class="treeview-menu">
-        <li><a href="../vistas/insertar_comp_vista.php"><i class="fa fa-plus-square"></i>Añadir Compra</a></li>
-          <li><a href="../vistas/mostrar_comp_vista.php"><i class="fa fa-list"></i>Lista de Compras</a></li>
-
-        </ul>
-      </li>
-      <!-- Titulo de ventas -->
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-credit-card-alt"></i>
-          <span>Ventas</span>
-
-        </a>
-        <!-- subtitulos de ventas -->
-        <ul class="treeview-menu">
-        <li><a href="../vistas/insertar_vent_vista.php"><i class="fa fa-plus-square"></i>Añadir venta</a></li>
-          <li><a href="../vistas/mostrar_vent_vista.php"><i class="fa fa-list"></i>Lista de Ventas</a></li>
-
-        </ul>
-      </li>
-      <!-- Titulo de Inventario -->
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-line-chart"></i>
-          <span>Inventario</span>
-
-        </a>
-        <!-- subtitulos de inventario -->
-        <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-plus-square"></i>Mostrar Inventario</a></li>
-        </ul>
-      </li>
-
+     
     <!-- Titulo de Admin -->
     <li class="treeview">
         <a href="#">
@@ -278,26 +233,35 @@ try {
         <!-- subtitulos de Seguridad -->
         <ul class="treeview-menu">
           <li><a href="../vistas/mostrar_parametros_vista.php"><i class="fa fa-list"></i>Lista de Parámetros</a></li>
-          <li><a href="#"><i class="fa fa-list"></i>Lista de Roles</a></li>
+          <li><a href="../vistas/mostrar_roles_vista.php"><i class="fa fa-list"></i>Lista de Roles</a></li>
           <li><a href="#"><i class="glyphicon glyphicon-cloud-upload"></i>Backup</a></li>
           <li><a href="../vistas/bitacora_vista.php"><i class="fa fa-list"></i>Bitácora</a></li>
         </ul>
       </li>
+   
     </section>
     <!-- /.sidebar -->
   </aside>
-       <div class="content-wrapper">
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        EDITAR CITAS
+        
+      </h1>
+      
+    </section>
+
     <!-- Main content -->
     <section class="content">
-
-      <!-- Default box -->
       <div class="row">
-        <div class="col-md-12">
-      <div class="box">
-<div class="box-header with-border">
-<div class="form-group">
-      <h3>EDITAR CITA</h3> 
-</div>
+        <div class="col-xs-12">
+        <div class="box box-primary">
+            <div class="box-header">
+            </div>
+            <!--llamar funciones-->
+            <div class="box-body">
+           <div>
 <!--box-header-->
 <div id="alerta"></div>
 <!--centro-->
@@ -373,7 +337,7 @@ try {
          
           <div class="box-footer">
           <div class="col text-center">
-            <button type="submit" class="btn btn-primary">ACTUALIZAR</button>
+            <button type="submit" class="btn btn-primary btn-flat margin">ACTUALIZAR</button>
             <a href="../vistas/mostrar_citas_vista.php" class="btn bg-red btn-flat margin" >ATRAS</a>
           </div>
           </div>
