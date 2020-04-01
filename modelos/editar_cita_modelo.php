@@ -181,7 +181,7 @@ try {
       </li>
       <!-- Titulo de Citas -->
       <li class="treeview">
-        <a href="../vistas/citas_vista.php">
+      <a href="#">
           <i class="fa fa-calendar"></i>
           <span>Citas</span>
           </a>

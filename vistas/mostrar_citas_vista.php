@@ -156,7 +156,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
       </li>
       <!-- Titulo de Citas -->
       <li class="treeview">
-        <a href="../vistas/citas_vista.php">
+      <a href="#">
           <i class="fa fa-calendar"></i>
           <span>Citas</span>
         </a>
