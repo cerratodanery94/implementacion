@@ -67,7 +67,6 @@
         </div>
         <div class="pull-left info">
           <p><?php echo $_SESSION["usu"];?></p>
-        
           </div>
       </div>
       <!-- search form -->
@@ -126,13 +125,13 @@
           <i class="fa fa-folder-open-o"></i>
           <span>Expedientes</span>
 
-        </a>
+          </a>
         <!-- subtitulos de Expedientes -->
         <ul class="treeview-menu">
-        <li><a href="../vistas/insertar_expedienten_vista.php"><i class="fa fa-circle-o"></i>Añadir Expediente Nutri</a></li>
-          <li><a href="../vistas/mostrar_expedienten_vista.php"><i class="fa fa-circle-o"></i>Mostrar Expediente Nutri</a></li>
-          <li><a href="../vistas/insertar_expediented_vista.php"><i class="fa fa-circle-o"></i>Añadir Expediente Doc </a></li>
-          <li><a href="../vistas/mostrar_expediented_vista.php"><i class="fa fa-circle-o"></i>Mostrar Expediente Doc </a></li>
+        <li><a href="../vistas/insertar_expedienten_vista.php"><i class="fa fa-plus-square"></i>Expediente Nutricional</a></li>
+          <li><a href="../vistas/mostrar_expedienten_vista.php"><i class="fa fa-list"></i>Mostrar Expediente Nutricional</a></li>
+          <li><a href="../vistas/insertar_expediented_vista.php"><i class="fa fa-plus-square"></i>Expediente Médico </a></li>
+          <li><a href="../vistas/mostrar_expediented_vista.php"><i class="fa fa fa-list"></i>Mostrar Expediente Médico </a></li>
 
         </ul>
       </li>
@@ -150,36 +149,6 @@
       </li>
         </a>
       </li>
-
-     
-      <!-- Titulo de Productos -->
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-medkit"></i>
-          <span>Productos</span>
-
-        </a>
-        <!-- subtitulos de Productos -->
-        <ul class="treeview-menu">
-        <li><a href="../vistas/insertar_prod_vista.php"><i class="fa fa-plus-square"></i>Añadir producto</a></li>
-          <li><a href="../vistas/mostrar_prod_vista.php"><i class="fa fa-list"></i>Lista de Productos</a></li>
-        </ul>
-      </li>
-     
-    <!-- Titulo de Admin -->
-    <li class="treeview">
-        <a href="#">
-          <i class="fa fa-credit-card-alt"></i>
-          <span>Administrador</span>
-
-        </a>
-        <!-- subtitulos de ventas -->
-        <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-circle-o"></i>Agregar Administrador</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Agregar Venta</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Actualizar Ventas</a></li>
-      </ul>
-
  <!-- Titulo de Seguridad -->
  <li class="treeview">
         <a href="#">
