@@ -246,7 +246,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
                  <a href='../modelos/mostrar_expediented_modelo.php?id=<?php echo $fila["EXP_CODIGO"]?>' class="btn bg-green btn-flat margin">
                  <i class='fa fa-folder-open-o'></i></a>
 
-                 <a href='../modelos/mostrar_foto_modelo.php?id=<?php echo $fila["EXP_CODIGO"]?>' class="btn bg-blue btn-flat margin">
+                 <a href='../vistas/mostrar_foto_vista.php?id=<?php echo $fila["EXP_CODIGO"]?>' class="btn bg-blue btn-flat margin">
                  <i class='fa fa-eye'></i></a> 
 
                  <a href='../modelos/eliminar_expediented_modelo.php?id=<?php echo $fila["EXP_CODIGO"]?>' class="btn btne bg-maroon bnt-flat margin">

@@ -12,28 +12,22 @@
 		$apuntes=strtoupper ($_POST["apuntes"]);
 		$medicamento=strtoupper($_POST["medicamento"]);
 		$fecha_de_creacion=$_POST["fecha_de_creacion"];
-		$file=$_FILES["foto"];
-		$nombre=$file["name"];
-		$ruta_provisional=$file["tmp_name"];
-		$carpeta="fotos/";
 		
-		$src=$carpeta.$nombre;
-		move_uploaded_file($ruta_provisional,$src);
-		$imagen="fotos/".$nombre;
+		
+		
 		
 	   $sql="INSERT INTO tbl_expedientes (
 		   PER_CODIGO,
 		   EXP_FECHA_CREACION,
 		   EXP_ANTECEDENTES_CLINICOS,
-		   EXP_MEDICAMENTO,
-		   EXP_FOTO) 
+		   EXP_MEDICAMENTO) 
 		   
 	   VALUES (
 		:id,
 		:fecha_creacion,
 		:apuntes,
-		:medicamento,
-		:foto
+		:medicamento
+		
 	
 		)";
 
@@ -42,10 +36,27 @@
 		   ":id"=>$id,
 		   ":fecha_creacion"=>$fecha_de_creacion,
 		   ":apuntes"=>$apuntes,
-		   ":medicamento"=>$medicamento, 
-		   ":foto"=>$imagen));
-	   
+		   ":medicamento"=>$medicamento
+		   ));
 
+		$sql2 = "CALL insertar_img(:id,:ur);";
+
+		$cantidad_fotos = count($_FILES["foto"]["name"]);
+		$ruta = "fotos/";
+		$_SESSION ['cant'] = $cantidad_fotos;
+		for($i=0; $i<$cantidad_fotos; $i++){
+
+			if ($_FILES["foto"]['type'][$i]=='image/png' || $_FILES["foto"]['type'][$i]=='image/jpeg'){
+
+				$resultado=$conexion->prepare($sql2);	
+				$resultado->execute(array(
+				":id"=>$id,
+				":ur"=>$_FILES["foto"]["name"][$i]
+				));
+				move_uploaded_file($_FILES["foto"]["tmp_name"][$i], $ruta.$_FILES["foto"]["name"][$i]);
+			}
+		}
+	   
 	  /* $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
 		VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
 	    $resultado2=$conexion->prepare($sql2);	
