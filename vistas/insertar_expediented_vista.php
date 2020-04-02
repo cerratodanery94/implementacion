@@ -235,6 +235,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
             <!--llamar funciones-->
             <div class="box-body">
            <div>
+<div id="alerta"></div>
 
 <div class="panel-body" id="formularioregistros">
   <form action="../vistas/insertar_expediented_vista.php" method="get" >
@@ -282,7 +283,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
            
           </form> 
 
-          <form action="" method="post" name="frm_exp"enctype="multipart/form-data" >
+          <form action="" method="post" name="form_doctora" enctype="multipart/form-data" >
           
                
            <input type="hidden" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="NOMBRES"  name="id" id="id" value="<?php echo $registro['PER_CODIGO']?>"   >
@@ -311,7 +312,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
          
                 <div class="box-footer">
               <div class="col text-center">
-              <button type="submit" onclick="validar_paciente();" class="btn btn-primary btn-flat margin">CREAR</button>
+              <button type="button" onclick="validar_doctora();" class="btn btn-primary btn-flat margin">CREAR</button>
                 <a href="../vistas/mostrar_expediented_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
                 </div>
               </div>
@@ -340,7 +341,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
 
  
 
-<script src="../vistas/js/validaciones.js"></script>
+<script src="../vistas/js/validar_sistema.js"></script>
 <!-- jQuery 2.2.3 -->
 <script src="../vistas/plugins/jQuery/jquery-2.2.3.min.js"></script>
 

@@ -244,7 +244,7 @@ try {
             <!--llamar funciones-->
             <div class="box-body">
            <div>
-        <form action=""  method="POST" name="form_editar_empleados">
+        <form action=""  method="POST" name="form_parametros">
         <div id="alerta"></div>
         <div class="form-group">
         <input type="hidden" autocomplete="off" style="text-transform:uppercase" class="form-control"   name="id_p" id="id_p" value="<?php echo $id_p?>">
@@ -271,10 +271,8 @@ try {
                 
                 <div class="box-footer"> 
 
-                <div class="col text-center">
-                <div id="alerta"></div>
-                
-                <button type="submit"    class="btn btn-primary btn-flat margin">ACTUALIZAR</button>
+                <div class="col text-center">      
+                <button type="button" onclick="validar_parametros();" class="btn btn-primary btn-flat margin">ACTUALIZAR</button>
                 <a href="../vistas/mostrar_parametros_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
                 </div>
               </div>
@@ -308,7 +306,7 @@ try {
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-
+<script src="../vistas/Js/Validar_sistema.js"></script>
 <!-- jQuery 2.2.3 -->
 <script src="../vistas/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
@@ -319,7 +317,7 @@ try {
 <script src="../vistas/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../vistas/dist/js/app.min.js"></script>
-<script src="../vistas/Js/Validar_sistema.js"></script>
+
 <!-- AdminLTE for demo purposes -->
 <script src="../vistas/dist/js/demo.js"></script>
 <script src="../vistas/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>

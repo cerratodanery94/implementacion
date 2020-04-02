@@ -224,7 +224,7 @@
           <h3 class="box-title">EDITAR EMPLEADO</h3>
         </div>
         <div class="box-body">
-        <form action=""  method="POST" name="form_editar_empleados">
+        <form  method="POST" name="form_parametro">
         <div id="alerta"></div>
         <div class="form-group">
         <input type="hidden" autocomplete="off" style="text-transform:uppercase" class="form-control"   name="idp" id="idp" value="<?php echo $id_p?>">
@@ -252,9 +252,8 @@
                 <div class="box-footer"> 
 
                 <div class="col text-center">
-                <div id="alerta"></div>
-                
-                <button type="button" onclick="validar_editar();"   class="btn btn-primary">ACTUALIZAR</button>
+              
+                <button type="button" onclick="validar_pa();" class="btn btn-primary">ACTUALIZAR</button>
                 <a href="../vistas/mostrar_parametros_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
                 </div>
               </div>

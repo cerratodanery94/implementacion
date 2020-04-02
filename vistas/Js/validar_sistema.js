@@ -121,11 +121,11 @@ function validar_telefono(parametro){
                     return true;
                 }
             }
-            //VALIDAR NUMEROS Y LETRAS
+            //VALIDAR NUMEROS DECIMALES
             function validar_numeros(parametro){
-                var patron= /^(\d+|\d+.\d{2,5})$/;
-
-            // var patron= /^(\d+|\d+.\d{2,5})|(?=.*[a-z])(?=.*[A-Z])$/;
+                var patron=/^(\d+|\d+.\d{2,5})$/;   
+            // /^(\d+|\d+.\d{2,5})|(?=.*[a-z])(?=.*[A-Z])$/;
+             //var patron= /^(\d+|\d+.\d{2,5})|(?=.*[a-z])(?=.*[A-Z])$/;
             if(!patron.test(parametro)){
                 return false;
             }
@@ -136,7 +136,7 @@ function validar_telefono(parametro){
 
             //VALIDAR SOLO NUMERO
             function validar_num(parametro){
-                var patron= /^(\d+|\d+.\d{2,5})$/;
+                var patron= /^(\d+|\d+)$/;
                 if(!patron.test(parametro)){
                     return false;
                 }
@@ -144,9 +144,6 @@ function validar_telefono(parametro){
                     return true;
                 }
                 }
-
-
-
         //VALLIDAR FORMULARIO INSERTAR EMPLEADOS VISTA
     function validar_empleado(){
     var formulario=document.form_empleados;
@@ -329,6 +326,11 @@ else if (Validar_espacio2 (formulario.nacionalidad.value)==false){
         formulario.direccion.focus();
         return false;
       }
+      else if(Validar_espacio2(formulario.direccion.value)==false){
+        document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIO EN EL CAMPO</div>';
+        formulario.direccion.focus();
+        return false;
+    }
         formulario.submit();
     }
 
@@ -540,6 +542,11 @@ else if (validar_tamaño (formulario.correo.value)==false){
         formulario.direccion.focus();
         return false;
     }
+    else if(Validar_espacio2(formulario.direccion.value)==false){
+        document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIO EN EL CAMPO</div>';
+        formulario.direccion.focus();
+        return false;
+    }
         formulario.submit();
     }
 
@@ -723,11 +730,16 @@ else if (validar_tamaño (formulario.correo.value)==false){
             return false;
         }
           //VALIDAR CAMPO DIRECCION
-          if (formulario.direccion.value=="") {
+          if (formulario.direccion.value==0) {
             document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO DIRECCION VACIO</div>';
             formulario.direccion.focus();
             return false;
           }
+          else if(Validar_espacio2(formulario.direccion.value)==false){
+            document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIO EN EL CAMPO</div>';
+            formulario.direccion.focus();
+            return false;
+        }
             formulario.submit();
         }
 
@@ -912,8 +924,13 @@ else if (validar_tamaño (formulario.correo.value)==false){
                 return false;
             }
               //VALIDAR CAMPO DIRECCION
-              if (formulario.direccion.value=="") {
+              if (formulario.direccion.value==0) {
                 document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO DIRECCION VACIO</div>';
+                formulario.direccion.focus();
+                return false;
+            }
+            else if(Validar_espacio2(formulario.direccion.value)==false){
+                document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIO EN EL CAMPO</div>';
                 formulario.direccion.focus();
                 return false;
             }
@@ -1140,20 +1157,34 @@ if (formulario_exp.presion_arterial.value==""){
     formulario_exp.temperatura.focus();
     return false;
 }
+
+
+
+
+
+
 //VALIDAR ANTECEDENTES
-if (formulario_exp.antecedentes.value==""){
-    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INGRESAR VALORES NUMERICOS EN EL CAMPO</div>';
+if (formulario_exp.antecedentes.value==0){
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO ANTECEDENTES VACIO</div>';
     formulario_exp.antecedentes.focus();
     return false;
 }
-
+else if(Validar_espacio2(formulario_exp.antecedentes.value)==false){
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIO EN EL CAMPO</div>';
+    formulario_exp.antecedentes.focus();
+    return false;
+}
 //VALIDAR DIETA
-if (formulario_exp.dieta.value==""){
-    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INGRESAR VALORES NUMERICOS EN EL CAMPO</div>';
+if (formulario_exp.dieta.value==0){
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO DIETA VACIO</div>';
     formulario_exp.dieta.focus();
     return false;
 }
-
+else if(Validar_espacio2(formulario_exp.dieta.value)==false){
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIO EN EL CAMPO</div>';
+    formulario_exp.dieta.focus();
+    return false;
+}
  //VALIDAR FECHA
 
  if (formulario_exp.fecha_de_creacion.value==""){
@@ -1163,3 +1194,128 @@ if (formulario_exp.dieta.value==""){
  }
      formulario_exp.submit();
  }
+
+
+ //VALIDAR FORMULARIO ROL (EDITAR Y INSERTAR)
+ function validar_rol(){
+     var formulario=document.form_rol;
+     if(formulario.rol.value==""){
+        document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO ROL VACIO</div>';
+        formulario.rol.focus();
+        return false;
+    }
+    else if(Validar_espacio2(formulario.rol.value)==false){
+        document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMTE DE ESPACIO EN EL CAMPO</div>';
+        formulario.rol.focus();
+        return false;
+    }
+    else if(validar_texto(formulario.rol.value)==false){
+        document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO ROL NO PUEDE CONTENER NUMEROS</div>';
+        formulario.rol.focus();
+        return false;
+    }
+    if(formulario.descrip.value==""){
+        document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO DESCRIPCION VACIO</div>';
+        formulario.descrip.focus();
+        return false;
+    }
+    else if(Validar_espacio2(formulario.descrip.value)==false){
+        document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMTE DE ESPACIO EN EL CAMPO</div>';
+        formulario.descrip.focus();
+        return false;
+    }
+    else if(validar_texto(formulario.descrip.value)==false){
+        document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO DESCRIPCION NO PUEDE CONTENER NUMEROS</div>';
+        formulario.descrip.focus();
+        return false;
+    }
+formulario.submit(); 
+}
+
+//VALIDAR FORMULARIO CITA
+function validar_cita(){
+    var formulario=document.form_cita;
+    if(formulario.fecha_cita.value==0){
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO FECHA CITA VACIO</div>';
+        formulario.fecha_cita.focus();
+        return false;
+    }
+    //VALIDAR CAMPO HORA INCIO
+    if(formulario.hora_inicio.value==0){
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO HORA INICIO VACIO</div>';
+        formulario.hora_inicio.focus();
+        return false;
+    }
+    //VALIDAR CAMPO ESTADO
+    if(formulario.estado.value==0){
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO ESTADO VACIO, SELECCIONE UNA OPCION</div>';
+        formulario.estado.focus();
+        return false;
+    }
+    //VALIDAR CAMPO DOCTORA
+if(formulario.doctora.value==0){
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO DOCTORA VACIO, SELECCIONE UNA OPCION</div>';
+    formulario.doctora.focus();
+    return false;
+}
+
+
+    //VALIDAR CAMPO HORA FINAL
+    if(formulario.hora_final.value==0){
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO HORA FINAL VACIO</div>';
+        formulario.hora_final.focus();
+        return false;
+    }
+    formulario.submit();
+}
+
+//VALIDAR FORMULARIO PARAMETROS
+function validar_parametros(){
+    var formulario=document.form_parametros;
+    if(formulario.valor.value==""){
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO VALOR VACIO</div>';
+        formulario.valor.focus();
+        return false;   
+    }
+    else if(validar_num(formulario.valor.value)==false){
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INGRESAR DIGITOS NUMERICOS EN EL CAMPO</div>';
+        formulario.valor.focus();
+        return false; 
+    }
+    formulario.submit();
+}
+
+//VALIDAR FORMULARIO INSERTAR DOCTORA
+function validar_doctora(){
+    var formulario=document.form_doctora;
+    //VALIDAR CAMPO APUNTES
+    if(formulario.apuntes.value==0){
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO APUNTES DE LA CONSULTA VACIO</div>';
+        formulario.apuntes.focus();
+        return false; 
+    }
+    else if(Validar_espacio2(formulario.apuntes.value)==false){
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIO EN EL CAMPO</div>';
+        formulario.apuntes.focus();
+        return false;
+    }
+//CAMPO MEDICAMENTO
+if(formulario.medicamento.value==0){
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO MEDICAMENTO VACIO</div>';
+    formulario.medicamento.focus();
+    return false; 
+}
+else if(Validar_espacio2(formulario.medicamento.value)==false){
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIO EN EL CAMPO</div>';
+    formulario.medicamento.focus();
+    return false;
+}
+//VALIDAR CAMPO FECHA
+if(formulario.fecha_de_creacion.value==0){
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO FECHA DE CREACION VACIO</div>';
+    formulario.fecha_de_creacion.focus();
+    return false; 
+}
+
+    formulario.submit();
+}

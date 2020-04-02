@@ -229,7 +229,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
             <!--llamar funciones-->
             <div class="box-body">
            <div>
-        <form action="" method="POST">
+        <form action="" method="POST" name="form_rol">
         <div id="alerta1"></div>
         <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">ROL</label>
@@ -243,7 +243,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
               <div class="box-footer">
               <div class="col text-center">
              
-                <button type="submit"  class="btn btn-primary  btn-flat margin">AGREGAR</button>
+                <button type="button" onclick="validar_rol();"  class="btn btn-primary  btn-flat margin">AGREGAR</button>
                 <a href="../vistas/mostrar_roles_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
                 </div>
               </div>

@@ -235,7 +235,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
             <!--llamar funciones-->
             <div class="box-body">
            <div>
-
+<div id="alerta"></div>
 <div class="panel-body" id="formularioregistros">
   <form action="../vistas/insertar_cita_vista.php" method="get" >
   <label for="exampleInputEmail1">INGRESE UN NUMERO DE IDENTIDAD</label> <br>
@@ -283,7 +283,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
            
           </form> 
 
-          <form action="" method="post" name="frm_exp" enctype="multipart/form-data" >
+          <form action="" method="post" name="form_cita" enctype="multipart/form-data" >
             <input type="hidden" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="NOMBRES"  name="id_p" id="id_p" value="<?php echo $registro['PER_CODIGO']?>"   >
             
             <div class="form-group col-lg-6 col-md-6 col-xs-12"> 
@@ -293,7 +293,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
 
             <div class="form-group col-lg-6 col-md-6 col-xs-12">
              <label for="exampleInputPassword1">DOCTORA</label>
-             <select class="form-control" name="id_u" id="id_u">
+             <select class="form-control" name="id_u" id="doctora">
              <option value="0">SELECCIONE DOCTORA:</option>
                 <?php
                require '../modelos/conectar.php';
@@ -331,7 +331,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
 
             <div class="box-footer">
             <div class="col text-center">
-            <button type="submit"  class="btn btn-primary btn-flat margin">CREAR</button>
+            <button type="button" onclick="validar_cita();"  class="btn btn-primary btn-flat margin">CREAR</button>
             <a href="../vistas/mostrar_citas_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
             </div>
             </div>
@@ -360,7 +360,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
 
  
 
-<script src="../vistas/js/validaciones.js"></script>
+<script src="../vistas/js/validar_sistema.js"></script>
 <!-- jQuery 2.2.3 -->
 <script src="../vistas/plugins/jQuery/jquery-2.2.3.min.js"></script>
 

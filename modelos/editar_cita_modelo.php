@@ -290,7 +290,7 @@ try {
         </div> 
         
 
-          <form action="" method="post" name="form_exp"> 
+          <form action="" method="post" name="form_cita"> 
           <input type="hidden" name="id_c" id="id_c" value="<?php echo $id_c?>">   
           <input type="hidden" name="id_u" id="id_u" value="<?php echo $id_u?>">
           <input type="hidden" name="id_p" id="id_p" value="<?php echo $id_p?>" >
@@ -302,7 +302,7 @@ try {
 
           <div class="form-group col-lg-6 col-md-6 col-xs-12">
             <label for="exampleInputPassword1">DOCTORA</label>
-            <select class="form-control" name="id_u" id="id_u">
+            <select class="form-control" name="id_u" id="doctora">
              <option value="0">SELECCIONE DOCTORA:</option>
              <option value="44" <?php if ($id_u==44) { echo 'selected'; }?>>LILIANA DIAZ</option>    
              <option value="45" <?php if ($id_u==45) { echo 'selected'; }?>>MARIA SERRANO</option>  
@@ -337,7 +337,7 @@ try {
          
           <div class="box-footer">
           <div class="col text-center">
-            <button type="submit" class="btn btn-primary btn-flat margin">ACTUALIZAR</button>
+            <button type="button" onclick="validar_cita();" class="btn btn-primary btn-flat margin">ACTUALIZAR</button>
             <a href="../vistas/mostrar_citas_vista.php" class="btn bg-red btn-flat margin" >ATRAS</a>
           </div>
           </div>
