@@ -29,7 +29,7 @@ if (!isset($_SESSION["id_us"])) {
 
 <header class="main-header">
     <!-- Logo -->
-    <a href="../vistas/index2.php" class="logo">
+    <a href="#" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>H</span>
       <!-- logo for regular state and mobile devices -->
@@ -194,11 +194,10 @@ if (!isset($_SESSION["id_us"])) {
             <div class="box-body">
            <div>
       <!-- Default box -->
-      <div class="box">
+      
         <div class="box-header with-border">
           <h3 class="box-title">CLINICA MÉDICA HOMEOPÁTICA CLIMEHOME</h3>
 
-          
         </div>
         <div class="box-body">
           
@@ -281,9 +280,9 @@ if (!isset($_SESSION["id_us"])) {
  
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.3.8
+      <b>Version</b> 1.1.0
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
+    <strong>Copyright &copy; 2020 <a>System 32</a>.</strong> All rights
     reserved.
   </footer>
 

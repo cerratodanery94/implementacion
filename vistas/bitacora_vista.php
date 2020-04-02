@@ -42,7 +42,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
 
 <header class="main-header">
     <!-- Logo -->
-    <a href="../vistas/index2.php" class="logo">
+    <a href="#" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>H</span>
       <!-- logo for regular state and mobile devices -->
@@ -208,7 +208,6 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
             <!--llamar funciones-->
             <div class="box-body">
            <div>
-              <h3 class="box-title">ADMINISTRA LA BITACORA EN ESTA SECCIÓN </h3>
             </div>
             <!--llamar funciones-->
             <div class="box-body">
@@ -266,12 +265,11 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.3.8
+      <b>Version</b> 1.1.0
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
+    <strong>Copyright &copy; 2020 <a>System 32</a>.</strong> All rights
     reserved.
   </footer>
-
  
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
