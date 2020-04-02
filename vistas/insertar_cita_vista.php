@@ -154,7 +154,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
       </li>
       <!-- Titulo de Citas -->
       <li class="treeview">
-        <a href="../vistas/citas_vista.php">
+        <a href="#">
           <i class="fa fa-calendar"></i>
           <span>Citas</span>
           </a>
@@ -184,7 +184,6 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
    
     </section>
     <!-- /.sidebar -->
-  </aside>
   </aside>
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -261,6 +260,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
             <label for="exampleInputPassword1">FECHA DE LA CITA</label>
             <input type="date" autocomplete="off" class="form-control nombres" name="fecha_cita" id="fecha_cita">
             </div>
+            
+
 
             <div class="form-group col-lg-6 col-md-6 col-xs-12">
              <label for="exampleInputPassword1">DOCTORA</label>

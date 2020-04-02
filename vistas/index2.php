@@ -20,7 +20,6 @@ if (!isset($_SESSION["id_us"])) {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../vistas/dist/css/AdminLTE.min.css">
- 
   <link rel="stylesheet" href="../vistas/dist/css/skins/_all-skins.min.css">
 
 </head>
@@ -269,24 +268,17 @@ if (!isset($_SESSION["id_us"])) {
       </div>
       <!-- /.row -->
       <!-- Main row -->
-    
-
     </section>
-
-
-          
-        </div>
-        <!-- /.box-body -->
-        
-        <!-- /.box-footer-->
-      </div>
-      <!-- /.box -->
-
-    </section>
-    <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
 
+  </div>
+ 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.3.8
@@ -315,5 +307,8 @@ if (!isset($_SESSION["id_us"])) {
 <script src="../vistas/dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../vistas/dist/js/demo.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+
+
 </body>
 </html>
