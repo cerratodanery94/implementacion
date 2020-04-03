@@ -1,48 +1,38 @@
 <?php
 session_start();
-if (!isset($_SESSION["id_us"])) {
-  header('location:../vistas/login_vista.php');
-}
+require '../modelos/conectar.php';
+$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
+VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
+  $resultado2=$conexion->prepare($sql2);	
+$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA DE INSERTAR MANTENIMIENTO',":fecha"=>date("Y-m-d H:m:s")));
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Pantalla Principal</title>
+  <title>Registrar Usuarios</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
-  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../vistas/bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  
-  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="plugins/iCheck/flat/blue.css">
-  <!-- Morris chart -->
-  <link rel="stylesheet" href="plugins/morris/morris.css">
-  <!-- jvectormap -->
-  <link rel="stylesheet" href="plugins/jvectormap/jquery-jvectormap-1.2.2.css">
-  <!-- Date Picker -->
-  <link rel="stylesheet" href="plugins/datepicker/datepicker3.css">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
-  <!-- bootstrap wysihtml5 - text editor -->
-  <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-
-
+  <link rel="stylesheet" href="../vistas/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="../vistas/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="../vistas/Plugins/sweetalert/dist/sweetalert2.min.css">
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
+<!-- Site wrapper -->
 <div class="wrapper">
+
 <header class="main-header">
     <!-- Logo -->
-    <a href="#" class="logo">
+    <a href="../../index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>H</span>
       <!-- logo for regular state and mobile devices -->
@@ -57,6 +47,7 @@ if (!isset($_SESSION["id_us"])) {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
+
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <li class="dropdown user user-menu">
@@ -71,6 +62,7 @@ if (!isset($_SESSION["id_us"])) {
       </div>
     </nav>
   </header>
+
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
@@ -81,6 +73,7 @@ if (!isset($_SESSION["id_us"])) {
         </div>
         <div class="pull-left info">
           <p><?php echo $_SESSION["usu"];?></p>
+        
           </div>
       </div>
       <!-- search form -->
@@ -172,7 +165,6 @@ if (!isset($_SESSION["id_us"])) {
         </a>
         <!-- subtitulos de Seguridad -->
         <ul class="treeview-menu">
-        <li><a href="../vistas/insertar_permisos_vista.php"><i class="fa fa-list"></i>Añadir Permisos</a></li>
           <li><a href="../vistas/mostrar_parametros_vista.php"><i class="fa fa-list"></i>Lista de Parámetros</a></li>
           <li><a href="../vistas/mostrar_roles_vista.php"><i class="fa fa-list"></i>Lista de Roles</a></li>
           <li><a href="#"><i class="glyphicon glyphicon-cloud-upload"></i>Backup</a></li>
@@ -183,156 +175,141 @@ if (!isset($_SESSION["id_us"])) {
     </section>
     <!-- /.sidebar -->
   </aside>
+
+
   <!-- =============================================== -->
 
+  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        ¡BIENVENIDO!
+    ASIGNACION DE PERMISOS
         
       </h1>
+      
       
     </section>
 
     <!-- Main content -->
+    <div class="col-100 forgot">
+    <div style='float:center;margin:auto;width:500px;' class="row">
+
+           <div class="col-md-10">
+           </div>
     <section class="content">
-      <div class="row">
-        <div class="col-xs-12">
-        <div class="box box-primary">
-            <div class="box-header">
-            </div>
-            <!--llamar funciones-->
-            <div class="box-body">
-           <div>
+
+      <!-- Default box -->
+      <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title">ASIGNAR PERMISOS</h3>
+
+          
         </div>
+        <div class="box-body">
+        
+        <form action="" method="POST" role="form" name="Form_registrar">
+
+<div class="form-group">
+        <label for="exampleInputPassword1">ROL</label>
+ <select class="form-control" name="r" id="r">
+        <option value="0">SELECCIONE ROL:</option>
+        <?php
+        require '../modelos/conectar.php';
+        $resultado = $conexion -> query ("SELECT * FROM TBL_ROL");
+        while ($registro=$resultado->fetch(PDO::FETCH_ASSOC)) {
+        echo '<option value="'.$registro["ROL_CODIGO"].'">'.$registro["ROL_NOMBRE"].'</option>';
+        }
+        ?>
+</select>
+        </div>
+        
+        <div class="form-group">
+        <label for="exampleInputPassword1">PANTALLA</label>
+ <select class="form-control" name="o" id="o">
+        <option value="0">SELECCIONE LA PANTALLA:</option>
+        <?php
+        require '../modelos/conectar.php';
+        $resultado = $conexion -> query ("SELECT * FROM TBL_OBJETOS");
+        while ($registro=$resultado->fetch(PDO::FETCH_ASSOC)) {
+        echo '<option value="'.$registro["OBJ_CODIGO"].'">'.$registro["OBJ_NOMBRE"].'</option>';
+        }
+        ?>
+</select>
+        </div>
+
+        <div class="form-group ">
+        <div class="form-group ">
+    <label for="exampleInputPassword1">
+    
+    <input value="1"   type="checkbox" name="c" >
+    CONSULTAR
+    </label>
+    <br>
+    <label for="exampleInputPassword1">
+    
+    <input value="1"   type="checkbox" name="i" >
+    INSERTAR
+    </label>
+    <br>
+    <label for="exampleInputPassword1">
+    
+    <input value="1"   type="checkbox" name="a" >
+    Actualizar
+    </label>
+    <br>
+    <label for="exampleInputPassword1">
+    
+    <input value="1"   type="checkbox" name="e" >
+    ELIMINAR
+    </label>
+    </div>
+    <div class="box-footer">
+      <div class="col text-center">
+        <button type="submit"  class="btn btn-primary">CREAR</button>
+        
+        </div>
+      </div>
+   
+    </form>
+
+
+       </div>
+        <div id="alerta"></div>
+
+     
+  
+        </div>
+        <!-- /.box-body -->
+        
+        <!-- /.box-footer-->
       </div>
       <!-- /.box -->
-      <div class="box-body">
-          
-          <section class="content">
-      <!-- Small boxes (Stat box) -->
-      <div class="row">
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-aqua">
-            <div class="inner">
-              <h2>USUARIOS</h2>
 
-              <p>ADMINISTRAR</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-person-add"></i>
-            </div>
-            <a href="../vistas/mostrar_vista.php" class="small-box-footer">IR <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-green">
-            <div class="inner">
-              <h2>PACIENTES</h2>
-
-              <p>ADMINISTRAR</p>
-            </div>
-            <div class="icon">
-              <i class="glyphicon glyphicon-credit-card"></i>
-            </div>
-            <a href="../vistas/mostrar_pacientes_vista.php" class="small-box-footer">IR <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-yellow">
-            <div class="inner">
-              <h2>EXP DOCTORA</h2>
-
-              <p>ADMINISTRAR</p>
-            </div>
-            <div class="icon">
-              <i class="glyphicon glyphicon-folder-close"></i>
-            </div>
-            <a href="../vistas/mostrar_expediented_vista.php" class="small-box-footer">IR <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-red">
-            <div class="inner">
-              <h2>EXP NUTRICIONISTA</h2>
-
-              <p>ADMINISTRAR</p>
-            </div>
-            <div class="icon">
-              <i class="glyphicon glyphicon-folder-close"></i>
-            </div>
-            <a href="../vistas/mostrar_expedienten_vista.php" class="small-box-footer">IR <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-      </div>
-      <!-- /.row -->
-      <!-- Main row -->
-    </section>
-  </div>
-  </div>
-          <!-- Calendar -->
-          <div class="col-lg-3 col-xs-6">
-          <div class="box box-solid bg-blue-gradient">
-            <div class="box-header">
-              <i class="fa fa-calendar"></i>
-              <h3 class="box-title">CALENDARIO</h3>
-              <!-- tools box -->
-              <div class="pull-right box-tools">
-                <!-- button with a dropdown -->
-                <div class="btn-group">
-                </div>
-                <button type="button" class="btn btn-default btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-default btn-sm" data-widget="remove"><i class="fa fa-times"></i>
-                </button>
-              </div>
-              <!-- /. tools -->
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body no-padding">
-              <!--The calendar -->
-              <div id="calendar" style="width: 100%"></div>
-            </div>
-            <!-- /.box-body -->
-                </div>
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
-            </div>
-          </div>
-          <!-- /.box -->
-
-    </section>
+    
     <!-- /.content -->
+    </div>
+    </div>
   </div>
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 1.1.0
+      <b>Version</b> 2.3.8
     </div>
-    <strong>Copyright &copy; 2020 <a>System 32</a>.</strong> All rights
+    <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
     reserved.
   </footer>
 
+ 
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-
+<script src="../vistas/js/validaciones.js"></script>
+<!-- jQuery 2.2.3 -->
 <script src="../vistas/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="../vistas/bootstrap/js/bootstrap.min.js"></script>
@@ -344,42 +321,8 @@ if (!isset($_SESSION["id_us"])) {
 <script src="../vistas/dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../vistas/dist/js/demo.js"></script>
-        <!--LIBRERIAS -->
-<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-$.widget.bridge('uibutton', $.ui.button);
-</script>
-<!-- Bootstrap 3.3.6 -->
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<!-- Morris.js charts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="plugins/morris/morris.min.js"></script>
-<!-- Sparkline -->
-<script src="plugins/sparkline/jquery.sparkline.min.js"></script>
-<!-- jvectormap -->
-<script src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<!-- jQuery Knob Chart -->
-<script src="plugins/knob/jquery.knob.js"></script>
-<!-- daterangepicker -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="plugins/daterangepicker/daterangepicker.js"></script>
-<!-- datepicker -->
-<script src="plugins/datepicker/bootstrap-datepicker.js"></script>
-<!-- Bootstrap WYSIHTML5 -->
-<script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-<!-- Slimscroll -->
-<script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
-<script src="plugins/fastclick/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/app.min.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
+<script src="../vistas/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
 </body>
 </html>
+<?php require "../modelos/insertar_mant_modelo.php" ?>
+<?php require "../modelos/insertar_permisos_modelo.php" ?>
