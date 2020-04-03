@@ -1,22 +1,8 @@
 <?php
-
 session_start();
 if (!isset($_SESSION["id_us"])) {
   header('location:../vistas/login_vista.php');
 }
-require '../modelos/conectar.php';
-
-$ROL = $_SESSION['ROL'];
-$_SESSION['PANTALLA'] = 11 or 13 or 17 or 21 or 24 or 28 or 30 or 31 ;
-$PANTALLA = $_SESSION['PANTALLA'];
-$sql3 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO = :pantalla ";
-$resultado3=$conexion->prepare($sql3);	
-$resultado3->execute(array(":rol"=>$ROL,":pantalla"=>$PANTALLA));
-$DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
- $CONSULTAR = $DATOS['PERM_CONSULTAR'];
- $INSERTAR = $DATOS['PERM_INSERTAR'];
- $ELIMINAR = $DATOS['PERM_ELIMINAR'];
- $ACTUALIZAR = $DATOS['PERM_ACTUALIZAR'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -111,13 +97,12 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
           <span>Usuarios</span>
         </a>
         <!-- subtitulos de Usuario -->
-
-        <?php if ($CONSULTAR == 1){ ?>
-          <ul class="treeview-menu">
+        <ul class="treeview-menu">
+          <li><a href="../vistas/insertar_mant_vista.php"><i class="fa fa-plus-square"></i>Añadir Usuarios</a></li>
           <li><a href="../vistas/mostrar_vista.php"><i class="fa fa-list"></i>Lista de Usuarios</a></li>
+         
+
         </ul>
-       <?php } ?>
-        
       </li>
        <!-- Titulo de Empleados -->
       <li class="treeview">
@@ -127,13 +112,11 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
 
         </a>
         <!-- subtitulos de Empleados -->
-
-        <?php if ($CONSULTAR == 1){ ?>
-          <ul class="treeview-menu">
+        <ul class="treeview-menu">
+        <li><a href="../vistas/insertar_empleado_vista.php"><i class="fa fa-plus-square"></i>Añadir Empleado</a></li>
           <li><a href="../vistas/mostrar_empleados_vista.php"><i class="fa fa-list"></i> Lista de Empleados</a></li>
+
         </ul>
-        <?php } ?>
-        
       </li>
      
       <!-- Titulo de Pacientes -->
@@ -144,42 +127,27 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
 
         </a>
         <!-- subtitulos de Pacientes -->
-        <?php if ($CONSULTAR == 1){ ?>
-          <ul class="treeview-menu">
+        <ul class="treeview-menu">
+          <li><a href="../vistas/insertar_pacientes_vista.php"><i class="fa fa-plus-square"></i>Añadir Paciente</a></li>
           <li><a href="../vistas/mostrar_pacientes_vista.php"><i class="fa fa-list"></i>Lista de Pacientes</a></li>
+          
         </ul>
-       <?php } ?>
-        
       </li>
       <!-- Titulo de Expedientes -->
       <li class="treeview">
         <a href="#">
           <i class="fa fa-folder-open-o"></i>
-          <span>Expedientes Nutricionista</span>
+          <span>Expedientes</span>
 
           </a>
         <!-- subtitulos de Expedientes -->
-        <?php if ($CONSULTAR == 1){ ?>
-          <ul class="treeview-menu">
+        <ul class="treeview-menu">
+        <li><a href="../vistas/insertar_expedienten_vista.php"><i class="fa fa-plus-square"></i>Expediente Nutricional</a></li>
           <li><a href="../vistas/mostrar_expedienten_vista.php"><i class="fa fa-list"></i>Mostrar Expediente Nutricional</a></li>
-        </ul>
-         <?php } ?>
-        
-      </li>
-
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-folder-open-o"></i>
-          <span>Expedientes Medico </span>
-
-          </a>
-        <!-- subtitulos de Expedientes -->
-        <?php if ($CONSULTAR == 1){ ?>
-          <ul class="treeview-menu">
+          <li><a href="../vistas/insertar_expediented_vista.php"><i class="fa fa-plus-square"></i>Expediente Médico </a></li>
           <li><a href="../vistas/mostrar_expediented_vista.php"><i class="fa fa fa-list"></i>Mostrar Expediente Médico </a></li>
+
         </ul>
-        <?php } ?>
-       
       </li>
       <!-- Titulo de Citas -->
       <li class="treeview">
@@ -187,20 +155,16 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
           <i class="fa fa-calendar"></i>
           <span>Citas</span>
           </a>
-
-          <?php if ($CONSULTAR == 1){ ?>
-            <ul class="treeview-menu">
+        <ul class="treeview-menu">
+          <li><a href="../vistas/insertar_cita_vista.php"><i class="fa fa-plus-square"></i>Añadir cita</a></li>
           <li><a href="../vistas/mostrar_citas_vista.php"><i class="fa fa-list"></i>Lista de citas</a></li>
+
         </ul>
-           <?php } ?>
-        
       </li>
         </a>
       </li>
  <!-- Titulo de Seguridad -->
-
-    <?php if ($CONSULTAR == 1){ ?>
-      <li class="treeview">
+ <li class="treeview">
         <a href="#">
           <i class="glyphicon glyphicon-lock"></i>
           <span>Seguridad</span>
@@ -208,15 +172,12 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
         </a>
         <!-- subtitulos de Seguridad -->
         <ul class="treeview-menu">
-        <li><a href="../vistas/insertar_permisos_vista.php"><i class="fa fa-list"></i>Añadir Permisos</a></li>
           <li><a href="../vistas/mostrar_parametros_vista.php"><i class="fa fa-list"></i>Lista de Parámetros</a></li>
           <li><a href="../vistas/mostrar_roles_vista.php"><i class="fa fa-list"></i>Lista de Roles</a></li>
           <li><a href="../vistas/backup_vista.php"><i class="glyphicon glyphicon-cloud-upload"></i>Backup</a></li>
           <li><a href="../vistas/bitacora_vista.php"><i class="fa fa-list"></i>Bitácora</a></li>
         </ul>
       </li>
-    <?php } ?>
-
    
     </section>
     <!-- /.sidebar -->
@@ -227,7 +188,7 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        ¡BIENVENIDO!
+    COPIA DE SEGURIDAD DE BASE Y RESTAURACION
         
       </h1>
       
@@ -246,9 +207,66 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
         </div>
       </div>
       <!-- /.box -->
-      
-          <!-- Calendar -->
-          <div class="col-lg-3 col-xs-6">
+      <div class="box-body">
+          
+          <section class="content">
+      <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <!--aqui comienza el boton------------------------------------------------------------------------------------------------------------>
+      <!-- ./col -->
+      <div class="col-lg-3 col-xs-6">
+            <div class="inner">
+            <a href="../modelos/Backup_modelo.php"class="btn bg-blue btn-flat margin">REALIZAR COPIA DE SEGURIDAD <i class="glyphicon glyphicon-cloud-download"></i></a>  
+            </div>
+        <!--aqui comienza el boton------------------------------------------------------------------------------------------------------------>
+      </div>
+      <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+       <form action="../modelos/restore_modelo.php" method="POST">
+           <label for="exampleInputPassword1">COPIA DE SEGURIDAD</label>
+                <select  name="restorePoint"class="form-control">
+                 <option  value="" disabled="" selected=""> SELECCIONE LA FECHA DE COPIA DE SEGURIDAD:</option>
+               <?php
+			          	include_once '../modelos/connet_modelo.php';
+				          $ruta=BACKUP_PATH;
+                  if(is_dir($ruta))
+                  {
+                     if($aux=opendir($ruta))
+                    {
+                        while(($archivo = readdir($aux)) !== false)
+                     {
+                          if($archivo!="."&&$archivo!="..")
+                          {
+				                    $nombrearchivo=str_replace(".sql", "", $archivo);
+				                    $nombrearchivo=str_replace("-", ":", $nombrearchivo);
+				                    $ruta_completa=$ruta.$archivo;
+                            if(is_dir($ruta_completa))
+                            {
+                            }
+                            else
+                             {
+				                     echo '<option value="'.$ruta_completa.'">'.$nombrearchivo.'</option>';
+				                     }
+				                  }
+				             }
+				               closedir($aux);
+				            }
+                  }
+                  else{
+				                echo $ruta." No es ruta válida";
+			              	}
+		      	?>
+                 </select>
+                 <p>
+                 </p>
+     
+                 <div class="inner">
+                 <button type="submit"class="btn bg-blue btn-flat margin" >Restaurar <i class="glyphicon glyphicon-cloud-upload"></i></button>  
+                 </div>
+           </form>
+                </div>
+         <!--aqui comienza el boton------------------------------------------------------------------------------------------------------------>
+         <div class="col-lg-3 col-xs-6">
           <div class="box box-solid bg-blue-gradient">
             <div class="box-header">
               <i class="fa fa-calendar"></i>
@@ -274,11 +292,8 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
                 </div>
                 <!-- /.col -->
               </div>
-              <!-- /.row -->
-            </div>
-          </div>
-          <!-- /.box -->
-
+    </section>
+  
     </section>
     <!-- /.content -->
   </div>

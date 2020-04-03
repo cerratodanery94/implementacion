@@ -215,8 +215,9 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
         <li><a href="../vistas/insertar_permisos_vista.php"><i class="fa fa-list"></i>Añadir Permisos</a></li>
           <li><a href="../vistas/mostrar_parametros_vista.php"><i class="fa fa-list"></i>Lista de Parámetros</a></li>
           <li><a href="../vistas/mostrar_roles_vista.php"><i class="fa fa-list"></i>Lista de Roles</a></li>
-          <li><a href="#"><i class="glyphicon glyphicon-cloud-upload"></i>Backup</a></li>
+          <li><a href="../vistas/backup_vista.php"><i class="glyphicon glyphicon-cloud-upload"></i>Backup</a></li>
           <li><a href="../vistas/bitacora_vista.php"><i class="fa fa-list"></i>Bitácora</a></li>
+         
         </ul>
       </li>
     <?php } ?>
@@ -273,7 +274,6 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
                   <td>CORREO</td>
                   <td>NACIONALIDAD</td>
                   <td>RTN</td>
-				          
                 </tr>
                 </thead>
                 <tbody>
@@ -282,7 +282,7 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
                $consulta=$conexion->prepare("SELECT * FROM tbl_personas where PER_CODIGO<>1");
                $consulta->execute();
                  while($fila=$consulta->fetch()){?>
-                 <tr>
+                 <tr> 
                  <td><?php echo $fila['PER_CODIGO']?></td>
 					       <td><?php echo $fila['PER_NUMERO_IDENTIDAD']?></td>
 					       <td><?php echo $fila['PER_NOMBRES']?></td>
