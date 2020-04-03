@@ -221,7 +221,18 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
                   <th>NOMBRES</th>
                   <th>APELLIDOS</th>
                   <td>ACCIONES</td>
-                  
+                  <td>PASPORTE</td>
+                  <td>FECAHA DE NACIMIENTO</td>
+                  <td>FECHA DE CREACION</td>
+                  <td>EDAD</td>
+                  <td>GENERO</td>
+                  <td>TELEFONO FIJO</td>
+                  <td>CELULAR</td>
+                  <td>PROFESION</td>
+                  <td>DIRECCION</td>
+                  <td>CORREO</td>
+                  <td>NACIONALIDAD</td>
+                  <td>RTN</td>
 				          
                 </tr>
                 </thead>
@@ -236,6 +247,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
 					       <td><?php echo $fila['PER_NUMERO_IDENTIDAD']?></td>
 					       <td><?php echo $fila['PER_NOMBRES']?></td>
                  <td><?php echo $fila['PER_APELLIDOS']?></td>
+                
                  <td>
                  <a href='../modelos/mostrar_pacientes_modelo.php?id=<?php echo $fila["PER_CODIGO"]?>' class="btn bg-blue btn-flat margin">
                  <i class='fa fa-eye'></i></a> 
@@ -245,7 +257,19 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
 
                  <a href='../modelos/eliminar_pacientes_modelo.php?id=<?php echo $fila["PER_CODIGO"]?>' class="btn btne bg-maroon bnt-flat margin">
 					       <i class='fa fa-trash'></i></a> 
-					       </td>
+                 </td>
+                 <td><?php echo $fila['PER_PASAPORTE']?></td>
+                 <td><?php echo $fila['PER_FECHA_NACIMIENTO']?></td>
+                 <td><?php echo $fila['PER_FECHA_CREACION']?></td>
+                 <td><?php echo $fila['PER_EDAD']?></td>
+                 <td><?php echo $fila['PER_GENERO']?></td>
+                 <td><?php echo $fila['PER_TEL_FIJO']?></td>
+                 <td><?php echo $fila['PER_CELULAR']?></td>
+                 <td><?php echo $fila['PER_PROFESION']?></td>
+                 <td><?php echo $fila['PER_DIRECCION']?></td>
+                 <td><?php echo $fila['PER_CORREO']?></td>
+                 <td><?php echo $fila['PER_NACIONALIDAD']?></td>
+                 <td><?php echo $fila['PER_RTN']?></td>
                  </tr>
                  <?php } ?> 
                 </tbody>
@@ -256,6 +280,19 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
                   <th>NOMBRES</th>
                   <th>APELLIDOS</th>
                   <td>ACCIONES</td>
+                  <td>PASPORTE</td>
+                  <td>FECAHA DE NACIMIENTO</td>
+                  <td>FECHA DE CREACION</td>
+                  <td>EDAD</td>
+                  <td>GENERO</td>
+                  <td>TELEFONO FIJO</td>
+                  <td>CELULAR</td>
+                  <td>PROFESION</td>
+                  <td>DIRECCION</td>
+                  <td>CORREO</td>
+                  <td>NACIONALIDAD</td>
+                  <td>RTN</td>
+                  
                 </tr>
                 </tfoot>
               </table>
@@ -306,6 +343,14 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
 <!-- AdminLTE for demo purposes -->
 <script src="../vistas/dist/js/demo.js"></script>
 <script src="../vistas/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
+<!-- librerias para el uso del  pdf-->
+<script type="text/javascript" src="../vistas/reportes/JSZip-2.5.0/jszip.min.js"></script>
+ <script type="text/javascript" src="../vistas/reportes/pdfmake-0.1.36/pdfmake.min.js"></script>
+ <script type="text/javascript" src="../vistas/reportes/pdfmake-0.1.36/vfs_fonts.js"></script>
+ <script type="text/javascript" src="../vistas/reportes/Buttons-1.6.1/js/dataTables.buttons.min.js"></script>
+ <script type="text/javascript" src="../vistas/reportes/Buttons-1.6.1/js/buttons.flash.min.js"></script>
+ <script type="text/javascript" src="../vistas/reportes/Buttons-1.6.1/js/buttons.html5.min.js"></script>
+
 <script>
    $('.btne').on('click',function(e){
      e.preventDefault();
@@ -335,20 +380,187 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
    }
 </script>
 <!-- page script -->
-<script>
+<script type="text/javascript">
+var currentdate = new Date();
+    var datetime = "FECHA: " + currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/"
+                + currentdate.getFullYear() + "    HORA: " 
+                + currentdate.getHours() + ":" 
+                + currentdate.getMinutes() + ":"
+                + currentdate.getSeconds();               
   $(function () {
     $('#example1').DataTable({
-      language: {
-        sSearch: "Buscar:",
-        sInfo:           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-        sLengthMenu:     "Mostrar _MENU_ registros",
-        oPaginate: {
-                    "sFirst":    "Primero",
-                    "sLast":     "Último",
-                    "sNext":     "Siguiente",
-                    "sPrevious": "Anterior" //traduccion de tabla
-                }
-    }});
+     "columnDefs": [
+            {
+                "targets": [ 5 ],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [ 6 ],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [ 7 ],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [ 8 ],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [ 9 ],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [ 10 ],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [ 11 ],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [ 12 ],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [ 13 ],
+                "visible": false,
+                "searchable": false
+            },        
+            {
+                "targets": [ 14 ],
+                "visible": false,
+                "searchable": false
+            },   
+            {
+                "targets": [ 15 ],
+                "visible": false,
+                "searchable": false
+            },  
+            {
+                "targets": [ 16 ],
+                "visible": false,
+                "searchable": false
+            },  
+                
+                    
+        ],
+     
+ /////////////////////////////////////////////////////////////////////
+                dataSrc: 'list',
+               dom:'<"row"<"col-sm-6"f><"row"<"col-sm-3"B><"col-sm-3"l>>'+'<tr>'+'<"col-sm-12"p><"col-sm-6"i>',// posicion del buscaodor y los botones en el orden establecido en pantalla
+buttons: 
+    [        
+      {
+        
+            extend:'pdfHtml5',                  
+            titleAttr: 'exportar a pdf', // boton para exportar
+            className: 'btn btn-danger btn-sm',// color del boton
+            text:'EXPORTAR A PDF ',
+            title:'CLÍNICA MÉDICA HOMEOPATICA CLIME HOME '+'\n'+'\n'+'LISTA DE PACIENTES',// titulos
+            messageTop:datetime,   
+            orientation: 'landscape',
+            processing: true,
+            margin: 10,
+                  customize: function (doc)  
+            {	              
+                    doc.defaultStyle.fontSize = 6.8;// da el tipo de  tamaño de la fuente dentro de la data. \
+                    doc.defaultStyle.alignment = 'left';// orientacion de la data dentro del pdf , centro,izquierda o derecha.
+                    doc.styles.tableHeader.fontSize = 8;
+                    doc.styles.title = {
+                          //  color: 'black',   // color del title
+                            fontSize: '12',// tamaño de letra
+                            alignment: 'center',       // posicion
+                        }
+                    doc.styles.messageTop={
+                            alignment: 'left', 
+                            fontSize: '11' // posicion del mensaje top
+                        }     
+                    doc['header'] = (function (page, pages) {// nombre de la empresa en la esquina superior derecha.
+                          return {
+                                  columns: [
+                                     {
+                                        
+                                      }
+                                 ],
+                                 margin: [10, 10],
+                                       columns: [
+                                   {           
+                                    margin:[700 ],//posiciion de la imagane si es menor el numero mas se hace a un lado izquierdo
+                                    alignment: 'right',
+                                     image: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCADvAOEDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACijNGaACiimyNtQt1xQAuaUVymp6prkepBLG1SS24w2M59cntXSW0vmpk4zxnHTNU42SZnCopNrsT0UUVJoFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFACMwHJNUnu3Zd8e1Yx/G/f6CpNQJFjMV67aruoaW04/dD8s44qkjOcnsPE84G4vx/1yOKjlvGa3codrLIqbh3yR0rRxxVLUQBbDGP9Yn8xQmmxNNK9x1s8gvHiZyyhA3P41bdlVSWIAHXNZcl3DZ3dxPPIERYlyT9TXE6/wCKJtTLQWxMVr093+taRpOb0MKmJhRhd7m1qHirTodRWOO2WeMHEkg/p6109jd293apLbOrRnpt7V47V/StYutIuPMgbKH70Z6NXRPCq3u7nFRzGSn+82PXGkRBl2C/U00zxKMmRQPUmsGy1i11qS2eI/Mu7fG3VTirttArtMVwgVyo+XJ9e9cjhbc9ONVS+HU0llRxlWBHqDTRcwk4EqE+mazC/m2kLlV3u4XPbripmUwXEMZ2sr5B+UDGBS5R+0drmjuFMaeJPvSKv1NZ3nulrMAcES+Wp9Acf40yRfLuAqgbQvOCNxPqaOUHU0NVZY3+66n6Gn5rIVmCyluOMoepB/CtK3ZngRnGGKgkelJqxUZXJaKKKRYUUUUAFFFFABRRRQAUUUUAFFFFABRRRQA1lDAgjIPWqgtXhBVCrR9lbt9DV2kNO5LimUTBK3GGHt5hxWZql1b6RZMZ5hvdwyxr1OOw/wAav6jftHAy2jRGfoBI2APeuGu9D1O+naa4u7d5G7lz/hWtJRb952Ry4iU4K1ON2Vdd1garMrJvVR0U1kVqroM7XLW4ubbzFGSN5/wqX/hF7z/nvbf99n/Cu5VKUVZM8eVGvUbk4sxaK2v+EXvP+e9t/wB9n/Cj/hF7z/nvbf8AfZ/wp+2p9yfqtb+VlPTL1bGcyFpFJxho8ZH5123h/wAQ2l5JJA7FJnbcu/jd/wDXrkLjQZ7WPfLcWwXOPvnr+VTL4avRhluLcHqCHP8AhWVX2U1e50UPrFKVlE79LOURxR/LhJN+7PvmrNxA8ksMiYOzPBOM8VjaJdXsEXkajNC4UfLIr5P48V0CMsiBl5Brhbsz2YJSjtYqJZloJY5cfvHLcHpR5EwxnDMBjepwavYoxSuyuRGc1tcupHmMvoS3T8AKvqMDB607FFDdxqNgooopFBRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQA0oD2FGxfQU6g0Acxagf8ACc3gwMeQtdLsX0Fc3a/8j1ef9cFrpcitKm69EY0dn6sTYvoKNi+gpc0ZrM2Oc8YqBpCYAH75P51vxIvlJwPuisHxl/yB0/67J/Ough/1Kf7oq38CMY/xZei/UXYvoKcBiiioNgooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAOQa/trDxrdvcSBFMKgcE81rf8JNpP/P0P++D/hWfDDHL45vPMRWxAvUZrofsVt/zwj/75Faztpfsc1JS1s+rM7/hJtJ/5+h/3wf8KP8AhJtJ/wCfof8AfB/wrR+x23/PCP8A75FH2O2/54R/98io901tPucp4m1qxvtNSK3nDv5yHG0jvXYQ/wCpT/dFcz4vtoI9JjZIkU+enIX3rpof9Sn+6KqVuRWM6d/aSv2X6j6KKKzOgKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACg0UhoA5q1/wCR6vP+uC101cza/wDI9Xn/AFwWumrSpuvRGNHZ+rCiiiszY5zxl/yCE/67J/OtE3DGN9r7I4gAzAZJOO1Z3jE/8ShP+u6fzq95JQSK6M0Mwzlf4TitdORXOZt+1lby/UdtmEPmky4xnG/n8sVLHc7TFltyS/dJ60xppPL8sFcYxuwc/lSQwNJJCAhWGHpu6scVJWt9CNpZcTy+eyhJCOmRj6U8tIhjaVphvOAdw4/CopVYQ3Ue1tzSkgY6jirV8p8qEgE4kUnA6Cmw11Iy8zztCru20ZO3Ax9TSC4McDyhn/dthlc5qW2BN3cOAdpC4JFVZUYQXabTuaQlRg89KWga2uXJp3M3kxnaQu5m9BVJbgshfzX/AN0vg/lirUkUkdx5yqWVlCtjqMd6h4jAAy/uzMDQkgfM9yeK5O+JSSVlHy56jvV0Vn24Z7pSYuFBIbJOD+NaAqZGkG2tRaKKKRYUUUUAFFFFABRRRQAUUUUAFFFFABRRRQBnR6VHHrEuoh2MkiBCvbFaNFFNu4kktgooopDKGq6XHqlssEjsqhw/HtV1U2qF64GKdRTv0Fyq9xNooxS0UhibaMUtFACYowKWigBMUYpaKAExiloooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//2Q=='
+                                    ,width: 100,
+                                    height: 110  
+                                },
+                               ]
+                             }
+                      }); 
+                      
+                    doc['footer']=(function(page, pages)// funcion para el footer de la  pagina donde esta el posicion del numero de la pagina
+                         {
+                             return {
+                             columns: 
+                             [
+                               {
+                                alignment: 'center',
+                                text: ['PAGINA ', { text: page.toString() },  ' DE ', { text: pages.toString() }]
+                               },
+                             ],
+                           margin: [10, 0]
+                                    }
+                       });       
+            },
+            exportOptions:
+             {
+                 columns: [0, 1,2,3,5,6,7,8,9,10,11,12,13,14,15,16] ,//exportar solo las columnas.
+             },
+                  styles:
+              {
+                  tableHeader:
+                  {
+                   fillColor:"#F0F8FF"
+                  }
+             },   
+            
+         } 
+    ],
+        language: {// traduccion de la tabla  entera.
+            "sProcessing":     "Procesando...",
+            "sLengthMenu":     "Mostrar _MENU_ registros",
+            "sZeroRecords":    "No se encontraron resultados",
+            "sEmptyTable":     "Ningún dato disponible en esta tabla",
+            "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix":    "",
+            "sSearch":         "Buscar:",
+            "sUrl":            "",
+            "sInfoThousands":  ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+                          "sFirst":    "Primero",
+                          "sLast":     "Último",
+                          "sNext":     "Siguiente",
+                          "sPrevious": "Anterior"
+                        },
+            "oAria":    {
+                        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                        },
+            "decimal": ",",
+            "thousands": "."
+          }
+ ////////////////////////////////////////////////////////////////////
+  });
     $('#example2').DataTable({
       "paging": true,
       "pagelength":3,
