@@ -32,7 +32,18 @@ try {
 	echo "Codigo del error" . $e->getCode();
 }
  
-
+$ROL = $_SESSION['ROL'];
+$_SESSION['PANTALLA'] = 14;
+$PANTALLA = $_SESSION['PANTALLA'];
+$sql3 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO = :pantalla ";
+$resultado3=$conexion->prepare($sql3);	
+$resultado3->execute(array(":rol"=>$ROL,":pantalla"=>$PANTALLA));
+$DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
+ $CONSULTAR = $DATOS['PERM_CONSULTAR'];
+ $INSERTAR = $DATOS['PERM_INSERTAR'];
+ $ELIMINAR = $DATOS['PERM_ELIMINAR'];
+ $ACTUALIZAR = $DATOS['PERM_ACTUALIZAR'];
+ $PERM_OBJ = $DATOS['PERM_OBJ'];
 ?> 
 
 <!DOCTYPE html>

@@ -17,6 +17,19 @@ try {
     die('Error: ' . $e->GetMessage());
 	echo "Codigo del error" . $e->getCode();
 }
+
+$ROL = $_SESSION['ROL'];
+$_SESSION['PANTALLA'] = 25;
+$PANTALLA = $_SESSION['PANTALLA'];
+$sql3 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO = :pantalla ";
+$resultado3=$conexion->prepare($sql3);	
+$resultado3->execute(array(":rol"=>$ROL,":pantalla"=>$PANTALLA));
+$DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
+ $CONSULTAR = $DATOS['PERM_CONSULTAR'];
+ $INSERTAR = $DATOS['PERM_INSERTAR'];
+ $ELIMINAR = $DATOS['PERM_ELIMINAR'];
+ $ACTUALIZAR = $DATOS['PERM_ACTUALIZAR'];
+ $PERM_OBJ = $DATOS['PERM_OBJ'];
   
 ?>
 <!DOCTYPE html>
@@ -94,23 +107,22 @@ try {
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">Barra de Navegación</li>
+       
        <!-- Titulo de Usuario -->
-       <?php if ($_SESSION['ROL'] == 1){ ?>
       <li class="treeview">
         <a href="#">
           <i class="fa fa-user"></i>
           <span>Usuarios</span>
         </a>
         <!-- subtitulos de Usuario -->
-        <ul class="treeview-menu">
-          <li><a href="../vistas/insertar_mant_vista.php"><i class="fa fa-plus-square"></i>Añadir Usuarios</a></li>
-          <li><a href="../vistas/mostrar_vista.php"><i class="fa fa-list"></i>Lista de Usuarios</a></li>
-         
 
+        <?php if ($PERM_OBJ == 1){ ?>
+          <ul class="treeview-menu">
+          <li><a href="../vistas/mostrar_vista.php"><i class="fa fa-list"></i>Lista de Usuarios</a></li>
         </ul>
-        </li>
+       <?php } ?>
         
-        <?php } ?>
+      </li>
        <!-- Titulo de Empleados -->
       <li class="treeview">
         <a href="#">
@@ -119,11 +131,13 @@ try {
 
         </a>
         <!-- subtitulos de Empleados -->
-        <ul class="treeview-menu">
-        <li><a href="../vistas/insertar_empleado_vista.php"><i class="fa fa-plus-square"></i>Añadir Empleado</a></li>
-          <li><a href="../vistas/mostrar_empleados_vista.php"><i class="fa fa-list"></i> Lista de Empleados</a></li>
 
+        <?php if ($PERM_OBJ == 1){ ?>
+          <ul class="treeview-menu">
+          <li><a href="../vistas/mostrar_empleados_vista.php"><i class="fa fa-list"></i> Lista de Empleados</a></li>
         </ul>
+        <?php } ?>
+        
       </li>
      
       <!-- Titulo de Pacientes -->
@@ -134,59 +148,80 @@ try {
 
         </a>
         <!-- subtitulos de Pacientes -->
-        <ul class="treeview-menu">
-          <li><a href="../vistas/insertar_pacientes_vista.php"><i class="fa fa-plus-square"></i>Añadir Paciente</a></li>
+        <?php if ($PERM_OBJ == 1){ ?>
+          <ul class="treeview-menu">
           <li><a href="../vistas/mostrar_pacientes_vista.php"><i class="fa fa-list"></i>Lista de Pacientes</a></li>
-          
         </ul>
+       <?php } ?>
+        
       </li>
       <!-- Titulo de Expedientes -->
       <li class="treeview">
         <a href="#">
           <i class="fa fa-folder-open-o"></i>
-          <span>Expedientes</span>
+          <span>Expedientes Nutricionista</span>
 
           </a>
         <!-- subtitulos de Expedientes -->
-        <ul class="treeview-menu">
-        <li><a href="../vistas/insertar_expedienten_vista.php"><i class="fa fa-plus-square"></i>Expediente Nutricional</a></li>
+        <?php if ($PERM_OBJ == 1){ ?>
+          <ul class="treeview-menu">
           <li><a href="../vistas/mostrar_expedienten_vista.php"><i class="fa fa-list"></i>Mostrar Expediente Nutricional</a></li>
-          <li><a href="../vistas/insertar_expediented_vista.php"><i class="fa fa-plus-square"></i>Expediente Médico </a></li>
-          <li><a href="../vistas/mostrar_expediented_vista.php"><i class="fa fa fa-list"></i>Mostrar Expediente Médico </a></li>
-
         </ul>
+         <?php } ?>
+        
+      </li>
+
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-folder-open-o"></i>
+          <span>Expedientes Medico </span>
+
+          </a>
+        <!-- subtitulos de Expedientes -->
+        <?php if ($PERM_OBJ== 1){ ?>
+          <ul class="treeview-menu">
+          <li><a href="../vistas/mostrar_expediented_vista.php"><i class="fa fa fa-list"></i>Mostrar Expediente Médico </a></li>
+        </ul>
+        <?php } ?>
+       
       </li>
       <!-- Titulo de Citas -->
       <li class="treeview">
-        <a href="#">
+        <a href="../vistas/citas_vista.php">
           <i class="fa fa-calendar"></i>
           <span>Citas</span>
           </a>
-        <ul class="treeview-menu">
-          <li><a href="../vistas/insertar_cita_vista.php"><i class="fa fa-plus-square"></i>Añadir cita</a></li>
-          <li><a href="../vistas/mostrar_citas_vista.php"><i class="fa fa-list"></i>Lista de citas</a></li>
 
+          <?php if ($PERM_OBJ == 1){ ?>
+            <ul class="treeview-menu">
+          <li><a href="../vistas/mostrar_citas_vista.php"><i class="fa fa-list"></i>Lista de citas</a></li>
         </ul>
+           <?php } ?>
+        
       </li>
         </a>
       </li>
  <!-- Titulo de Seguridad -->
- <li class="treeview">
+
+    <?php if ($PERM_OBJ == 1){ ?>
+      <li class="treeview">
         <a href="#">
           <i class="glyphicon glyphicon-lock"></i>
           <span>Seguridad</span>
 
-          </a>
+        </a>
         <!-- subtitulos de Seguridad -->
         <ul class="treeview-menu">
+        <li><a href="../vistas/insertar_permisos_vista.php"><i class="fa fa-list"></i>Añadir Permisos</a></li>
           <li><a href="../vistas/mostrar_parametros_vista.php"><i class="fa fa-list"></i>Lista de Parámetros</a></li>
           <li><a href="../vistas/mostrar_roles_vista.php"><i class="fa fa-list"></i>Lista de Roles</a></li>
           <li><a href="#"><i class="glyphicon glyphicon-cloud-upload"></i>Backup</a></li>
           <li><a href="../vistas/bitacora_vista.php"><i class="fa fa-list"></i>Bitácora</a></li>
         </ul>
       </li>
-   
+    <?php } ?>
 
+   
     </section>
     <!-- /.sidebar -->
   </aside>

@@ -5,6 +5,20 @@ $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BI
 VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
   $resultado2=$conexion->prepare($sql2);	
 $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA DE INSERTAR MANTENIMIENTO',":fecha"=>date("Y-m-d H:m:s")));
+
+$ROL = $_SESSION['ROL'];
+$_SESSION['PANTALLA'] = 36;
+$PANTALLA = $_SESSION['PANTALLA'];
+$sql3 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO = :pantalla ";
+$resultado3=$conexion->prepare($sql3);	
+$resultado3->execute(array(":rol"=>$ROL,":pantalla"=>$PANTALLA));
+$DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
+ $CONSULTAR = $DATOS['PERM_CONSULTAR'];
+ $INSERTAR = $DATOS['PERM_INSERTAR'];
+ $ELIMINAR = $DATOS['PERM_ELIMINAR'];
+ $ACTUALIZAR = $DATOS['PERM_ACTUALIZAR'];
+ $PERM_OBJ = $DATOS['PERM_OBJ'];
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -73,7 +87,6 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
         </div>
         <div class="pull-left info">
           <p><?php echo $_SESSION["usu"];?></p>
-        
           </div>
       </div>
       <!-- search form -->
@@ -90,12 +103,13 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
           <span>Usuarios</span>
         </a>
         <!-- subtitulos de Usuario -->
-        <ul class="treeview-menu">
-          <li><a href="../vistas/insertar_mant_vista.php"><i class="fa fa-plus-square"></i>Añadir Usuarios</a></li>
-          <li><a href="../vistas/mostrar_vista.php"><i class="fa fa-list"></i>Lista de Usuarios</a></li>
-         
 
+        <?php if ($PERM_OBJ == 1){ ?>
+          <ul class="treeview-menu">
+          <li><a href="../vistas/mostrar_vista.php"><i class="fa fa-list"></i>Lista de Usuarios</a></li>
         </ul>
+       <?php } ?>
+        
       </li>
        <!-- Titulo de Empleados -->
       <li class="treeview">
@@ -105,11 +119,13 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
 
         </a>
         <!-- subtitulos de Empleados -->
-        <ul class="treeview-menu">
-        <li><a href="../vistas/insertar_empleado_vista.php"><i class="fa fa-plus-square"></i>Añadir Empleado</a></li>
-          <li><a href="../vistas/mostrar_empleados_vista.php"><i class="fa fa-list"></i> Lista de Empleados</a></li>
 
+        <?php if ($PERM_OBJ == 1){ ?>
+          <ul class="treeview-menu">
+          <li><a href="../vistas/mostrar_empleados_vista.php"><i class="fa fa-list"></i> Lista de Empleados</a></li>
         </ul>
+        <?php } ?>
+        
       </li>
      
       <!-- Titulo de Pacientes -->
@@ -120,27 +136,42 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
 
         </a>
         <!-- subtitulos de Pacientes -->
-        <ul class="treeview-menu">
-          <li><a href="../vistas/insertar_pacientes_vista.php"><i class="fa fa-plus-square"></i>Añadir Paciente</a></li>
+        <?php if ($PERM_OBJ == 1){ ?>
+          <ul class="treeview-menu">
           <li><a href="../vistas/mostrar_pacientes_vista.php"><i class="fa fa-list"></i>Lista de Pacientes</a></li>
-          
         </ul>
+       <?php } ?>
+        
       </li>
       <!-- Titulo de Expedientes -->
       <li class="treeview">
         <a href="#">
           <i class="fa fa-folder-open-o"></i>
-          <span>Expedientes</span>
+          <span>Expedientes Nutricionista</span>
 
           </a>
         <!-- subtitulos de Expedientes -->
-        <ul class="treeview-menu">
-        <li><a href="../vistas/insertar_expedienten_vista.php"><i class="fa fa-plus-square"></i>Expediente Nutricional</a></li>
+        <?php if ($PERM_OBJ== 1){ ?>
+          <ul class="treeview-menu">
           <li><a href="../vistas/mostrar_expedienten_vista.php"><i class="fa fa-list"></i>Mostrar Expediente Nutricional</a></li>
-          <li><a href="../vistas/insertar_expediented_vista.php"><i class="fa fa-plus-square"></i>Expediente Médico </a></li>
-          <li><a href="../vistas/mostrar_expediented_vista.php"><i class="fa fa fa-list"></i>Mostrar Expediente Médico </a></li>
-
         </ul>
+         <?php } ?>
+        
+      </li>
+
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-folder-open-o"></i>
+          <span>Expedientes Medico </span>
+
+          </a>
+        <!-- subtitulos de Expedientes -->
+        <?php if ($PERM_OBJ == 1){ ?>
+          <ul class="treeview-menu">
+          <li><a href="../vistas/mostrar_expediented_vista.php"><i class="fa fa fa-list"></i>Mostrar Expediente Médico </a></li>
+        </ul>
+        <?php } ?>
+       
       </li>
       <!-- Titulo de Citas -->
       <li class="treeview">
@@ -148,16 +179,20 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
           <i class="fa fa-calendar"></i>
           <span>Citas</span>
           </a>
-        <ul class="treeview-menu">
-          <li><a href="../vistas/insertar_cita_vista.php"><i class="fa fa-plus-square"></i>Añadir cita</a></li>
-          <li><a href="../vistas/mostrar_citas_vista.php"><i class="fa fa-list"></i>Lista de citas</a></li>
 
+          <?php if ($PERM_OBJ== 1){ ?>
+            <ul class="treeview-menu">
+          <li><a href="../vistas/mostrar_citas_vista.php"><i class="fa fa-list"></i>Lista de citas</a></li>
         </ul>
+           <?php } ?>
+        
       </li>
         </a>
       </li>
  <!-- Titulo de Seguridad -->
- <li class="treeview">
+
+    <?php if ($PERM_OBJ == 1){ ?>
+      <li class="treeview">
         <a href="#">
           <i class="glyphicon glyphicon-lock"></i>
           <span>Seguridad</span>
@@ -165,12 +200,15 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
         </a>
         <!-- subtitulos de Seguridad -->
         <ul class="treeview-menu">
+        <li><a href="../vistas/insertar_permisos_vista.php"><i class="fa fa-list"></i>Añadir Permisos</a></li>
           <li><a href="../vistas/mostrar_parametros_vista.php"><i class="fa fa-list"></i>Lista de Parámetros</a></li>
           <li><a href="../vistas/mostrar_roles_vista.php"><i class="fa fa-list"></i>Lista de Roles</a></li>
           <li><a href="#"><i class="glyphicon glyphicon-cloud-upload"></i>Backup</a></li>
           <li><a href="../vistas/bitacora_vista.php"><i class="fa fa-list"></i>Bitácora</a></li>
         </ul>
       </li>
+    <?php } ?>
+
    
     </section>
     <!-- /.sidebar -->
@@ -230,7 +268,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
         <option value="0">SELECCIONE LA PANTALLA:</option>
         <?php
         require '../modelos/conectar.php';
-        $resultado = $conexion -> query ("SELECT * FROM TBL_OBJETOS");
+        $resultado = $conexion -> query ("SELECT * FROM TBL_OBJETOS where obj_codigo in (1,11,10,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,21,32,22,34,35,36) ");
         while ($registro=$resultado->fetch(PDO::FETCH_ASSOC)) {
         echo '<option value="'.$registro["OBJ_CODIGO"].'">'.$registro["OBJ_NOMBRE"].'</option>';
         }
@@ -262,6 +300,14 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
     
     <input value="1"   type="checkbox" name="e" >
     ELIMINAR
+    </label>
+
+    <br>
+
+    <label for="exampleInputPassword1">
+    
+    <input value="1"   type="checkbox" name="m" >
+    ACCESO PANTALLA
     </label>
     </div>
     <div class="box-footer">

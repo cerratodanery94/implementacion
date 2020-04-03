@@ -66,7 +66,21 @@ try{
 						$resultado11->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>2,":accion"=>'CONSULTA',":descr"=>'VERIFICA LAS CREDENCIALES DEL USUARIO',":fecha"=>date("Y-m-d H:m:s")));
 					header("location:../vistas/index.php");
 					
-					}elseif ($_SESSION["est"]=="BLOQUEADO" ) {
+					}elseif ($_SESSION["est"]=="ACTIVO" and $_SESSION["ROL"]==3) {
+						$sql15="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
+						VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
+						$resultado15=$conexion->prepare($sql15);	
+						$resultado15->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>2,":accion"=>'INGRESO',":descr"=>'INGRESO A LA PANTALLA DE LOGIN',":fecha"=>date("Y-m-d H:m:s")));
+
+						$sql16="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
+						VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
+						$resultado16=$conexion->prepare($sql16);	
+						$resultado16->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>2,":accion"=>'CONSULTA',":descr"=>'VERIFICA LAS CREDENCIALES DEL USUARIO',":fecha"=>date("Y-m-d H:m:s")));
+					header("location:../vistas/index2.php");  
+					
+					}
+					
+					elseif ($_SESSION["est"]=="BLOQUEADO" ) {
 						echo '<script> Swal.fire({
 							position: "center",
 							icon: "info",

@@ -35,7 +35,17 @@ try {
     die('Error: ' . $e->GetMessage());
 	echo "Codigo del error" . $e->getCode();
 }
-  
+$ROL = $_SESSION['ROL'];
+$_SESSION['PANTALLA'] = 11 or 13 or 17 or 21 or 24 or 30 or 31 or 28;
+$PANTALLA = $_SESSION['PANTALLA'];
+$sql3 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO = :pantalla ";
+$resultado3=$conexion->prepare($sql3);	
+$resultado3->execute(array(":rol"=>$ROL,":pantalla"=>$PANTALLA));
+$DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
+ $CONSULTAR = $DATOS['PERM_CONSULTAR'];
+ $INSERTAR = $DATOS['PERM_INSERTAR'];
+ $ELIMINAR = $DATOS['PERM_ELIMINAR'];
+ $ACTUALIZAR = $DATOS['PERM_ACTUALIZAR'];
 ?> 
 
 <!DOCTYPE html>

@@ -93,7 +93,6 @@ try {
         </div>
         <div class="pull-left info">
           <p><?php echo $_SESSION["usu"];?></p>
-        
           </div>
       </div>
       <!-- search form -->
@@ -110,12 +109,13 @@ try {
           <span>Usuarios</span>
         </a>
         <!-- subtitulos de Usuario -->
-        <ul class="treeview-menu">
-          <li><a href="../vistas/insertar_mant_vista.php"><i class="fa fa-plus-square"></i>Añadir Usuarios</a></li>
-          <li><a href="../vistas/mostrar_vista.php"><i class="fa fa-list"></i>Lista de Usuarios</a></li>
-         
 
+        <?php if ($CONSULTAR == 1){ ?>
+          <ul class="treeview-menu">
+          <li><a href="../vistas/mostrar_vista.php"><i class="fa fa-list"></i>Lista de Usuarios</a></li>
         </ul>
+       <?php } ?>
+        
       </li>
        <!-- Titulo de Empleados -->
       <li class="treeview">
@@ -125,11 +125,13 @@ try {
 
         </a>
         <!-- subtitulos de Empleados -->
-        <ul class="treeview-menu">
-        <li><a href="../vistas/insertar_empleado_vista.php"><i class="fa fa-plus-square"></i>Añadir Empleado</a></li>
-          <li><a href="../vistas/mostrar_empleados_vista.php"><i class="fa fa-list"></i> Lista de Empleados</a></li>
 
+        <?php if ($CONSULTAR == 1){ ?>
+          <ul class="treeview-menu">
+          <li><a href="../vistas/mostrar_empleados_vista.php"><i class="fa fa-list"></i> Lista de Empleados</a></li>
         </ul>
+        <?php } ?>
+        
       </li>
      
       <!-- Titulo de Pacientes -->
@@ -140,27 +142,42 @@ try {
 
         </a>
         <!-- subtitulos de Pacientes -->
-        <ul class="treeview-menu">
-          <li><a href="../vistas/insertar_pacientes_vista.php"><i class="fa fa-plus-square"></i>Añadir Paciente</a></li>
+        <?php if ($CONSULTAR == 1){ ?>
+          <ul class="treeview-menu">
           <li><a href="../vistas/mostrar_pacientes_vista.php"><i class="fa fa-list"></i>Lista de Pacientes</a></li>
-          
         </ul>
+       <?php } ?>
+        
       </li>
       <!-- Titulo de Expedientes -->
       <li class="treeview">
         <a href="#">
           <i class="fa fa-folder-open-o"></i>
-          <span>Expedientes</span>
+          <span>Expedientes Nutricionista</span>
 
           </a>
         <!-- subtitulos de Expedientes -->
-        <ul class="treeview-menu">
-        <li><a href="../vistas/insertar_expedienten_vista.php"><i class="fa fa-plus-square"></i>Expediente Nutricional</a></li>
+        <?php if ($CONSULTAR == 1){ ?>
+          <ul class="treeview-menu">
           <li><a href="../vistas/mostrar_expedienten_vista.php"><i class="fa fa-list"></i>Mostrar Expediente Nutricional</a></li>
-          <li><a href="../vistas/insertar_expediented_vista.php"><i class="fa fa-plus-square"></i>Expediente Médico </a></li>
-          <li><a href="../vistas/mostrar_expediented_vista.php"><i class="fa fa fa-list"></i>Mostrar Expediente Médico </a></li>
-
         </ul>
+         <?php } ?>
+        
+      </li>
+
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-folder-open-o"></i>
+          <span>Expedientes Medico </span>
+
+          </a>
+        <!-- subtitulos de Expedientes -->
+        <?php if ($CONSULTAR == 1){ ?>
+          <ul class="treeview-menu">
+          <li><a href="../vistas/mostrar_expediented_vista.php"><i class="fa fa fa-list"></i>Mostrar Expediente Médico </a></li>
+        </ul>
+        <?php } ?>
+       
       </li>
       <!-- Titulo de Citas -->
       <li class="treeview">
@@ -168,16 +185,20 @@ try {
           <i class="fa fa-calendar"></i>
           <span>Citas</span>
           </a>
-        <ul class="treeview-menu">
-          <li><a href="../vistas/insertar_cita_vista.php"><i class="fa fa-plus-square"></i>Añadir cita</a></li>
-          <li><a href="../vistas/mostrar_citas_vista.php"><i class="fa fa-list"></i>Lista de citas</a></li>
 
+          <?php if ($CONSULTAR == 1){ ?>
+            <ul class="treeview-menu">
+          <li><a href="../vistas/mostrar_citas_vista.php"><i class="fa fa-list"></i>Lista de citas</a></li>
         </ul>
+           <?php } ?>
+        
       </li>
         </a>
       </li>
  <!-- Titulo de Seguridad -->
- <li class="treeview">
+
+    <?php if ($CONSULTAR == 1){ ?>
+      <li class="treeview">
         <a href="#">
           <i class="glyphicon glyphicon-lock"></i>
           <span>Seguridad</span>
@@ -185,12 +206,15 @@ try {
         </a>
         <!-- subtitulos de Seguridad -->
         <ul class="treeview-menu">
+        <li><a href="../vistas/insertar_permisos_vista.php"><i class="fa fa-list"></i>Añadir Permisos</a></li>
           <li><a href="../vistas/mostrar_parametros_vista.php"><i class="fa fa-list"></i>Lista de Parámetros</a></li>
           <li><a href="../vistas/mostrar_roles_vista.php"><i class="fa fa-list"></i>Lista de Roles</a></li>
           <li><a href="#"><i class="glyphicon glyphicon-cloud-upload"></i>Backup</a></li>
           <li><a href="../vistas/bitacora_vista.php"><i class="fa fa-list"></i>Bitácora</a></li>
         </ul>
       </li>
+    <?php } ?>
+
    
     </section>
     <!-- /.sidebar -->

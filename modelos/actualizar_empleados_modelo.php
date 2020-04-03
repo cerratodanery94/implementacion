@@ -52,6 +52,10 @@ try {
           ":rtn"=>$rtn1,
           ":ide"=>$ide )) ;
           if($query){
+            $sql6="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
+            VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
+              $resultado6=$conexion->prepare($sql6);	
+             $resultado6->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>12,":accion"=>'UPDATE',":descr"=>'ACTUALIZO UN EMPLEADO',":fecha"=>$fecha_vencimiento));
             //header("location:../vistas/mostrar_empleados_vista.php");
             echo '<script>
             Swal.fire({

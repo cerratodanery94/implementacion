@@ -6,14 +6,16 @@
         isset($_POST['o']) or
         isset($_POST['c']) or 
 		isset($_POST['i']) or 
-        isset($_POST['a']) or 
+		isset($_POST['a']) or 
+		isset($_POST['m']) or 
         isset($_POST['e']) ) {
         $r=$_POST["r"];
         $o=$_POST["o"];
         $c=$_POST["c"];
         $i=$_POST["i"];
         $a=$_POST["a"];
-        $e=$_POST["e"];
+		$e=$_POST["e"];
+		$m=$_POST["m"];
          
         if ($_POST['c']==NULL ) {
             $c=0;
@@ -30,6 +32,11 @@
         if ($_POST['e']==NULL ) {
             $e=0;
            
+		}
+		
+		if ($_POST['m']==NULL ) {
+            $m=0;
+           
         }
         
 
@@ -42,7 +49,8 @@
 		   PERM_CONSULTAR,
 		   PERM_INSERTAR,
            PERM_ACTUALIZAR,	
-           PERM_ELIMINAR
+           PERM_ELIMINAR,
+		   PERM_OBJ
 		   ) 
 		   
 	   VALUES (
@@ -51,7 +59,8 @@
 		:c,
 		:i,
 		:a,
-		:e
+		:e,
+		:m
 		)";
 
 	   $resultado=$conexion->prepare($sql);	
@@ -61,7 +70,9 @@
         ":c"=>$c,
 	    ":i"=>$i,
 	   ":a"=>$a,
-	    ":e"=>$e));
+		":e"=>$e,
+		":m"=>$m 
+	));
 	   
 
 	  /* $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
@@ -79,7 +90,7 @@
                     icon: "success",
                     type: "success"
                     }).then(function() {
-                    window.location = "../vistas/insertar_permisos_vista.php";
+                    window.location = "../vistas/insertar_permisos_vista.php";s
                     });
                   </script>';	
 	   } else {

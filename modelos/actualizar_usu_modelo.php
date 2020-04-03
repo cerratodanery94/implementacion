@@ -32,6 +32,10 @@ try {
     $consulta2=$conexion->prepare("UPDATE tbl_usuario SET USU_USUARIO=:usuario, USU_NOMBRES=:nombre,USU_APELLIDOS=:apellido,USU_ESTADO=:estado,ROL_CODIGO=:rol,USU_CORREO=:correo WHERE USU_CODIGO=:id");
 			$consulta2->execute(array(":usuario"=>$usuariof,":nombre"=>$nombres,":apellido"=>$apellidos,":estado"=>$estado1,":rol"=>$rol1,":correo"=>$correon,":id"=>$id1));
             if($consulta2){
+              $sql6="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
+            VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
+              $resultado6=$conexion->prepare($sql6);	
+             $resultado6->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>12,":accion"=>'UPDATE',":descr"=>'ACTUALIZO UN EMPLEADO',":fecha"=>$fecha_vencimiento));
                 echo '<script>
                     Swal.fire({
                     title: "¡BIEN!",
