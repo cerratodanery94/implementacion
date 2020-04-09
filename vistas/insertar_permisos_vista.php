@@ -13,11 +13,17 @@ $sql3 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO = :pa
 $resultado3=$conexion->prepare($sql3);	
 $resultado3->execute(array(":rol"=>$ROL,":pantalla"=>$PANTALLA));
 $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
- $CONSULTAR = $DATOS['PERM_CONSULTAR'];
- $INSERTAR = $DATOS['PERM_INSERTAR'];
- $ELIMINAR = $DATOS['PERM_ELIMINAR'];
- $ACTUALIZAR = $DATOS['PERM_ACTUALIZAR'];
- $PERM_OBJ = $DATOS['PERM_OBJ'];
+$CONSULTAR = $DATOS['PERM_CONSULTAR'];
+$INSERTAR = $DATOS['PERM_INSERTAR'];
+$ELIMINAR = $DATOS['PERM_ELIMINAR'];
+$ACTUALIZAR = $DATOS['PERM_ACTUALIZAR'];
+$USUARIOS=$DATOS['PERM_USUARIO'];
+$EMPLEADOS=$DATOS['PERM_EMPLEADOS'];
+$PACIENTES=$DATOS['PERM_PACIENTES'];
+$NUTRI=$DATOS['PERM_EXP_NUTRI'];
+$MEDICO=$DATOS['PERM_EXP_MEDICO'];
+$CITAS=$DATOS['PERM_CITAS'];
+$SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 
 ?>
 <!DOCTYPE html>
@@ -77,142 +83,7 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
     </nav>
   </header>
 
-  <aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-      <!-- Sidebar user panel -->
-      <div class="user-panel">
-        <div class="pull-left image">
-        <img src="../vistas/img/User_icono1.png" class="img-circle" alt="User Image">
-        </div>
-        <div class="pull-left info">
-          <p><?php echo $_SESSION["usu"];?></p>
-          </div>
-      </div>
-      <!-- search form -->
-     
-      <!-- /.search form -->
-      <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu">
-        <li class="header">Barra de Navegación</li>
-       
-       <!-- Titulo de Usuario -->
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-user"></i>
-          <span>Usuarios</span>
-        </a>
-        <!-- subtitulos de Usuario -->
-
-        <?php if ($PERM_OBJ == 1){ ?>
-          <ul class="treeview-menu">
-          <li><a href="../vistas/mostrar_vista.php"><i class="fa fa-list"></i>Lista de Usuarios</a></li>
-        </ul>
-       <?php } ?>
-        
-      </li>
-       <!-- Titulo de Empleados -->
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-users"></i>
-          <span>Empleados</span>
-
-        </a>
-        <!-- subtitulos de Empleados -->
-
-        <?php if ($PERM_OBJ == 1){ ?>
-          <ul class="treeview-menu">
-          <li><a href="../vistas/mostrar_empleados_vista.php"><i class="fa fa-list"></i> Lista de Empleados</a></li>
-        </ul>
-        <?php } ?>
-        
-      </li>
-     
-      <!-- Titulo de Pacientes -->
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-users"></i>
-          <span>Pacientes</span>
-
-        </a>
-        <!-- subtitulos de Pacientes -->
-        <?php if ($PERM_OBJ == 1){ ?>
-          <ul class="treeview-menu">
-          <li><a href="../vistas/mostrar_pacientes_vista.php"><i class="fa fa-list"></i>Lista de Pacientes</a></li>
-        </ul>
-       <?php } ?>
-        
-      </li>
-      <!-- Titulo de Expedientes -->
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-folder-open-o"></i>
-          <span>Expedientes Nutricionista</span>
-
-          </a>
-        <!-- subtitulos de Expedientes -->
-        <?php if ($PERM_OBJ== 1){ ?>
-          <ul class="treeview-menu">
-          <li><a href="../vistas/mostrar_expedienten_vista.php"><i class="fa fa-list"></i>Mostrar Expediente Nutricional</a></li>
-        </ul>
-         <?php } ?>
-        
-      </li>
-
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-folder-open-o"></i>
-          <span>Expedientes Medico </span>
-
-          </a>
-        <!-- subtitulos de Expedientes -->
-        <?php if ($PERM_OBJ == 1){ ?>
-          <ul class="treeview-menu">
-          <li><a href="../vistas/mostrar_expediented_vista.php"><i class="fa fa fa-list"></i>Mostrar Expediente Médico </a></li>
-        </ul>
-        <?php } ?>
-       
-      </li>
-      <!-- Titulo de Citas -->
-      <li class="treeview">
-        <a href="../vistas/citas_vista.php">
-          <i class="fa fa-calendar"></i>
-          <span>Citas</span>
-          </a>
-
-          <?php if ($PERM_OBJ== 1){ ?>
-            <ul class="treeview-menu">
-          <li><a href="../vistas/mostrar_citas_vista.php"><i class="fa fa-list"></i>Lista de citas</a></li>
-        </ul>
-           <?php } ?>
-        
-      </li>
-        </a>
-      </li>
- <!-- Titulo de Seguridad -->
-
-    <?php if ($PERM_OBJ == 1){ ?>
-      <li class="treeview">
-        <a href="#">
-          <i class="glyphicon glyphicon-lock"></i>
-          <span>Seguridad</span>
-
-        </a>
-        <!-- subtitulos de Seguridad -->
-        <ul class="treeview-menu">
-        <li><a href="../vistas/insertar_permisos_vista.php"><i class="fa fa-list"></i>Añadir Permisos</a></li>
-          <li><a href="../vistas/mostrar_parametros_vista.php"><i class="fa fa-list"></i>Lista de Parámetros</a></li>
-          <li><a href="../vistas/mostrar_roles_vista.php"><i class="fa fa-list"></i>Lista de Roles</a></li>
-          <li><a href="../vistas/backup_vista.php"><i class="glyphicon glyphicon-cloud-upload"></i>Backup</a></li>
-          <li><a href="../vistas/bitacora_vista.php"><i class="fa fa-list"></i>Bitácora</a></li>
-        </ul>
-      </li>
-    <?php } ?>
-
-   
-    </section>
-    <!-- /.sidebar -->
-  </aside>
+  <?php require '../vistas/barra.php';  ?>
 
 
   <!-- =============================================== -->
@@ -250,7 +121,7 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
 
 <div class="form-group">
         <label for="exampleInputPassword1">ROL</label>
- <select class="form-control" name="r" id="r">
+ <select class="form-control" name="rol" id="r">
         <option value="0">SELECCIONE ROL:</option>
         <?php
         require '../modelos/conectar.php';
@@ -264,11 +135,11 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
         
         <div class="form-group">
         <label for="exampleInputPassword1">PANTALLA</label>
- <select class="form-control" name="o" id="o">
+ <select class="form-control" name="pantalla" id="o">
         <option value="0">SELECCIONE LA PANTALLA:</option>
         <?php
         require '../modelos/conectar.php';
-        $resultado = $conexion -> query ("SELECT * FROM TBL_OBJETOS where obj_codigo in (1,11,10,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,33,21,32,22,34,35,36) ");
+        $resultado = $conexion -> query ("SELECT * FROM TBL_OBJETOS where obj_codigo in (1,11,10,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,33,32,34,35,36,38,40) ");
         while ($registro=$resultado->fetch(PDO::FETCH_ASSOC)) {
         echo '<option value="'.$registro["OBJ_CODIGO"].'">'.$registro["OBJ_NOMBRE"].'</option>';
         }
@@ -280,35 +151,71 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
         <div class="form-group ">
     <label for="exampleInputPassword1">
     
-    <input value="1"   type="checkbox" name="c" >
+    <input value="1"   type="checkbox" name="a" >
     CONSULTAR
     </label>
     <br>
     <label for="exampleInputPassword1">
     
-    <input value="1"   type="checkbox" name="i" >
+    <input value="1"   type="checkbox" name="b" >
     INSERTAR
     </label>
     <br>
     <label for="exampleInputPassword1">
     
-    <input value="1"   type="checkbox" name="a" >
-    Actualizar
+    <input value="1"   type="checkbox" name="c" >
+    ACTUALIZAR
     </label>
     <br>
     <label for="exampleInputPassword1">
-    
-    <input value="1"   type="checkbox" name="e" >
+    <input value="1"   type="checkbox" name="d" >
     ELIMINAR
     </label>
-
     <br>
 
     <label for="exampleInputPassword1">
-    
-    <input value="1"   type="checkbox" name="m" >
-    ACCESO PANTALLA
+    <input value="1"   type="checkbox" name="e" >
+    ACCESSO USUARIO
     </label>
+    <br>
+
+    <label for="exampleInputPassword1">
+    <input value="1"   type="checkbox" name="f" >
+    ACCESSO EMPLEADOS
+    </label>
+    <br>
+
+    <label for="exampleInputPassword1">
+    <input value="1"   type="checkbox" name="g" >
+    ACCESSO PACIENTES
+    </label>
+    <br>
+
+    <label for="exampleInputPassword1">
+    <input value="1"   type="checkbox" name="h" >
+    ACCESSO EXP NUTRICIONISTA
+    </label>
+    <br>
+
+    <label for="exampleInputPassword1">
+    <input value="1"   type="checkbox" name="i" >
+    ACCESSO EXP MEDICO
+    </label>
+    <br>
+
+    <label for="exampleInputPassword1">
+    <input value="1"   type="checkbox" name="j" >
+    ACCESSO CITAS
+    </label>
+    <br>
+
+    <label for="exampleInputPassword1">
+    <input value="1"   type="checkbox" name="k" >
+    ACCESSO SEGURIDAD
+    </label>
+    <br>
+
+   
     </div>
     <div class="box-footer">
       <div class="col text-center">

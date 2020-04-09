@@ -2,40 +2,86 @@
 
 	try{
 		require '../modelos/conectar.php';
-        if (isset($_POST['r']) and 
-        isset($_POST['o']) or
+        if (isset($_POST['a']) and 
+        isset($_POST['b']) or
         isset($_POST['c']) or 
+		isset($_POST['d']) or 
+		isset($_POST['e']) or 
+		isset($_POST['f']) or 
+		isset($_POST['g']) or
+		isset($_POST['h']) or 
 		isset($_POST['i']) or 
-		isset($_POST['a']) or 
-		isset($_POST['m']) or 
-        isset($_POST['e']) ) {
-        $r=$_POST["r"];
-        $o=$_POST["o"];
-        $c=$_POST["c"];
-        $i=$_POST["i"];
+		isset($_POST['j']) or 
+		isset($_POST['k']) or
+		isset($_POST['rol']) or
+		isset($_POST['pantalla']) 
+
+		
+		) {
         $a=$_POST["a"];
-		$e=$_POST["e"];
-		$m=$_POST["m"];
+        $b=$_POST["b"];
+        $c=$_POST["c"];
+        $d=$_POST["d"];
+        $e=$_POST["e"];
+		$f=$_POST["f"];
+		$g=$_POST["g"];
+		$h=$_POST["h"];
+		$i=$_POST["i"];
+		$j=$_POST["j"];
+		$k=$_POST["k"];
+		$rol=$_POST["rol"];
+		$pantalla=$_POST["pantalla"];
+		
          
-        if ($_POST['c']==NULL ) {
-            $c=0;
-           
-        }
-        if ($_POST['i']==NULL ) {
-            $i=0;
-           
-        }
         if ($_POST['a']==NULL ) {
             $a=0;
            
         }
-        if ($_POST['e']==NULL ) {
+        if ($_POST['b']==NULL ) {
+            $b=0;
+           
+        }
+        if ($_POST['c']==NULL ) {
+            $c=0;
+           
+        }
+        if ($_POST['d']==NULL ) {
+            $d=0;
+           
+		}
+		
+		if ($_POST['e']==NULL ) {
             $e=0;
            
 		}
 		
-		if ($_POST['m']==NULL ) {
-            $m=0;
+		if ($_POST['f']==NULL ) {
+            $f=0;
+           
+		}
+		
+		if ($_POST['g']==NULL ) {
+            $g=0;
+           
+		}
+		
+		if ($_POST['h']==NULL ) {
+            $h=0;
+           
+		}
+		
+		if ($_POST['i']==NULL ) {
+            $i=0;
+           
+		}
+		
+		if ($_POST['j']==NULL ) {
+            $j=0;
+           
+		}
+		
+		if ($_POST['k']==NULL ) {
+            $k=0;
            
         }
         
@@ -50,28 +96,48 @@
 		   PERM_INSERTAR,
            PERM_ACTUALIZAR,	
            PERM_ELIMINAR,
-		   PERM_OBJ
+		   PERM_USUARIO,
+		   PERM_EMPLEADOS,
+		   PERM_PACIENTES,
+		   PERM_EXP_NUTRI,
+		   PERM_EXP_MEDICO,
+		   PERM_CITAS,
+		   PERM_SEGURIDAD
+
+
 		   ) 
 		   
 	   VALUES (
-        :r,
-        :o,
+		:rol,
+		:pantalla,   
+        :a,
+        :b,
 		:c,
-		:i,
-		:a,
+		:d,
 		:e,
-		:m
+		:f,
+		:g,
+		:h,
+		:i,
+		:j,
+		:k
 		)";
 
 	   $resultado=$conexion->prepare($sql);	
 	   $resultado->execute(array(
-        ":r"=>$r,
-        ":o"=>$o,
+		":rol"=>$rol,
+		":pantalla"=>$pantalla,  
+        ":a"=>$a,
+        ":b"=>$b,
         ":c"=>$c,
-	    ":i"=>$i,
-	   ":a"=>$a,
-		":e"=>$e,
-		":m"=>$m 
+	    ":d"=>$d,
+	    ":e"=>$e,
+		":f"=>$f,
+		":g"=>$g, 
+		":h"=>$h,
+		":i"=>$i,
+		":j"=>$j,
+		":k"=>$k
 	));
 	   
 

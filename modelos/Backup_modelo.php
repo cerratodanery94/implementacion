@@ -54,7 +54,10 @@ if($result){
         $handle=fopen(BACKUP_PATH.$DataBASE,'w+');
         if(fwrite($handle, $sql)){
             fclose($handle);
-            echo 'Copia de seguridad realizada con éxito';
+         echo 'Copia de seguridad realizada con éxito';
+         //echo '<script>alert("SE HA ACTUALIZADO PACIENTE CORRECTAMENTE");window.location.href="../vistas/backup_vista.php"</script>';
+        
+            
         }else{
             echo 'Ocurrio un error inesperado al crear la copia de seguridad';
         }
