@@ -77,13 +77,13 @@ $pass .=substr($caracteres,rand(0,53),1);
 	   $resultado->execute(array(":rol"=>$idrol,":usuario"=>$usuario,":nombres"=>$nombres,":apellidos"=>$apellidos,":contra"=>$pass_cifrado,":estado"=>$estado,":fecha_creacion" =>$fecha_creacion, ":fecha_vencimiento"=>$fecha_vencimiento,":correo"=>$correo));
 	   
 
-	   $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
-		VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
-	    $resultado2=$conexion->prepare($sql2);	
-		$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,":accion"=>'NUEVO',":descr"=>'CREO UN USUARIO EN MANTENIMIENTO',":fecha"=>$fecha_vencimiento));
+	   
 		
 	   if ($resultado) {
-		//echo '<script>alert("Se ha registrado exitosamente,revise su correo electronico");location.href= "../vistas/insertar_mant_vista.php"</script>';
+		$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
+		VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
+	    $resultado2=$conexion->prepare($sql2);	
+		$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,":accion"=>'NUEVO',":descr"=>'CREO UN USUARIO',":fecha"=>date("Y-m-d H:i:s")));
 		echo '<script>
                     Swal.fire({
                     title: "¡BIEN!",

@@ -1,11 +1,11 @@
 
 <?php
 session_start();
-
+require_once "../modelos/conectar.php";
 if (!isset($_SESSION["id_us"])) {
   header('location:../vistas/login_vista.php');
 }
-require_once "../modelos/conectar.php"; 
+ 
 $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
 VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
 $resultado2=$conexion->prepare($sql2);	

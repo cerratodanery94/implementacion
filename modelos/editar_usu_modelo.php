@@ -1,6 +1,33 @@
 <?php
+session_start();
+if (!isset($_SESSION["id_us"])) {
+  header('location:../vistas/login_vista.php');
+}
 try {
-require '../modelos/conectar.php';
+  require_once '../modelos/conectar.php';
+  $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
+VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
+  $resultado2=$conexion->prepare($sql2);	
+$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>10,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA EDITAR USUARIOS',":fecha"=>date("Y-m-d H:i:s")));
+
+$ROL = $_SESSION['ROL'];
+$_SESSION['PANTALLA'] = 10;
+$PANTALLA = $_SESSION['PANTALLA'];
+$sql3 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO = :pantalla ";
+$resultado3=$conexion->prepare($sql3);	
+$resultado3->execute(array(":rol"=>$ROL,":pantalla"=>$PANTALLA));
+$DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
+$CONSULTAR = $DATOS['PERM_CONSULTAR'];
+$INSERTAR = $DATOS['PERM_INSERTAR'];
+$ELIMINAR = $DATOS['PERM_ELIMINAR'];
+$ACTUALIZAR = $DATOS['PERM_ACTUALIZAR'];
+$USUARIOS=$DATOS['PERM_USUARIO'];
+$EMPLEADOS=$DATOS['PERM_EMPLEADOS'];
+$PACIENTES=$DATOS['PERM_PACIENTES'];
+$NUTRI=$DATOS['PERM_EXP_NUTRI'];
+$MEDICO=$DATOS['PERM_EXP_MEDICO'];
+$CITAS=$DATOS['PERM_CITAS'];
+$SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 if(isset($_GET['id'])){
     $id=$_GET['id'];
     $sql="SELECT * FROM TBL_USUARIO WHERE USU_CODIGO= :id";
@@ -22,32 +49,9 @@ if(isset($_GET['id'])){
 	echo "Codigo del error" . $e->getCode();
 }
 ?> 
-<?php
-session_start();
-require_once "../modelos/conectar.php"; 
-$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
-VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
-$resultado2=$conexion->prepare($sql2);	
-$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>10,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA DE ACTUALIZAR USUARIOS MANTENIMIENTO',":fecha"=>date("Y-m-d H:m:s")));            
-$ROL = $_SESSION['ROL'];
-$_SESSION['PANTALLA'] = 10;
-$PANTALLA = $_SESSION['PANTALLA'];
-$sql3 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO = :pantalla ";
-$resultado3=$conexion->prepare($sql3);	
-$resultado3->execute(array(":rol"=>$ROL,":pantalla"=>$PANTALLA));
-$DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
-$CONSULTAR = $DATOS['PERM_CONSULTAR'];
-$INSERTAR = $DATOS['PERM_INSERTAR'];
-$ELIMINAR = $DATOS['PERM_ELIMINAR'];
-$ACTUALIZAR = $DATOS['PERM_ACTUALIZAR'];
-$USUARIOS=$DATOS['PERM_USUARIO'];
-$EMPLEADOS=$DATOS['PERM_EMPLEADOS'];
-$PACIENTES=$DATOS['PERM_PACIENTES'];
-$NUTRI=$DATOS['PERM_EXP_NUTRI'];
-$MEDICO=$DATOS['PERM_EXP_MEDICO'];
-$CITAS=$DATOS['PERM_CITAS'];
-$SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
-?>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>

@@ -1,11 +1,13 @@
 <?php
 session_start();
-require '../modelos/conectar.php';
+require_once '../modelos/conectar.php';
+if (!isset($_SESSION["id_us"])) {
+  header('location:../vistas/login_vista.php');
+}
 $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
 VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
   $resultado2=$conexion->prepare($sql2);	
-$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA DE INSERTAR MANTENIMIENTO',":fecha"=>date("Y-m-d H:m:s")));
-
+$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>34,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA AÑADIR ROL',":fecha"=>date("Y-m-d H:i:s")));
 $ROL = $_SESSION['ROL'];
 $_SESSION['PANTALLA'] = 34;
 $PANTALLA = $_SESSION['PANTALLA'];

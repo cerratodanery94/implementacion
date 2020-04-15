@@ -1,4 +1,5 @@
 <?php
+session_start();
 require '../modelos/conectar.php';
 try {
   if (isset($_POST['id_c'])&&
@@ -43,6 +44,10 @@ try {
           ":id_c" =>$id_c
         ));
           if($query){
+            $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
+VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
+  $resultado2=$conexion->prepare($sql2);	
+$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>29,":accion"=>'EDITAR',":descr"=>'ACTUALIZO UNA CITA',":fecha"=>date("Y-m-d H:i:s")));
             //echo '<script>alert("SE HA ACTUALIZADO PACIENTE CORRECTAMENTE");window.location.href="../vistas/mostrar_pacientes_vista.php"</script>';
             echo '<script>
             Swal.fire({
