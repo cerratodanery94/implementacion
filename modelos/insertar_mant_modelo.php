@@ -43,7 +43,7 @@ $pass .=substr($caracteres,rand(0,53),1);
 		$numero_de_telefono_fijo= $_POST["numero_de_telefono_fijo"];
 		$genero=$_POST["genero"];
 		$direccion=strtoupper($_POST["direccion"]);
-		$pasaporte=strtoupper($_POST["pasaporte"]);
+		$pasaportes=strtoupper($_POST["pasaporte"]);
 		
 
 		$consulta=$conexion->prepare("SELECT * FROM TBL_USUARIO WHERE USU_USUARIO='$usuario'");
