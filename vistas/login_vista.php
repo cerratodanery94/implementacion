@@ -48,7 +48,7 @@
 
       <div class="form-group has-feedback">
         <div class="input-group">
-        <input id="contra2" autocomplete="off" type="password" class="form-control" placeholder="CONTRASEÑA" name="contra2" value="789456123">
+        <input id="contra2" autocomplete="off" type="password" class="form-control" placeholder="CONTRASEÑA" name="contra2" value="Hola123@">
         <div class="input-group-append">
         <button id="show_password" class="btn btn-primary" type="button" onclick="mostrarPassword_login()"><span class="fa fa-eye-slash icon2"></span></button>
         </div>
