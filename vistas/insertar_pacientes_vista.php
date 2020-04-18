@@ -126,10 +126,6 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="APELLIDOS"  name="apellidos" id="apellidos" >
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">EDAD</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="EDAD"  name="edad" id="edad">
-                </div>
-                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">IDENTIDAD</label>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="IDENTIDAD"  name="numero_de_identidad" id="numero_de_identidad">
                 </div>
@@ -138,8 +134,17 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                   <input type="text" autocomplete="off" class="form-control" placeholder="RTN" name="rtn" id="rtn"  >
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">NACIONALIDAD</label>
-                  <input type="text" style="text-transform:uppercase" autocomplete="off" class="form-control" placeholder="NACIONALIDAD" name="nacionalidad" id="nacionalidad"  >
+                <label for="exampleInputPassword1">NACIONALIDAD</label>
+                <select class="form-control" name="nacionalidad" id="nacionalidad">
+        <option value="0">SELECCIONE UNA NACIONALIDAD:</option>
+                <?php
+        require '../modelos/conectar.php';
+          $resultado = $conexion -> query ("SELECT * FROM tbl_paises");
+          while ($registro=$resultado->fetch(PDO::FETCH_ASSOC)) {
+            echo '<option value="'.$registro["PAIS_CODIGO"].'">'.$registro["PAIS_NOMBRE"].'</option>';
+          }
+        ?>
+        </select>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">PROFESION/OCUPACION</label>
@@ -163,7 +168,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">FECHA DE CREACION</label>
-                  <input type="date" autocomplete="off" class="form-control" placeholder="FECHA DE CREACION" name="fecha_creacion" id="fecha_creacion">
+                  <input type="text" autocomplete="off" class="form-control" placeholder="FECHA DE CREACION" name="fecha_creacion" id="fecha_creacion" value="<?php echo date("m/d/Y"); ?> " readonly>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">CORREO</label>
@@ -184,7 +189,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                 </div>
                 <div class="box-footer">
               <div class="col text-center">
-                <button type="button" onclick="validar_paciente();" class="btn btn-primary btn-flat margin">CREAR</button>
+                <button type="submit" class="btn btn-primary btn-flat margin">CREAR</button>
                 <a href="../vistas/mostrar_pacientes_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
                 </div>
               </div>

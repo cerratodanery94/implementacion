@@ -22,8 +22,9 @@ $pass .=substr($caracteres,rand(0,53),1);
 
 	try{
 		require '../modelos/conectar.php';
-		if (isset($_POST['nombres']) && isset($_POST['apellidos'])&& isset($_POST['usuario'])&& isset($_POST['correo'])) {
+		if (isset($_POST['nombres'])&& isset($_POST['nacionalidad']) && isset($_POST['apellidos'])&& isset($_POST['usuario'])&& isset($_POST['correo'])) {
 	 $idrol=2;
+	
      $nombres= strtoupper ($_POST["nombres"]);
      $apellidos=strtoupper ( $_POST["apellidos"]);
      $usuario= strtoupper($_POST["usuario"]);
@@ -31,7 +32,12 @@ $pass .=substr($caracteres,rand(0,53),1);
      $estado="NUEVO";
      $fecha_creacion= date("Y-m-d H:m:s");
      $fecha_vencimiento= date("Y-m-d H:m:s",strtotime("+1 years"));
-     $correo= $_POST["correo"];
+	 $correo= $_POST["correo"];
+	 $nacionalidad= $_POST["nacionalidad"];
+
+	
+	 
+
 		$consulta=$conexion->prepare("SELECT * FROM TBL_USUARIO WHERE USU_USUARIO='$usuario'");
         $consulta->execute();
         $num_rows = $consulta->fetchColumn();
@@ -70,11 +76,73 @@ $pass .=substr($caracteres,rand(0,53),1);
 
 		$mail->send();
 		   
-	   $sql="INSERT INTO TBL_USUARIO (ROL_CODIGO,USU_USUARIO,USU_NOMBRES,USU_APELLIDOS,USU_PASSWORD,USU_ESTADO,USU_PREGUNTAS_CONTESTADAS,USU_PRIMER_INGRESO,USU_FECHA_CREACION,USU_FECHA_VENCIMIENTO,USU_TOKEN,USU_FECHA_TOKEN,USU_CORREO) 
-	   VALUES (:rol,:usuario,:nombres,:apellidos,:contra,:estado,'','',:fecha_creacion,:fecha_vencimiento,'','',:correo)";
+	   $sql="INSERT INTO TBL_USUARIO (
+	   ROL_CODIGO,
+	   PAIS_CODIGO,
+	   USU_USUARIO,
+	   USU_NOMBRES,
+	   USU_APELLIDOS,
+	   USU_PASSWORD,
+	   USU_ESTADO,
+	   USU_PREGUNTAS_CONTESTADAS,
+	   USU_PRIMER_INGRESO,
+	   USU_FECHA_CREACION,
+	   USU_FECHA_VENCIMIENTO,
+	   USU_TOKEN,
+	   USU_FECHA_TOKEN,
+	   USU_CORREO,
+	   USU_EDAD,
+	   USU_FECHA_NACIMIENTO,
+	   USU_CELULAR,
+	   USU_TEL_FIJO,
+	   USU_IDENTIDAD,
+	   USU_RTN,
+	   USU_GENERO,
+	   USU_DIRECCION,
+	   USU_PASAPORTE
+		) 
+	   VALUES (
+		:rol,
+		:nacionalidad,
+		:usuario,
+		:nombres,
+		:apellidos,
+		:contra,
+		:estado,
+		'',
+		'',
+		:fecha_creacion,
+		:fecha_vencimiento,
+		'',
+		'',
+		:correo,
+		'',
+		'',
+		'',
+		'',
+		'',
+		'',
+		'',
+		'',
+		'')";
 	
 	   $resultado=$conexion->prepare($sql);	
-       $resultado->execute(array(":rol"=>$idrol,":usuario"=>$usuario,":nombres"=>$nombres,":apellidos"=>$apellidos,":contra"=>$pass_cifrado,":estado"=>$estado,":fecha_creacion" =>$fecha_creacion, ":fecha_vencimiento"=>$fecha_vencimiento,":correo"=>$correo));
+       $resultado->execute(array(
+		   ":rol"=>$idrol,
+		   ":nacionalidad"=>$nacionalidad,
+		   ":usuario"=>$usuario,
+		   ":nombres"=>$nombres,
+		   ":apellidos"=>$apellidos,
+		   ":contra"=>$pass_cifrado,
+		   ":estado"=>$estado,
+		   ":fecha_creacion" =>$fecha_creacion,
+		   ":fecha_vencimiento"=>$fecha_vencimiento,
+		   ":correo"=>$correo
+		   
+		
+		));
+
+
 	   if ($resultado) {
 		//echo '<script>alert("Se ha registrado exitosamente,revise su correo electronico");window.location= "../vistas/login_vista.php"</script>';
 		echo '<script>Swal.fire({

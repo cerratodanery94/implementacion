@@ -125,6 +125,57 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                 </div>
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                  <label for="exampleInputPassword1">FECHA DE NACIMIENTO</label>
+                  <input type="date" autocomplete="off" class="form-control" placeholder="FECHA DE NACIMIENTO" name="fecha_de_nacimiento" id="fecha_de_nacimiento">
+                </div>
+                
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                  <label for="exampleInputPassword1">IDENTIDAD</label>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="IDENTIDAD"  name="numero_de_identidad" id="numero_de_identidad"">
+                </div>
+
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                  <label for="exampleInputPassword1">RTN</label>
+                  <input type="text" autocomplete="off" class="form-control"placeholder="RTN" name="rtn" id="rtn"  >
+                </div>
+
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                  <label for="exampleInputPassword1"> CELULAR</label>
+                  <input type="text" autocomplete="off" class="form-control"placeholder="NUMERO DE CELULAR" name="numero_de_celular" id="numero_de_celular">
+                </div>
+
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                  <label for="exampleInputPassword1"> TELEFONO FIJO</label>
+                  <input type="text" autocomplete="off" class="form-control"placeholder="TELEFONO FIJO" name="numero_de_telefono_fijo" id="numero_de_telefono_fijo">
+                </div>
+
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <label for="exampleInputPassword1">GENERO</label>
+                <select class="form-control" name="genero" id="genero">
+                 <option value="0">SELECCIONE EL GENERO:</option>
+                 <option value="MUJER">FEMENINO</option>
+                 <option value="MASCULINO">MASCULINO</option>
+                 <option value="OTRO">OTRO</option>
+
+                </select>
+                </div>
+
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <label for="exampleInputPassword1">NACIONALIDAD</label>
+                <select class="form-control" name="nacionalidad" id="nacionalidad">
+        <option value="0">SELECCIONE UNA NACIONALIDAD:</option>
+                <?php
+        require '../modelos/conectar.php';
+          $resultado = $conexion -> query ("SELECT * FROM tbl_paises");
+          while ($registro=$resultado->fetch(PDO::FETCH_ASSOC)) {
+            echo '<option value="'.$registro["PAIS_CODIGO"].'">'.$registro["PAIS_NOMBRE"].'</option>';
+          }
+        ?>
+        </select>
+                </div>
+
+
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <label for="exampleInputPassword1">ROL</label>
                 <select class="form-control" name="rol_usuario" id="combox">
         <option value="0">SELECCIONE ROL:</option>
@@ -149,11 +200,23 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                   <label for="exampleInputPassword1">CORREO</label>
                   <input type="email" autocomplete="off" class="form-control correo" placeholder="CORREO" name="correo" id="correo" >
                 </div>
+
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                  <label for="exampleInputPassword1">PASAPORTE</label>
+                  <input type="text" autocomplete="off" class="form-control correo" placeholder="PASAPORTE" name="pasaporte" id="pasaporte" >
+                </div>
+
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                  <label for="exampleInputPassword1">Direccion</label>
+                  <textarea placeholder="DIRECCIÓN" style="text-transform:uppercase"  class="form-control"  name="direccion" id="direccion" cols="30" rows="5" ></textarea >
+                </div>
+
               <div class="box-footer">
               <div class="col text-center">
-                <button type="button"  class="btn btn-primary  btn-flat margin" onclick="validar_matenimiento();">CREAR</button>
+                <button type="submit"  class="btn btn-primary  btn-flat margin">CREAR</button>
                 <a href="../vistas/mostrar_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
                 </div>
+
         <!-- /.col -->
       </div>
       <!-- /.row -->

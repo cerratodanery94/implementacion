@@ -1,5 +1,5 @@
 <?php	
-session_start();
+
 	try{
 		require '../modelos/conectar.php';
 		if (isset($_POST['peso'])&& 
@@ -18,7 +18,7 @@ session_start();
 		$temperatura=$_POST["temperatura"];
 		$antecedentes=strtoupper($_POST["antecedentes"]);
 		$dieta=strtoupper ($_POST["dieta"]);
-		$fecha_de_creacion=$_POST["fecha_de_creacion"] ;
+		$fecha_de_creacion=date("Y-m-d H:m:s");
 		
 	
 		

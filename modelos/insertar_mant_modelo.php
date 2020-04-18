@@ -1,4 +1,9 @@
 <?php	
+
+
+if (!isset($_SESSION["id_us"])) {
+	header('location:../vistas/login_vista.php');
+  }
 // Importar clases PHPMailer en el espacio de nombres global
 // Deben estar en la parte superior de su script, no dentro de una función
 use PHPMailer\PHPMailer\PHPMailer;
@@ -20,7 +25,7 @@ $pass .=substr($caracteres,rand(0,53),1);
 
 	try{
 		require '../modelos/conectar.php';
-		if (isset($_POST['rol_usuario']) && isset($_POST['nombres']) && isset($_POST['apellidos']) && isset($_POST['usuario']) && isset($_POST['correo'])) {
+		if (isset($_POST['rol_usuario']) && isset($_POST['nacionalidad']) && isset($_POST['nombres']) && isset($_POST['apellidos']) && isset($_POST['usuario']) && isset($_POST['correo'])) {
 		$idrol=$_POST['rol_usuario'];
 		$nombres= strtoupper ($_POST["nombres"]);
 		$apellidos=strtoupper ( $_POST["apellidos"]);
@@ -30,6 +35,16 @@ $pass .=substr($caracteres,rand(0,53),1);
 		$fecha_creacion= date("Y-m-d H:m:s");
 		$fecha_vencimiento= date("Y-m-d H:m:s",strtotime("+1 years"));
 		$correo= $_POST["correo"];
+		$nacionalidad= $_POST["nacionalidad"];
+		$identidad= $_POST["numero_de_identidad"];
+		$rtn= $_POST["rtn"];
+		$fecha_de_nacimiento= $_POST["fecha_de_nacimiento"];
+		$numero_de_celular= $_POST["numero_de_celular"];
+		$numero_de_telefono_fijo= $_POST["numero_de_telefono_fijo"];
+		$genero=$_POST["genero"];
+		$direccion=strtoupper($_POST["direccion"]);
+		$pasaporte=strtoupper($_POST["pasaporte"]);
+		
 
 		$consulta=$conexion->prepare("SELECT * FROM TBL_USUARIO WHERE USU_USUARIO='$usuario'");
         $consulta->execute();
@@ -71,10 +86,77 @@ $pass .=substr($caracteres,rand(0,53),1);
 
 		$mail->send();
 		   
-	   $sql="INSERT INTO TBL_USUARIO (ROL_CODIGO,USU_USUARIO,USU_NOMBRES,USU_APELLIDOS,USU_PASSWORD,USU_ESTADO,USU_PREGUNTAS_CONTESTADAS,USU_PRIMER_INGRESO,USU_FECHA_CREACION,USU_FECHA_VENCIMIENTO,USU_TOKEN,USU_FECHA_TOKEN,USU_CORREO) 
-	   VALUES (:rol,:usuario,:nombres,:apellidos,:contra,:estado,'','',:fecha_creacion,:fecha_vencimiento,'','',:correo)";
-	   $resultado=$conexion->prepare($sql);	
-	   $resultado->execute(array(":rol"=>$idrol,":usuario"=>$usuario,":nombres"=>$nombres,":apellidos"=>$apellidos,":contra"=>$pass_cifrado,":estado"=>$estado,":fecha_creacion" =>$fecha_creacion, ":fecha_vencimiento"=>$fecha_vencimiento,":correo"=>$correo));
+	   $sql="INSERT INTO TBL_USUARIO (
+	   ROL_CODIGO,
+	   PAIS_CODIGO,
+	   USU_USUARIO,
+	   USU_NOMBRES,
+	   USU_APELLIDOS,
+	   USU_PASSWORD,
+	   USU_ESTADO,
+	   USU_FECHA_CREACION,
+	   USU_FECHA_VENCIMIENTO,
+	   USU_TOKEN,
+	   USU_FECHA_TOKEN,
+	   USU_CORREO,
+	   USU_FECHA_NACIMIENTO,
+	   USU_CELULAR,
+	   USU_TEL_FIJO,
+	   USU_IDENTIDAD,
+	   USU_RTN,
+	   USU_GENERO,
+	   USU_DIRECCION,
+	   USU_PASAPORTE
+	   
+	   ) 
+
+	   VALUES (
+		:rol,
+		:nacionalidad,
+		:usuario,
+		:nombres,
+		:apellidos,
+		:contra,
+		:estado,
+		:fecha_creacion,
+		:fecha_vencimiento,
+		'',
+		'',
+		:correo,
+		:fecha_nacimiento,
+		:tel_celular,
+		:tel_fijo,
+		:identidad,
+		:rtn,
+		:genero,
+		:direccion,
+		:pasaporte)";
+	  
+	 
+	 
+	  $resultado=$conexion->prepare($sql);	
+	   $resultado->execute(array(
+		   ":rol"=>$idrol,
+		   ":nacionalidad"=>$nacionalidad,
+		   ":usuario"=>$usuario,
+		   ":nombres"=>$nombres,
+		   ":apellidos"=>$apellidos,
+		   ":contra"=>$pass_cifrado,
+		   ":estado"=>$estado,
+		   ":fecha_creacion" =>$fecha_creacion,
+			":fecha_vencimiento"=>$fecha_vencimiento,
+			":correo"=>$correo,
+			":fecha_nacimiento"=>$fecha_de_nacimiento,
+			":tel_celular"=>$numero_de_celular,
+			":tel_fijo"=>$numero_de_telefono_fijo,
+			":identidad"=>$identidad,
+			":rtn"=>$rtn,
+			":genero"=>$genero,
+			":direccion"=>$direccion,
+			":pasaporte"=>$pasaportes
+
+
+		));
 	   
 
 	   

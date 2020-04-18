@@ -26,7 +26,7 @@ try {
     $id_u=$fila['EXP_CODIGO'];
     $nombres=$fila['PER_NOMBRES'];
     $apellidos=$fila['PER_APELLIDOS'];
-    $edad=$fila['PER_EDAD'];
+    $fecha_nacimiento=$fila['PER_FECHA_NACIMIENTO'];
     $identidad=$fila['PER_NUMERO_IDENTIDAD'];
     $fecha=$fila['EXP_FECHA_CREACION'];
     $apuntes=$fila['EXP_ANTECEDENTES_CLINICOS'];
@@ -169,8 +169,8 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
          </div>
 
          <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">EDAD</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="EDAD"  name="edad" id="edad" value="<?php echo $edad?>" readonly   >
+                  <label for="exampleInputPassword1">FECHA DE NACIMIENTO</label>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="EDAD"  name="edad" id="edad" value="<?php echo $fecha_nacimiento?>" readonly   >
           </div>
 
 
@@ -199,11 +199,7 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
                   <textarea class="form-control" name="medicamento" id="medicamento" rows="10" cols="50" readonly   ><?php echo $medicamento?> </textarea >
                 </div>
                 
-                <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">FOTO IRIS</label>
-                  <a href="../vistas/mostrar_foto_vista.php" class="btn bg-blue btn-flat margin">MOSTRAR FOTOGRAFIA <i class="fa fa-plus" aria-hidden="true"></i> </a>
-
-                </div>
+               
                
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">

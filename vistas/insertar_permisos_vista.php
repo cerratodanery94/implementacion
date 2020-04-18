@@ -142,7 +142,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
         <option value="0">SELECCIONE LA PANTALLA:</option>
         <?php
         require '../modelos/conectar.php';
-        $resultado = $conexion -> query ("SELECT * FROM TBL_OBJETOS where obj_codigo in (1,11,10,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,33,32,34,35,36,38,40) ");
+        $resultado = $conexion -> query ("SELECT * FROM TBL_OBJETOS where obj_codigo in (1,11,10,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,33,32,34,35,36,38,40,41) ");
         while ($registro=$resultado->fetch(PDO::FETCH_ASSOC)) {
         echo '<option value="'.$registro["OBJ_CODIGO"].'">'.$registro["OBJ_NOMBRE"].'</option>';
         }

@@ -38,26 +38,6 @@
       
 
       
-
-      <?php if ($EMPLEADOS == 1){ ?>
-       <!-- Titulo de Empleados -->
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-users"></i>
-          <span>Empleados</span>
-
-        </a>
-        <!-- subtitulos de Empleados -->
-
-        
-          <ul class="treeview-menu">
-          <li><a href="../vistas/mostrar_empleados_vista.php"><i class="fa fa-list"></i> Lista de Empleados</a></li>
-        </ul>
-        
-        
-      </li>
-      <?php } ?>
-      
       <?php if ($PACIENTES == 1){ ?>
      
       <!-- Titulo de Pacientes -->

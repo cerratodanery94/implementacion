@@ -154,8 +154,8 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
          </div>
 
          <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">EDAD</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="EDAD"  name="edad" id="edad" value="<?php echo $registro['PER_EDAD']?>" readonly   >
+                  <label for="exampleInputPassword1">FECHA NACIMIENTO</label>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="FECHA NACIMIENTO"  name="FECHA NACIMIENTO" id="FECHA NACIMIENTO" value="<?php echo $registro['PER_FECHA_NACIMIENTO']?>" readonly   >
           </div>
 
 
@@ -190,7 +190,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">FECHA DE CREACION</label>
-                  <input type="date" autocomplete="off" class="form-control nombres" placeholder="FECHA DE CREACION" name="fecha_de_creacion" id="fecha_de_creacion">
+                  <input type="text" autocomplete="off" class="form-control nombres" placeholder="FECHA DE CREACION" name="fecha_de_creacion" id="fecha_de_creacion" value="<?php echo date("m/d/Y"); ?> " readonly>
                 </div>
          
                 <div class="box-footer">

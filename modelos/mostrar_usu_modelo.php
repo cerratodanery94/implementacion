@@ -11,7 +11,7 @@ VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
 $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>10,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA EDITAR USUARIOS',":fecha"=>date("Y-m-d H:i:s")));
 
 $ROL = $_SESSION['ROL'];
-$_SESSION['PANTALLA'] = 10;
+$_SESSION['PANTALLA'] = 41;
 $PANTALLA = $_SESSION['PANTALLA'];
 $sql3 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO = :pantalla ";
 $resultado3=$conexion->prepare($sql3);	
@@ -43,6 +43,7 @@ if(isset($_GET['id'])){
        $rol=$fila['ROL_CODIGO'];
        $correo=$fila['USU_CORREO'];
        $nacionalidad=$fila['PAIS_CODIGO'];
+       $edad=$fila['USU_EDAD'];
        $fecha_nacimiento=$fila['USU_FECHA_NACIMIENTO'];
        $celular=$fila['USU_CELULAR'];
        $tel_fijo=$fila['USU_TEL_FIJO'];
@@ -143,77 +144,69 @@ if(isset($_GET['id'])){
             <div class="box-body">
            <div>
         <form action="" method="POST"  name="Formactualizar_mant">
-                 <input type="hidden"  class="form-control " name="id1" value="<?php echo $id_u;?>" >
+                 <input type="hidden"  class="form-control " name="id1" value="<?php echo $id_u;?>" readonly >
                 </div>
                 <div Id="alerta_mant"></div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">NOMBRES</label>
-                  <input type="text"style="text-transform:uppercase" class="form-control apellidos" placeholder="NOMBRE"  name="nombres" id="nombre" value="<?php echo $nombre?>" >
+                  <input type="text"style="text-transform:uppercase" class="form-control apellidos" placeholder="NOMBRE"  name="nombres" id="nombre" value="<?php echo $nombre?>" readonly >
                 </div>
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">APELLIDOS</label>
-                  <input type="text" style="text-transform:uppercase" class="form-control nombres" placeholder="APELLIDO"  name="apellidos" id="apellido" value="<?php echo $apellido?>" >
+                  <input type="text" style="text-transform:uppercase" class="form-control nombres" placeholder="APELLIDO"  name="apellidos" id="apellido" value="<?php echo $apellido?>" readonly >
                 </div>
                 <div class="form-group">
-                  <input type="hidden" style="text-transform:uppercase" class="form-control nombres" placeholder="USUARIO"  name="usuarioa" id="usuarioa" value="<?php echo $usuario?>">
+                  <input type="hidden" style="text-transform:uppercase" class="form-control nombres" placeholder="USUARIO"  name="usuarioa" id="usuarioa" value="<?php echo $usuario?>" readonly>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputEmail1">USUARIO</label>
-                  <input type="text" style="text-transform:uppercase" class="form-control nombres" placeholder="USUARIO"  name="usuarion" id="usuarion" value="<?php echo $usuario?>">
+                  <input type="text" style="text-transform:uppercase" class="form-control nombres" placeholder="USUARIO"  name="usuarion" id="usuarion" value="<?php echo $usuario?>" readonly>
                 </div>
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">FECHA DE NACIMIENTO</label>
-                  <input type="date" autocomplete="off" class="form-control" placeholder="FECHA DE NACIMIENTO" name="fecha_de_nacimiento" id="fecha_de_nacimiento" value="<?php echo $fecha_nacimiento?>">
+                  <input type="date" autocomplete="off" class="form-control" placeholder="FECHA DE NACIMIENTO" name="fecha_de_nacimiento" id="fecha_de_nacimiento" value="<?php echo $fecha_nacimiento?>" readonly>
                 </div> 
 
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                  <label for="exampleInputPassword1">EDAD</label>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="EDAD"  name="edad" id="edad"value="<?php echo $edad?>"readonly>
+                </div>
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">IDENTIDAD</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="IDENTIDAD"  name="numero_de_identidad" id="numero_de_identidad"value="<?php echo $identidad?>">
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="IDENTIDAD"  name="numero_de_identidad" id="numero_de_identidad"value="<?php echo $identidad?>" readonly>
                 </div>
                
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">RTN</label>
-                  <input type="text" autocomplete="off" class="form-control"placeholder="RTN" name="rtn" id="rtn" value="<?php echo $rtn?>" >
+                  <input type="text" autocomplete="off" class="form-control"placeholder="RTN" name="rtn" id="rtn" value="<?php echo $rtn?>" readonly >
                 </div>
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1"> CELULAR</label>
-                  <input type="text" autocomplete="off" class="form-control"placeholder="NUMERO DE CELULAR" name="numero_de_celular" id="numero_de_celular" value="<?php echo $celular?>">
+                  <input type="text" autocomplete="off" class="form-control"placeholder="NUMERO DE CELULAR" name="numero_de_celular" id="numero_de_celular" value="<?php echo $celular?>" readonly>
                 </div>
                  
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1"> TELEFONO FIJO</label>
-                  <input type="text" autocomplete="off" class="form-control"placeholder="TELEFONO FIJO" name="numero_de_telefono_fijo" id="numero_de_telefono_fijo" value="<?php echo $tel_fijo?>">
+                  <input type="text" autocomplete="off" class="form-control"placeholder="TELEFONO FIJO" name="numero_de_telefono_fijo" id="numero_de_telefono_fijo" value="<?php echo $tel_fijo?>" readonly>
                 </div>
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <label for="exampleInputPassword1">GENERO</label>
-                <select class="form-control" name="genero" id="genero">
-                 <option value="0">SELECCIONE UN GENERO:</option>
-                 <option value="FEMENINO"
-                 <?php
-                 if ($genero=='FEMENINO') {
-                    echo 'selected';
-                 }
-                 ?>
-                 >FEMENINO</option>
-                 <option value="MASCULINO"
-                 <?php
-                 if ($genero=='MASCULINO') {
-                    echo 'selected';
-                 }
-                 ?>
-                 >MASCULINO</option>
-                 
+                <select class="form-control" name="genero" id="genero" readonly>
+                 <option value="0">SELECCIONE EL GENERO:</option>
+                 <option value="MUJER">FEMENINO</option>
+                 <option value="MASCULINO">MASCULINO</option>
+                 <option value="OTRO">OTRO</option>
                 </select>
                 </div>
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">NACIONALIDAD</label>
-                <select class="form-control" name="nacionalidad" id="nacionalidad">
+                <select class="form-control" name="nacionalidad" id="nacionalidad" readonly>
         <option value="0">SELECCIONE UNA NACIONALIDAD:</option>
                 <?php
                
@@ -233,7 +226,7 @@ if(isset($_GET['id'])){
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <label for="exampleInputPassword1">ESTADO</label>
-                <select class="form-control" name="estado" id="combox2">
+                <select class="form-control" name="estado" id="combox2" readonly>
                  <option value="0">SELECCIONE EL ESTADO:</option>
                  <option value="NUEVO"
                  <?php
@@ -268,7 +261,7 @@ if(isset($_GET['id'])){
                 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">ROL</label>
-                <select class="form-control" name="rol_usuario" id="rol_usuario">
+                <select class="form-control" name="rol_usuario" id="rol_usuario" readonly>
         <option value="0">SELECCIONE UN ROL:</option>
                 <?php
                
@@ -298,25 +291,25 @@ if(isset($_GET['id'])){
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">PASAPORTE</label>
-                  <input type="text" autocomplete="off" class="form-control correo" placeholder="PASAPORTE" name="pasaporte" id="pasaporte" value="<?php echo $pasaporte?>" >
+                  <input type="text" autocomplete="off" class="form-control correo" placeholder="PASAPORTE" name="pasaporte" id="pasaporte" value="<?php echo $pasaporte?>" readonly>
                 </div>
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">Direccion</label>
-                  <textarea placeholder="DIRECCIÓN" style="text-transform:uppercase"  class="form-control"  name="direccion" id="direccion" cols="30" rows="5" ><?php echo $direccion?></textarea >
+                  <textarea placeholder="DIRECCIÓN" style="text-transform:uppercase"  class="form-control" readonly  name="direccion" id="direccion" cols="30" rows="5" ><?php echo $direccion?></textarea  >
                 </div>
 
                  <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <label for="exampleInputPassword1">CORREO</label>
-                  <input type="email" class="form-control correo" placeholder="CORREO" name="correon" id="correon" value="<?php echo $correo?>" >
+                  <input type="email" class="form-control correo" placeholder="CORREO" name="correon" id="correon" value="<?php echo $correo?>" readonly>
                 </div>
                 </div>
                 <div class="box-footer">
                 <div class="col text-center">
                 
     
-                <button type="submit" name="update" class="btn btn-primary btn-flat margin">ACTUALIZAR</button>
-                <a href="../vistas/mostrar_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
+                
+                <a href="../vistas/mostrar_vista.php" class="btn bg-red btn-flat margin" >ATRAS</a>
                 </div>
         <!-- /.col -->
       </div>

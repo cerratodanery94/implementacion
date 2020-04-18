@@ -26,7 +26,7 @@ try {
     $id_u=$fila['NUTRI_CODIGO'];
     $nombres=$fila['PER_NOMBRES'];
     $apellidos=$fila['PER_APELLIDOS'];
-    $edad=$fila['PER_EDAD'];
+    
     $identidad=$fila['PER_NUMERO_IDENTIDAD'];
 		$peso=$fila['NUTRI_PESO'];
 		$estatura=$fila['NUTRI_ALTURA'];
@@ -35,6 +35,7 @@ try {
 		$antecedentes=$fila['NUTRI_ANTECEDENTES_CLINICOS'];
     $dieta=$fila['NUTRI_DIETA'];
     $fecha=$fila['NUTRI_FECHA_CREACION'];
+    $fecha_nacimiento=$fila['PER_FECHA_NACIMIENTO'];
   
   
 		 
@@ -170,8 +171,8 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
          </div>
 
          <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">EDAD</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="EDAD"  name="edad" id="edad" value="<?php echo $edad?>" readonly   >
+                  <label for="exampleInputPassword1">FECHA DE NACIMIENTO</label>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="FECHA DE NACIMIENTO"  name="fecha_nacimiento" id="fecha_nacimiento" value="<?php echo $fecha_nacimiento?>" readonly   >
           </div>
 
 

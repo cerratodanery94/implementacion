@@ -1,11 +1,10 @@
 <?php	
-session_start();
+
 	try{
 		require '../modelos/conectar.php';
 		if (isset($_POST['nombres'])&& isset($_POST['apellidos'])) {
 		$nombres=strtoupper($_POST["nombres"]);
 		$apellidos= strtoupper ($_POST["apellidos"]);
-		$edad=$_POST["edad"];
 		$identidad= $_POST["numero_de_identidad"];
 		$rtn= $_POST["rtn"];
 		$profesion= strtoupper($_POST["profesion"]);
@@ -15,18 +14,19 @@ session_start();
 		$fecha_de_nacimiento= $_POST["fecha_de_nacimiento"];
 		$correo= $_POST["correo"];
 		$direccion=strtoupper($_POST["direccion"]);
+		$nacionalidad=strtoupper($_POST["nacionalidad"]);
 		$genero=$_POST["genero"];
-		$fecha_creacion=$_POST["fecha_creacion"];
+		$fecha_creacion= date("Y-m-d H:m:s");
 		$nacionalidad=$_POST["nacionalidad"];
 		
 	   $sql="INSERT INTO TBL_PERSONAS (
+		   PAIS_CODIGO,
 		   PER_NUMERO_IDENTIDAD,
 		   PER_PASAPORTE,
 		   PER_NOMBRES,
 		   PER_APELLIDOS,
 		   PER_FECHA_NACIMIENTO,
 		   PER_FECHA_CREACION,
-		   PER_EDAD,
 		   PER_GENERO,
 		   PER_TEL_FIJO,
 		   PER_CELULAR,
@@ -37,13 +37,13 @@ session_start();
 		   PER_RTN) 
 		   
 	   VALUES (
+		:nacionalidad,
 		:identidad,
 		:pasaporte,
 		:nombres,
 		:apellidos,
 		:fecha_nacimiento,
 		:fecha_creacion,
-		:edad,
 		:genero,
 		:tel_fijo,
 		:tel_celular,
@@ -55,13 +55,13 @@ session_start();
 
 	   $resultado=$conexion->prepare($sql);	
 	   $resultado->execute(array(
+		   ":nacionalidad"=>$nacionalidad,
 		   ":identidad"=>$identidad,
 		   ":pasaporte"=>$pasaporte,
 		   ":nombres"=>$nombres,
 		   ":apellidos"=>$apellidos,
 		   ":fecha_nacimiento"=>$fecha_de_nacimiento,
 		   ":fecha_creacion"=>$fecha_creacion,
-		   ":edad"=>$edad,
 		   ":genero" =>$genero, 
 		   ":tel_fijo"=>$numero_de_telefono_fijo,
 		   ":tel_celular"=>$numero_de_celular,

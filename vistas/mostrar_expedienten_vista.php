@@ -159,11 +159,6 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                   <a href='../modelos/mostrar_expedienten_modelo.php?id=<?php echo $fila["NUTRI_CODIGO"]?>' class="btn bg-blue btn-flat margin">
                  <i class='fa fa-eye'></i></a>
                   <?php } ?>
-                  
-                  <?php if ($ACTUALIZAR == 1){ ?>
-                    <a href='../modelos/editar_expedienten_modelo.php?id=<?php echo $fila["NUTRI_CODIGO"]?>' class="btn bg-orange btn-flat margin">
-                 <i class='fa fa-pencil'></i></a>
-                  <?php } ?>
 
 
                   <?php if ($ELIMINAR == 1){ ?>

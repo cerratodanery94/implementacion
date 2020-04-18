@@ -149,7 +149,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                 <tbody>
                 <?php
                require '../modelos/conectar.php';
-               $consulta=$conexion->prepare("SELECT * FROM tbl_personas where PER_CODIGO<>1");
+               $consulta=$conexion->prepare("SELECT * FROM tbl_personas where PER_CODIGO>0");
                $consulta->execute();
                  while($fila=$consulta->fetch()){?>
                  <tr> 

@@ -1,5 +1,5 @@
 <?php	
-session_start();
+
 	try{
 		require '../modelos/conectar.php';
 		

@@ -27,7 +27,6 @@ try {
        $apellidos=$fila['PER_APELLIDOS'];
        $fecha_nacimiento=$fila['PER_FECHA_NACIMIENTO'];
        $fecha_creacion=$fila['PER_FECHA_CREACION'];
-       $edad=$fila['PER_EDAD'];
        $genero=$fila['PER_GENERO'];
        $tel_fijo=$fila['PER_TEL_FIJO'];
        $celular=$fila['PER_CELULAR'];
@@ -152,10 +151,7 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
                   <label for="exampleInputPassword1">APELLIDOS</label>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control apellidos" placeholder="APELLIDOS"  name="apellidos" id="apellidos" value="<?php echo $apellidos?>" readonly >
                 </div>
-                <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">EDAD</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="EDAD"  name="edad" id="edad" value="<?php echo $edad?>" readonly  >
-                </div>
+            
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">IDENTIDAD</label>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="EDAD"  name="numero_de_identidad" id="numero_de_identidad" value="<?php echo $identidad?>" readonly >
@@ -166,7 +162,22 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">NACIONALIDAD</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NACIONALIDAD" name="nacionalidad" id="nacionalidad" value="<?php echo $nacionalidad?>" readonly  >
+                <select class="form-control" name="nacionalidad" id="nacionalidad" disabled>
+        <option value="0">SELECCIONE UNA NACIONALIDAD:</option>
+                <?php
+               
+        require '../modelos/conectar.php';
+        $resultado_nacionalidad = $conexion -> query ("select * from tbl_personas tu inner join tbl_paises tp on tu.PAIS_CODIGO = tp.PAIS_CODIGO where tu.PER_CODIGO = $id");
+        $pais = $resultado_nacionalidad->fetch(PDO::FETCH_ASSOC);
+         $nacionalidad = $pais['PAIS_NOMBRE'];
+          $resultado = $conexion -> query ("SELECT * FROM tbl_paises");
+          while ($registro=$resultado->fetch(PDO::FETCH_ASSOC)) {
+            $r = ($nacionalidad == $registro["PAIS_NOMBRE"]) ? 'selected' : '';
+            echo '<option value="'.$registro["PAIS_CODIGO"].'"'.$r.'>'.$registro["PAIS_NOMBRE"].'</option>';
+          }
+ 
+        ?>
+        </select>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">PROFESION/OCUPACION</label>
@@ -190,7 +201,7 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">FECHA DE CREACION</label>
-                  <input type="date" autocomplete="off" class="form-control nombres" placeholder="FECHA DE CREACION" name="fecha_creacion" id="fecha_creacion" value="<?php echo $fecha_creacion?>" readonly >
+                  <input type="text" autocomplete="off" class="form-control" placeholder="FECHA DE CREACION" name="fecha_creacion" id="fecha_creacion" value="<?php echo date("m/d/Y"); ?> " readonly>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">CORREO</label>

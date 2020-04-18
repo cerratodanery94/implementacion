@@ -53,6 +53,21 @@
         <input type="text" autocomplete="off" class="form-control correo" placeholder="CORREO" name="correo" id="correo" >
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
+
+      
+      <div class="form-group">
+                <label for="exampleInputPassword1">NACIONALIDAD</label>
+                <select class="form-control" name="nacionalidad" id="nacionalidad">
+        <option value="0">SELECCIONE UNA NACIONALIDAD:</option>
+                <?php
+        require '../modelos/conectar.php';
+          $resultado = $conexion -> query ("SELECT * FROM tbl_paises");
+          while ($registro=$resultado->fetch(PDO::FETCH_ASSOC)) {
+            echo '<option value="'.$registro["PAIS_CODIGO"].'">'.$registro["PAIS_NOMBRE"].'</option>';
+          }
+        ?>
+        </select>
+                </div>
       <div id ="alerta"></div>
       <div class="row">
         <div class="col-12 forgot">

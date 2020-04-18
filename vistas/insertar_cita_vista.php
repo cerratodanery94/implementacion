@@ -153,8 +153,8 @@ $CONSULTAR = $DATOS['PERM_CONSULTAR'];
          </div>
 
          <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">EDAD</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="EDAD"  name="edad" id="edad" value="<?php echo $registro['PER_EDAD']?>" readonly   >
+                  <label for="exampleInputPassword1">FECHA DE NACIMIENTO</label>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="FECHA DE NACIMIENTO"  name="fecha_nacimiento" id="fecha_nacimiento" value="<?php echo $registro['PER_FECHA_NACIMIENTO']?>" readonly   >
           </div>
 
 

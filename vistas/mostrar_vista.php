@@ -158,6 +158,12 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 					       <td><?php echo $fila['USU_ESTADO']?></td>
                  <td><?php echo $fila['USU_CORREO']?></td>
                  <td>
+
+                 <?php if ($CONSULTAR == 1){ ?>  
+					       <a href='../modelos/mostrar_usu_modelo.php?id=<?php echo $fila["USU_CODIGO"]?>' class="btn bg-blue btn-flat margin">
+                 <i class='fa fa-eye'></i></a>
+                 <?php } ?>
+
                  <?php if ($ACTUALIZAR == 1){ ?>  
 					       <a href='../modelos/editar_usu_modelo.php?id=<?php echo $fila["USU_CODIGO"]?>' class="btn bg-orange btn-flat margin">
                  <i class='fa fa-pencil'></i></a>
