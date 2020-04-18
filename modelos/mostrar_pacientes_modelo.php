@@ -5,6 +5,7 @@ if (!isset($_SESSION["id_us"])) {
 }
 try {
   require '../modelos/conectar.php';
+  require '../controladores/funciones.php';
   $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
   VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
   $resultado2=$conexion->prepare($sql2);	
@@ -26,6 +27,7 @@ try {
        $nombres=$fila['PER_NOMBRES'];
        $apellidos=$fila['PER_APELLIDOS'];
        $fecha_nacimiento=$fila['PER_FECHA_NACIMIENTO'];
+       $edad=mi_edad($fila['PER_FECHA_NACIMIENTO']);
        $fecha_creacion=$fila['PER_FECHA_CREACION'];
        $genero=$fila['PER_GENERO'];
        $tel_fijo=$fila['PER_TEL_FIJO'];
@@ -198,6 +200,10 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">FECHA DE NACIMIENTO</label>
                   <input type="date" autocomplete="off" class="form-control nombres" placeholder="FECHA DE NACIMIENTO" name="fecha_de_nacimiento" id="fecha_de_nacimiento"value="<?php echo $fecha_nacimiento?>" readonly >
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                  <label for="exampleInputPassword1">EDAD</label>
+                  <input type="date" autocomplete="off" class="form-control nombres" placeholder="FECHA DE NACIMIENTO" name="fecha_de_nacimiento" id="fecha_de_nacimiento"value="<?php echo $edad?>" readonly >
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">FECHA DE CREACION</label>

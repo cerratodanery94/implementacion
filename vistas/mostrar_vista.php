@@ -141,11 +141,23 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                   <th>ESTADO</th>
                   <th>CORREO</th>
                   <th>ACCIONES</th>
+                  <th>FECHA NACIMIENTO</th>
+                  <th>EDAD</th>
+                  <th>IDENTIDAD</th>
+                  <th>RTN</th>
+                  <th>CELULAR</th>
+                  <th>TELEFONO FIJO</th>
+                  <th>GENERO</th>
+                  <th>FECHA CREACION</th>
+                  <th>FEFCHA VENCIMIENTO</th>
+                  <th>PASAPORTE</th>
+                  <th>DIRECCION</th>
                 </tr>
                 </thead>
                 <tbody>
                <?php
                require '../modelos/conectar.php';
+               include '../controladores/funciones.php';
                $consulta=$conexion->prepare("SELECT * FROM tbl_usuario where USU_CODIGO<>1");
                $consulta->execute();
                  while($fila=$consulta->fetch()){?>
@@ -157,6 +169,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 					       <td><?php echo $fila['USU_APELLIDOS']?></td>
 					       <td><?php echo $fila['USU_ESTADO']?></td>
                  <td><?php echo $fila['USU_CORREO']?></td>
+                 
                  <td>
 
                  <?php if ($CONSULTAR == 1){ ?>  
@@ -173,7 +186,18 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                  <a href='../modelos/eliminar_usu_modelo.php?id=<?php echo $fila["USU_CODIGO"]?>'  class="btn btne bg-maroon bnt-flat margin">
                  <i class='fa fa-trash'></i></a> 
                  <?php } ?>
-					       </td>
+                 </td>
+                 <td><?php echo $fila['USU_FECHA_NACIMIENTO']?></td>
+                 <td><?php echo mi_edad($fila['USU_FECHA_NACIMIENTO'])?></td>
+                 <td><?php echo $fila['USU_IDENTIDAD']?></td>
+                 <td><?php echo $fila['USU_RTN']?></td>
+                 <td><?php echo $fila['USU_CELULAR']?></td>
+                 <td><?php echo $fila['USU_TEL_FIJO']?></td>
+                 <td><?php echo $fila['USU_GENERO']?></td>
+                 <td><?php echo $fila['USU_FECHA_CREACION']?></td>
+                 <td><?php echo $fila['USU_FECHA_VENCIMIENTO']?></td>
+                 <td><?php echo $fila['USU_PASAPORTE']?></td>
+                 <td><?php echo $fila['USU_DIRECCION']?></td>
                  </tr>
                  <?php } ?>
               
@@ -282,6 +306,68 @@ var currentdate = new Date();
                 + currentdate.getSeconds();               
   $(function () {
     $('#example1').DataTable({
+      "columnDefs": [
+        {
+                "targets": [8],
+                "visible": false,
+                "searchable": false
+            },
+         
+            {
+                "targets": [9],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [10],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [11],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [12],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [13],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [14],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [15],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [16],
+                "visible": false,
+                "searchable": false
+            },        
+            {
+                "targets": [17],
+                "visible": false,
+                "searchable": false
+            },   
+            {
+                "targets": [18],
+                "visible": false,
+                "searchable": false
+            },  
+        
+                
+                    
+        ],
+     
 /////////////////////////////////////////////////////////
                 dataSrc: 'list',
                dom:'<"row"<"col-sm-6"f><"row"<"col-sm-3"B><"col-sm-3"l>>'+'<tr>'+'<"col-sm-12"p><"col-sm-6"i>',// posicion del buscaodor y los botones en el orden establecido en pantalla
@@ -296,12 +382,13 @@ buttons:
             title:'CLÍNICA MÉDICA HOMEOPATICA CLIME HOME '+'\n'+'\n'+'LISTA DE USUARIOS',// titulos
             messageTop:datetime,   
             processing: true,
+            orientation: 'landscape',
            
                   customize: function (doc)  
             {	              
-                    doc.defaultStyle.fontSize = 10;// da el tipo de  tamaño de la fuente dentro de la data. \
+                    doc.defaultStyle.fontSize =7;// da el tipo de  tamaño de la fuente dentro de la data. \
                     doc.defaultStyle.alignment = 'left';// orientacion de la data dentro del pdf , centro,izquierda o derecha.
-                    doc.styles.tableHeader.fontSize =12;
+                    doc.styles.tableHeader.fontSize =8;
                     doc.styles.title = {
                           //  color: 'black',   // color del title
                             fontSize: '12',// tamaño de letra
@@ -321,7 +408,7 @@ buttons:
                                  margin: [10, 10],
                                        columns: [
                                    {           
-                                    margin:[480 ],//posiciion de la imagane si es menor el numero mas se hace a un lado izquierdo
+                                    margin:[700 ],//posiciion de la imagane si es menor el numero mas se hace a un lado izquierdo
                                     alignment: 'right',
                                      image: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCADvAOEDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACijNGaACiimyNtQt1xQAuaUVymp6prkepBLG1SS24w2M59cntXSW0vmpk4zxnHTNU42SZnCopNrsT0UUVJoFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFACMwHJNUnu3Zd8e1Yx/G/f6CpNQJFjMV67aruoaW04/dD8s44qkjOcnsPE84G4vx/1yOKjlvGa3codrLIqbh3yR0rRxxVLUQBbDGP9Yn8xQmmxNNK9x1s8gvHiZyyhA3P41bdlVSWIAHXNZcl3DZ3dxPPIERYlyT9TXE6/wCKJtTLQWxMVr093+taRpOb0MKmJhRhd7m1qHirTodRWOO2WeMHEkg/p6109jd293apLbOrRnpt7V47V/StYutIuPMgbKH70Z6NXRPCq3u7nFRzGSn+82PXGkRBl2C/U00zxKMmRQPUmsGy1i11qS2eI/Mu7fG3VTirttArtMVwgVyo+XJ9e9cjhbc9ONVS+HU0llRxlWBHqDTRcwk4EqE+mazC/m2kLlV3u4XPbripmUwXEMZ2sr5B+UDGBS5R+0drmjuFMaeJPvSKv1NZ3nulrMAcES+Wp9Acf40yRfLuAqgbQvOCNxPqaOUHU0NVZY3+66n6Gn5rIVmCyluOMoepB/CtK3ZngRnGGKgkelJqxUZXJaKKKRYUUUUAFFFFABRRRQAUUUUAFFFFABRRRQA1lDAgjIPWqgtXhBVCrR9lbt9DV2kNO5LimUTBK3GGHt5hxWZql1b6RZMZ5hvdwyxr1OOw/wAav6jftHAy2jRGfoBI2APeuGu9D1O+naa4u7d5G7lz/hWtJRb952Ry4iU4K1ON2Vdd1garMrJvVR0U1kVqroM7XLW4ubbzFGSN5/wqX/hF7z/nvbf99n/Cu5VKUVZM8eVGvUbk4sxaK2v+EXvP+e9t/wB9n/Cj/hF7z/nvbf8AfZ/wp+2p9yfqtb+VlPTL1bGcyFpFJxho8ZH5123h/wAQ2l5JJA7FJnbcu/jd/wDXrkLjQZ7WPfLcWwXOPvnr+VTL4avRhluLcHqCHP8AhWVX2U1e50UPrFKVlE79LOURxR/LhJN+7PvmrNxA8ksMiYOzPBOM8VjaJdXsEXkajNC4UfLIr5P48V0CMsiBl5Brhbsz2YJSjtYqJZloJY5cfvHLcHpR5EwxnDMBjepwavYoxSuyuRGc1tcupHmMvoS3T8AKvqMDB607FFDdxqNgooopFBRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQA0oD2FGxfQU6g0Acxagf8ACc3gwMeQtdLsX0Fc3a/8j1ef9cFrpcitKm69EY0dn6sTYvoKNi+gpc0ZrM2Oc8YqBpCYAH75P51vxIvlJwPuisHxl/yB0/67J/Ough/1Kf7oq38CMY/xZei/UXYvoKcBiiioNgooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAOQa/trDxrdvcSBFMKgcE81rf8JNpP/P0P++D/hWfDDHL45vPMRWxAvUZrofsVt/zwj/75Faztpfsc1JS1s+rM7/hJtJ/5+h/3wf8KP8AhJtJ/wCfof8AfB/wrR+x23/PCP8A75FH2O2/54R/98io901tPucp4m1qxvtNSK3nDv5yHG0jvXYQ/wCpT/dFcz4vtoI9JjZIkU+enIX3rpof9Sn+6KqVuRWM6d/aSv2X6j6KKKzOgKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACg0UhoA5q1/wCR6vP+uC101cza/wDI9Xn/AFwWumrSpuvRGNHZ+rCiiiszY5zxl/yCE/67J/OtE3DGN9r7I4gAzAZJOO1Z3jE/8ShP+u6fzq95JQSK6M0Mwzlf4TitdORXOZt+1lby/UdtmEPmky4xnG/n8sVLHc7TFltyS/dJ60xppPL8sFcYxuwc/lSQwNJJCAhWGHpu6scVJWt9CNpZcTy+eyhJCOmRj6U8tIhjaVphvOAdw4/CopVYQ3Ue1tzSkgY6jirV8p8qEgE4kUnA6Cmw11Iy8zztCru20ZO3Ax9TSC4McDyhn/dthlc5qW2BN3cOAdpC4JFVZUYQXabTuaQlRg89KWga2uXJp3M3kxnaQu5m9BVJbgshfzX/AN0vg/lirUkUkdx5yqWVlCtjqMd6h4jAAy/uzMDQkgfM9yeK5O+JSSVlHy56jvV0Vn24Z7pSYuFBIbJOD+NaAqZGkG2tRaKKKRYUUUUAFFFFABRRRQAUUUUAFFFFABRRRQBnR6VHHrEuoh2MkiBCvbFaNFFNu4kktgooopDKGq6XHqlssEjsqhw/HtV1U2qF64GKdRTv0Fyq9xNooxS0UhibaMUtFACYowKWigBMUYpaKAExiloooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//2Q=='
                                     ,width: 100,
@@ -347,7 +434,7 @@ buttons:
             },
             exportOptions:
              {
-                 columns: [0, 1,2,3,4,5,6] ,//exportar solo las columnas.
+                 columns: [0,1,2,3,4,5,6,8,9,10,11,12,13,14,15,16,17,18] ,//exportar solo las columnas.
              },
                   styles:
               {

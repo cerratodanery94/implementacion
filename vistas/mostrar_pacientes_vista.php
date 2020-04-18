@@ -132,10 +132,10 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                   <th>NOMBRES</th>
                   <th>APELLIDOS</th>
                   <td>ACCIONES</td>
-                  <td>PASPORTE</td>
-                  <td>FECAHA DE NACIMIENTO</td>
-                  <td>FECHA DE CREACION</td>
+                  <td>FECHA DE NACIMIENTO</td>
                   <td>EDAD</td>
+                  <td>PASPORTE</td>
+                  <td>FECHA DE CREACION</td>     
                   <td>GENERO</td>
                   <td>TELEFONO FIJO</td>
                   <td>CELULAR</td>
@@ -149,6 +149,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                 <tbody>
                 <?php
                require '../modelos/conectar.php';
+               require '../controladores/funciones.php';
                $consulta=$conexion->prepare("SELECT * FROM tbl_personas where PER_CODIGO>0");
                $consulta->execute();
                  while($fila=$consulta->fetch()){?>
@@ -177,10 +178,13 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                  <?php } ?>
                  
                  </td>
-                 <td><?php echo $fila['PER_PASAPORTE']?></td>
+                 
+                 
                  <td><?php echo $fila['PER_FECHA_NACIMIENTO']?></td>
+                 <td><?php echo mi_edad($fila['PER_FECHA_NACIMIENTO'])?></td>
+                 <td><?php echo $fila['PER_PASAPORTE']?></td>
                  <td><?php echo $fila['PER_FECHA_CREACION']?></td>
-                 <td><?php echo $fila['PER_EDAD']?></td>
+                 <td><?php echo $fila['PER_FECHA_NAC']?></td>
                  <td><?php echo $fila['PER_GENERO']?></td>
                  <td><?php echo $fila['PER_TEL_FIJO']?></td>
                  <td><?php echo $fila['PER_CELULAR']?></td>
@@ -440,7 +444,7 @@ buttons:
             },
             exportOptions:
              {
-                 columns: [0, 1,2,3,5,6,7,8,9,10,11,12,13,14,15,16] ,//exportar solo las columnas.
+                 columns: [0,1,2,3,5,6,7,8,9,10,11,12,13,14,15,16] ,//exportar solo las columnas.
              },
                   styles:
               {

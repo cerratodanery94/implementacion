@@ -34,4 +34,3 @@ function mi_edad($fecha_nac){
     return $calc_edad;
 }
 ?>
-?>

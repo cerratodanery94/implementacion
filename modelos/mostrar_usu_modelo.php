@@ -5,6 +5,7 @@ if (!isset($_SESSION["id_us"])) {
 }
 try {
   require_once '../modelos/conectar.php';
+  require_once '../controladores/funciones.php';
   $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
 VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
   $resultado2=$conexion->prepare($sql2);	
@@ -43,7 +44,7 @@ if(isset($_GET['id'])){
        $rol=$fila['ROL_CODIGO'];
        $correo=$fila['USU_CORREO'];
        $nacionalidad=$fila['PAIS_CODIGO'];
-       $edad=$fila['USU_EDAD'];
+       $edad=mi_edad($fila['USU_FECHA_NACIMIENTO']);
        $fecha_nacimiento=$fila['USU_FECHA_NACIMIENTO'];
        $celular=$fila['USU_CELULAR'];
        $tel_fijo=$fila['USU_TEL_FIJO'];
