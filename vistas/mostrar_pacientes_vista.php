@@ -184,7 +184,6 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                  <td><?php echo mi_edad($fila['PER_FECHA_NACIMIENTO'])?></td>
                  <td><?php echo $fila['PER_PASAPORTE']?></td>
                  <td><?php echo $fila['PER_FECHA_CREACION']?></td>
-                 <td><?php echo $fila['PER_FECHA_NAC']?></td>
                  <td><?php echo $fila['PER_GENERO']?></td>
                  <td><?php echo $fila['PER_TEL_FIJO']?></td>
                  <td><?php echo $fila['PER_CELULAR']?></td>
