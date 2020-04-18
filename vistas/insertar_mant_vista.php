@@ -213,7 +213,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 
               <div class="box-footer">
               <div class="col text-center">
-                <button type="submit"  class="btn btn-primary  btn-flat margin">CREAR</button>
+                <button type="button" onclick="validar_empleado();"  class="btn btn-primary  btn-flat margin">CREAR</button>
                 <a href="../vistas/mostrar_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
                 </div>
 
@@ -240,7 +240,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-<script src="../vistas/js/validaciones.js"></script>
+<script src="../vistas/js/validar.js"></script>
 <!-- jQuery 2.2.3 -->
 <script src="../vistas/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->

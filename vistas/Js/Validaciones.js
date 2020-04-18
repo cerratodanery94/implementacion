@@ -158,7 +158,7 @@
                             return false;
                             }
                     else if (validar_texto (formulario.nombres.value)==false){
-                        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRES NO PUEDE CONTENER NUMEROS</div>';
+                        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO.</div>';
                         formulario.nombres.focus();
                         formulario.nombres.value="";
                         return false;
@@ -186,7 +186,7 @@
                                 return false;
                                 }
                         else if (validar_texto (formulario.apellidos.value)==false){  
-                            document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO APELLIDOS NO PUEDE CONTENER NUMEROS</div>';
+                            document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO.</div>';
                             formulario.apellidos.focus();
                             return false;
                             }
@@ -217,7 +217,7 @@
                                     return false;
                                  }
                                  else if (validar_texto (formulario.usuario.value)==false){
-                                    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRES NO PUEDE CONTENER NUMEROS</div>';
+                                    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO.</div>';
                                     formulario.usuario.focus();
                                     return false;
                                     }
@@ -271,7 +271,7 @@
                                     return false;
                                     }
                             else if (validar_texto(formulario_vista.login.value)==false){
-                                document.getElementById("alerta2").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRE DE USUARIO  NO PUEDE CONTENER NUMEROS</div>';
+                                document.getElementById("alerta2").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO.</div>';
                                 formulario_vista.login.focus();
                                 return false;
                                 }
@@ -322,7 +322,7 @@
                                     return false;
                                     }
                             else if (validar_texto(formulario_recuperar.usuario2.value)==false){
-                                document.getElementById("alerta3").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRE DE USUARIO  NO PUEDE CONTENER NUMEROS</div>';
+                                document.getElementById("alerta3").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO.</div>';
                                 formulario_recuperar.usuario2.focus();
                                 return false;
                                 }
@@ -419,7 +419,7 @@ else if (Validar_espacio2 (formulario_man.nombre.value)==false){
     return false;
     }
 else if (validar_texto (formulario_man.nombre.value)==false){
-    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRES NO PUEDE CONTENER NUMEROS</div>';
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO.</div>';
     formulario_man.nombre.focus();
     return false;
     }
@@ -447,7 +447,7 @@ else{
         return false;
         }
     else if (validar_texto (formulario_man.apellido.value)==false){  
-        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO APELLIDOS NO PUEDE CONTENER NUMEROS</div>';
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO.</div>';
         formulario_man.apellido.focus();
         return false;
         }
@@ -475,7 +475,7 @@ else{
             return false;
          }
          else if (validar_texto (formulario_man.usum.value)==false){
-            document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRES NO PUEDE CONTENER NUMEROS</div>';
+            document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO.</div>';
             formulario_man.usum.focus();
             return false;
             }
@@ -718,7 +718,7 @@ function validar_recu(){
         }
    
        else if (validar_texto (Formulario_actualizar_mant.usuarion.value)==false){
-          document.getElementById("alerta_mant").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO USUARIO NO PUEDE CONTENER NUMEROS</div>';
+          document.getElementById("alerta_mant").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO.</div>';
           Formulario_actualizar_mant.usuarion.focus();
           return false;
        }
@@ -737,7 +737,7 @@ function validar_recu(){
         return false;
         }
       else if (validar_texto (Formulario_actualizar_mant.nombre.value)==false){
-          document.getElementById("alerta_mant").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRES NO PUEDE CONTENER NUMEROS</div>';
+          document.getElementById("alerta_mant").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO.</div>';
           Formulario_actualizar_mant.nombre.focus();
           return false;
           }
@@ -762,7 +762,7 @@ function validar_recu(){
                 return false;
                 }
               else if (validar_texto (Formulario_actualizar_mant.apellido.value)==false){
-                  document.getElementById("alerta_mant").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO APELLIDO NO PUEDE CONTENER NUMEROS</div>';
+                  document.getElementById("alerta_mant").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO.</div>';
                   Formulario_actualizar_mant.apellido.focus();
                   return false;
                   }

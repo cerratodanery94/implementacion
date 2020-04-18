@@ -189,7 +189,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                 </div>
                 <div class="box-footer">
               <div class="col text-center">
-                <button type="submit" class="btn btn-primary btn-flat margin">CREAR</button>
+                <button type="button" onclick="validar_paciente();" class="btn btn-primary btn-flat margin">CREAR</button>
                 <a href="../vistas/mostrar_pacientes_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
                 </div>
               </div>
