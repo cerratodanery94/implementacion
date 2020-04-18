@@ -159,7 +159,7 @@ function validar_telefono(parametro){
         return false;
         }
     else if (validar_texto (formulario.nombres.value)==false){
-        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRES NO PUEDE CONTENER NUMEROS</div>';
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO.</div>';
         formulario.nombres.focus();
         return false;
         }
@@ -184,7 +184,7 @@ else if (Validar_espacio2 (formulario.apellidos.value)==false){
     return false;
     }
 else if (validar_texto (formulario.apellidos.value)==false){  
-    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO APELLIDOS NO PUEDE CONTENER NUMEROS</div>';
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO.</div>';
     formulario.apellidos.focus();
     return false;
     }
@@ -198,22 +198,40 @@ else if (validar_texto (formulario.apellidos.value)==false){
     else{
         document.getElementById("alerta").innerHTML="";
     }
-//VALIDAR CAMPO EDAD
-    if (formulario.edad.value=="") {
-        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO EDAD VACIO</div>';
-        formulario.edad.focus();
-        return false;
+//VALIDAR CAMPO USUARIO
+if (formulario.usum.value=="") {
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO USUARIO VACIO</div>';
+    formulario.usum.focus();
+    return false;
+}
+else if (Validar_espacio2 (formulario.usum.value)==false){
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
+    formulario.usum.focus();
+    return false;
     }
-    else if (Validar_espacio2 (formulario.edad.value)==false){
-        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
-        formulario.edad.focus();
+else if (validar_texto (formulario.usum.value)==false){  
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO.</div>';
+    formulario.usum.focus();
+    return false;
+    }
+    else if (validar_tamaño (formulario.usum.value)==false){
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE CARACTERES EN EL CAMPO APELLIDOS</div>';
+        formulario.usum.focus();
+
         return false;
         }
-        else if (validar_edad (formulario.edad.value)==false){
-            document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO EDAD NO VALIDO</div>';
-            formulario.edad.focus();
-            return false;
-            }
+               
+    else{
+        document.getElementById("alerta").innerHTML="";
+    }
+
+ //VALIDAR FECHA NACIMIENTO
+ if (formulario.fecha_de_nacimiento.value==0) {
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO FECHA NACIMINETO VACIO, FAVOR ENTRODUCIR UNA FECHA</div>';
+    formulario.fecha_de_nacimiento.focus();
+    return false;
+} 
+
     //VALIDAR CAMPO identidad
     if (formulario.numero_de_identidad.value=="") {
         document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO IDENTIDAD VACIO</div>';
@@ -236,20 +254,8 @@ else if(validar_rtn(formulario.rtn.value)==false){
     formulario.rtn.focus();
     return false;
 }
- 
 
-          //VALIDAR CAMPO CARGO
-        if (formulario.cargo.value=="") {
-            document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO CARGO VACIO</div>';
-            formulario.cargo.focus();
-            return false;
-        }        
-        else if (Validar_espacio2 (formulario.cargo.value)==false){
-            document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
-            formulario.cargo.focus();
-            return false;
-            }
-             //VALIDAR CAMPO CELULAR
+        //VALIDAR CAMPO CELULAR
         if (formulario.numero_de_celular.value=="") {
             document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO CELULAR VACIO</div>';
             formulario.numero_de_celular.focus();
@@ -272,18 +278,25 @@ if (formulario.numero_de_telefono_fijo.value==""){
         return false;
         }
    
-    //VALIDAR FECHA NACIMIENTO
-    if (formulario.fecha_de_nacimiento.value==0) {
-        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO FECHA NACIMINETO VACIO, FAVOR ENTRODUCIR UNA FECHA</div>';
-        formulario.fecha_de_nacimiento.focus();
-        return false;
-    }   
-//VALIDAR FECHA CONTRATACION
-if (formulario.fecha_de_contratacion.value==0) {
-    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO FECHA CONTRATACION VACIO, FAVOR ENTRODUCIR UNA FECHA</div>';
-    formulario.fecha_de_contratacion.focus();
+//VALIDAR CAMPO GENERO
+if (formulario.genero.value==0) {
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO GENERO VACIO, FAVOR ELEGIR UN GENERO</div>';
+    formulario.genero.focus();
     return false;
-}  
+} 
+   
+     //VALIDAR CAMPO NACIONALIDAD
+     if (formulario.nacionalidad.value==0) {
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NACIONALIDAD VACIO</div>';
+        formulario.nacionalidad.focus();
+        return false;
+    }
+//VALIDAR CAMPO ROL
+if (formulario.combox.value==0) {
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NACIONALIDAD VACIO</div>';
+    formulario.combox.focus();
+    return false;
+}
 //VALIDAR CORREO
 if (formulario.correo.value=="") {
     document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO CORREO VACIO</div>';
@@ -302,24 +315,26 @@ else if (validar_tamaño (formulario.correo.value)==false){
         return false; 
      }
 
-      //VALIDAR CAMPO NACIONALIDAD
- if (formulario.nacionalidad.value=="") {
-    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NACIONALIDAD VACIO</div>';
-    formulario.nacionalidad.focus();
+//    //VALIDAR CAMPO PASAPORTE
+   if (formulario.pasaporte.value=="") {
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO PASAPORTE VACIO</div>';
+    formulario.pasaporte.focus();
     return false;
-}
+}            
 
-else if (Validar_espacio2 (formulario.nacionalidad.value)==false){
-    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
-    formulario.nacionalidad.focus();
+else if (validar_texto (formulario.pasaporte.value)==false){  
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO</div>';
+    formulario.pasaporte.focus();
     return false;
-    }
-//VALIDAR CAMPO GENERO
-    if (formulario.genero.value==0) {
-        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO GENERO VACIO, FAVOR ELEGIR UN GENERO</div>';
-        formulario.genero.focus();
-        return false;
-    }
+    } 
+else if (Validar_espacio2 (formulario.pasaporte.value)==false){
+document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
+formulario.pasaporte.focus();
+return false;
+}
+ 
+
+
       //VALIDAR CAMPO DIRECCION
       if (formulario.direccion.value=="") {
         document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO DIRECCION VACIO</div>';
@@ -528,8 +543,8 @@ else if (validar_tamaño (formulario.correo.value)==false){
 
 //VALIDAR FORMULARIO EDITAR EMPLEADOS
     function validar_editar(){
-        var formulario=document.form_editar_empleados;
-    
+        var formulario=document.Form_registrar;
+
         if (formulario.nombres.value=="") {
             document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRES VACIO</div>';
             formulario.nombres.focus();
@@ -541,7 +556,7 @@ else if (validar_tamaño (formulario.correo.value)==false){
             return false;
             }
         else if (validar_texto (formulario.nombres.value)==false){
-            document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NOMBRES NO PUEDE CONTENER NUMEROS</div>';
+            document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO.</div>';
             formulario.nombres.focus();
             return false;
             }
@@ -566,7 +581,7 @@ else if (validar_tamaño (formulario.correo.value)==false){
         return false;
         }
     else if (validar_texto (formulario.apellidos.value)==false){  
-        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO APELLIDOS NO PUEDE CONTENER NUMEROS</div>';
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO.</div>';
         formulario.apellidos.focus();
         return false;
         }
@@ -580,95 +595,133 @@ else if (validar_tamaño (formulario.correo.value)==false){
         else{
             document.getElementById("alerta").innerHTML="";
         }
-    //VALIDAR CAMPO EDAD
-        if (formulario.edad.value=="") {
-            document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO EDAD VACIO</div>';
-            formulario.edad.focus();
-            return false;
+    //VALIDAR CAMPO USUARIO
+    if (formulario.usum.value=="") {
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO USUARIO VACIO</div>';
+        formulario.usum.focus();
+        return false;
+    }
+    else if (Validar_espacio2 (formulario.usum.value)==false){
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
+        formulario.usum.focus();
+        return false;
         }
-        else if (Validar_espacio2 (formulario.edad.value)==false){
-            document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
-            formulario.edad.focus();
+    else if (validar_texto (formulario.usum.value)==false){  
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO.</div>';
+        formulario.usum.focus();
+        return false;
+        }
+        else if (validar_tamaño (formulario.usum.value)==false){
+            document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE CARACTERES EN EL CAMPO APELLIDOS</div>';
+            formulario.usum.focus();
+    
             return false;
             }
-            else if (validar_edad (formulario.edad.value)==false){
-                document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO EDAD NO VALIDO</div>';
-                formulario.edad.focus();
-                return false;
-                }
+                   
+        else{
+            document.getElementById("alerta").innerHTML="";
+        }
+    
+     //VALIDAR FECHA NACIMIENTO
+     if (formulario.fecha_de_nacimiento.value==0) {
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO FECHA NACIMINETO VACIO, FAVOR ENTRODUCIR UNA FECHA</div>';
+        formulario.fecha_de_nacimiento.focus();
+        return false;
+    } 
+    
         //VALIDAR CAMPO identidad
         if (formulario.numero_de_identidad.value=="") {
             document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO IDENTIDAD VACIO</div>';
             formulario.numero_de_identidad.focus();
             return false;
         }
-        else if (Validar_espacio2 (formulario.numero_de_identidad.value)==false){
-            document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
+        else if (validar_identidad(formulario.numero_de_identidad.value)==false){
+            document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO IDENTIDAD INVALIDO</div>';
             formulario.numero_de_identidad.focus();
             return false;
-            }
-            else if(validar_identidad(formulario.numero_de_identidad.value)==false){
-                document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>NUMERO DE IDENTIDAD INVALIDO</div>';
-                formulario.numero_de_identidad.focus();
-                return false;
-            }
-           
-    
+        }
     //VALIDAR RTN
-    
-     if (Validar_espacio2 (formulario.rtn.value)==false){
-        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
+    if (formulario.rtn.value==""){
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO RTN VACIO</div>';
         formulario.rtn.focus();
         return false;
-        }
+    }
+    else if(validar_rtn(formulario.rtn.value)==false){
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO RTN INVALIDO</div>';
+        formulario.rtn.focus();
+        return false;
+    }
     
-              //VALIDAR CAMPO CARGO
-            if (formulario.cargo.value=="") {
-                document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO CARGO VACIO</div>';
-                formulario.cargo.focus();
-                return false;
-            }        
-            else if (Validar_espacio2 (formulario.cargo.value)==false){
-                document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
-                formulario.cargo.focus();
-                return false;
-                }
-                 //VALIDAR CAMPO CELULAR
+            //VALIDAR CAMPO CELULAR
             if (formulario.numero_de_celular.value=="") {
                 document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO CELULAR VACIO</div>';
                 formulario.numero_de_celular.focus();
                 return false;
             }       
-            else if (Validar_espacio2 (formulario.numero_de_celular.value)==false){
-                document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
+           else if (validar_telefono(formulario.numero_de_celular.value)==false) {
+                document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NUMERO DE CELULAR INVALIDO</div>';
                 formulario.numero_de_celular.focus();
                 return false;
-                }
-                else if(validar_telefono(formulario.numero_de_celular.value)==false){
-                    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>NUMERO DE CELULAR INVALIDO</div>';
-                    formulario.numero_de_celular.focus();
-                    return false;
-                }
+            } 
      //VALIDAR CAMPO TELEFONO
-    if (Validar_espacio2 (formulario.numero_de_telefono_fijo.value)==false){
+    if (formulario.numero_de_telefono_fijo.value==""){
         document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
         formulario.numero_de_telefono_fijo.focus();
         return false;
         }
-     
-       
-        //VALIDAR FECHA NACIMIENTO
-        if (formulario.fecha_de_nacimiento.value==0) {
-            document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO FECHA NACIMINETO VACIO, FAVOR ENTRODUCIR UNA FECHA</div>';
-            formulario.fecha_de_nacimiento.focus();
+        else if (validar_telefono(formulario.numero_de_telefono_fijo.value)==false){
+            document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NUMERO DE TELEFONO INVALIDO</div>';
+            formulario.numero_de_telefono_fijo.focus();
             return false;
-        }   
-    //VALIDAR FECHA CONTRATACION
-    if (formulario.fecha_de_contratacion.value==0) {
-        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO FECHA CONTRATACION VACIO, FAVOR ENTRODUCIR UNA FECHA</div>';
-        formulario.fecha_de_contratacion.focus();
+            }
+       
+    //VALIDAR CAMPO GENERO
+    if (formulario.genero.value==0) {
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO GENERO VACIO, FAVOR ELEGIR UN GENERO</div>';
+        formulario.genero.focus();
         return false;
-    }  
+    } 
+       
+         //VALIDAR CAMPO NACIONALIDAD
+         if (formulario.nacionalidad.value==0) {
+            document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NACIONALIDAD VACIO</div>';
+            formulario.nacionalidad.focus();
+            return false;
+        }
+
+ //VALIDAR CAMPO ESTADO
+ if (formulario.combox2.value==0) {
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO ESTADO VACIO</div>';
+    formulario.combox2.focus();
+    return false;
+}
+
+    //VALIDAR CAMPO ROL
+    if (formulario.rol_usuario.value==0) {
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NACIONALIDAD VACIO</div>';
+        formulario.rol_usuario.focus();
+        return false;
+    }
+   
+    
+    //    //VALIDAR CAMPO PASAPORTE
+       if (formulario.pasaporte.value=="") {
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO PASAPORTE VACIO</div>';
+        formulario.pasaporte.focus();
+        return false;
+    }            
+    
+    else if (validar_texto (formulario.pasaporte.value)==false){  
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO</div>';
+        formulario.pasaporte.focus();
+        return false;
+        } 
+    else if (Validar_espacio2 (formulario.pasaporte.value)==false){
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
+    formulario.pasaporte.focus();
+    return false;
+    }
+     
     //VALIDAR CORREO
     if (formulario.correo.value=="") {
         document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO CORREO VACIO</div>';
@@ -685,28 +738,10 @@ else if (validar_tamaño (formulario.correo.value)==false){
             formulario.correo.value="";
             formulario.correo.focus();
             return false; 
-         }
+         } 
     
-          //VALIDAR CAMPO NACIONALIDAD
-     if (formulario.nacionalidad.value=="") {
-        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NACIONALIDAD VACIO</div>';
-        formulario.nacionalidad.focus();
-        return false;
-    }
-    
-    else if (Validar_espacio2 (formulario.nacionalidad.value)==false){
-        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
-        formulario.nacionalidad.focus();
-        return false;
-        }
-    //VALIDAR CAMPO GENERO
-        if (formulario.genero.value==0) {
-            document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO GENERO VACIO, FAVOR ELEGIR UN GENERO</div>';
-            formulario.genero.focus();
-            return false;
-        }
           //VALIDAR CAMPO DIRECCION
-          if (formulario.direccion.value==0) {
+          if (formulario.direccion.value=="") {
             document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO DIRECCION VACIO</div>';
             formulario.direccion.focus();
             return false;
@@ -718,6 +753,7 @@ else if (validar_tamaño (formulario.correo.value)==false){
         }
             formulario.submit();
         }
+    
 
 //VALIDAR FORMULARIO EDITAR PACIENTES
         function validar_editar_paciente(){
@@ -1141,4 +1177,24 @@ if(formulario.fecha_de_creacion.value==0){
 }
 
     formulario.submit();
+}
+
+//VALIDAR FORMULARIO PARAMETROS
+function validar_permiso(){
+var formulario=document.Form_registrar;
+
+//CAMPO ROL
+if (formulario.r.value==0) {
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO ROL VACIO, SELECCIONE UNA OPCION.</div>';
+    formulario.r.focus();
+    return false;
+} 
+
+//CAMPO PANTALLA
+if (formulario.o.value==0) {
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO PANTALLA VACIO, SELECCIONE UNA OPCION.</div>';
+    formulario.o.focus();
+    return false;
+} 
+formulario.submit();
 }

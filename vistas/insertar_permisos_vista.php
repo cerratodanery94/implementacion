@@ -121,7 +121,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
         <div class="box-body">
         
         <form action="" method="POST" role="form" name="Form_registrar">
-
+        <div id="alerta"></div>
 <div class="form-group">
         <label for="exampleInputPassword1">ROL</label>
  <select class="form-control" name="rol" id="r">
@@ -222,7 +222,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
     </div>
     <div class="box-footer">
       <div class="col text-center">
-        <button type="submit"  class="btn btn-primary">CREAR</button>
+        <button type="button" onclick="validar_permiso();"  class="btn btn-primary">CREAR</button>
         
         </div>
       </div>
@@ -231,7 +231,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 
 
        </div>
-        <div id="alerta"></div>
+        
 
      
   
@@ -264,7 +264,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-<script src="../vistas/js/validaciones.js"></script>
+<script src="../vistas/js/validar_sistema.js"></script>
 <!-- jQuery 2.2.3 -->
 <script src="../vistas/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->

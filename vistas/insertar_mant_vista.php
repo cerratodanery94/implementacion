@@ -131,7 +131,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">IDENTIDAD</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="IDENTIDAD"  name="numero_de_identidad" id="numero_de_identidad"">
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="IDENTIDAD"  name="numero_de_identidad" id="numero_de_identidad">
                 </div>
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
@@ -239,8 +239,17 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 </div>
+<script>
+    $(document).ready(function(){
+    $("#numero_de_identidad").mask("0000-0000-00000");
+    $("#numero_de_celular").mask("0000-0000");
+    $("#numero_de_telefono_fijo").mask("0000-0000");
+    $("#rtn").mask("00000000000000");
+    
+});
+</script>
 <!-- ./wrapper -->
-<script src="../vistas/js/validar.js"></script>
+<script src="../vistas/js/validar_sistema.js"></script>
 <!-- jQuery 2.2.3 -->
 <script src="../vistas/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
@@ -254,6 +263,10 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 <!-- AdminLTE for demo purposes -->
 <script src="../vistas/dist/js/demo.js"></script>
 <script src="../vistas/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
+
+
+
 </body>
+
 </html>
 <?php require "../modelos/insertar_mant_modelo.php" ?>

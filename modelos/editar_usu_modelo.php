@@ -142,10 +142,10 @@ if(isset($_GET['id'])){
             <!--llamar funciones-->
             <div class="box-body">
            <div>
-        <form action="" method="POST"  name="Formactualizar_mant">
+        <form action="" method="POST"  name="Form_registrar">
                  <input type="hidden"  class="form-control " name="id1" value="<?php echo $id_u;?>" >
                 </div>
-                <div Id="alerta_mant"></div>
+                <div Id="alerta"></div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">NOMBRES</label>
                   <input type="text"style="text-transform:uppercase" class="form-control apellidos" placeholder="NOMBRE"  name="nombres" id="nombre" value="<?php echo $nombre?>" >
@@ -160,7 +160,7 @@ if(isset($_GET['id'])){
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputEmail1">USUARIO</label>
-                  <input type="text" style="text-transform:uppercase" class="form-control nombres" placeholder="USUARIO"  name="usuarion" id="usuarion" value="<?php echo $usuario?>">
+                  <input type="text" style="text-transform:uppercase" class="form-control nombres" placeholder="USUARIO"  name="usuarion" id="usum" value="<?php echo $usuario?>">
                 </div>
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
@@ -308,14 +308,14 @@ if(isset($_GET['id'])){
 
                  <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <label for="exampleInputPassword1">CORREO</label>
-                  <input type="email" class="form-control correo" placeholder="CORREO" name="correon" id="correon" value="<?php echo $correo?>" >
+                  <input type="email" class="form-control correo" placeholder="CORREO" name="correon" id="correo" value="<?php echo $correo?>" >
                 </div>
                 </div>
                 <div class="box-footer">
                 <div class="col text-center">
                 
     
-                <button type="submit" name="update" class="btn btn-primary btn-flat margin">ACTUALIZAR</button>
+                <button type="button" onclick="validar_editar();" name="update" class="btn btn-primary btn-flat margin">ACTUALIZAR</button>
                 <a href="../vistas/mostrar_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
                 </div>
         <!-- /.col -->
@@ -351,7 +351,7 @@ if(isset($_GET['id'])){
 <script src="../vistas/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../vistas/dist/js/app.min.js"></script>
-<script src="../vistas/Js/Validaciones.js"></script>
+<script src="../vistas/Js/Validar_sistema.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../vistas/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
 <script src="../vistas/dist/js/demo.js"></script>
