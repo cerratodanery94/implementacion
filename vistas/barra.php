@@ -97,7 +97,7 @@
       <?php if ($CITAS == 1){ ?>
       <!-- Titulo de Citas -->
       <li class="treeview">
-        <a href="#"
+        <a href="#">
           <i class="fa fa-calendar"></i>
           <span>Citas</span>
           </a>

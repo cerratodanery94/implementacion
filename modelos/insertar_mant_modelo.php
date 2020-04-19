@@ -62,6 +62,30 @@ $pass .=substr($caracteres,rand(0,53),1);
 		  </script>';
 
        }else{	
+		//OBTENER CORREO
+		$sql3='SELECT * FROM TBL_PARAMETROS WHERE PARMT_CODIGO=3';
+		$resultado3=$conexion->query($sql3);	
+		 while($registro3=$resultado3->fetch(PDO::FETCH_ASSOC)){			
+			$c=	$registro3['PARMT_VALOR'];
+		}
+		//OBTENER PUERTO
+		$sql4='SELECT * FROM TBL_PARAMETROS WHERE PARMT_CODIGO=4';
+		$resultado4=$conexion->query($sql4);	
+		 while($registro4=$resultado4->fetch(PDO::FETCH_ASSOC)){			
+			$p=	$registro4['PARMT_VALOR'];
+		}
+		//OBTENER USUARIO
+		$sql5='SELECT * FROM TBL_PARAMETROS WHERE PARMT_CODIGO=5';
+		$resultado5=$conexion->query($sql5);	
+		 while($registro5=$resultado5->fetch(PDO::FETCH_ASSOC)){			
+			$u=	$registro5['PARMT_VALOR'];
+		}
+		//OBTENER CONTRASEÑA
+		$sql6='SELECT * FROM TBL_PARAMETROS WHERE PARMT_CODIGO=6';
+		$resultado6=$conexion->query($sql6);	
+		 while($registro6=$resultado6->fetch(PDO::FETCH_ASSOC)){			
+			$contra=	$registro6['PARMT_VALOR'];
+		}
 		$template_correo=file_get_contents('../vistas/template_correo.php');
 		$template_correo=str_replace("{{pass}}",$pass,$template_correo);
 		$template_correo=str_replace("{{year}}",date('Y'),$template_correo);
@@ -71,13 +95,13 @@ $pass .=substr($caracteres,rand(0,53),1);
 		$mail->isSMTP();                                            // Enviar usando SMTP
 		$mail->Host       = 'smtp.gmail.com';                    // Configure el servidor SMTP para enviar a través de
 		$mail->SMTPAuth   = true;                                   // Habilitar autenticación SMTP
-		$mail->Username   = 'system32unah@gmail.com';                     // SMTP usuario
-		$mail->Password   = 'coronavirus2020';                               // SMTP contraseña
+		$mail->Username   = $c;                     // SMTP usuario
+		$mail->Password   = $contra;                               // SMTP contraseña
 		$mail->SMTPSecure = 'tsl';         // Habilitar el cifrado TLS; `PHPMailer :: ENCRYPTION_SMTPS` también aceptado
-		$mail->Port       = 587;                                    // Puerto TCP para conectarse
+		$mail->Port       = $p;                                    // Puerto TCP para conectarse
 
 		//Destinatarios
-		$mail->setFrom('system32unah@gmail.com', 'System32');    //desde donde se va enviar
+		$mail->setFrom($c, $u);    //desde donde se va enviar
 		$mail->addAddress( $correo);     // Agregar un destinatario
 
 		$mail->isHTML(true);                                  // Establecer formato de correo electrónico a HTML

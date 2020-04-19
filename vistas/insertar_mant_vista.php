@@ -190,11 +190,11 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">FECHA CREACION</label>
-                  <input type="text" autocomplete="off" class="form-control nombres" name="fecha_creacion" id="fecha_creacion" value="<?php echo date("m/d/Y"); ?> " readonly>
+                  <input type="text" autocomplete="off" class="form-control nombres" name="fecha_creacion" id="fecha_creacion" value="<?php echo date("d/m/Y"); ?> " readonly>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">FECHA DE VENCIMIENTO</label>
-                  <input type="text" autocomplete="off" class="form-control nombres" name="fecha_vencida" id="fecha_vencida"  value="<?php echo date("m/d/Y",strtotime("+1 years")); ?> " readonly>
+                  <input type="text" autocomplete="off" class="form-control nombres" name="fecha_vencida" id="fecha_vencida"  value="<?php echo date("d/m/Y",strtotime("+1 years")); ?> " readonly>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">CORREO</label>
@@ -239,15 +239,6 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 </div>
-<script>
-    $(document).ready(function(){
-    $("#numero_de_identidad").mask("0000-0000-00000");
-    $("#numero_de_celular").mask("0000-0000");
-    $("#numero_de_telefono_fijo").mask("0000-0000");
-    $("#rtn").mask("00000000000000");
-    
-});
-</script>
 <!-- ./wrapper -->
 <script src="../vistas/js/validar_sistema.js"></script>
 <!-- jQuery 2.2.3 -->
@@ -263,6 +254,16 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 <!-- AdminLTE for demo purposes -->
 <script src="../vistas/dist/js/demo.js"></script>
 <script src="../vistas/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
+<script src="../vistas/plugins/jQuery/jquery.mask.min.js"></script>
+<script>
+    $(document).ready(function(){
+    $("#numero_de_identidad").mask("0000-0000-00000");
+    $("#numero_de_celular").mask("0000-0000");
+    $("#numero_de_telefono_fijo").mask("0000-0000");
+    $("#rtn").mask("00000000000000");
+    
+});
+</script>
 
 
 
