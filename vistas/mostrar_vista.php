@@ -147,23 +147,21 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                   <th>RTN</th>
                   <th>CELULAR</th>
                   <th>TELEFONO FIJO</th>
-                  <th>GENERO</th>
-                  <th>FECHA CREACION</th>
-                  <th>FEFCHA VENCIMIENTO</th>
                   <th>PASAPORTE</th>
                   <th>DIRECCION</th>
+                  <th>NACIONALIDAD</th>
                 </tr>
                 </thead>
                 <tbody>
                <?php
                require '../modelos/conectar.php';
                include '../controladores/funciones.php';
-               $consulta=$conexion->prepare("SELECT * FROM tbl_usuario where USU_CODIGO<>1");
+               $consulta=$conexion->prepare("SELECT * FROM tbl_usuario a iNNER JOIN tbl_paises b on a.PAIS_CODIGO=b.PAIS_CODIGO INNER JOIN tbl_rol c on a.ROL_CODIGO=c.ROL_CODIGO where USU_CODIGO<>1");
                $consulta->execute();
-                 while($fila=$consulta->fetch()){?>
+                 while($fila=$consulta->fetch()){?> 
                  <tr>
                  <td><?php echo $fila['USU_CODIGO']?></td>
-					       <td><?php echo $fila['ROL_CODIGO']?></td>
+					       <td><?php echo $fila['ROL_NOMBRE']?></td>
 					       <td><?php echo $fila['USU_USUARIO']?></td>
                  <td><?php echo $fila['USU_NOMBRES']?></td>
 					       <td><?php echo $fila['USU_APELLIDOS']?></td>
@@ -193,11 +191,9 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                  <td><?php echo $fila['USU_RTN']?></td>
                  <td><?php echo $fila['USU_CELULAR']?></td>
                  <td><?php echo $fila['USU_TEL_FIJO']?></td>
-                 <td><?php echo $fila['USU_GENERO']?></td>
-                 <td><?php echo $fila['USU_FECHA_CREACION']?></td>
-                 <td><?php echo $fila['USU_FECHA_VENCIMIENTO']?></td>
                  <td><?php echo $fila['USU_PASAPORTE']?></td>
                  <td><?php echo $fila['USU_DIRECCION']?></td>
+                 <td><?php echo $fila['PAIS_NOMBRE']?></td>
                  </tr>
                  <?php } ?>
               
@@ -352,18 +348,9 @@ var currentdate = new Date();
                 "targets": [16],
                 "visible": false,
                 "searchable": false
-            },        
-            {
-                "targets": [17],
-                "visible": false,
-                "searchable": false
-            },   
-            {
-                "targets": [18],
-                "visible": false,
-                "searchable": false
-            },  
-        
+            },
+  
+  
                 
                     
         ],
@@ -434,7 +421,7 @@ buttons:
             },
             exportOptions:
              {
-                 columns: [0,1,2,3,4,5,6,8,9,10,11,12,13,14,15,16,17,18] ,//exportar solo las columnas.
+                 columns: [0,1,2,3,4,5,6,8,9,10,11,12,13,14,15,16] ,//exportar solo las columnas.
              },
                   styles:
               {
