@@ -154,7 +154,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                   <?php } ?>
 
                   <?php if ($ELIMINAR == 1){ ?>
-                    <a href='../modelos/eliminar_rol_modelo.php?id=<?php echo $fila["ROL_CODIGO"]?>'  class="btn btne bg-maroon bnt-flat margin">
+                    <a href='../vistas/mostrar_roles_vista.php?id=<?php echo $fila["ROL_CODIGO"]?>'  class="btn btne bg-maroon bnt-flat margin">
 				          <i class='fa fa-trash'></i></a>
                   <?php } ?>
 				          
@@ -172,9 +172,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                 </tr>
                 </tfoot>
               </table>
-              <?php if (isset($_GET['m'])) : ?>
-                <div class="flash-data" data-flashdata="<?= $_GET['m']; ?>"></div>
-              <?php endif; ?>
+             
             </div>
             <!-- /.box-body -->
           </div>
@@ -358,4 +356,60 @@ buttons:
 </script>
 </body>
 </html>
+<?php 
+
+try {
+    require '../modelos/conectar.php';
+    if(isset($_GET['id'])){
+        $id=$_GET['id'];
+        $consulta3=$conexion->prepare("DELETE FROM tbl_rol WHERE ROL_CODIGO=:id");
+        $consulta3->execute(array(":id"=>$id));
+        if ($consulta3) {
+          $sql9="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
+          VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
+          $resultado9=$conexion->prepare($sql9);	
+          $resultado9->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>31,":accion"=>'DELETE',":descr"=>'ELIMINO UN ROL',":fecha"=>date("Y-m-d H:i:s")));
+          echo '<script>
+                          Swal.fire({
+                          title: "¡BIEN!",
+                          position: "center",
+                          text: "SE HA ELIMINADO EL ROL",
+                          icon: "success",
+                          type: "success"
+                          }).then(function() {
+                          window.location = "../vistas/mostrar_roles_vista.php";
+                          });
+                        </script>';	
+           } else {
+          //echo '<script>alert("Error al registrarse");location.href= "../vistas/insertar_mant_vista.php"</script>';	
+          echo '<script> Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "¡ALGO SALIÓ MAL!",
+            text:"ERROR AL ELIMINAR ROL",
+            showConfirmButton: false,
+            timer: 3000
+            })
+            </script>';
+          }
+       
+            
+      
+    }  
+} catch (Exception $e) {
+  echo '<script>
+  Swal.fire({
+  title: "¡Error!",
+  position: "center",
+  text: "NO SE PUEDE ELIMINAR HAY REGISTROS CON ESTE ROL",
+  icon: "error"
+  }).then(function() {
+  window.location = "../vistas/mostrar_roles_vista.php";
+  });
+</script>';	
+
+}
+
+?>
+
 

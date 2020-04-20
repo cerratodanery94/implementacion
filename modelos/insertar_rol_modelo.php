@@ -1,5 +1,5 @@
 <?php	
-session_start();
+
 	try{
 		require '../modelos/conectar.php';
         if (isset($_POST['rol']) && 

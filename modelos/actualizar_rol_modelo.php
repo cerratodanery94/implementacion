@@ -1,5 +1,4 @@
 <?php
-session_start();
 require '../modelos/conectar.php';
 try {
     if (isset($_POST['id_r']) && 
