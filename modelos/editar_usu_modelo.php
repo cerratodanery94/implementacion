@@ -354,7 +354,17 @@ if(isset($_GET['id'])){
 <script src="../vistas/Js/Validar_sistema.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../vistas/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
+<script src="../vistas/plugins/jQuery/jquery.mask.min.js"></script>
 <script src="../vistas/dist/js/demo.js"></script>
+<script>
+    $(document).ready(function(){
+    $("#numero_de_identidad").mask("0000-0000-00000");
+    $("#numero_de_celular").mask("0000-0000");
+    $("#numero_de_telefono_fijo").mask("0000-0000");
+    $("#rtn").mask("00000000000000");
+    
+});
+</script>
 </body>
 </html> 
 <?php require "../modelos/actualizar_usu_modelo.php" ?>
