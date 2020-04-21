@@ -174,7 +174,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
         </div> 
         
 
-          <form action="" method="post" name="form_cita"> 
+          <form action="" method="post" name="form_editar_cita"> 
           <input type="hidden" name="id_c" id="id_c" value="<?php echo $id_c?>">   
           <input type="hidden" name="id_u" id="id_u" value="<?php echo $id_u?>">
           <input type="hidden" name="id_p" id="id_p" value="<?php echo $id_p?>" >
@@ -211,7 +211,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
             
           <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">HORA CITA</label>
-                <select class="form-control" name="hora" id="hora">
+                <select class="form-control" name="hora" id="hora_cita">
         <option value="0">SELECCIONE HORA CITA :</option>
                 <?php
                
@@ -248,7 +248,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
          
           <div class="box-footer">
           <div class="col text-center">
-            <button type="submit"  class="btn btn-primary btn-flat margin">ACTUALIZAR</button>
+            <button type="button" onclick="validar_cita2();"  class="btn btn-primary btn-flat margin">ACTUALIZAR</button>
             <a href="../vistas/mostrar_citas_vista.php" class="btn bg-red btn-flat margin" >ATRAS</a>
           </div>
           </div>

@@ -1091,7 +1091,7 @@ else if(Validar_espacio2(formulario_exp.dieta.value)==false){
 formulario.submit(); 
 }
 
-//VALIDAR FORMULARIO CITA
+//VALIDAR FORMULARIO INSERTAR CITA
 function validar_cita(){
     var formulario=document.form_cita;
     if(formulario.fecha_cita.value==0){
@@ -1100,33 +1100,72 @@ function validar_cita(){
         return false;
     }
     //VALIDAR CAMPO HORA INCIO
-    if(formulario.hora_inicio.value==0){
-        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO HORA INICIO VACIO</div>';
-        formulario.hora_inicio.focus();
+    if(formulario.hora_cita.value==0){
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO HORA CITA VACIO</div>';
+        formulario.hora_cita.focus();
         return false;
     }
-    //VALIDAR CAMPO ESTADO
-    if(formulario.estado.value==0){
-        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO ESTADO VACIO, SELECCIONE UNA OPCION</div>';
-        formulario.estado.focus();
-        return false;
-    }
+  
     //VALIDAR CAMPO DOCTORA
-// if(formulario.doctora.value==0){
-//     document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO DOCTORA VACIO, SELECCIONE UNA OPCION</div>';
-//     formulario.doctora.focus();
+if(formulario.doctora.value==0){
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO DOCTORA VACIO, SELECCIONE UNA OPCION</div>';
+    formulario.doctora.focus();
+    return false;
+}
+  //VALIDAR CAMPO ESTADO
+//   if(formulario.estado.value==0){
+//     document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO ESTADO VACIO, SELECCIONE UNA OPCION</div>';
+//     formulario.estado.focus();
 //     return false;
 // }
 
-
-    //VALIDAR CAMPO HORA FINAL
-    if(formulario.hora_final.value==0){
-        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO HORA FINAL VACIO</div>';
-        formulario.hora_final.focus();
-        return false;
-    }
     formulario.submit();
 }
+
+//VALIDAR FORMULARIO EDITAR CITA
+function validar_cita2(){
+    var formulario=document.form_editar_cita;
+    if(formulario.fecha_cita.value==0){
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO FECHA CITA VACIO</div>';
+        formulario.fecha_cita.focus();
+        return false;
+    }
+    //VALIDAR CAMPO HORA INCIO
+    if(formulario.hora_cita.value==0){
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO HORA INICIO VACIO</div>';
+        formulario.hora_cita.focus();
+        return false;
+    }
+  
+    //VALIDAR CAMPO DOCTORA
+if(formulario.doctora.value==0){
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO DOCTORA VACIO, SELECCIONE UNA OPCION</div>';
+    formulario.doctora.focus();
+    return false;
+}
+  //VALIDAR CAMPO ESTADO
+  if(formulario.estado.value==0){
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO ESTADO VACIO, SELECCIONE UNA OPCION</div>';
+    formulario.estado.focus();
+    return false;
+}
+//VALIDAR CAMPO DESCRIPCION
+if (formulario.descrip.value=="") {
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO DESCRIPCION VACIO, FAVOR ESPECIFICAR LA ACCIÓN.</div>';
+    formulario.descrip.focus();
+    return false;
+}
+
+else if (Validar_espacio2 (formulario.descrip.value)==false){
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
+    formulario.descrip.focus();
+    return false;
+    }
+
+
+    formulario.submit();
+}
+
 
 //VALIDAR FORMULARIO PARAMETROS
 function validar_parametros(){
