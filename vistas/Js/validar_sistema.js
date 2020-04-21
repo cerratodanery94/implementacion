@@ -1151,7 +1151,7 @@ if(formulario.doctora.value==0){
 }
 //VALIDAR CAMPO DESCRIPCION
 if (formulario.descrip.value=="") {
-    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO DESCRIPCION VACIO, FAVOR ESPECIFICAR LA ACCIÓN.</div>';
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO DESCRIPCION VACIO, DEBE ESPECIFICAR POR QUE CAMBIA LA CITA.</div>';
     formulario.descrip.focus();
     return false;
 }
