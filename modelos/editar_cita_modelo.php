@@ -13,7 +13,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>29
     $id=$_GET['id'];
 
     
-    $sql="SELECT * from tbl_citas c INNER JOIN tbl_personas p on c.per_codigo = p.per_codigo INNER JOIN tbl_usuario u  ON c.usu_codigo=u.usu_codigo WHERE CIT_CODIGO=:id";
+    $sql=" SELECT * from tbl_citas c INNER JOIN tbl_personas p on c.per_codigo = p.per_codigo INNER JOIN tbl_usuario u  ON c.usu_codigo=u.usu_codigo INNER JOIN tbl_horario h ON c.hor_codigo=h.hor_codigo WHERE CIT_CODIGO=:id";
   $resultado=$conexion->prepare($sql);	
     $resultado->execute(array(":id"=>$id));
    if ($resultado->rowCount()>=1) {
@@ -23,13 +23,12 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>29
     $id_u=$fila['USU_CODIGO'];
     $nombres=$fila['PER_NOMBRES'];
     $apellidos=$fila['PER_APELLIDOS'];
-    $edad=$fila['PER_EDAD'];
+    $fecha_nacimiento=$fila['PER_FECHA_NACIMIENTO'];
     $identidad=$fila['PER_NUMERO_IDENTIDAD'];
-    $fecha_cita=$fila['CIT_FECHA_CITA'];
-    $hora_inicio=$fila['CIT_HORA_INICIO'];
-    $hora_final=$fila['CIT_HORA_FINAL'];
+   $fecha_cita=$fila['CIT_FECHA_CITA'];
     $estado=$fila['CIT_ESTADO']; 
     $descrip=$fila['CIT_DESCRIPCION'];  
+    $id_h=$fila['HOR_CODIGO'];
    }
   }
   
@@ -165,8 +164,8 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
          </div>
 
          <div class="form-group col-lg-6 col-md-6 col-xs-12">
-           <label for="exampleInputPassword1">EDAD</label>
-           <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="EDAD"  name="edad" id="edad" value="<?php echo $edad?>" readonly   >
+           <label for="exampleInputPassword1">FECHA NACIMIENTO</label>
+           <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="FECHA NACIMIENTO"  name="fecha_nacimiento" id="fecha_nacimiento" value="<?php echo $fecha_nacimiento?>" readonly   >
          </div>
 
         <div class="form-group col-lg-6 col-md-6 col-xs-12">
@@ -179,6 +178,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
           <input type="hidden" name="id_c" id="id_c" value="<?php echo $id_c?>">   
           <input type="hidden" name="id_u" id="id_u" value="<?php echo $id_u?>">
           <input type="hidden" name="id_p" id="id_p" value="<?php echo $id_p?>" >
+          <input type="hidden" name="id_h" id="id_h" value="<?php echo $id_h?>" >
         
           <div class="form-group col-lg-6 col-md-6 col-xs-12"> 
             <label for="exampleInputPassword1">FECHA DE LA CITA</label>
@@ -189,20 +189,46 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
             <label for="exampleInputPassword1">DOCTORA</label>
             <select class="form-control" name="id_u" id="doctora">
              <option value="0">SELECCIONE DOCTORA:</option>
-             <option value="44" <?php if ($id_u==44) { echo 'selected'; }?>>LILIANA DIAZ</option>    
-             <option value="45" <?php if ($id_u==45) { echo 'selected'; }?>>MARIA SERRANO</option>  
+             <?php
+               
+               require '../modelos/conectar.php';
+               $resultado_nacionalidad = $conexion -> query ("select * from tbl_citas tc inner join tbl_usuario tu  on tc.USU_CODIGO = tu.USU_CODIGO where tc.CIT_CODIGO = $id");
+               $pais = $resultado_nacionalidad->fetch(PDO::FETCH_ASSOC);
+               $pais2 = $resultado_nacionalidad->fetch(PDO::FETCH_ASSOC);
+                $nacionalidad = $pais["USU_NOMBRES"];
+                $nacionalidad2 = $pais["USU_APELLIDOS"];
+                $doctora=$nacionalidad." ". $nacionalidad2 ;
+                 $resultado = $conexion -> query ("SELECT * FROM tbl_usuario where ROL_CODIGO=3 or ROL_CODIGO=4");
+                 while ($registro=$resultado->fetch(PDO::FETCH_ASSOC)) {
+                   $r = ($doctora == $registro["USU_NOMBRES"]." ".$registro["USU_APELLIDOS"]) ? 'selected' : '';
+                   echo '<option value="'.$registro["USU_CODIGO"].'"'.$r.'>'.$registro["USU_NOMBRES"]." ".$registro["USU_APELLIDOS"].'</option>';
+                 }
+        
+               ?>
+             
             </select>
           </div>
             
           <div class="form-group col-lg-6 col-md-6 col-xs-12">
-            <label for="exampleInputPassword1">HORA DE INICIO CITA</label>
-            <input type="time" autocomplete="off" class="form-control" name="hora_inicio" id="hora_inicio" value="<?php echo $hora_inicio?>">
-          </div>
-            
-          <div class="form-group col-lg-6 col-md-6 col-xs-12">
-            <label for="exampleInputPassword1">HORA FINAL CITA</label>
-            <input type="time" autocomplete="off" class="form-control" name="hora_final" id="hora_final" value="<?php echo $hora_final?>">
-            </div>
+                  <label for="exampleInputPassword1">HORA CITA</label>
+                <select class="form-control" name="hora" id="hora">
+        <option value="0">SELECCIONE HORA CITA :</option>
+                <?php
+               
+        require '../modelos/conectar.php';
+        $resultado_nacionalidad = $conexion -> query ("select * from tbl_citas tc inner join tbl_horario th on tc.HOR_CODIGO = th.HOR_CODIGO where tc.CIT_CODIGO = $id");
+        $pais = $resultado_nacionalidad->fetch(PDO::FETCH_ASSOC);
+         $nacionalidad = $pais['HOR_HORA'];
+          $resultado = $conexion -> query ("SELECT * FROM tbl_horario");
+          while ($registro=$resultado->fetch(PDO::FETCH_ASSOC)) {
+            $r = ($nacionalidad == $registro["HOR_HORA"]) ? 'selected' : '';
+            echo '<option value="'.$registro["HOR_CODIGO"].'"'.$r.'>'.$registro["HOR_HORA"].'</option>';
+          }
+ 
+        ?>
+        </select>
+                </div>
+
 
           <div class="form-group  col-lg-6 col-md-6 col-xs-12">
             <label for="exampleInputPassword1">ESTADO</label>
@@ -222,7 +248,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
          
           <div class="box-footer">
           <div class="col text-center">
-            <button type="button" onclick="validar_cita();" class="btn btn-primary btn-flat margin">ACTUALIZAR</button>
+            <button type="submit"  class="btn btn-primary btn-flat margin">ACTUALIZAR</button>
             <a href="../vistas/mostrar_citas_vista.php" class="btn bg-red btn-flat margin" >ATRAS</a>
           </div>
           </div>

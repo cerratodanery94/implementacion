@@ -177,7 +177,7 @@ $CONSULTAR = $DATOS['PERM_CONSULTAR'];
 
             <div class="form-group col-lg-6 col-md-6 col-xs-12">
              <label for="exampleInputPassword1">DOCTORA</label>
-             <select class="form-control" name="id_u" id="doctora">
+             <select class="form-control" name="id_u" id="id_u">
              <option value="0">SELECCIONE DOCTORA:</option>
                 <?php
                require '../modelos/conectar.php';
@@ -188,26 +188,25 @@ $CONSULTAR = $DATOS['PERM_CONSULTAR'];
                ?>
               </select>
             </div>
-            
+
             <div class="form-group col-lg-6 col-md-6 col-xs-12">
-            <label for="exampleInputPassword1">HORA DE INICIO CITA</label>
-            <input type="time" autocomplete="off" class="form-control" name="hora_inicio" id="hora_inicio">
+             <label for="exampleInputPassword1">HORA CITA</label>
+             <select class="form-control" name="id_h" id="id_h">
+             <option value="0">SELECCIONE HORA CITA:</option>
+             <?php
+               require '../modelos/conectar.php';
+               $resultado = $conexion -> query ("SELECT * FROM TBL_HORARIO");
+              while ($registro=$resultado->fetch(PDO::FETCH_ASSOC)) {
+                echo '<option value="'.$registro["HOR_CODIGO"].'">'.$registro["HOR_HORA"].'</option>';
+               }
+               ?>
+              </select>
+            </div>
+            <div class="form-group col-lg-6 col-md-6 col-xs-12"> 
+            <label for="exampleInputPassword1">ESTADO</label>
+            <input type="text" autocomplete="off" class="form-control nombres" value="PENDIENTE" name="estado" id="estado" readonly>
             </div>
             
-            <div class="form-group col-lg-6 col-md-6 col-xs-12">
-            <label for="exampleInputPassword1">HORA FINAL CITA</label>
-            <input type="time" autocomplete="off" class="form-control" name="hora_final" id="hora_final">
-            </div>
-            <div class="form-group  col-lg-6 col-md-6 col-xs-12">
-                <label for="exampleInputPassword1">ESTADO</label>
-                <select class="form-control" name="estado" id="estado">
-                 <option value="0">SELECCIONE EL ESTADO DE LA CITA:</option>
-                 <option value="PENDIENTE">PENDIENTE</option>
-                 <option value="REALIZADA">REALIZADA</option>
-                 <option value="CANCELADA">CANCELADA</option>
-                 <option value="NO SE PRESENTO">NO SE PRESENTO</option>
-                </select>
-                </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label style="visibility:hidden"for="exampleInputPassword1">DESCRICIÓN</label>
                   <textarea style="visibility:hidden"placeholder="DESCRICIÓN" style="text-transform:uppercase"  class="form-control"  name="descrip" id="descrip" cols="30" rows="5" ></textarea >
@@ -215,7 +214,7 @@ $CONSULTAR = $DATOS['PERM_CONSULTAR'];
 
             <div class="box-footer">
             <div class="col text-center">
-            <button type="button" onclick="validar_cita();"  class="btn btn-primary btn-flat margin">CREAR</button>
+            <button type="submit"  class="btn btn-primary btn-flat margin">CREAR</button>
             <a href="../vistas/mostrar_citas_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
             </div>
             </div>

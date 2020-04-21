@@ -6,16 +6,30 @@
         if (isset($_POST['id_p'])&& 
         isset($_POST['id_u'])&&
 		isset($_POST['fecha_cita'])&& 
-		isset($_POST['hora_inicio'])&&
-        isset($_POST['hora_final'])&&
+		isset($_POST['id_h'])&&
         isset($_POST['estado'])){
         $id_p=$_POST["id_p"];
-        $id_u=$_POST["id_u"];
+		$id_u=$_POST["id_u"];
+		$id_h=$_POST['id_h'];
 		$fecha_cita=$_POST["fecha_cita"];
-		$hora_inicio=$_POST["hora_inicio"];
-        $hora_final=$_POST["hora_final"];
         $estado=$_POST["estado"];
-        $descrip='';
+		$descrip='';
+		$consulta=$conexion->prepare("SELECT * FROM TBL_CITAS WHERE CIT_FECHA_CITA='$fecha_cita' and HOR_CODIGO='$id_h' and USU_CODIGO='$id_u'");
+        $consulta->execute();
+        $num_rows = $consulta->fetchColumn();
+        
+       if ($num_rows>0){ 
+		   //echo '<script>alert("Usuario  ya se encuentran registrados ");location.href= "../vistas/insertar_mant_vista.php"</script>';
+		   echo '<script> Swal.fire({
+			position: "center",
+			icon: "error",
+			title: "NO SE PUEDE REGISTRAR CITA YA ESTA RESERVADA EN ESA FECHA Y HORA",
+			showConfirmButton: false,
+			timer: 3000
+		  })
+		  </script>';
+
+       }else{	
 
 		
 	
@@ -23,32 +37,31 @@
 	   $sql="INSERT INTO tbl_citas (
 		   PER_CODIGO,
 		   USU_CODIGO,
+		   HOR_CODIGO,
 		   CIT_FECHA_CITA,
-		   CIT_HORA_INICIO,
-		   CIT_HORA_FINAL,
            CIT_ESTADO,
-           CIT_DESCRIPCION) 
+           CIT_DESCRIPCION,
+		   CIT_ESTADO_REGISTRO) 
 		   
 	   VALUES (
 		:id_p,
 		:id_u,
+		:id_h,
 		:fecha_cita,
-		:hora_inicio,
-		:hora_final,
         :estado,
-        :descrip
-	
-		)";
+        :descrip,
+		:er
+	     )";
 
 	   $resultado=$conexion->prepare($sql);	
 	   $resultado->execute(array(
         ":id_p"=>$id_p,
-	    ":id_u"=>$id_u,
+		":id_u"=>$id_u,
+		":id_h"=>$id_h,
 	    ":fecha_cita"=>$fecha_cita,
-        ":hora_inicio"=>$hora_inicio,
-        ":hora_final"=>$hora_final,
         ":estado"=>$estado,
-        ":descrip"=>NULL));
+		":descrip"=>NULL,
+	     "er"=>'A'));
 		
 	   if ($resultado) {
 		$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
@@ -81,6 +94,7 @@
 	}
 		$resultado->closeCursor();
 		$resultado2->closeCursor();
+}
 }
 	}catch(Exception $e){			
 		

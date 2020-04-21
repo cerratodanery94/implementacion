@@ -6,8 +6,7 @@ try {
   isset($_POST['id_p'])&& 
   isset($_POST['id_u'])&&
   isset($_POST['fecha_cita'])&& 
-  isset($_POST['hora_inicio'])&&
-  isset($_POST['hora_final'])&&
+  isset($_POST['hora'])&&
   isset($_POST['estado'])&&
   isset($_POST['descrip'])
   ){
@@ -15,8 +14,7 @@ try {
     $id_p=$_POST["id_p"];
     $id_u=$_POST["id_u"];
     $fecha_cita=$_POST["fecha_cita"];
-    $hora_inicio=$_POST["hora_inicio"];
-    $hora_final=$_POST["hora_final"];
+    $hora=$_POST["hora"];
     $estado=$_POST["estado"];
     $descrip=strtoupper($_POST['descrip']);
         
@@ -24,9 +22,8 @@ try {
         ("UPDATE TBL_CITAS SET
         PER_CODIGO=:id_p,
         USU_CODIGO=:id_u,
+        HOR_CODIGO=:id_h,
         CIT_FECHA_CITA=:fecha_cita,
-        CIT_HORA_INICIO=:hora_inicio,
-        CIT_HORA_FINAL=:hora_final,
         CIT_ESTADO=:estado,
         CIT_DESCRIPCION=:descrip
         
@@ -36,9 +33,8 @@ try {
          $query->execute(array(
           ":id_p"=>$id_p,
           ":id_u"=>$id_u,
+          ":id_h"=>$hora,
           ":fecha_cita"=>$fecha_cita,
-          ":hora_inicio"=>$hora_inicio,
-          ":hora_final"=>$hora_final,
           ":estado"=>$estado,
           ":descrip" =>$descrip,
           ":id_c" =>$id_c

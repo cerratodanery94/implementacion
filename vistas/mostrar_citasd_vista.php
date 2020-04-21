@@ -144,7 +144,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                 <tbody>
                 <?php
                require '../modelos/conectar.php';
-               $consulta=$conexion->prepare("SELECT * from tbl_citas c INNER JOIN tbl_personas p on c.per_codigo = p.per_codigo INNER JOIN tbl_usuario u  ON c.usu_codigo=u.usu_codigo INNER JOIN tbl_horario h ON c.hor_codigo=h.hor_codigo ");
+               $consulta=$conexion->prepare("SELECT * from tbl_citas c INNER JOIN tbl_personas p on c.per_codigo = p.per_codigo INNER JOIN tbl_usuario u  ON c.usu_codigo=u.usu_codigo INNER JOIN tbl_horario h ON c.hor_codigo=h.hor_codigo where CIT_FECHA_CITA = CURDATE() ");
                $consulta->execute();
                  while($fila=$consulta->fetch()){?>
                  <tr>

@@ -104,6 +104,7 @@
 
           
             <ul class="treeview-menu">
+            <li><a href="../vistas/mostrar_citasd_vista.php"><i class="fa fa-list"></i>Mostrar Citas del Dia</a></li>
           <li><a href="../vistas/mostrar_citas_vista.php"><i class="fa fa-list"></i>Lista de citas</a></li>
         </ul>
           
