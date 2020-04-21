@@ -144,6 +144,18 @@ function validar_telefono(parametro){
                     return true;
                 }
                 }
+
+                //VLAIDAR NUMEROS Y LETRAS
+                function validar_numletras(parametro){
+                // var patron= /^(\d+|\d+)|[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/g;
+                var patron=/^[_ a-zA-Z0-9]+$/   
+                if(!patron.test(parametro)){
+                        return false;
+                    }
+                    else {
+                        return true;
+                    }
+                    }
         //VALLIDAR FORMULARIO INSERTAR EMPLEADOS VISTA
     function validar_empleado(){
     var formulario=document.Form_registrar;
@@ -1175,8 +1187,13 @@ function validar_parametros(){
         formulario.valor.focus();
         return false;   
     }
-    else if(validar_num(formulario.valor.value)==false){
-        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INGRESAR DIGITOS NUMERICOS EN EL CAMPO</div>';
+    else if(Validar_espacio2(formulario.valor.value)==false){
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIO EN EL CAMPO</div>';
+        formulario.valor.focus();
+        return false;
+    }
+    else if(validar_numletras(formulario.valor.value)==false){
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INGRESAR DATOS ALFANUMERICOS EN EL CAMPO</div>';
         formulario.valor.focus();
         return false; 
     }
