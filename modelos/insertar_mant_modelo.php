@@ -186,10 +186,10 @@ $pass .=substr($caracteres,rand(0,53),1);
 	   
 		
 	   if ($resultado) {
-		$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
-		VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
+		$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
+		VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
 	    $resultado2=$conexion->prepare($sql2);	
-		$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,":accion"=>'NUEVO',":descr"=>'CREO UN USUARIO',":fecha"=>date("Y-m-d H:i:s")));
+		$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,":accion"=>'NUEVO',":descr"=>'CREO UN USUARIO',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
 		echo '<script>
                     Swal.fire({
                     title: "¡BIEN!",

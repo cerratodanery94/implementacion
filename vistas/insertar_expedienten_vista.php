@@ -123,7 +123,7 @@ $CONSULTAR = $DATOS['PERM_CONSULTAR'];
   <form action="../vistas/insertar_expedienten_vista.php" method="get" >
   <div id="alerta"></div>
   <label for="exampleInputEmail1">BUSCAR PACIENTE</label> <br>
-        <input type="text" size="33" maxlength="30"  placeholder="INGRESE UN NUMERO DE IDENTIDAD" name="buscar">
+        <input type="text" size="33" maxlength="30"  placeholder="INGRESE UN NUMERO DE IDENTIDAD" name="buscar" id="buscar">
         <button type="submit" class="btn btn-primary" >BUSCAR</button>
         </div>
        <?php
@@ -252,6 +252,11 @@ $CONSULTAR = $DATOS['PERM_CONSULTAR'];
 <!-- AdminLTE for demo purposes -->
 <script src="../vistas/dist/js/demo.js"></script>
 <script src="../vistas/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
+<script src="../vistas/plugins/jQuery/jquery.mask.min.js"></script>
+<script>
+    $(document).ready(function(){
+    $("#buscar").mask("0000-0000-00000");     
+});
 </body>
 </html>
 <?php require "../modelos/insertar_expedienten_modelo.php" ?>

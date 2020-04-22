@@ -123,7 +123,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 <div class="panel-body" id="formularioregistros">
   <form action="../vistas/insertar_expediented_vista.php" method="get" >
   <label for="exampleInputEmail1">BUSCAR PACIENTE</label> <br>
-        <input type="text" size="33" maxlength="30"  placeholder="INGRESE UN NUMERO DE IDENTIDAD" name="buscar">
+        <input type="text" size="33" maxlength="30"  placeholder="INGRESE UN NUMERO DE IDENTIDAD" name="buscar" id="buscar">
         <button type="submit" class="btn btn-primary" >BUSCAR</button>
         </div>
        <?php
@@ -251,6 +251,12 @@ $('#print').click (function(){
 <!-- AdminLTE for demo purposes -->
 <script src="../vistas/dist/js/demo.js"></script>
 <script src="../vistas/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
+<script src="../vistas/plugins/jQuery/jquery.mask.min.js"></script>
+<script>
+    $(document).ready(function(){
+    $("#buscar").mask("0000-0000-00000");     
+});
+</script>
 </body>
 </html>
 <?php require "../modelos/insertar_expediented_modelo.php" ?>
