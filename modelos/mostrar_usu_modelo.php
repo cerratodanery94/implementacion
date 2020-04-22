@@ -7,13 +7,10 @@ try {
   require_once '../modelos/conectar.php';
   require_once '../controladores/funciones.php';
   $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
-VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,hora)";
+VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
   $resultado2=$conexion->prepare($sql2);	
 $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>10,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA EDITAR USUARIOS',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
-$sql7="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
-VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,hora)";
-  $resultado7=$conexion->prepare($sql7);	
-$resultado7->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>10,":accion"=>'CONSULTO',":descr"=>'MUESTRA INFORMACION DEL USUARIO',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
+
 $ROL = $_SESSION['ROL'];
 $_SESSION['PANTALLA'] = 42;
 $PANTALLA = $_SESSION['PANTALLA'];
@@ -62,8 +59,8 @@ if(isset($_GET['id'])){
    }
 }
 } catch (Exception $e) {
-  die('Error: ' . $e->GetMessage());
-	echo "Codigo del error" . $e->getCode();
+  
+	echo "Codigo del error" . $e->getLine();
 }
 ?> 
 
