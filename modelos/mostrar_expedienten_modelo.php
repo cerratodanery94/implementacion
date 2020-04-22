@@ -5,6 +5,7 @@ if (!isset($_SESSION["id_us"])) {
 }
 try {
   require '../modelos/conectar.php';
+  require '../controladores/funciones.php';
   $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
   VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
   $resultado2=$conexion->prepare($sql2);	
@@ -36,6 +37,7 @@ try {
     $dieta=$fila['NUTRI_DIETA'];
     $fecha=$fila['NUTRI_FECHA_CREACION'];
     $fecha_nacimiento=$fila['PER_FECHA_NACIMIENTO'];
+    $edad=mi_edad($fila['PER_FECHA_NACIMIENTO']);
   
   
 		 
@@ -174,13 +176,19 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
                   <label for="exampleInputPassword1">FECHA DE NACIMIENTO</label>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="FECHA DE NACIMIENTO"  name="fecha_nacimiento" id="fecha_nacimiento" value="<?php echo $fecha_nacimiento?>" readonly   >
           </div>
-
+          <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                  <label for="exampleInputPassword1">EDAD</label>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="EDAD"  name="edad" id="edad"value="<?php echo $edad?>"readonly>
+                </div>
 
           <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">NUMERO DE IDENTIDAD</label>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="IDENTIDAD"  name="identidad" id="identidad" value="<?php echo $identidad?>" readonly    >
           </div>
-           
+          <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                  <label for="exampleInputPassword1">FECHA DE CREACION</label>
+                  <input type="text" autocomplete="off" class="form-control nombres" placeholder="FECHA DE CREACION" name="fecha_de_creacion" id="fecha_de_creacion" value="<?php echo $fecha ?> " readonly>
+                </div>
           </form> 
 
           <form action="" method="post" name="frm_exp"> 
@@ -221,10 +229,7 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
                   <textarea class="form-control" name="dieta" id="dieta" rows="10" cols="50" readonly > <?php echo $dieta?> </textarea >
                 </div>
 
-                <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">FECHA DE CREACION</label>
-                  <input type="text" autocomplete="off" class="form-control nombres" placeholder="FECHA DE CREACION" name="fecha_de_creacion" id="fecha_de_creacion" value="<?php echo $fecha ?> " readonly>
-                </div>
+               
          
                 <div class="box-footer">
               <div class="col text-center">

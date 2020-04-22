@@ -133,6 +133,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                   <th>NOMBRES</th>
                   <th>APELLIDOS</th>
                   <td>ACCIONES</td>
+                  <td>FECHA DE NACIMIENTO</td>
                   <td>EDAD</td>
                   <td>NUMERO IDENTIDAD</td>
                   <td>APUNTES DE CONSULTA</td>

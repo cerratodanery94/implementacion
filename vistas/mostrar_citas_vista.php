@@ -170,7 +170,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                  <?php } ?>
                  
                  </td>
-                 <td><?php echo $fila['PER_EDAD']?></td>
+            
                  </tr>
                  <?php } ?> 
                 </tbody>
@@ -282,14 +282,7 @@ var currentdate = new Date();
                 + currentdate.getSeconds();               
   $(function () {
     $('#example1').DataTable({
-     "columnDefs": [
-            {
-                "targets": [ 8 ],
-                "visible": false,
-                "searchable": false
-            },
-      
-        ],
+
      
  /////////////////////////////////////////////////////////////////////
                 dataSrc: 'list',

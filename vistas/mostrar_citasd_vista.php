@@ -133,7 +133,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                   <th>ESTADO</th>
                   <th>DESCRIPCION</th>
                   <th>ACCIONES</th>
-                  <th>EDAD</th>
+               
                
                   
                   
@@ -170,7 +170,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                  <?php } ?>
                  
                  </td>
-                 <td><?php echo $fila['PER_EDAD']?></td>
+              
                  </tr>
                  <?php } ?> 
                 </tbody>
@@ -185,8 +185,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                   <th>ESTADO</th>
                   <th>DESCRIPCION</th>
                   <th>ACCIONES</th>
-                  <th>EDAD</th>
-                </tr>
+                
                 </tfoot>
               </table>
               <?php if (isset($_GET['m'])) : ?>
@@ -283,15 +282,7 @@ var currentdate = new Date();
                 + currentdate.getSeconds();               
   $(function () {
     $('#example1').DataTable({
-     "columnDefs": [
-            {
-                "targets": [ 8 ],
-                "visible": false,
-                "searchable": false
-            },
-      
-        ],
-     
+
  /////////////////////////////////////////////////////////////////////
                 dataSrc: 'list',
                dom:'<"row"<"col-sm-6"f><"row"<"col-sm-3"B><"col-sm-3"l>>'+'<tr>'+'<"col-sm-12"p><"col-sm-6"i>',// posicion del buscaodor y los botones en el orden establecido en pantalla
@@ -358,7 +349,7 @@ buttons:
             },
             exportOptions:
              {
-                 columns: [0,1,2,3,4,5,6,8] ,//exportar solo las columnas.
+                 columns: [0,1,2,3,4,5,6,] ,//exportar solo las columnas.
              },
                   styles:
               {

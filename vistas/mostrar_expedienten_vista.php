@@ -130,7 +130,6 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                   <th>NOMBRES</th>
                   <th>APELLIDOS</th>
                   <td>ACCIONES</td>
-                  <td>EDAD</td>
                   <td>NUMERO DE IDENTIDAD</td>
                   <td>PESO</td>
                   <td>ALTURA</td>
@@ -169,7 +168,6 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 
                  
                  </td>
-                 <td><?php echo $fila['PER_EDAD']?></td>
                  <td><?php echo $fila['PER_NUMERO_IDENTIDAD']?></td>
                  <td><?php echo $fila['NUTRI_PESO']?></td>
                  <td><?php echo $fila['NUTRI_ALTURA']?></td>
@@ -326,11 +324,7 @@ var currentdate = new Date();
                 "visible": false,
                 "searchable": false
             },
-            {
-                "targets": [ 13 ],
-                "visible": false,
-                "searchable": false
-            },        
+             
                    
         ],
      
@@ -400,7 +394,7 @@ buttons:
             },
             exportOptions:
              {
-                 columns: [0,1,2,3,5,6,7,8,9,10,11,12,13] ,//exportar solo las columnas.
+                 columns: [0,1,2,3,5,6,7,8,9,10,11,12] ,//exportar solo las columnas.
              },
                   styles:
               {
