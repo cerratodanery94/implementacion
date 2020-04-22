@@ -1,8 +1,8 @@
 
 <?php
 //fetch.php
-$connect = mysqli_connect("localhost", "root", "", "clime_home");
-$columns = array('BIT_CODIGO', 'USU_CODIGO', 'OBJ_CODIGO', 'BIT_ACCION', 'BIT_DESCRIPCION','BIT_FECHA');
+$connect = mysqli_connect("localhost", "root","", "clime_home");
+$columns = array('BIT_CODIGO','USU_CODIGO','OBJ_CODIGO','BIT_ACCION','BIT_DESCRIPCION','BIT_FECHA','BIT_HORA');
 
 $query = "SELECT * FROM tbl_bitacora WHERE ";
 
@@ -18,10 +18,10 @@ if(isset($_POST["search"]["value"]))
   OR USU_CODIGO LIKE "%'.$_POST["search"]["value"].'%" 
   OR OBJ_CODIGO LIKE "%'.$_POST["search"]["value"].'%" 
   OR BIT_ACCION LIKE "%'.$_POST["search"]["value"].'%"
-  OR BIT_DESCRIPCION LIKE "%'.$_POST["search"]["value"].'%"
+  OR BIT_DESCRIPCION  LIKE "%'.$_POST["search"]["value"].'%"
   OR BIT_FECHA LIKE "%'.$_POST["search"]["value"].'%"
-  )
- ';
+  OR BIT_HORA LIKE "%'.$_POST["search"]["value"].'%"
+  )';
 }
 
 if(isset($_POST["order"]))
@@ -29,10 +29,7 @@ if(isset($_POST["order"]))
  $query .= 'ORDER BY '.$columns[$_POST['order']['0']['column']].' '.$_POST['order']['0']['dir'].' 
  ';
 }
-else
-{
- $query .= 'ORDER BY BIT_CODIGO DESC ';
-}
+
 
 $query1 = '';
 
@@ -59,21 +56,21 @@ while($row = mysqli_fetch_array($result))
  $sub_array[] = $row["BIT_HORA"];
  $data[] = $sub_array;
 }
-
+ 
 function get_all_data($connect)
 {
  $query = "SELECT * FROM tbl_bitacora";
  $result = mysqli_query($connect, $query);
  return mysqli_num_rows($result);
 }
-
+ 
 $output = array(
  "draw"    => intval($_POST["draw"]),
  "recordsTotal"  =>  get_all_data($connect),
  "recordsFiltered" => $number_filter_row,
  "data"    => $data
 );
-
+ 
 echo json_encode($output);
-
+ 
 ?>

@@ -133,11 +133,11 @@ $CONSULTAR = $DATOS['PERM_CONSULTAR'];
        <input type="text" name="start_date" id="start_date" placeholder="FECHA INICIAL"class="form-control" autocomplete="off" readonly="" />
       </div>
       <div class="col-md-3">
-       <input type="text" name="end_date" id="end_date" placeholder="FECHA FINAL"class="form-control" readonly=""/>
+       <input type="text" name="end_date" id="end_date" placeholder="FECHA FINAL"class="form-control" autocomplete="off"  readonly=""/>
       </div>      
      </div>
      <div class="col-md-4">
-      <input type="button" name="search" id="search" value="Buscar Rango" class="btn btn-info active" autocomplete="off" />
+      <input type="button" name="search" id="search" value="Buscar Rango" class="btn btn-info active"  />
      </div>
     </div>
                 <!--FINAL-->

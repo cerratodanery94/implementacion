@@ -4,14 +4,14 @@ require_once "../modelos/conectar.php";
 if (!isset($_SESSION["id_us"])) {
   header('location:../vistas/login_vista.php');
 }
-$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
-VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
+$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
+VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
 $resultado2=$conexion->prepare($sql2);	
-$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>30,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA DE MOSTRAR PARAMETROS',":fecha"=>date("Y-m-d H:i:s")));         
-$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
-VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
+$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>30,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA DE MOSTRAR PARAMETROS',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));         
+$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
+VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
 $resultado2=$conexion->prepare($sql2);	
-$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>30,":accion"=>'CONSULTA',":descr"=>'MUESTRA LA LISTA DE PARAMETROS',":fecha"=>date("Y-m-d H:i:s")));
+$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>30,":accion"=>'CONSULTA',":descr"=>'MUESTRA LA LISTA DE PARAMETROS',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
 
 
 $ROL = $_SESSION['ROL'];

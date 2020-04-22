@@ -6,14 +6,14 @@ if (!isset($_SESSION["id_us"])) {
   header('location:../vistas/login_vista.php');
 }
 
-$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
-VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
+$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
+VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
 $resultado2=$conexion->prepare($sql2);	
-$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>24,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA DE MOSTRAR EXPEDIENTES DOCTORA',":fecha"=>date("Y-m-d H:i:s")));         
-$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
-VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
+$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>24,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA DE MOSTRAR EXPEDIENTES DOCTORA',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));         
+$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
+VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
 $resultado2=$conexion->prepare($sql2);	
-$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>24,":accion"=>'CONSULTA',":descr"=>'MUESTRA LA LISTA DE EXPEDIENTES DE LA DOCTORA',":fecha"=>date("Y-m-d H:i:s")));
+$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>24,":accion"=>'CONSULTA',":descr"=>'MUESTRA LA LISTA DE EXPEDIENTES DE LA DOCTORA',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
 
 $ROL = $_SESSION['ROL'];
 $_SESSION['PANTALLA'] = 24;
@@ -142,6 +142,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                <tbody>
                 <?php
                require '../modelos/conectar.php';
+               require '../controladores/funciones.php';
                $consulta=$conexion->prepare("SELECT * from tbl_expedientes a INNER JOIN tbl_personas b on a.per_codigo = b.per_codigo");
                $consulta->execute();
                  while($fila=$consulta->fetch()){?>
@@ -174,7 +175,8 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                   <?php } ?>
                  
                  </td>
-                 <td><?php echo $fila['PER_EDAD']?></td>
+                 <td><?php echo $fila['PER_FECHA_NACIMIENTO']?></td>
+                 <td><?php echo mi_edad($fila['PER_FECHA_NACIMIENTO'])?></td>
                  <td><?php echo $fila['PER_NUMERO_IDENTIDAD']?></td>
                  <td><?php echo $fila['EXP_ANTECEDENTES_CLINICOS']?></td>
                  <td><?php echo $fila['EXP_MEDICAMENTO']?></td>
@@ -306,7 +308,11 @@ var currentdate = new Date();
                 "visible": false,
                 "searchable": false
             },
-            
+            {
+                "targets": [ 10 ],
+                "visible": false,
+                "searchable": false
+            },
         ],
      
  /////////////////////////////////////////////////////////////////////
@@ -375,7 +381,7 @@ buttons:
             },
             exportOptions:
              {
-                 columns: [0,1,2,3,4,6,7,8,9] ,//exportar solo las columnas.
+                 columns: [0,1,2,3,4,6,7,8,9,10] ,//exportar solo las columnas.
              },
                   styles:
               {

@@ -5,14 +5,14 @@ if (!isset($_SESSION["id_us"])) {
 }
 try {
   require_once '../modelos/conectar.php';
-  $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
-  VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
+  $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
+  VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
   $resultado2=$conexion->prepare($sql2);	
-  $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>25,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA MOSTRAR FOTO IRIS DEL EXPEDIENTE DOCTORA',":fecha"=>date("Y-m-d H:i:s")));         
-  $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
-  VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
+  $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>25,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA MOSTRAR FOTO IRIS DEL EXPEDIENTE DOCTORA',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));         
+  $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
+  VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
   $resultado2=$conexion->prepare($sql2);	
-  $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>25,":accion"=>'CONSULTA',":descr"=>'MUESTRA FOTOS IRIS DEL OJO DE CORRESPONDIENTE PACIENTE ',":fecha"=>date("Y-m-d H:i:s")));
+  $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>25,":accion"=>'CONSULTA',":descr"=>'MUESTRA FOTOS IRIS DEL OJO DE CORRESPONDIENTE PACIENTE ',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
   
   $ROL = $_SESSION['ROL'];
   $_SESSION['PANTALLA'] = 25;

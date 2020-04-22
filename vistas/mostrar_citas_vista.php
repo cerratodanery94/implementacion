@@ -4,14 +4,14 @@ require_once "../modelos/conectar.php";
 if (!isset($_SESSION["id_us"])) {
   header('location:../vistas/login_vista.php');
 }
-$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
-VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
+$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
+VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
 $resultado2=$conexion->prepare($sql2);	
-$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA DE MOSTRAR CITAS',":fecha"=>date("Y-m-d H:i:s")));         
-$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
-VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
+$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA DE MOSTRAR CITAS',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));         
+$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
+VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
 $resultado2=$conexion->prepare($sql2);	
-$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28,":accion"=>'CONSULTA',":descr"=>'MUESTRA LA LISTA DE CITAS DE PACIENTES',":fecha"=>date("Y-m-d H:i:s")));
+$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28,":accion"=>'CONSULTA',":descr"=>'MUESTRA LA LISTA DE CITAS DE PACIENTES',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
 
 $ROL = $_SESSION['ROL'];
 $_SESSION['PANTALLA'] = 28;
@@ -125,7 +125,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                <th>ID</th>
+                  <th>ID</th>
                   <th>ATENCION CON</th>
                   <th>PACIENTE</th>
                   <th>FECHA</th>
@@ -133,7 +133,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                   <th>ESTADO</th>
                   <th>DESCRIPCION</th>
                   <th>ACCIONES</th>
-                  <th>EDAD</th>
+              
                
                   
                   
@@ -179,13 +179,12 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                 <th>ID</th>
                 <th>ATENCION CON</th>
                   <th>PACIENTE</th>
-               
                   <th>FECHA</th>
                   <th>HORA DE CITA</th>
                   <th>ESTADO</th>
                   <th>DESCRIPCION</th>
                   <th>ACCIONES</th>
-                  <th>EDAD</th>
+                
                 </tr>
                 </tfoot>
               </table>
@@ -358,7 +357,7 @@ buttons:
             },
             exportOptions:
              {
-                 columns: [0,1,2,3,4,5,6,8] ,//exportar solo las columnas.
+                 columns: [0,1,2,3,4,5,6,] ,//exportar solo las columnas.
              },
                   styles:
               {

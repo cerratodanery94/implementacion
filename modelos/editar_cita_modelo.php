@@ -5,6 +5,7 @@ if (!isset($_SESSION["id_us"])) {
 }
 try {
   require_once '../modelos/conectar.php';
+  require_once '../controladores/funciones.php';
   $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
 VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
   $resultado2=$conexion->prepare($sql2);	
@@ -24,6 +25,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>29
     $nombres=$fila['PER_NOMBRES'];
     $apellidos=$fila['PER_APELLIDOS'];
     $fecha_nacimiento=$fila['PER_FECHA_NACIMIENTO'];
+    $edad=mi_edad($fila['USU_FECHA_NACIMIENTO']);
     $identidad=$fila['PER_NUMERO_IDENTIDAD'];
    $fecha_cita=$fila['CIT_FECHA_CITA'];
     $estado=$fila['CIT_ESTADO']; 
@@ -167,6 +169,11 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
            <label for="exampleInputPassword1">FECHA NACIMIENTO</label>
            <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="FECHA NACIMIENTO"  name="fecha_nacimiento" id="fecha_nacimiento" value="<?php echo $fecha_nacimiento?>" readonly   >
          </div>
+         <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                  <label for="exampleInputPassword1">EDAD</label>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="EDAD"  name="edad" id="edad"value="<?php echo $edad?>"readonly>
+                </div>
+
 
         <div class="form-group col-lg-6 col-md-6 col-xs-12">
           <label for="exampleInputPassword1">NUMERO DE IDENTIDAD</label>
