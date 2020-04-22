@@ -257,6 +257,7 @@ $CONSULTAR = $DATOS['PERM_CONSULTAR'];
     $(document).ready(function(){
     $("#buscar").mask("0000-0000-00000");     
 });
+</script>
 </body>
 </html>
 <?php require "../modelos/insertar_expedienten_modelo.php" ?>
