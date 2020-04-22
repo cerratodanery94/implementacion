@@ -12,7 +12,7 @@ VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
 $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>10,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA EDITAR USUARIOS',":fecha"=>date("Y-m-d H:i:s")));
 
 $ROL = $_SESSION['ROL'];
-$_SESSION['PANTALLA'] = 41;
+$_SESSION['PANTALLA'] = 42;
 $PANTALLA = $_SESSION['PANTALLA'];
 $sql3 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO = :pantalla ";
 $resultado3=$conexion->prepare($sql3);	

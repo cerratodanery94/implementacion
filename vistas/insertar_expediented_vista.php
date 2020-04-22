@@ -197,7 +197,8 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
               <div class="col text-center">
               <button type="button" onclick="validar_doctora();" class="btn btn-primary btn-flat margin">CREAR</button>
                 <a href="../vistas/mostrar_expediented_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
-                </div>
+                <button id="print" class="w3-button w3-blue"  >IMPRIMIR</button>  
+              </div>
               </div>
                 </form>
       </div>
@@ -227,6 +228,16 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 <script src="../vistas/js/validar_sistema.js"></script>
 <!-- jQuery 2.2.3 -->
 <script src="../vistas/plugins/jQuery/jquery-2.2.3.min.js"></script>
+
+<script src="../vistas/js/printThis.js"></script>
+
+<script >
+$('#print').click (function(){
+
+ $('.form-group col-lg-6 col-md-6 col-xs-12').printThis();  
+} )
+
+</script>
 
 <script src="../vistas/select2/select2.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
