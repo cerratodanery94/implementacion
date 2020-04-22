@@ -203,7 +203,7 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">EDAD</label>
-                  <input type="date" autocomplete="off" class="form-control nombres" placeholder="FECHA DE NACIMIENTO" name="fecha_de_nacimiento" id="fecha_de_nacimiento"value="<?php echo $edad?>" readonly >
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="EDAD"  name="edad" id="edad"value="<?php echo $edad?>"readonly>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">FECHA DE CREACION</label>

@@ -5,14 +5,14 @@ if (!isset($_SESSION["id_us"])) {
   header('location:../vistas/login_vista.php');
 }
 
-$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
-VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
+$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
+VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
 $resultado2=$conexion->prepare($sql2);	
-$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>33,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA DE MOSTRAR BITACORA',":fecha"=>date("Y-m-d H:i:s")));         
-$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
-VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
+$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>33,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA DE MOSTRAR BITACORA',":fecha"=>date("Y-m-d"),":hora"=>date(" H:i:s")));         
+$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
+VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
 $resultado2=$conexion->prepare($sql2);	
-$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>33,":accion"=>'CONSULTA',":descr"=>'MUESTRA LOS REGISTROS DE LA BITACORA',":fecha"=>date("Y-m-d H:i:s")));
+$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>33,":accion"=>'CONSULTA',":descr"=>'MUESTRA LOS REGISTROS DE LA BITACORA',":fecha"=>date("Y-m-d"),":hora"=>date(" H:i:s")));
 
 $ROL = $_SESSION['ROL'];
 $_SESSION['PANTALLA'] = 33;
@@ -56,6 +56,8 @@ $CONSULTAR = $DATOS['PERM_CONSULTAR'];
   <link rel="stylesheet" href="../vistas/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
    folder instead of downloading all of them to reduce the load. -->
+   <!--date picker-->
+   <link rel="stylesheet" href="../vistas/plugins/datepicker/datepicker3.css">
   <link rel="stylesheet" href="../vistas/dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="../vistas/Plugins/sweetalert/dist/sweetalert2.min.css">
 </head>
@@ -124,7 +126,24 @@ $CONSULTAR = $DATOS['PERM_CONSULTAR'];
             </div>
             <!--llamar funciones-->
             <div class="box-body">
-           
+            <!-- IMPUTS DE BUSQUEDAD POR FECHA-->
+            <div class="row">
+     <div class="input-daterange">
+      <div class="col-md-3">
+       <input type="text" name="start_date" id="start_date" placeholder="FECHA INICIAL"class="form-control" autocomplete="off" readonly="" />
+      </div>
+      <div class="col-md-3">
+       <input type="text" name="end_date" id="end_date" placeholder="FECHA FINAL"class="form-control" readonly=""/>
+      </div>      
+     </div>
+     <div class="col-md-4">
+      <input type="button" name="search" id="search" value="Buscar Rango" class="btn btn-info active" autocomplete="off" />
+     </div>
+    </div>
+                <!--FINAL-->
+                <p>
+
+                </p>
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -133,39 +152,13 @@ $CONSULTAR = $DATOS['PERM_CONSULTAR'];
                   <th>PANTALLA</th>
                   <th>ACCION</th>
                   <th>DESCRIPCIÓN</th>
-                  <th>FECHA</th>        
+                  <th>FECHA</th>  
+                  <th>HORA</th>     
                 </tr>
                 </thead>
                 <tbody>
-                <?php
-               require '../modelos/conectar.php';
-               $consulta=$conexion->prepare("SELECT * FROM tbl_bitacora b INNER JOIN tbl_usuario u on b.usu_codigo = u.usu_codigo INNER JOIN tbl_objetos o ON b.obj_codigo=o.obj_codigo");
-               $consulta->execute();
-                 while($fila=$consulta->fetch()){?>
-                 <tr>
-                 <td><?php echo $fila['BIT_CODIGO']?></td>
-                 <td><?php echo $fila['USU_USUARIO']?></td>
-                 <td><?php echo $fila['OBJ_NOMBRE']?></td>
-				 <td><?php echo $fila['BIT_ACCION']?></td>
-                 <td><?php echo $fila['BIT_DESCRIPCION']?></td>
-                 <td><?php echo $fila['BIT_FECHA']?></td>
-                 </tr>
-                 <?php } ?> 
-                </tbody>
-                <tfoot>
-                <tr>
-                <th>ID</th>
-                  <th>USUARIO</th>
-                  <th>PANTALLA</th>
-                  <th>ACCION</th>
-                  <th>DESCRIPCIÓN</th>
-                  <th>FECHA</th>    
-                </tr>
-                </tfoot>
-              </table>
-              <?php if (isset($_GET['m'])) : ?>
-                <div class="flash-data" data-flashdata="<?= $_GET['m']; ?>"></div>
-              <?php endif; ?>
+</table>
+   
           <!-- /.box -->
         </div>
         <!-- /.col -->
@@ -209,6 +202,8 @@ $CONSULTAR = $DATOS['PERM_CONSULTAR'];
 <!-- AdminLTE for demo purposes -->
 <script src="../vistas/dist/js/demo.js"></script>
 <script src="../vistas/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
+<!-- Date Picker-->
+<script src="../vistas/plugins/datepicker/bootstrap-datepicker.js"></script>
 <!-- page script -->
 <!-- librerias para el uso del  pdf-->
 <script type="text/javascript" src="../vistas/reportes/JSZip-2.5.0/jszip.min.js"></script>
@@ -217,19 +212,87 @@ $CONSULTAR = $DATOS['PERM_CONSULTAR'];
  <script type="text/javascript" src="../vistas/reportes/Buttons-1.6.1/js/dataTables.buttons.min.js"></script>
  <script type="text/javascript" src="../vistas/reportes/Buttons-1.6.1/js/buttons.flash.min.js"></script>
  <script type="text/javascript" src="../vistas/reportes/Buttons-1.6.1/js/buttons.html5.min.js"></script>
-<script type="text/javascript">
-var currentdate = new Date();
+<script type="text/javascript" language="javascript" >
+
+
+
+$(document).ready(function(){
+ 
+  var currentdate = new Date();
     var datetime = "FECHA: " + currentdate.getDate() + "/"
                 + (currentdate.getMonth()+1)  + "/"
                 + currentdate.getFullYear() + "    HORA: " 
                 + currentdate.getHours() + ":" 
                 + currentdate.getMinutes() + ":"
-                + currentdate.getSeconds() +'\n';               
-  $(function () {
-    $('#example1').DataTable({
-/////////////////////////////////////////////////////////
-                dataSrc: 'list',
-               dom:'<"row"<"col-sm-6"f><"row"<"col-sm-3"B><"col-sm-3"l>>'+'<tr>'+'<"col-sm-12"p><"col-sm-6"i>',// posicion del buscaodor y los botones en el orden establecido en pantalla
+                + currentdate.getSeconds() +'\n';     
+
+
+ $('.input-daterange').datepicker({
+    "locale": {
+                "separator": " - ",
+        "applyLabel": "Aplicar",
+        "cancelLabel": "Cancelar",
+        "fromLabel": "Desde",
+        "toLabel": "Hasta",
+        "customRangeLabel": "Custom",
+        "daysOfWeek": [
+            "Do",
+            "Lu",
+            "Ma",
+            "Mi",
+            "Ju",
+            "Vi",
+            "Sa"
+        ],
+        "monthNames": [
+            "Enero",
+            "Febrero",
+            "Marzo",
+            "Abril",
+            "Mayo",
+            "Junio",
+            "Julio",
+            "Agosto",
+            "Septiembre",
+            "Octubre",
+            "Noviembre",
+            "Diciembre"
+        ],
+        "firstDay": 1
+    },
+  
+  format: "yyyy-mm-dd ",
+  autoclose: true
+
+ });
+
+ fetch_data('no');
+
+ function fetch_data(is_date_search, start_date='', end_date='')
+ {
+  var dataTable = $('#example1').DataTable({
+
+   "processing" : true,
+   "serverSide" : true,
+   "sort": false,
+   "order" : [],
+   "ajax" : {
+    url:"../modelos/fetch.php",
+    type:"POST",
+    data:{
+     is_date_search:is_date_search, start_date:start_date, end_date:end_date,
+     
+    }
+    
+   },
+    /////////////////////////////////////////////////////////
+    dataSrc: 'list',
+               dom:
+
+"<'row'<'col-sm-6 col-md-6'l><'col-sm-12 col-md-6'B><'col-sm-12 col-md-6'f>>" +
+"<'row'<'col-sm-12'tr>>" +
+"<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>", ///'<"top">Brt<"bottom"flp><"clear">',//'B<lf<t>ip>',// posicion del buscaodor y los botones en el orden establecido en pantalla
+          
 buttons: 
     [        
       {
@@ -246,7 +309,7 @@ buttons:
            
                   customize: function (doc)  
             {	              
-                    doc.defaultStyle.fontSize = 9.7;// da el tipo de  tamaño de la fuente dentro de la data. \
+                    doc.defaultStyle.fontSize = 10;// da el tipo de  tamaño de la fuente dentro de la data. \
                     doc.defaultStyle.alignment = 'left';// orientacion de la data dentro del pdf , centro,izquierda o derecha.
                     doc.styles.tableHeader.fontSize =12;
                     doc.styles.title = {
@@ -294,7 +357,7 @@ buttons:
             },
             exportOptions:
              {
-                 columns: [0, 1,2,3,4,5] ,//exportar solo las columnas.
+                 columns: [0,1,2,3,4,5] ,//exportar solo las columnas.
              },
                   styles:
               {
@@ -334,16 +397,24 @@ buttons:
           }
  ////////////////////////////////////////////////////////////////////
   });
-    $('#example2').DataTable({
-      "paging": true,
-      "pagelength":3,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
-    });
-  });
+ }
+
+ $('#search').click(function(){
+  var start_date = $('#start_date').val();
+  var end_date = $('#end_date').val();
+  if(start_date != '' && end_date !='')
+  {
+   $('#example1').DataTable().destroy();
+   fetch_data('yes', start_date, end_date);
+   
+  }
+  else
+  {
+   alert("Por favor seleccione la fecha");
+  }
+ }); 
+ 
+});
 </script>
 
 </body>

@@ -373,7 +373,7 @@ buttons:
            
                   customize: function (doc)  
             {	              
-                    doc.defaultStyle.fontSize =7;// da el tipo de  tamaño de la fuente dentro de la data. \
+                    doc.defaultStyle.fontSize =6;// da el tipo de  tamaño de la fuente dentro de la data. \
                     doc.defaultStyle.alignment = 'left';// orientacion de la data dentro del pdf , centro,izquierda o derecha.
                     doc.styles.tableHeader.fontSize =8;
                     doc.styles.title = {
@@ -421,7 +421,7 @@ buttons:
             },
             exportOptions:
              {
-                 columns: [0,1,2,3,4,5,6,8,9,10,11,12,13,14,15,16] ,//exportar solo las columnas.
+                 columns: [0,1,2,3,4,6,8,9,10,11,12,13,14,15,16] ,//exportar solo las columnas.
              },
                   styles:
               {
