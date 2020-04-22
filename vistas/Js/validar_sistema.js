@@ -156,7 +156,7 @@ function validar_telefono(parametro){
                         return true;
                     }
                     }
-        //VALLIDAR FORMULARIO INSERTAR EMPLEADOS VISTA
+        //VALIDAR FORMULARIO INSERTAR MANT VISTA
     function validar_empleado(){
     var formulario=document.Form_registrar;
 
@@ -555,7 +555,7 @@ else if (validar_tamaño (formulario.correo.value)==false){
         formulario.submit();
     }
 
-//VALIDAR FORMULARIO EDITAR EMPLEADOS
+//VALIDAR FORMULARIO EDITAR USU MODELO
     function validar_editar(){
         var formulario=document.Form_registrar;
 
@@ -615,6 +615,11 @@ else if (validar_tamaño (formulario.correo.value)==false){
         formulario.usum.focus();
         return false;
     }
+    else if (validar_longitud (formulario.usum.value)==false){
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO USUARIO DEBE CONTENER AL MENOS (6) CARACTERES</div>';
+        formulario.usum.focus();
+        return false;
+        }
     else if (Validar_espacio2 (formulario.usum.value)==false){
         document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
         formulario.usum.focus();
@@ -624,14 +629,7 @@ else if (validar_tamaño (formulario.correo.value)==false){
         document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO.</div>';
         formulario.usum.focus();
         return false;
-        }
-        else if (validar_tamaño (formulario.usum.value)==false){
-            document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE CARACTERES EN EL CAMPO APELLIDOS</div>';
-            formulario.usum.focus();
-    
-            return false;
-            }
-                   
+        }            
         else{
             document.getElementById("alerta").innerHTML="";
         }
