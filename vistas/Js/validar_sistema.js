@@ -216,6 +216,13 @@ if (formulario.usum.value=="") {
     formulario.usum.focus();
     return false;
 }
+
+else if (validar_longitud (formulario.usum.value)==false){
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO USUARIO DEBE CONTENER AL MENOS (6) CARACTERES</div>';
+    formulario.usum.focus();
+
+    return false;
+    }
 else if (Validar_espacio2 (formulario.usum.value)==false){
     document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
     formulario.usum.focus();
@@ -226,12 +233,7 @@ else if (validar_texto (formulario.usum.value)==false){
     formulario.usum.focus();
     return false;
     }
-    else if (validar_tamaño (formulario.usum.value)==false){
-        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE CARACTERES EN EL CAMPO APELLIDOS</div>';
-        formulario.usum.focus();
-
-        return false;
-        }
+   
                
     else{
         document.getElementById("alerta").innerHTML="";
