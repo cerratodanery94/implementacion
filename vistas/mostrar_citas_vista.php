@@ -144,7 +144,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                 <tbody>
                 <?php
                require '../modelos/conectar.php';
-               $consulta=$conexion->prepare("SELECT * from tbl_citas c INNER JOIN tbl_personas p on c.per_codigo = p.per_codigo INNER JOIN tbl_usuario u  ON c.usu_codigo=u.usu_codigo INNER JOIN tbl_horario h ON c.hor_codigo=h.hor_codigo ");
+               $consulta=$conexion->prepare("SELECT * from tbl_citas c INNER JOIN tbl_personas p on c.per_codigo = p.per_codigo INNER JOIN tbl_usuario u  ON c.usu_codigo=u.usu_codigo INNER JOIN tbl_horario h ON c.hor_codigo=h.hor_codigo WHERE CIT_ESTADO_REGISTRO = 'A' ");
                $consulta->execute();
                  while($fila=$consulta->fetch()){?>
                  <tr>
@@ -164,7 +164,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                  <i class='fa fa-pencil'></i></a> 
                  <?php } ?>
                  
-                 <?php if ($ELIMINAR == 1){ ?>
+                 <?php if ($ELIMINAR == 1 && $fila['CIT_ESTADO'] != 'PENDIENTE' && $fila['CIT_ESTADO'] != 'REALIZADA'){ ?>
                   <a href='../modelos/eliminar_cita_modelo.php?id=<?php echo $fila["CIT_CODIGO"]?>' class="btn btne bg-maroon bnt-flat margin">
 					       <i class='fa fa-trash'></i></a> 
                  <?php } ?>

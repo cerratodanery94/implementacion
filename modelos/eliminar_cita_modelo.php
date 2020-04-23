@@ -4,7 +4,7 @@ try {
     require '../modelos/conectar.php';
 if(isset($_GET['id'])){
     $id=$_GET['id'];
-    $consulta3=$conexion->prepare("DELETE FROM tbl_citas WHERE CIT_CODIGO=:id");
+    $consulta3=$conexion->prepare("UPDATE tbl_citas SET CIT_ESTADO_REGISTRO = 'I' WHERE CIT_CODIGO = :id");
     $consulta3->execute(array(":id"=>$id));
     
     $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
