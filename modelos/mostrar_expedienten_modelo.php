@@ -141,7 +141,7 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-       MOSTRAR EXPEDIENTE DEL PACIENTE
+       EXPEDIENTE NUTRICIONISTA DEL PACIENTE
         
       </h1>
       

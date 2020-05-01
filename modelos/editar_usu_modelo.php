@@ -126,7 +126,7 @@ if(isset($_GET['id'])){
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        LISTA DE USUARIOS
+        EDITAR INFORMACION DEL USUARIO
         
       </h1>
       

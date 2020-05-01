@@ -25,7 +25,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>29
     $nombres=$fila['PER_NOMBRES'];
     $apellidos=$fila['PER_APELLIDOS'];
     $fecha_nacimiento=$fila['PER_FECHA_NACIMIENTO'];
-    $edad=mi_edad($fila['USU_FECHA_NACIMIENTO']);
+    $edad=mi_edad($fila['PER_FECHA_NACIMIENTO']);
     $identidad=$fila['PER_NUMERO_IDENTIDAD'];
    $fecha_cita=$fila['CIT_FECHA_CITA'];
     $estado=$fila['CIT_ESTADO']; 

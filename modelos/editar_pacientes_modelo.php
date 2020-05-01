@@ -126,7 +126,7 @@ if(isset($_GET['id'])){
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-      ACTUALIZAR INFORMACIÓN DEL PACIENTE
+      EDITAR INFORMACIÓN DEL PACIENTE
         
       </h1>
       
@@ -269,7 +269,7 @@ if(isset($_GET['id'])){
                 <div class="box-footer"> 
 
                 <div class="col text-center">
-                <button type="button" onclick="validar_editar_paciente();"   class="btn btn-primary btn-flat margin">EDITAR</button>
+                <button type="button" onclick="validar_editar_paciente();"   class="btn btn-primary btn-flat margin">ACTUALIZAR</button>
                 <a href="../vistas/mostrar_pacientes_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
                 </div>
               </div>

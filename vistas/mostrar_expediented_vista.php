@@ -104,7 +104,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-       LISTA DE PACIENTES
+       MOSTRAR EXPEDIENTES MEDICOS DE PACIENTES
       </h1>
       
     </section>

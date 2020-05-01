@@ -1,5 +1,4 @@
 <?php	
-session_start();
 	try{
 		require '../modelos/conectar.php';
         if (isset($_POST['a']) and 
@@ -97,7 +96,6 @@ session_start();
            PERM_ACTUALIZAR,	
            PERM_ELIMINAR,
 		   PERM_USUARIO,
-		   PERM_EMPLEADOS,
 		   PERM_PACIENTES,
 		   PERM_EXP_NUTRI,
 		   PERM_EXP_MEDICO,
@@ -114,7 +112,6 @@ session_start();
         :b,
 		:c,
 		:d,
-		:e,
 		:f,
 		:g,
 		:h,
@@ -131,7 +128,6 @@ session_start();
         ":b"=>$b,
         ":c"=>$c,
 	    ":d"=>$d,
-	    ":e"=>$e,
 		":f"=>$f,
 		":g"=>$g, 
 		":h"=>$h,

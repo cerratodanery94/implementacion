@@ -102,7 +102,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-       CREAR EXPEDIENTE DOCTORA
+       CREAR EXPEDIENTE MÉDICO
         
       </h1>
       
@@ -123,7 +123,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 <div class="panel-body" id="formularioregistros">
   <form action="../vistas/insertar_expediented_vista.php" method="get" >
   <label for="exampleInputEmail1">BUSCAR PACIENTE</label> <br>
-        <input type="text" size="33" maxlength="30"  placeholder="INGRESE UN NUMERO DE IDENTIDAD" name="buscar" id="buscar">
+        <input type="text" size="33" autocomplete="off"  placeholder="INGRESE UN NUMERO DE IDENTIDAD" name="buscar" id="buscar">
         <button type="submit" class="btn btn-primary" >BUSCAR</button>
         </div>
        <?php

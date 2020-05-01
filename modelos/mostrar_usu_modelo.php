@@ -129,7 +129,7 @@ if(isset($_GET['id'])){
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        LISTA DE USUARIOS
+        INFORMACIÓN DEL USUARIO
         
       </h1>
       
@@ -199,10 +199,21 @@ if(isset($_GET['id'])){
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <label for="exampleInputPassword1">GENERO</label>
                 <select class="form-control" name="genero" id="genero" readonly>
-                 <option value="0">SELECCIONE EL GENERO:</option>
-                 <option value="MUJER">FEMENINO</option>
-                 <option value="MASCULINO">MASCULINO</option>
-                 <option value="OTRO">OTRO</option>
+                <option value="FEMENINO"
+                 <?php
+                 if ($genero=='FEMENINO') {
+                    echo 'selected';
+                 }
+                 ?>
+                 >FEMENINO</option>
+                 <option value="MASCULINO"
+                 <?php
+                 if ($genero=='MASCULINO') {
+                    echo 'selected';
+                 }
+                 ?>
+                 >MASCULINO</option>
+                 
                 </select>
                 </div>
 

@@ -101,7 +101,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-     LISTA DE CITAS
+     CITAS DEL DIA
         
       </h1>
       

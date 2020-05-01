@@ -101,7 +101,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        MOSTRAR EXPEDIENTE
+        MOSTRAR EXPEDIENTES NUTRICIONISTA DE PACIENTES
         
       </h1>
       

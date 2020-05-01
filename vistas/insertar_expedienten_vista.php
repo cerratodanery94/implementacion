@@ -101,7 +101,7 @@ $CONSULTAR = $DATOS['PERM_CONSULTAR'];
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-       CREAR EXPEDIENTE MÉDICO
+       CREAR EXPEDIENTE NUTRICIONISTA
         
       </h1>
       
@@ -123,7 +123,7 @@ $CONSULTAR = $DATOS['PERM_CONSULTAR'];
   <form action="../vistas/insertar_expedienten_vista.php" method="get" >
   <div id="alerta"></div>
   <label for="exampleInputEmail1">BUSCAR PACIENTE</label> <br>
-        <input type="text" size="33" maxlength="30"  placeholder="INGRESE UN NUMERO DE IDENTIDAD" name="buscar" id="buscar">
+        <input type="text" size="33" autocomplete="off"  placeholder="INGRESE UN NUMERO DE IDENTIDAD" name="buscar" id="buscar">
         <button type="submit" class="btn btn-primary" >BUSCAR</button>
         </div>
        <?php
