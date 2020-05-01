@@ -121,7 +121,7 @@ $CONSULTAR = $DATOS['PERM_CONSULTAR'];
 <div class="panel-body" id="formularioregistros">
   <form action="../vistas/insertar_cita_vista.php" method="get" >
   <label for="exampleInputEmail1">INGRESE UN NUMERO DE IDENTIDAD</label> <br>
-        <input type="text" autocomplete="off" size="33" maxlength="15"  placeholder="BUSCAR PACIENTE" name="buscar">
+        <input type="text" autocomplete="off" size="33"  placeholder="BUSCAR PACIENTE" name="buscar" id="buscar">
         <button type="submit" class="btn btn-primary btn-sm fa fa-search" ></button>
         </div>
        <?php
@@ -259,6 +259,12 @@ $CONSULTAR = $DATOS['PERM_CONSULTAR'];
 <!-- AdminLTE for demo purposes -->
 <script src="../vistas/dist/js/demo.js"></script>
 <script src="../vistas/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
+<script src="../vistas/plugins/jQuery/jquery.mask.min.js"></script>
+<script>
+    $(document).ready(function(){
+    $("#buscar").mask("0000-0000-00000");     
+});
+</script>
 </body>
 </html>
 <?php require "../modelos/insertar_cita_modelo.php" ?>

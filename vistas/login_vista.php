@@ -42,13 +42,13 @@
                 </div>
     
       <div class="form-group has-feedback">
-        <input type="text" autocomplete="off" class="form-control"  style="text-transform:uppercase" placeholder="NOMBRE DE USUARIO"  name="login" id="login" value="ADMINISTRADOR">
+        <input type="text" autocomplete="off" class="form-control"  style="text-transform:uppercase" placeholder="NOMBRE DE USUARIO"  name="login" id="login">
         <span class="	glyphicon glyphicon-user form-control-feedback"></span>
       </div>
 
       <div class="form-group has-feedback">
         <div class="input-group">
-        <input id="contra2" autocomplete="off" type="password" class="form-control" placeholder="CONTRASEÑA" name="contra2" value="Hola123@">
+        <input id="contra2" autocomplete="off" type="password" class="form-control" placeholder="CONTRASEÑA" name="contra2" >
         <div class="input-group-append">
         <button id="show_password" class="btn btn-primary" type="button" onclick="mostrarPassword_login()"><span class="fa fa-eye-slash icon2"></span></button>
         </div>

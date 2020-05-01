@@ -102,7 +102,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-       CREAR EXPEDIENTE NUTRICIONAL
+       CREAR EXPEDIENTE DOCTORA
         
       </h1>
       
