@@ -258,16 +258,12 @@ else if (validar_texto (formulario.usum.value)==false){
         return false;
     }
 //VALIDAR RTN
-if (formulario.rtn.value==""){
-    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO RTN VACIO</div>';
-    formulario.rtn.focus();
-    return false;
-}
-else if(validar_rtn(formulario.rtn.value)==false){
-    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO RTN INVALIDO</div>';
-    formulario.rtn.focus();
-    return false;
-}
+
+// if(validar_rtn(formulario.rtn.value)==false){
+//     document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO RTN INVALIDO</div>';
+//     formulario.rtn.focus();
+//     return false;
+// }
 
         //VALIDAR CAMPO CELULAR
         if (formulario.numero_de_celular.value=="") {
@@ -330,18 +326,8 @@ else if (validar_tamaño (formulario.correo.value)==false){
      }
 
 //    //VALIDAR CAMPO PASAPORTE
-   if (formulario.pasaporte.value=="") {
-    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO PASAPORTE VACIO</div>';
-    formulario.pasaporte.focus();
-    return false;
-}            
-
-else if (validar_texto (formulario.pasaporte.value)==false){  
-    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO</div>';
-    formulario.pasaporte.focus();
-    return false;
-    } 
-else if (Validar_espacio2 (formulario.pasaporte.value)==false){
+ 
+if (Validar_espacio2 (formulario.pasaporte.value)==false){
 document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
 formulario.pasaporte.focus();
 return false;
@@ -433,16 +419,17 @@ else if (validar_texto (formulario.apellidos.value)==false){
     }
         //VALIDAR CAMPO RTN
          
-         if (formulario.rtn.value==""){
-            document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO RTN VACIO</div>';
-            formulario.rtn.focus();
-            return false;
-            }
-            else if (validar_rtn(formulario.rtn.value)==false){
-                document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO RNT INVALIDO</div>';
-            formulario.rtn.focus();
-            return false; 
-            }
+        //  if (formulario.rtn.value==""){
+        //     document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO RTN VACIO</div>';
+        //     formulario.rtn.focus();
+        //     return false;
+        //     }
+        //     else if (validar_rtn(formulario.rtn.value)==false){
+        //         document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO RNT INVALIDO</div>';
+        //     formulario.rtn.focus();
+        //     return false; 
+        //     }
+
           //VALIDAR NACIONALIDAD
           if (formulario.nacionalidad.value==0) {
             document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NACIONALIDAD VACIO, SELECCIONE UNA OPCION.</div>';
@@ -468,18 +455,19 @@ else if (validar_texto (formulario.apellidos.value)==false){
             return false;
             }
             //VALIDAR CAMPO PASAPORTE
-            if (formulario.pasaporte.value=="") {
-                document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO PASAPORTE VACIO</div>';
-                formulario.pasaporte.focus();
-                return false;
-            }            
+            // if (formulario.pasaporte.value=="") {
+            //     document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO PASAPORTE VACIO</div>';
+            //     formulario.pasaporte.focus();
+            //     return false;
+            // }            
 
-            else if (validar_texto (formulario.pasaporte.value)==false){  
-                document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO</div>';
-                formulario.pasaporte.focus();
-                return false;
-                } 
-            else if (Validar_espacio2 (formulario.pasaporte.value)==false){
+        // if (validar_texto (formulario.pasaporte.value)==false){  
+        //         document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO</div>';
+        //         formulario.pasaporte.focus();
+        //         return false;
+        //         } 
+        //     else
+         if (Validar_espacio2 (formulario.pasaporte.value)==false){
             document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
             formulario.pasaporte.focus();
             return false;
@@ -653,16 +641,16 @@ else if (validar_tamaño (formulario.correo.value)==false){
             return false;
         }
     //VALIDAR RTN
-    if (formulario.rtn.value==""){
-        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO RTN VACIO</div>';
-        formulario.rtn.focus();
-        return false;
-    }
-    else if(validar_rtn(formulario.rtn.value)==false){
-        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO RTN INVALIDO</div>';
-        formulario.rtn.focus();
-        return false;
-    }
+    // if (formulario.rtn.value==""){
+    //     document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO RTN VACIO</div>';
+    //     formulario.rtn.focus();
+    //     return false;
+    // }
+    // else if(validar_rtn(formulario.rtn.value)==false){
+    //     document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO RTN INVALIDO</div>';
+    //     formulario.rtn.focus();
+    //     return false;
+    // }
     
             //VALIDAR CAMPO CELULAR
             if (formulario.numero_de_celular.value=="") {
@@ -717,18 +705,13 @@ else if (validar_tamaño (formulario.correo.value)==false){
    
     
     //    //VALIDAR CAMPO PASAPORTE
-       if (formulario.pasaporte.value=="") {
-        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO PASAPORTE VACIO</div>';
-        formulario.pasaporte.focus();
-        return false;
-    }            
-    
-    else if (validar_texto (formulario.pasaporte.value)==false){  
-        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO</div>';
-        formulario.pasaporte.focus();
-        return false;
-        } 
-    else if (Validar_espacio2 (formulario.pasaporte.value)==false){
+    //  if (validar_texto (formulario.pasaporte.value)==false){  
+    //     document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO</div>';
+    //     formulario.pasaporte.focus();
+    //     return false;
+    //     } 
+
+     if (Validar_espacio2 (formulario.pasaporte.value)==false){
     document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
     formulario.pasaporte.focus();
     return false;
@@ -839,11 +822,11 @@ else if (validar_tamaño (formulario.correo.value)==false){
                 }
                 //VALIDAR CAMPO RTN
                  
-                 if (Validar_espacio2 (formulario.rtn.value)==false){
-                    document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
-                    formulario.rtn.focus();
-                    return false;
-                    }
+                //  if (Validar_espacio2 (formulario.rtn.value)==false){
+                //     document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
+                //     formulario.rtn.focus();
+                //     return false;
+                //     }
                   //VALIDAR NACIONALIDAD
                   if (formulario.nacionalidad.value==0) {
                     document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NACIONALIDAD VACIO, SELECCIONE UNA OPCION.</div>';
@@ -874,22 +857,17 @@ else if (validar_tamaño (formulario.correo.value)==false){
                         return false;
                         }
                     //VALIDAR CAMPO PASAPORTE
-                    if (formulario.pasaporte.value=="") {
-                        document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO PASAPORTE VACIO</div>';
-                        formulario.pasaporte.focus();
-                        return false;
-                    }
                  if (Validar_espacio2 (formulario.pasaporte.value)==false){
                     document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
                     formulario.pasaporte.focus();
                     return false;
 
                     }
-                    else if (validar_texto (formulario.pasaporte.value)==false){  
-                        document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO</div>';
-                        formulario.pasaporte.focus();
-                        return false;
-                        }
+                    //  if (validar_texto (formulario.pasaporte.value)==false){  
+                    //     document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO</div>';
+                    //     formulario.pasaporte.focus();
+                    //     return false;
+                    //     }
                      //VALIDAR CAMPO CELULAR
                 if (formulario.numero_de_celular.value=="") {
                     document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO CELULAR VACIO</div>';
