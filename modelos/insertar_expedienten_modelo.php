@@ -75,7 +75,7 @@
                     icon: "success",
                     type: "success"
                     }).then(function() {
-                    window.location = "../vistas/mostrar_pacientes_vista.php";
+                    window.location = "../vistas/mostrar_expedienten_vista.php";
                     });
                   </script>';	
 	   } else {

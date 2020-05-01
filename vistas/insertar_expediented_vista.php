@@ -21,7 +21,7 @@ $INSERTAR = $DATOS['PERM_INSERTAR'];
 $ELIMINAR = $DATOS['PERM_ELIMINAR'];
 $ACTUALIZAR = $DATOS['PERM_ACTUALIZAR'];
 $USUARIOS=$DATOS['PERM_USUARIO'];
-$EMPLEADOS=$DATOS['PERM_EMPLEADOS'];
+
 $PACIENTES=$DATOS['PERM_PACIENTES'];
 $NUTRI=$DATOS['PERM_EXP_NUTRI'];
 $MEDICO=$DATOS['PERM_EXP_MEDICO'];
@@ -197,7 +197,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
               <div class="col text-center">
               <button type="button" onclick="validar_doctora();" class="btn btn-primary btn-flat margin">CREAR</button>
                 <a href="../vistas/mostrar_expediented_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
-                <button id="print" class="w3-button w3-blue"  >IMPRIMIR</button>  
+               
               </div>
               </div>
                 </form>
