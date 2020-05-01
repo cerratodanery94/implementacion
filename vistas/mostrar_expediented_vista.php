@@ -334,9 +334,9 @@ buttons:
            
                   customize: function (doc)  
             {	              
-                    doc.defaultStyle.fontSize = 6.8;// da el tipo de  tamaño de la fuente dentro de la data. \
+                    doc.defaultStyle.fontSize = 9;// da el tipo de  tamaño de la fuente dentro de la data. \
                     doc.defaultStyle.alignment = 'left';// orientacion de la data dentro del pdf , centro,izquierda o derecha.
-                    doc.styles.tableHeader.fontSize = 8;
+                    doc.styles.tableHeader.fontSize = 9;
                     doc.styles.title = {
                           //  color: 'black',   // color del title
                             fontSize: '12',// tamaño de letra
