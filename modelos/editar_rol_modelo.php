@@ -103,7 +103,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
       </div>
     </nav>
   </header>
-  <?php require '../vistas/barra.php';  ?>
+  <?php require '../vistas/barra.php';?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -130,6 +130,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
         <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="exampleInputPassword1">ROL</label>
                   <input type="hidden" name="id_r" id="id_r" value="<?php echo $id_r?>">
+                  <input type="hidden" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="ROL"  name="rola" id="rola" value="<?php echo $rol?>" >
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="ROL"  name="rol" id="rol" value="<?php echo $rol?>" >
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
