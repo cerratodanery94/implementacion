@@ -5,22 +5,7 @@
         if (isset($_POST['rol']) && 
 		isset($_POST['descrip']) ) {
 		$rol=strtoupper($_POST["rol"]);
-		$descrip=strtoupper($_POST["descrip"]);
-
-		$consulta=$conexion->prepare("SELECT * FROM TBL_ROL WHERE ROL_NOMBRE='$rol'");
-        $consulta->execute();
-        $num_rows = $consulta->fetchColumn();
-        
-       if ($num_rows>0){ 
-		   echo '<script> Swal.fire({
-			position: "center",
-			icon: "error",
-			title: "ROL YA SE ENCUENTRA REGISTRADO",
-			showConfirmButton: false,
-			timer: 3000
-		  })
-		  </script>';
-		}else{
+        $descrip=strtoupper($_POST["descrip"]);
         $sql="INSERT INTO TBL_ROL (
             ROL_NOMBRE,
             ROL_DESCRIPCION
@@ -33,6 +18,13 @@
         $resultado->execute(array(
             ":rol"=>$rol,
             ":descrip"=>$descrip));
+       
+	   
+
+	  /* $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
+		VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
+	    $resultado2=$conexion->prepare($sql2);	
+	 	$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,":accion"=>'NUEVO',":descr"=>'CREO UN USUARIO EN MANTENIMIENTO',":fecha"=>$fecha_vencimiento));*/
 		
 	   if ($resultado) {
 		$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
@@ -65,8 +57,6 @@
 	}
 		$resultado->closeCursor();
 		$resultado2->closeCursor();
-		$consulta->closeCursor();
-	}
 }
 	}catch(Exception $e){			
 		

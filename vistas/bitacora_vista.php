@@ -126,24 +126,7 @@ $CONSULTAR = $DATOS['PERM_CONSULTAR'];
             </div>
             <!--llamar funciones-->
             <div class="box-body">
-            <!-- IMPUTS DE BUSQUEDAD POR FECHA-->
-            <div class="row">
-     <div class="input-daterange">
-      <div class="col-md-3">
-       <input type="text" name="start_date" id="start_date" placeholder="FECHA INICIAL"class="form-control" autocomplete="off" readonly="" />
-      </div>
-      <div class="col-md-3">
-       <input type="text" name="end_date" id="end_date" placeholder="FECHA FINAL"class="form-control" autocomplete="off"  readonly=""/>
-      </div>      
-     </div>
-     <div class="col-md-4">
-      <input type="button" name="search" id="search" value="Buscar Rango" class="btn btn-info active"  />
-     </div>
-    </div>
-                <!--FINAL-->
-                <p>
-
-                </p>
+           
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -152,13 +135,42 @@ $CONSULTAR = $DATOS['PERM_CONSULTAR'];
                   <th>PANTALLA</th>
                   <th>ACCION</th>
                   <th>DESCRIPCIÓN</th>
-                  <th>FECHA</th>  
-                  <th>HORA</th>     
+                  <th>FECHA</th>
+                  <th>HORA</th>      
+
                 </tr>
                 </thead>
                 <tbody>
-</table>
-   
+                <?php
+               require '../modelos/conectar.php';
+               $consulta=$conexion->prepare("SELECT * FROM tbl_bitacora b INNER JOIN tbl_usuario u on b.usu_codigo = u.usu_codigo INNER JOIN tbl_objetos o ON b.obj_codigo=o.obj_codigo");
+               $consulta->execute();
+                 while($fila=$consulta->fetch()){?>
+                 <tr>
+                 <td><?php echo $fila['BIT_CODIGO']?></td>
+                 <td><?php echo $fila['USU_USUARIO']?></td>
+                 <td><?php echo $fila['OBJ_NOMBRE']?></td>
+				 <td><?php echo $fila['BIT_ACCION']?></td>
+                 <td><?php echo $fila['BIT_DESCRIPCION']?></td>
+                 <td><?php echo $fila['BIT_FECHA']?></td>
+                 <td><?php echo $fila['BIT_HORA']?></td>
+                 </tr>
+                 <?php } ?> 
+                </tbody>
+                <tfoot>
+                <tr>
+                <th>ID</th>
+                  <th>USUARIO</th>
+                  <th>PANTALLA</th>
+                  <th>ACCION</th>
+                  <th>DESCRIPCIÓN</th>
+                  <th>FECHA</th>    
+                </tr>
+                </tfoot>
+              </table>
+              <?php if (isset($_GET['m'])) : ?>
+                <div class="flash-data" data-flashdata="<?= $_GET['m']; ?>"></div>
+              <?php endif; ?>
           <!-- /.box -->
         </div>
         <!-- /.col -->
@@ -212,87 +224,19 @@ $CONSULTAR = $DATOS['PERM_CONSULTAR'];
  <script type="text/javascript" src="../vistas/reportes/Buttons-1.6.1/js/dataTables.buttons.min.js"></script>
  <script type="text/javascript" src="../vistas/reportes/Buttons-1.6.1/js/buttons.flash.min.js"></script>
  <script type="text/javascript" src="../vistas/reportes/Buttons-1.6.1/js/buttons.html5.min.js"></script>
-<script type="text/javascript" language="javascript" >
-
-
-
-$(document).ready(function(){
- 
-  var currentdate = new Date();
+ <script type="text/javascript">
+var currentdate = new Date();
     var datetime = "FECHA: " + currentdate.getDate() + "/"
                 + (currentdate.getMonth()+1)  + "/"
                 + currentdate.getFullYear() + "    HORA: " 
                 + currentdate.getHours() + ":" 
                 + currentdate.getMinutes() + ":"
-                + currentdate.getSeconds() +'\n';     
-
-
- $('.input-daterange').datepicker({
-    "locale": {
-                "separator": " - ",
-        "applyLabel": "Aplicar",
-        "cancelLabel": "Cancelar",
-        "fromLabel": "Desde",
-        "toLabel": "Hasta",
-        "customRangeLabel": "Custom",
-        "daysOfWeek": [
-            "Do",
-            "Lu",
-            "Ma",
-            "Mi",
-            "Ju",
-            "Vi",
-            "Sa"
-        ],
-        "monthNames": [
-            "Enero",
-            "Febrero",
-            "Marzo",
-            "Abril",
-            "Mayo",
-            "Junio",
-            "Julio",
-            "Agosto",
-            "Septiembre",
-            "Octubre",
-            "Noviembre",
-            "Diciembre"
-        ],
-        "firstDay": 1
-    },
-  
-  format: "yyyy-mm-dd ",
-  autoclose: true
-
- });
-
- fetch_data('no');
-
- function fetch_data(is_date_search, start_date='', end_date='')
- {
-  var dataTable = $('#example1').DataTable({
-
-   "processing" : true,
-   "serverSide" : true,
-   "sort": false,
-   "order" : [],
-   "ajax" : {
-    url:"../modelos/fetch.php",
-    type:"POST",
-    data:{
-     is_date_search:is_date_search, start_date:start_date, end_date:end_date,
-     
-    }
-    
-   },
-    /////////////////////////////////////////////////////////
-    dataSrc: 'list',
-               dom:
-
-"<'row'<'col-sm-6 col-md-6'l><'col-sm-12 col-md-6'B><'col-sm-12 col-md-6'f>>" +
-"<'row'<'col-sm-12'tr>>" +
-"<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>", ///'<"top">Brt<"bottom"flp><"clear">',//'B<lf<t>ip>',// posicion del buscaodor y los botones en el orden establecido en pantalla
-          
+                + currentdate.getSeconds() +'\n';               
+  $(function () {
+    $('#example1').DataTable({
+/////////////////////////////////////////////////////////
+                dataSrc: 'list',
+               dom:'<"row"<"col-sm-6"f><"row"<"col-sm-3"B><"col-sm-3"l>>'+'<tr>'+'<"col-sm-12"p><"col-sm-6"i>',// posicion del buscaodor y los botones en el orden establecido en pantalla
 buttons: 
     [        
       {
@@ -304,12 +248,12 @@ buttons:
             title:'CLÍNICA MÉDICA HOMEOPATICA CLIME HOME '+'\n'+'\n'+'BITACORA',// titulos
             messageTop:datetime,   
             processing: true,
-           // orientation: 'landscape',
+            orientation: 'landscape',
 
            
                   customize: function (doc)  
             {	              
-                    doc.defaultStyle.fontSize = 10;// da el tipo de  tamaño de la fuente dentro de la data. \
+                    doc.defaultStyle.fontSize = 9.7;// da el tipo de  tamaño de la fuente dentro de la data. \
                     doc.defaultStyle.alignment = 'left';// orientacion de la data dentro del pdf , centro,izquierda o derecha.
                     doc.styles.tableHeader.fontSize =12;
                     doc.styles.title = {
@@ -331,7 +275,7 @@ buttons:
                                  margin: [10, 10],
                                        columns: [
                                    {           
-                                    margin:[450],//posiciion de la imagane si es menor el numero mas se hace a un lado izquierdo
+                                    margin:[745],//posiciion de la imagane si es menor el numero mas se hace a un lado izquierdo
                                     alignment: 'right',
                                      image: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCADvAOEDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACijNGaACiimyNtQt1xQAuaUVymp6prkepBLG1SS24w2M59cntXSW0vmpk4zxnHTNU42SZnCopNrsT0UUVJoFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFACMwHJNUnu3Zd8e1Yx/G/f6CpNQJFjMV67aruoaW04/dD8s44qkjOcnsPE84G4vx/1yOKjlvGa3codrLIqbh3yR0rRxxVLUQBbDGP9Yn8xQmmxNNK9x1s8gvHiZyyhA3P41bdlVSWIAHXNZcl3DZ3dxPPIERYlyT9TXE6/wCKJtTLQWxMVr093+taRpOb0MKmJhRhd7m1qHirTodRWOO2WeMHEkg/p6109jd293apLbOrRnpt7V47V/StYutIuPMgbKH70Z6NXRPCq3u7nFRzGSn+82PXGkRBl2C/U00zxKMmRQPUmsGy1i11qS2eI/Mu7fG3VTirttArtMVwgVyo+XJ9e9cjhbc9ONVS+HU0llRxlWBHqDTRcwk4EqE+mazC/m2kLlV3u4XPbripmUwXEMZ2sr5B+UDGBS5R+0drmjuFMaeJPvSKv1NZ3nulrMAcES+Wp9Acf40yRfLuAqgbQvOCNxPqaOUHU0NVZY3+66n6Gn5rIVmCyluOMoepB/CtK3ZngRnGGKgkelJqxUZXJaKKKRYUUUUAFFFFABRRRQAUUUUAFFFFABRRRQA1lDAgjIPWqgtXhBVCrR9lbt9DV2kNO5LimUTBK3GGHt5hxWZql1b6RZMZ5hvdwyxr1OOw/wAav6jftHAy2jRGfoBI2APeuGu9D1O+naa4u7d5G7lz/hWtJRb952Ry4iU4K1ON2Vdd1garMrJvVR0U1kVqroM7XLW4ubbzFGSN5/wqX/hF7z/nvbf99n/Cu5VKUVZM8eVGvUbk4sxaK2v+EXvP+e9t/wB9n/Cj/hF7z/nvbf8AfZ/wp+2p9yfqtb+VlPTL1bGcyFpFJxho8ZH5123h/wAQ2l5JJA7FJnbcu/jd/wDXrkLjQZ7WPfLcWwXOPvnr+VTL4avRhluLcHqCHP8AhWVX2U1e50UPrFKVlE79LOURxR/LhJN+7PvmrNxA8ksMiYOzPBOM8VjaJdXsEXkajNC4UfLIr5P48V0CMsiBl5Brhbsz2YJSjtYqJZloJY5cfvHLcHpR5EwxnDMBjepwavYoxSuyuRGc1tcupHmMvoS3T8AKvqMDB607FFDdxqNgooopFBRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQA0oD2FGxfQU6g0Acxagf8ACc3gwMeQtdLsX0Fc3a/8j1ef9cFrpcitKm69EY0dn6sTYvoKNi+gpc0ZrM2Oc8YqBpCYAH75P51vxIvlJwPuisHxl/yB0/67J/Ough/1Kf7oq38CMY/xZei/UXYvoKcBiiioNgooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAOQa/trDxrdvcSBFMKgcE81rf8JNpP/P0P++D/hWfDDHL45vPMRWxAvUZrofsVt/zwj/75Faztpfsc1JS1s+rM7/hJtJ/5+h/3wf8KP8AhJtJ/wCfof8AfB/wrR+x23/PCP8A75FH2O2/54R/98io901tPucp4m1qxvtNSK3nDv5yHG0jvXYQ/wCpT/dFcz4vtoI9JjZIkU+enIX3rpof9Sn+6KqVuRWM6d/aSv2X6j6KKKzOgKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACg0UhoA5q1/wCR6vP+uC101cza/wDI9Xn/AFwWumrSpuvRGNHZ+rCiiiszY5zxl/yCE/67J/OtE3DGN9r7I4gAzAZJOO1Z3jE/8ShP+u6fzq95JQSK6M0Mwzlf4TitdORXOZt+1lby/UdtmEPmky4xnG/n8sVLHc7TFltyS/dJ60xppPL8sFcYxuwc/lSQwNJJCAhWGHpu6scVJWt9CNpZcTy+eyhJCOmRj6U8tIhjaVphvOAdw4/CopVYQ3Ue1tzSkgY6jirV8p8qEgE4kUnA6Cmw11Iy8zztCru20ZO3Ax9TSC4McDyhn/dthlc5qW2BN3cOAdpC4JFVZUYQXabTuaQlRg89KWga2uXJp3M3kxnaQu5m9BVJbgshfzX/AN0vg/lirUkUkdx5yqWVlCtjqMd6h4jAAy/uzMDQkgfM9yeK5O+JSSVlHy56jvV0Vn24Z7pSYuFBIbJOD+NaAqZGkG2tRaKKKRYUUUUAFFFFABRRRQAUUUUAFFFFABRRRQBnR6VHHrEuoh2MkiBCvbFaNFFNu4kktgooopDKGq6XHqlssEjsqhw/HtV1U2qF64GKdRTv0Fyq9xNooxS0UhibaMUtFACYowKWigBMUYpaKAExiloooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//2Q=='+'\n'+'\n'+'\n'+'\n'
                                     ,width: 100,
@@ -357,7 +301,7 @@ buttons:
             },
             exportOptions:
              {
-                 columns: [0,1,2,3,4,5,6] ,//exportar solo las columnas.
+                 columns: [0, 1,2,3,4,5] ,//exportar solo las columnas.
              },
                   styles:
               {
@@ -397,25 +341,18 @@ buttons:
           }
  ////////////////////////////////////////////////////////////////////
   });
- }
-
- $('#search').click(function(){
-  var start_date = $('#start_date').val();
-  var end_date = $('#end_date').val();
-  if(start_date != '' && end_date !='')
-  {
-   $('#example1').DataTable().destroy();
-   fetch_data('yes', start_date, end_date);
-   
-  }
-  else
-  {
-   alert("Por favor seleccione la fecha");
-  }
- }); 
- 
-});
+    $('#example2').DataTable({
+      "paging": true,
+      "pagelength":3,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });
+  });
 </script>
+
 
 </body>
 </html>

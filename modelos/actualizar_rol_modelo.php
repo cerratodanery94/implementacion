@@ -2,33 +2,14 @@
 require '../modelos/conectar.php';
 try {
     if (isset($_POST['id_r']) && 
-        isset($_POST['descrip']) &&
-        isset($_POST['rola']) &&  
+        isset($_POST['descrip']) && 
         isset($_POST['rol']) ) {
-        $id_r= $_POST["id_r"];
-        $rola=strtoupper($_POST["rola"]);
-        $rol=strtoupper($_POST["rol"]);
-        $descrip=strtoupper($_POST["descrip"]);
-        if ($rola!=$rol) {
-          $consulta3=$conexion->prepare("SELECT * FROM TBL_ROL WHERE ROL_NOMBRE=:rol");
-          $consulta3->execute(array(":rol"=>$rol));
-          if($consulta3->rowCount()>=1){
-           echo '<script>Swal.fire({
-        position: "center",
-        icon: "error",
-        title: "¡ERROR!",
-        text:"ROL  YA SE HA  ENCUENTRA REGISTRADO",
-        showConfirmButton: false,
-        timer: 3000
-          })
-        </script>';
-           exit();
-          }else{
-            $rolf=$rol;
-          }
-        } else {
-          $rolf=$rola;
-        }
+            $id_r= $_POST["id_r"];
+            $rol=strtoupper($_POST["rol"]);
+            $descrip=strtoupper($_POST["descrip"]);
+            
+        
+      
         $query=$conexion->prepare
         ("UPDATE TBL_ROL SET
            ROL_NOMBRE=:rol,
@@ -37,7 +18,7 @@ try {
         WHERE ROL_CODIGO=:id_r");
       
          $query->execute(array(
-           ":rol"=>$rolf,
+           ":rol"=>$rol,
            ":descrip"=>$descrip,
            ":id_r"=>$id_r
 
@@ -73,11 +54,9 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>32
              </script>';
           }
       
-       
-          $query->closeCursor();
-          $consulta3->closeCursor();
+        
+      }
       
-     } 
 } catch (Exception $e) {
     die('Error: ' . $e->GetMessage());
 	echo "Codigo del error" . $e->getCode();
