@@ -12,29 +12,6 @@ $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BI
 VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
 $resultado2=$conexion->prepare($sql2);	
 $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11,":accion"=>'CONSULTA',":descr"=>'MUESTRA LA LISTA DE USUARIOS REGISTRADOS',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
-
-
-
-$ROL = $_SESSION['ROL'];
-$_SESSION['PANTALLA'] = 11;
-$PANTALLA = $_SESSION['PANTALLA'];
-
-$sql3 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO = :pantalla ";
-$resultado3=$conexion->prepare($sql3);	
-$resultado3->execute(array(":rol"=>$ROL,":pantalla"=>$PANTALLA));
-$DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
-$CONSULTAR = $DATOS['PERM_CONSULTAR'];
-$INSERTAR = $DATOS['PERM_INSERTAR'];
-$ELIMINAR = $DATOS['PERM_ELIMINAR'];
-$ACTUALIZAR = $DATOS['PERM_ACTUALIZAR'];
-$USUARIOS=$DATOS['PERM_USUARIO'];
-
-$PACIENTES=$DATOS['PERM_PACIENTES'];
-$NUTRI=$DATOS['PERM_EXP_NUTRI'];
-$MEDICO=$DATOS['PERM_EXP_MEDICO'];
-$CITAS=$DATOS['PERM_CITAS'];
-$SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -125,7 +102,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
             </div>
             <!--llamar funciones-->
             <div class="box-body">
-            <?php if ($INSERTAR == 1){ ?>
+            <?php if ($_SESSION['cu']== 1 and $_SESSION['iu']== 1){ ?>
             <div>
              <a href="../vistas/insertar_mant_vista.php" class="btn bg-blue btn-flat margin">AGREGAR USUARIO <i class="fa fa-plus" aria-hidden="true"></i> </a>
                </div>
@@ -170,17 +147,17 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                  
                  <td>
 
-                 <?php if ($CONSULTAR == 1){ ?>  
+                 <?php if ($_SESSION['cu'] == 1){ ?>  
 					       <a href='../modelos/mostrar_usu_modelo.php?id=<?php echo $fila["USU_CODIGO"]?>' class="btn bg-blue btn-flat margin">
                  <i class='fa fa-eye'></i></a>
                  <?php } ?>
 
-                 <?php if ($ACTUALIZAR == 1){ ?>  
+                 <?php if ($_SESSION['cu']== 1 and $_SESSION['mu']== 1){ ?>  
 					       <a href='../modelos/editar_usu_modelo.php?id=<?php echo $fila["USU_CODIGO"]?>' class="btn bg-orange btn-flat margin">
                  <i class='fa fa-pencil'></i></a>
                  <?php } ?>
 
-                 <?php if ($ELIMINAR == 1){ ?> 
+                 <?php if ($_SESSION['cu']== 1 and $_SESSION['eu']== 1){ ?> 
                  <a href='../modelos/eliminar_usu_modelo.php?id=<?php echo $fila["USU_CODIGO"]?>'  class="btn btne bg-maroon bnt-flat margin">
                  <i class='fa fa-trash'></i></a> 
                  <?php } ?>

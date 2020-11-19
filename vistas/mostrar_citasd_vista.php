@@ -13,25 +13,6 @@ VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora )";
 $resultado2=$conexion->prepare($sql2);	
 $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>41,":accion"=>'CONSULTA',":descr"=>'MUESTRA LA LISTA DEL DIA ACTUAL CITAS DE PACIENTES',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
 
-$ROL = $_SESSION['ROL'];
-$_SESSION['PANTALLA'] = 28;
-$PANTALLA = $_SESSION['PANTALLA'];
-$sql3 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO = :pantalla ";
-$resultado3=$conexion->prepare($sql3);	
-$resultado3->execute(array(":rol"=>$ROL,":pantalla"=>$PANTALLA));
-$DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
-$CONSULTAR = $DATOS['PERM_CONSULTAR'];
-$INSERTAR = $DATOS['PERM_INSERTAR'];
-$ELIMINAR = $DATOS['PERM_ELIMINAR'];
-$ACTUALIZAR = $DATOS['PERM_ACTUALIZAR'];
-$USUARIOS=$DATOS['PERM_USUARIO'];
-
-$PACIENTES=$DATOS['PERM_PACIENTES'];
-$NUTRI=$DATOS['PERM_EXP_NUTRI'];
-$MEDICO=$DATOS['PERM_EXP_MEDICO'];
-$CITAS=$DATOS['PERM_CITAS'];
-$SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -116,7 +97,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
             </div>
             <!--llamar funciones-->
             <div class="box-body">
-            <?php if ($INSERTAR == 1){ ?>
+            <?php if ($_SESSION['ccit']== 1 and $_SESSION['icit']== 1){ ?>
               <div>
              <a href="../vistas/insertar_cita_vista.php" class="btn bg-blue btn-flat margin">CREAR CITA <i class="fa fa-plus" aria-hidden="true"></i> </a>
            </div>
@@ -159,12 +140,12 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                  
 
                  <td>
-                 <?php if ($ACTUALIZAR == 1){ ?>
+                 <?php if ($_SESSION['ccit']== 1 and $_SESSION['mcit']== 1){ ?>
                   <a href='../modelos/editar_cita_modelo.php?id=<?php echo $fila["CIT_CODIGO"]?>' class="btn bg-blue btn-flat margin">
                  <i class='fa fa-pencil'></i></a> 
                  <?php } ?>
                  
-                 <?php if ($ELIMINAR == 1){ ?>
+                 <?php if ($_SESSION['ccit']== 1 and $_SESSION['ecit']== 1){ ?>
                   <a href='../modelos/eliminar_cita_modelo.php?id=<?php echo $fila["CIT_CODIGO"]?>' class="btn btne bg-maroon bnt-flat margin">
 					       <i class='fa fa-trash'></i></a> 
                  <?php } ?>

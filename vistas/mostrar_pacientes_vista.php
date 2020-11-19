@@ -15,25 +15,6 @@ VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
 $resultado2=$conexion->prepare($sql2);	
 $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>17,":accion"=>'CONSULTA',":descr"=>'MUESTRA LA LISTA DE PACIENTES REGISTRADOS',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
 
-$ROL = $_SESSION['ROL'];
-$_SESSION['PANTALLA'] = 17;
-$PANTALLA = $_SESSION['PANTALLA'];
-$sql3 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO = :pantalla ";
-$resultado3=$conexion->prepare($sql3);	
-$resultado3->execute(array(":rol"=>$ROL,":pantalla"=>$PANTALLA));
-$DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
-$CONSULTAR = $DATOS['PERM_CONSULTAR'];
-$INSERTAR = $DATOS['PERM_INSERTAR'];
-$ELIMINAR = $DATOS['PERM_ELIMINAR'];
-$ACTUALIZAR = $DATOS['PERM_ACTUALIZAR'];
-$USUARIOS=$DATOS['PERM_USUARIO'];
-
-$PACIENTES=$DATOS['PERM_PACIENTES'];
-$NUTRI=$DATOS['PERM_EXP_NUTRI'];
-$MEDICO=$DATOS['PERM_EXP_MEDICO'];
-$CITAS=$DATOS['PERM_CITAS'];
-$SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -118,7 +99,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
             </div>
             <!--llamar funciones-->
             <div class="box-body">
-            <?php if ($INSERTAR == 1){ ?>
+            <?php if ($_SESSION['cpac']== 1 and $_SESSION['ipac']== 1){ ?>
               <div>
              <a href="../vistas/insertar_pacientes_vista.php" class="btn bg-blue btn-flat margin">AGREGAR PACIENTE <i class="fa fa-plus" aria-hidden="true"></i> </a>
            </div>
@@ -160,19 +141,19 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                  <td><?php echo $fila['PER_APELLIDOS']?></td>
                 
                  <td>
-                 <?php if ($CONSULTAR == 1){ ?>
+                 <?php if ($_SESSION['cpac'] == 1){ ?> 
 
                   <a href='../modelos/mostrar_pacientes_modelo.php?id=<?php echo $fila["PER_CODIGO"]?>' class="btn bg-blue btn-flat margin">
                  <i class='fa fa-eye'></i></a> 
                 <?php } ?>
                  
-                <?php if ($ACTUALIZAR == 1){ ?>
+                <?php if ($_SESSION['cpac']== 1 and $_SESSION['mpac']== 1){ ?>
 
                   <a href='../modelos/editar_pacientes_modelo.php?id=<?php echo $fila["PER_CODIGO"]?>' class="btn bg-orange btn-flat margin">
                  <i class='fa fa-pencil'></i></a>
                  <?php } ?>
 					       
-                 <?php if ($ELIMINAR == 1){ ?>
+                 <?php if ($_SESSION['cpac']== 1 and $_SESSION['epac']== 1){ ?>
                   <a href='../modelos/eliminar_pacientes_modelo.php?id=<?php echo $fila["PER_CODIGO"]?>' class="btn btne bg-maroon bnt-flat margin">
 					       <i class='fa fa-trash'></i></a> 
                  <?php } ?>
@@ -203,7 +184,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                   <th>APELLIDOS</th>
                   <td>ACCIONES</td>
                   <td>PASPORTE</td>
-                  <td>FECAHA DE NACIMIENTO</td>
+                  <td>FECHA DE NACIMIENTO</td>
                   <td>FECHA DE CREACION</td>
                   <td>EDAD</td>
                   <td>GENERO</td>

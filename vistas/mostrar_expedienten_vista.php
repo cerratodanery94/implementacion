@@ -14,25 +14,6 @@ VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
 $resultado2=$conexion->prepare($sql2);	
 $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>22,":accion"=>'CONSULTA',":descr"=>'MUESTRA LA LISTA DE EXPEDIENTES NUTRICIONISTA',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
 
-$ROL = $_SESSION['ROL'];
-$_SESSION['PANTALLA'] = 22;
-$PANTALLA = $_SESSION['PANTALLA'];
-
-$sql3 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO = :pantalla ";
-$resultado3=$conexion->prepare($sql3);	
-$resultado3->execute(array(":rol"=>$ROL,":pantalla"=>$PANTALLA));
-$DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
-$CONSULTAR = $DATOS['PERM_CONSULTAR'];
-$INSERTAR = $DATOS['PERM_INSERTAR'];
-$ELIMINAR = $DATOS['PERM_ELIMINAR'];
-$ACTUALIZAR = $DATOS['PERM_ACTUALIZAR'];
-$USUARIOS=$DATOS['PERM_USUARIO'];
-
-$PACIENTES=$DATOS['PERM_PACIENTES'];
-$NUTRI=$DATOS['PERM_EXP_NUTRI'];
-$MEDICO=$DATOS['PERM_EXP_MEDICO'];
-$CITAS=$DATOS['PERM_CITAS'];
-$SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 
 ?>
 <!DOCTYPE html>
@@ -116,7 +97,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
             </div>
             <!--llamar funciones-->
             <div class="box-body">
-            <?php if ($INSERTAR == 1){ ?>
+            <?php if ($_SESSION['cen']== 1 and $_SESSION['ien']== 1){ ?>
               <div>
              <a href="../vistas/insertar_expedienten_vista.php" class="btn bg-blue btn-flat margin">AGREGAR EXPEDIENTE <i class="fa fa-plus" aria-hidden="true"></i> </a>
            </div>
@@ -154,13 +135,13 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 					       <td><?php echo $fila['PER_NOMBRES']?></td>
                  <td><?php echo $fila['PER_APELLIDOS']?></td>
                  <td>
-                 <?php if ($CONSULTAR == 1){ ?>
+                 <?php if ($_SESSION['cen']== 1){ ?>
                   <a href='../modelos/mostrar_expedienten_modelo.php?id=<?php echo $fila["NUTRI_CODIGO"]?>' class="btn bg-blue btn-flat margin">
                  <i class='fa fa-eye'></i></a>
                   <?php } ?>
 
 
-                  <?php if ($ELIMINAR == 1){ ?>
+                  <?php if ($_SESSION['cen']== 1 and $_SESSION['een']== 1){ ?>
                     <a href='../modelos/eliminar_expedienten_modelo.php?id=<?php echo $fila["NUTRI_CODIGO"]?>' class="btn btne bg-maroon bnt-flat margin">
 					       <i class='fa fa-trash'></i></a> 
                   <?php } ?>

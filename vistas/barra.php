@@ -18,8 +18,8 @@
         <li class="header">Barra de Navegación</li>
        
        <!-- Titulo de Usuario -->
-       <?php if ($USUARIOS == 1){ ?>
-      <li class="treeview">
+       <li class="treeview">
+        <?php if ($_SESSION['u']==11 and $_SESSION['cu']==1 ){  ?>  
         <a href="#">
           <i class="fa fa-user"></i>
           <span>Usuarios</span>
@@ -33,15 +33,11 @@
        
         
       </li>
-      <?php } ?>
-
-      
-
-      
-      <?php if ($PACIENTES == 1){ ?>
+      <?php  }  ?>  
      
       <!-- Titulo de Pacientes -->
       <li class="treeview">
+      <?php if ($_SESSION['pac']==18 and $_SESSION['cpac']==1 ){  ?>  
         <a href="#">
           <i class="fa fa-users"></i>
           <span>Pacientes</span>
@@ -51,33 +47,12 @@
         
           <ul class="treeview-menu">
           <li><a href="../vistas/mostrar_pacientes_vista.php"><i class="fa fa-list"></i>Lista de Pacientes</a></li>
-        </ul>
-       
-        
+        </ul> 
       </li>
-      <?php } ?>
-
-      <?php if ($NUTRI == 1){ ?>
-      <!-- Titulo de Expedientes -->
+      <?php  }  ?> 
+            <!-- Titulo de Expedientes -->
       <li class="treeview">
-        <a href="#">
-          <i class="fa fa-folder-open-o"></i>
-          <span>Expedientes Nutricionista</span>
-
-          </a>
-        <!-- subtitulos de Expedientes -->
-        
-          <ul class="treeview-menu">
-          <li><a href="../vistas/mostrar_expedienten_vista.php"><i class="fa fa-list"></i>Mostrar Expediente Nutricional</a></li>
-        </ul>
-        
-        
-      </li>
-      <?php } ?>
-
-      <?php if ($MEDICO == 1){ ?>
-
-      <li class="treeview">
+      <?php if ($_SESSION['ed']==24 and $_SESSION['ced']==1 ){  ?>  
         <a href="#">
           <i class="fa fa-folder-open-o"></i>
           <span>Expedientes Medico </span>
@@ -88,15 +63,24 @@
           <ul class="treeview-menu">
           <li><a href="../vistas/mostrar_expediented_vista.php"><i class="fa fa fa-list"></i>Mostrar Expediente Médico </a></li>
         </ul>
-       
-       
       </li>
+      <?php  }  ?>  
+      <li class="treeview">
+      <?php if ($_SESSION['en']==22 and $_SESSION['cen']==1 ){  ?>  
+        <a href="#">
+          <i class="fa fa-folder-open-o"></i>
+          <span>Expedientes Nutricionista</span>
+        </a>
+        <!-- subtitulos de Expedientes -->
+          <ul class="treeview-menu">
+          <li><a href="../vistas/mostrar_expedienten_vista.php"><i class="fa fa-list"></i>Mostrar Expediente Nutricional</a></li>
+          </ul>
+      </li>
+      <?php  }  ?>  
 
-      <?php } ?>
-
-      <?php if ($CITAS == 1){ ?>
       <!-- Titulo de Citas -->
       <li class="treeview">
+      <?php if ($_SESSION['cit']==28 and $_SESSION['ccit']==1 ){  ?>
         <a href="#">
           <i class="fa fa-calendar"></i>
           <span>Citas</span>
@@ -108,32 +92,88 @@
           <li><a href="../vistas/mostrar_citas_vista.php"><i class="fa fa-list"></i>Lista de citas</a></li>
         </ul>
           
-        
       </li>
-      <?php } ?>
+      
         </a>
       </li>
- <!-- Titulo de Seguridad -->
-
- <?php if ($SEGURIDAD == 1){ ?>
-      <li class="treeview">
+      <?php  }  ?>  
+     <!-- Titulo de Seguridad -->
+     <?php if ($_SESSION['cparam']==1 or $_SESSION['croles']==1 or $_SESSION['cbit']==1 or $_SESSION['cback']==1 or $_SESSION['cperm']==1 ){  ?>
+     <li class="header">Seguridad</li>
+     <?php  }  ?>  
+     <li class="treeview">
+     <?php if ($_SESSION['param']==30 and $_SESSION['cparam']==1 ){  ?>
         <a href="#">
           <i class="glyphicon glyphicon-lock"></i>
-          <span>Seguridad</span>
-
+          <span>Parámetros</span>
         </a>
-        <!-- subtitulos de Seguridad -->
-        <ul class="treeview-menu">
-        <li><a href="../vistas/insertar_permisos_vista.php"><i class="fa fa-list"></i>Añadir Permisos</a></li>
+        <!-- subtitulos de Expedientes -->
+          <ul class="treeview-menu">
           <li><a href="../vistas/mostrar_parametros_vista.php"><i class="fa fa-list"></i>Lista de Parámetros</a></li>
-          <li><a href="../vistas/mostrar_roles_vista.php"><i class="fa fa-list"></i>Lista de Roles</a></li>
-          <li><a href="../vistas/backup_vista.php"><i class="glyphicon glyphicon-cloud-upload"></i>Backup/Restore</a></li>
-          <li><a href="../vistas/bitacora_vista.php"><i class="fa fa-list"></i>Bitácora</a></li>
-        </ul>
+          </ul>
       </li>
-      <?php } ?>
+      <?php  }  ?>  
+      <li class="treeview">
+      <?php if ($_SESSION['roles']==31 and $_SESSION['croles']==1 ){  ?>
+        <a href="#">
+          <i class="glyphicon glyphicon-lock"></i>
+          <span>Roles</span>
+        </a>
+        <!-- subtitulos de Expedientes -->
+          <ul class="treeview-menu">
+          <li><a href="../vistas/mostrar_roles_vista.php"><i class="fa fa-list"></i>Lista de Roles</a></li>
+          </ul>
+      </li>
+      <?php  }  ?>  
+      <li class="treeview">
+      <?php if ($_SESSION['perm']==36 and $_SESSION['cperm']==1 ){  ?>
+        <a href="#">
+          <i class="glyphicon glyphicon-lock"></i>
+          <span>Permisos</span>
+        </a>
+        <!-- subtitulos de Expedientes -->
+          <ul class="treeview-menu">
+          <?php if ( $_SESSION['cperm']==1 and $_SESSION['iperm']==1 ){  ?>
+          <li><a href="../vistas/insertar_permisos.php"><i class="fa fa-list"></i>Añadir Permisos</a></li>
+          <?php  }  ?> 
+          <?php if ( $_SESSION['cperm']==1 and $_SESSION['mperm']==1 ){  ?>
+          <li><a href="../vistas/editar_permisos.php"><i class="fa fa-list"></i>Editar Permisos</a></li>
+          <?php  }  ?> 
+          </ul>
+      </li>
+      <?php  }  ?>  
    
+      
+      <li class="treeview">
+      <?php if ($_SESSION['bit']==33 and $_SESSION['cbit']==1 ){  ?>
+        <a href="#">
+          <i class="glyphicon glyphicon-lock"></i>
+          <span>Bitácora</span>
+        </a>
+        <!-- subtitulos de Expedientes -->
+          <ul class="treeview-menu">
+          <li><a href="../vistas/bitacora_vista.php"><i class="fa fa-list"></i> Ver Bitácora</a></li>
+          </ul>
+      </li>
+      <?php  }  ?>  
+      <li class="treeview">
+      <?php if ($_SESSION['back']==40 and $_SESSION['cback']==1 ){  ?>
+        <a href="#">
+          <i class="glyphicon glyphicon-cloud-upload"></i>
+          <span>Backup/Restore</span>
+        </a>
+        <!-- subtitulos de Expedientes -->
+          <ul class="treeview-menu">
+          <li><a href="../vistas/backup_vista.php"><i class="glyphicon glyphicon-cloud-upload"></i>Backup/Restore</a></li>
+          </ul>
+      </li>
+      <?php  }  ?> 
 
+       
+ 
+
+      
+     
    
     </section>
     <!-- /.sidebar -->

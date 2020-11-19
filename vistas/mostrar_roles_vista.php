@@ -12,28 +12,6 @@ $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BI
 VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
 $resultado2=$conexion->prepare($sql2);	
 $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>31,":accion"=>'CONSULTA',":descr"=>'MUESTRA LA LISTA DE ROLES',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
-
-$ROL = $_SESSION['ROL'];
-$_SESSION['PANTALLA'] = 31;
-$PANTALLA = $_SESSION['PANTALLA'];
-
-$sql3 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO = :pantalla ";
-$resultado3=$conexion->prepare($sql3);	
-$resultado3->execute(array(":rol"=>$ROL,":pantalla"=>$PANTALLA));
-$DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
-$CONSULTAR = $DATOS['PERM_CONSULTAR'];
-$INSERTAR = $DATOS['PERM_INSERTAR'];
-$ELIMINAR = $DATOS['PERM_ELIMINAR'];
-$ACTUALIZAR = $DATOS['PERM_ACTUALIZAR'];
-$USUARIOS=$DATOS['PERM_USUARIO'];
-
-$PACIENTES=$DATOS['PERM_PACIENTES'];
-$NUTRI=$DATOS['PERM_EXP_NUTRI'];
-$MEDICO=$DATOS['PERM_EXP_MEDICO'];
-$CITAS=$DATOS['PERM_CITAS'];
-$SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -121,7 +99,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
             <!--llamar funciones-->
             <div class="box-body">
 
-            <?php if ($CONSULTAR == 1){ ?>
+            <?php if ($_SESSION['croles']==1 and $_SESSION['iroles']==1 ){  ?>
               <div>
              <a href="../vistas/insertar_rol_vista.php" class="btn bg-blue btn-flat margin">AGREGAR ROL <i class="fa fa-plus" aria-hidden="true"></i> </a>
            </div>
@@ -148,12 +126,12 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                   <td><?php echo $fila['ROL_DESCRIPCION']?></td>
                   <td>
 
-                  <?php if ($ACTUALIZAR == 1){ ?>
+                  <?php if ($_SESSION['croles']==1 and $_SESSION['mroles']==1 ){  ?>
                     <a href='../modelos/editar_rol_modelo.php?id=<?php echo $fila["ROL_CODIGO"]?>' class="btn bg-orange btn-flat margin">
                   <i class='fa fa-pencil'></i></a>
                   <?php } ?>
 
-                  <?php if ($ELIMINAR == 1){ ?>
+                  <?php if ($_SESSION['croles']==1 and $_SESSION['eroles']==1 ){  ?>
                     <a href='../vistas/mostrar_roles_vista.php?id=<?php echo $fila["ROL_CODIGO"]?>'  class="btn btne bg-maroon bnt-flat margin">
 				          <i class='fa fa-trash'></i></a>
                   <?php } ?>

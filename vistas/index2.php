@@ -8,25 +8,108 @@ $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BI
 VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
   $resultado2=$conexion->prepare($sql2);	
 $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>38,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA PRINCIPAL ADMINISTRADOR',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
+//pantallas
+$_SESSION['u']=11;
+$_SESSION['pac']=18;
+$_SESSION['ed']=24;
+$_SESSION['en']=22;
+$_SESSION['cit']=28;
+$_SESSION['param']=30;
+$_SESSION['roles']=31;
+$_SESSION['bit']=33;
+$_SESSION['back']=40;
+$_SESSION['perm']=36;
 
-$ROL = $_SESSION['ROL'];
-$_SESSION['PANTALLA'] = 38;
-$PANTALLA = $_SESSION['PANTALLA'];
-$sql3 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO = :pantalla ";
+//Permisos usuarios
+$sql = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO=:pantalla" ;
+$resultado=$conexion->prepare($sql);	
+$resultado->execute(array(":rol"=>$_SESSION['ROL'],":pantalla"=>$_SESSION['u']));
+$datos = $resultado->fetch(PDO::FETCH_ASSOC);
+ $p= $datos['OBJ_CODIGO'];
+ $_SESSION['cu']= $datos['PERM_CONSULTAR'];
+ $_SESSION['iu'] = $datos['PERM_INSERTAR'];
+ $_SESSION['eu'] = $datos['PERM_ELIMINAR'];
+ $_SESSION['mu']= $datos['PERM_ACTUALIZAR'];
+//Permisos pacientes
+ $sql1 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO=:pantalla" ;
+$resultado1=$conexion->prepare($sql1);	
+$resultado1->execute(array(":rol"=>$_SESSION['ROL'],":pantalla"=>$_SESSION['pac']));
+$datos1 = $resultado1->fetch(PDO::FETCH_ASSOC);
+ $p= $datos1['OBJ_CODIGO'];
+ $_SESSION['cpac']= $datos1['PERM_CONSULTAR'];
+ $_SESSION['ipac'] = $datos1['PERM_INSERTAR'];
+ $_SESSION['epac'] = $datos1['PERM_ELIMINAR'];
+ $_SESSION['mpac']= $datos1['PERM_ACTUALIZAR'];
+ //Permisos expediente doctora
+ $sql2 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO=:pantalla" ;
+$resultado2=$conexion->prepare($sql2);	
+$resultado2->execute(array(":rol"=>$_SESSION['ROL'],":pantalla"=>$_SESSION['ed']));
+$datos2 = $resultado2->fetch(PDO::FETCH_ASSOC);
+ $p= $datos2['OBJ_CODIGO'];
+ $_SESSION['ced']= $datos2['PERM_CONSULTAR'];
+ $_SESSION['ied'] = $datos2['PERM_INSERTAR'];
+ $_SESSION['eed'] = $datos2['PERM_ELIMINAR'];
+ //Permisos expediente nutricionistas
+ $sql3 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO=:pantalla" ;
 $resultado3=$conexion->prepare($sql3);	
-$resultado3->execute(array(":rol"=>$ROL,":pantalla"=>$PANTALLA));
-$DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
- $CONSULTAR = $DATOS['PERM_CONSULTAR'];
- $INSERTAR = $DATOS['PERM_INSERTAR'];
- $ELIMINAR = $DATOS['PERM_ELIMINAR'];
- $ACTUALIZAR = $DATOS['PERM_ACTUALIZAR'];
- $USUARIOS=$DATOS['PERM_USUARIO'];
-
- $PACIENTES=$DATOS['PERM_PACIENTES'];
- $NUTRI=$DATOS['PERM_EXP_NUTRI'];
- $MEDICO=$DATOS['PERM_EXP_MEDICO'];
- $CITAS=$DATOS['PERM_CITAS'];
- $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
+$resultado3->execute(array(":rol"=>$_SESSION['ROL'],":pantalla"=>$_SESSION['en']));
+$datos3 = $resultado3->fetch(PDO::FETCH_ASSOC);
+ $p= $datos3['OBJ_CODIGO'];
+ $_SESSION['cen']= $datos3['PERM_CONSULTAR'];
+ $_SESSION['ien'] = $datos3['PERM_INSERTAR'];
+ $_SESSION['een'] = $datos3['PERM_ELIMINAR'];
+ //Permisos citas
+ $sql4 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO=:pantalla" ;
+$resultado4=$conexion->prepare($sql4);	
+$resultado4->execute(array(":rol"=>$_SESSION['ROL'],":pantalla"=>$_SESSION['cit']));
+$datos4 = $resultado4->fetch(PDO::FETCH_ASSOC);
+ $p= $datos4['OBJ_CODIGO'];
+ $_SESSION['ccit']= $datos4['PERM_CONSULTAR'];
+ $_SESSION['icit'] = $datos4['PERM_INSERTAR'];
+ $_SESSION['ecit'] = $datos4['PERM_ELIMINAR'];
+ $_SESSION['mcit']= $datos4['PERM_ACTUALIZAR'];
+ //Parametros
+ $sql5 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO=:pantalla" ;
+$resultado5=$conexion->prepare($sql5);	
+$resultado5->execute(array(":rol"=>$_SESSION['ROL'],":pantalla"=>$_SESSION['param']));
+$datos5 = $resultado5->fetch(PDO::FETCH_ASSOC);
+ $p= $datos5['OBJ_CODIGO'];
+ $_SESSION['cparam']= $datos5['PERM_CONSULTAR'];
+ $_SESSION['mparam']= $datos5['PERM_ACTUALIZAR'];
+ //Permisos roles
+ $sql6 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO=:pantalla" ;
+$resultado6=$conexion->prepare($sql6);	
+$resultado6->execute(array(":rol"=>$_SESSION['ROL'],":pantalla"=>$_SESSION['roles']));
+$datos6 = $resultado6->fetch(PDO::FETCH_ASSOC);
+ $p= $datos6['OBJ_CODIGO'];
+ $_SESSION['croles']= $datos6['PERM_CONSULTAR'];
+ $_SESSION['iroles'] = $datos6['PERM_INSERTAR'];
+ $_SESSION['eroles'] = $datos6['PERM_ELIMINAR'];
+ $_SESSION['mroles']= $datos6['PERM_ACTUALIZAR'];
+ //Permisos bitacora
+ $sql7 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO=:pantalla" ;
+$resultado7=$conexion->prepare($sql7);	
+$resultado7->execute(array(":rol"=>$_SESSION['ROL'],":pantalla"=>$_SESSION['bit']));
+$datos7 = $resultado7->fetch(PDO::FETCH_ASSOC);
+ $p= $datos7['OBJ_CODIGO'];
+ $_SESSION['cbit']= $datos7['PERM_CONSULTAR'];
+ //Permisos backup
+ $sql8 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO=:pantalla" ;
+$resultado8=$conexion->prepare($sql8);	
+$resultado8->execute(array(":rol"=>$_SESSION['ROL'],":pantalla"=>$_SESSION['back']));
+$datos8 = $resultado8->fetch(PDO::FETCH_ASSOC);
+ $p= $datos8['OBJ_CODIGO'];
+ $_SESSION['cback']= $datos8['PERM_CONSULTAR'];
+ //Permisos
+ $sql9 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO=:pantalla" ;
+$resultado9=$conexion->prepare($sql9);	
+$resultado9->execute(array(":rol"=>$_SESSION['ROL'],":pantalla"=>$_SESSION['perm']));
+$datos9 = $resultado9->fetch(PDO::FETCH_ASSOC);
+ $p= $datos9['OBJ_CODIGO'];
+ $_SESSION['cperm']= $datos9['PERM_CONSULTAR'];
+ $_SESSION['iperm'] = $datos9['PERM_INSERTAR'];
+ $_SESSION['eperm'] = $datos9['PERM_ELIMINAR'];
+ $_SESSION['mperm']= $datos9['PERM_ACTUALIZAR'];
  
 ?>
 <!DOCTYPE html>

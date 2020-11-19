@@ -261,7 +261,3 @@ $CONSULTAR = $DATOS['PERM_CONSULTAR'];
 </body>
 </html>
 <?php require "../modelos/insertar_expedienten_modelo.php" ?>
-
-
-
-
