@@ -41,7 +41,7 @@ $CONSULTAR = $DATOS['PERM_CONSULTAR'];
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Bitacora del Sistema</title>
+  <title>Bitácora del Sistema</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -57,9 +57,12 @@ $CONSULTAR = $DATOS['PERM_CONSULTAR'];
   <!-- AdminLTE Skins. Choose a skin from the css/skins
    folder instead of downloading all of them to reduce the load. -->
    <!--date picker-->
+   
+
    <link rel="stylesheet" href="../vistas/plugins/datepicker/datepicker3.css">
   <link rel="stylesheet" href="../vistas/dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="../vistas/Plugins/sweetalert/dist/sweetalert2.min.css">
+  <link rel="icon" href="Img/Home.png">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 
@@ -106,11 +109,15 @@ $CONSULTAR = $DATOS['PERM_CONSULTAR'];
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-     BITÁCORA DEL SISTEMAS
-        
+    <h1><i class="fa fa-caret-square-o-down" aria-hidden="true"></i>
+        Bitácora Del Sistema
+        <small>ClimeHome</small>
       </h1>
       
+      <ol class="breadcrumb">
+        <li><a href="bitacora_vista.php"><i class="fa fa-lock"></i>Bitácora</a></li>
+        <li class="active"><i class="fa fa-caret-square-o-down"></i> Lista de registros</li>
+      </ol>
     </section>
 
     <!-- Main content -->

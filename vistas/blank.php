@@ -191,7 +191,7 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
     <?php if ($CONSULTAR == 1){ ?>
       <li class="treeview">
         <a href="#">
-          <i class="glyphicon glyphicon-lock"></i>
+          <i class="	glyphicon glyphicon-cog"></i>
           <span>Seguridad</span>
 
         </a>

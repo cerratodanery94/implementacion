@@ -15,7 +15,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>23
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Buscar Expediente</title>
+  <title>Buscar rol</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -29,7 +29,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>23
   <link rel="stylesheet" type="text/css" href="../vistas/select2/select2.min.css">
   <link rel="stylesheet" href="../vistas/dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="../vistas/Plugins/sweetalert/dist/sweetalert2.min.css">
-
+  <link rel="icon" href="Img/Home.png">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 
@@ -75,13 +75,15 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>23
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-       CREAR EXPEDIENTE MÉDICO
-        
+    <h1><i class="fa fa-search-plus" aria-hidden="true"></i>
+     Buscar rol<i class="fas fa-suitcase-rolling    "></i>
+        <small>ClimeHome</small>
       </h1>
-      
+      <ol class="breadcrumb">
+        <li><a href="insertar_permisos.php"><i class="fa fa-lock"></i>Permiso</a></li>
+        <li class="active"><i class="fa fa-search-plus"></i> Buscar rol</li>
+      </ol>
     </section>
-
     <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -96,9 +98,14 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>23
 
 <div class="panel-body" id="formularioregistros">
   <form action="../vistas/editar_permisos.php" method="get" >
-  <label for="exampleInputEmail1">BUSCAR ROL</label> <br>
-        <input type="text" size="50" autocomplete="off" style="text-transform:uppercase"  placeholder="ESCRIBA EL ROL QUE QUIERE EDITAR LOS PERMISOS" name="buscar" id="buscar">
-        <button type="submit" class="btn btn-primary" >BUSCAR</button>
+  <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <div class="input-group">
+                <span class="input-group-addon">Ingrese el nombre del rol</span>
+        <input type="text" size="50" autocomplete="off" style="text-transform:uppercase"  class="form-control" placeholder="" name="buscar" id="buscar">
+        <span class="	glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+                </div>
+                <button type="submit" class="btn btn btn btn-primary" ><i class="fa fa-search-plus" aria-hidden="true"></i></i> BUSCAR</button>
         </div>
        <?php
        if(!empty($_GET)){
@@ -999,8 +1006,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>23
               </table>
                 <div class="box-footer">
               <div class="col text-center">
-              <button type="submit"  class="btn btn-primary btn-flat margin">EDITAR</button>
-                <a href="../vistas/index2.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
+              <button type="submit"  class="btn btn-lg btn btn-primary"><i class="fa fa-refresh" aria-hidden="true"></i> ACTUALIZAR</button>
+                <a href="../vistas/editar_permisos.php?"  class="btn btn-lg  btn bg-red" ><i class="fa fa-times-circle-o" aria-hidden="true"></i> CANCELAR</a>
                
               </div>
               </div>
@@ -1060,7 +1067,3 @@ $('#print').click (function(){
 </body>
 </html>
 <?php require "../modelos/actualizar_permisos.php" ?>
-
-
-
-

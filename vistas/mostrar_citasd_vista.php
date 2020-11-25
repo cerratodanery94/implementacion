@@ -31,6 +31,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>41
   <!-- DataTables -->
   <link rel="stylesheet" href="../vistas/plugins/datatables/dataTables.bootstrap.css">
   <!-- Theme style -->
+  
+  <link rel="icon" href="Img/Home.png">
   <link rel="stylesheet" href="../vistas/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
    folder instead of downloading all of them to reduce the load. -->
@@ -81,12 +83,16 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>41
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-     CITAS DEL DIA
-        
+    <h1><i class="fa fa-calendar" aria-hidden="true"></i>
+        Lista de citas 
+        <small>ClimeHome</small>
       </h1>
-      
+      <ol class="breadcrumb">
+        <li><a href="mostrar_citasd_vista.php"><i class="fa fa-calendar"></i>Citas</a></li>
+        <li class="active"><i class="fa fa-list-alt"></i> Lista de citas</li>
+      </ol>
     </section>
+
 
     <!-- Main content -->
     <section class="content">
@@ -99,7 +105,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>41
             <div class="box-body">
             <?php if ($_SESSION['ccit']== 1 and $_SESSION['icit']== 1){ ?>
               <div>
-             <a href="../vistas/insertar_cita_vista.php" class="btn bg-blue btn-flat margin">CREAR CITA <i class="fa fa-plus" aria-hidden="true"></i> </a>
+             <a href="../vistas/insertar_cita_vista.php" class="btn bg-blue btn-flat margin">CREAR CITA <i class="fa fa-plus-circle" aria-hidden="true"></i> </a>
            </div>
             <?php } ?>
            

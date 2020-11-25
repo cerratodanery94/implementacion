@@ -22,7 +22,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>24
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Mostrar Paciente</title>
+  <title>Información del paciente</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -38,12 +38,11 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>24
   <!-- AdminLTE Skins. Choose a skin from the css/skins
    folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../vistas/dist/css/skins/_all-skins.min.css">
+  <link rel="icon" href="Img/Home.png">
   <link rel="stylesheet" href="../vistas/Plugins/sweetalert/dist/sweetalert2.min.css">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-
 <div class="wrapper">
-
 <header class="main-header">
     <!-- Logo -->
     <a href="#" class="logo">
@@ -84,11 +83,16 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>24
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-       MOSTRAR EXPEDIENTES MEDICOS DE PACIENTES
+    <h1><i class="fa fa fa-list-alt" aria-hidden="true"></i>
+       Lista de Expedientes médicos
+        <small>ClimeHome</small>
       </h1>
-      
+      <ol class="breadcrumb">
+        <li><a href="mostrar_expediented_vista.php"><i class="fa fa-folder-open"></i>Expedientes médicos</a></li>
+        <li class="active"><i class="fa fa fa-list-alt"></i> Lista de expedientes</li>
+      </ol>
     </section>
+
 
     <!-- Main content -->
     <section class="content">
@@ -101,7 +105,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>24
             <div class="box-body">
             <?php if ($_SESSION['ced']== 1 and $_SESSION['ied']== 1){ ?>
               <div>
-             <a href="../vistas/insertar_expediented_vista.php" class="btn bg-blue btn-flat margin">AGREGAR EXPEDIENTE <i class="fa fa-plus" aria-hidden="true"></i> </a>
+             <a href="../vistas/insertar_expediented_vista.php" class="btn bg-blue btn-flat margin">AGREGAR EXPEDIENTE <i class="fa fa-plus-circle" aria-hidden="true"></i> </a>
            </div>
             <?php } ?>
             

@@ -51,7 +51,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Editar parametro</title>
+  <title>Editar párametro</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -62,7 +62,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../vistas/dist/css/AdminLTE.min.css">
- 
+  <link rel="icon" href="../vistas/Img/Home.png">
   <link rel="stylesheet" href="../vistas/dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="../vistas/plugins/sweetalert/dist/sweetalert2.min.css">
 
@@ -109,13 +109,15 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-     ACTUALIZAR PARAMETROS
-        
+    <h1><i class="fa fa-refresh" aria-hidden="true"></i>
+       Actualizar párametros del sistema
+        <small>ClimeHome</small>
       </h1>
-      
+      <ol class="breadcrumb">
+        <li><a href="../vistas/mostrar_parametros_vista.php"><i class="fa fa-lock"></i>   Párametros</a></li>
+        <li class="active"><i class="fa fa-refresh"></i> Actualizar párametros</li>
+      </ol>
     </section>
-
     <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -133,29 +135,37 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
         </div>
 
         <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputEmail1">PARAMETRO</label>
+                <div class="input-group">
+                <span class="input-group-addon">Nombre del párametro</span>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="NOMBRES"  name="parametro" id="parametro"value="<?php echo $parametro?>" readonly>
-              </div>
-
-              <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">DESCRIPCIÓN</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="DESCRIPCIÓN"  name="descrip" id="descrip" value="<?php echo $descrip?>"readonly >
+                  <span class="		glyphicon glyphicon-ok-circle form-control-feedback"></span>
                 </div>
-
+                </div>
+                
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <div class="input-group">
+                <span class="input-group-addon">Descripción del párametro</span>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="DESCRIPCIÓN"  name="descrip" id="descrip" value="<?php echo $descrip?>"readonly >
+                  <span class="		glyphicon glyphicon-ok-circle form-control-feedback"></span>
+                </div>
+                </div>
                 
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">VALOR</label>
+                <div class="input-group">
+                <span class="input-group-addon">Valor del párametro</span>
                   <input type="text"  style="text-transform:uppercase" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="VALOR"  name="valor" id="valor" value="<?php echo $valor?>" >
+                  <span class="	glyphicon glyphicon-refresh form-control-feedback"></span>
                 </div>
-
+                </div>
+                </div>  
+                </div>
                
                 
                 <div class="box-footer"> 
-
                 <div class="col text-center">      
-                <button type="button" onclick="validar_parametros();" class="btn btn-primary btn-flat margin">ACTUALIZAR</button>
-                <a href="../vistas/mostrar_parametros_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
+                <button type="button" onclick="validar_parametros();" class="btn btn-lg btn btn-primary"><i class="fa fa-refresh" aria-hidden="true"></i> ACTUALIZAR</button>
+                <a href="../vistas/mostrar_parametros_vista.php" class="btn btn-lg  btn bg-red" ><i class="fa fa-times-circle-o" aria-hidden="true"></i> CANCELAR</a>
                 </div>
               </div>
             </form>

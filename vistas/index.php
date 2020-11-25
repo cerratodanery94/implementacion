@@ -52,7 +52,7 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-
+  <link rel="icon" href="Img/Home.png">
 
 
 </head>
@@ -118,27 +118,12 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
 
         <?php if ($CONSULTAR == 1){ ?>
           <ul class="treeview-menu">
-          <li><a href="../vistas/mostrar_vista.php"><i class="fa fa-list"></i>Lista de Usuarios</a></li>
+          <li><a href="../vistas/mostrar_vista.php"><i class="fa fa-list-alt"></i>Lista de Usuarios</a></li>
         </ul>
        <?php } ?>
         
       </li>
-       <!-- Titulo de Empleados -->
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-users"></i>
-          <span>Empleados</span>
-
-        </a>
-        <!-- subtitulos de Empleados -->
-
-        <?php if ($CONSULTAR == 1){ ?>
-          <ul class="treeview-menu">
-          <li><a href="../vistas/mostrar_empleados_vista.php"><i class="fa fa-list"></i> Lista de Empleados</a></li>
-        </ul>
-        <?php } ?>
-        
-      </li>
+    
      
       <!-- Titulo de Pacientes -->
       <li class="treeview">
@@ -150,7 +135,7 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
         <!-- subtitulos de Pacientes -->
         <?php if ($CONSULTAR == 1){ ?>
           <ul class="treeview-menu">
-          <li><a href="../vistas/mostrar_pacientes_vista.php"><i class="fa fa-list"></i>Lista de Pacientes</a></li>
+          <li><a href="../vistas/mostrar_pacientes_vista.php"><i class="fa fa-list-alt"></i>Lista de Pacientes</a></li>
         </ul>
        <?php } ?>
         
@@ -158,14 +143,14 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
       <!-- Titulo de Expedientes -->
       <li class="treeview">
         <a href="#">
-          <i class="fa fa-folder-open-o"></i>
+          <i class="fa fa-folder-o"></i>
           <span>Expedientes Nutricionista</span>
 
           </a>
         <!-- subtitulos de Expedientes -->
         <?php if ($CONSULTAR == 1){ ?>
           <ul class="treeview-menu">
-          <li><a href="../vistas/mostrar_expedienten_vista.php"><i class="fa fa-list"></i>Mostrar Expediente Nutricional</a></li>
+          <li><a href="../vistas/mostrar_expedienten_vista.php"><i class="fa fa-list-alt"></i>Mostrar Expediente Nutricional</a></li>
         </ul>
          <?php } ?>
         
@@ -173,28 +158,29 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
 
       <li class="treeview">
         <a href="#">
-          <i class="fa fa-folder-open-o"></i>
-          <span>Expedientes Medico </span>
+          <i class="fa fa-folder-o"></i>
+          <span>Expedientes Médico </span>
 
           </a>
         <!-- subtitulos de Expedientes -->
         <?php if ($CONSULTAR == 1){ ?>
           <ul class="treeview-menu">
-          <li><a href="../vistas/mostrar_expediented_vista.php"><i class="fa fa fa-list"></i>Mostrar Expediente Médico </a></li>
+          <li><a href="../vistas/mostrar_expediented_vista.php"><i class="fa fa fa-list-alt"></i>Mostrar Expediente Médico </a></li>
         </ul>
         <?php } ?>
        
       </li>
       <!-- Titulo de Citas -->
       <li class="treeview">
-        <a href="../vistas/citas_vista.php">
+        <a href="#">
           <i class="fa fa-calendar"></i>
           <span>Citas</span>
           </a>
 
           <?php if ($CONSULTAR == 1){ ?>
             <ul class="treeview-menu">
-          <li><a href="../vistas/mostrar_citas_vista.php"><i class="fa fa-list"></i>Lista de citas</a></li>
+            <li><a href="../vistas/mostrar_citasd_vista.php"><i class=" fa fa-calendar-check-o"></i>Mostrar Citas del Dia</a></li>
+          <li><a href="../vistas/mostrar_citas_vista.php"><i class="fa fa-list-alt"></i>Lista de citas</a></li>
         </ul>
            <?php } ?>
         
@@ -212,11 +198,12 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
         </a>
         <!-- subtitulos de Seguridad -->
         <ul class="treeview-menu">
-        <li><a href="../vistas/insertar_permisos_vista.php"><i class="fa fa-list"></i>Añadir Permisos</a></li>
-          <li><a href="../vistas/mostrar_parametros_vista.php"><i class="fa fa-list"></i>Lista de Parámetros</a></li>
-          <li><a href="../vistas/mostrar_roles_vista.php"><i class="fa fa-list"></i>Lista de Roles</a></li>
+        <li><a href="../vistas/mostrar_parametros_vista.php"><i class="	glyphicon glyphicon-bullhorn"></i></i>Lista de Parámetros</a></li>
+        <li><a href="../vistas/mostrar_roles_vista.php"><i class=	"glyphicon glyphicon-briefcase"></i></i>Lista de Roles</a></li>
+        <li><a href="../vistas/insertar_permisos.php"><i class="fa fa-plus-circle"></i>Añadir Permisos</a></li>
+        <li><a href="../vistas/bitacora_vista.php"><i class="glyphicon glyphicon-tasks"></i></i>Bitácora</a></li>
           <li><a href="../vistas/backup_vista.php"><i class="glyphicon glyphicon-cloud-upload"></i>Backup</a></li>
-          <li><a href="../vistas/bitacora_vista.php"><i class="fa fa-list"></i>Bitácora</a></li>
+
         </ul>
       </li>
     <?php } ?>
@@ -230,50 +217,85 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        ¡BIENVENIDO!
-        
+    <h1>
+      Panel de control
+        <small>ClimeHome</small>
       </h1>
-      
+      <ol class="breadcrumb">
+        <li><a href="../vistas/index.php"><i class="fa fa-dashboard"></i> Inicio</a></li>
+        <li class="active"><i class="fa fa-user"></i> </a></li>
+      </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
-      <div class="row">
-        <div class="col-xs-12">
-        <div class="box box-primary">
-            <div class="box-header">
-            </div>
-            <!--llamar funciones-->
-            <div class="box-body">
-           <div>
-        </div>
-      </div>
-      <!-- /.box -->
-      
-          <!-- Calendar -->
-          <div class="col-lg-3 col-xs-6">
-          <div class="box box-solid bg-blue-gradient">
-            <div class="box-header">
-              <i class="fa fa-calendar"></i>
-              <h3 class="box-title">CALENDARIO</h3>
-              <!-- tools box -->
-              <div class="pull-right box-tools">
-                <!-- button with a dropdown -->
-                <div class="btn-group">
-                </div>
-                <button type="button" class="btn btn-default btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-default btn-sm" data-widget="remove"><i class="fa fa-times"></i>
-                </button>
+<div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box bg-navy">
+            <span class="info-box-icon"><i class="fa fa-user"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Usuarios</span>
+              <span class="info-box-number">6</span>
+              <div class="progress">
+                <div class="progress-bar" style="width: 100%"></div>
               </div>
-              <!-- /. tools -->
             </div>
-            <!-- /.box-header -->
-            <div class="box-body no-padding">
-              <!--The calendar -->
-              <div id="calendar" style="width: 100%"></div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box bg-green">
+            <span class="info-box-icon"><i class="fa fa-users"></i></span>
+            
+            <div class="info-box-content">
+              <span class="info-box-text">Pacientes</span>
+              <span class="info-box-number">3</span>
+              <div class="progress">
+                <div class="progress-bar" style="width: 100%"></div>
+              </div>
+          <!-- /.info-box -->
+        </div>
+        </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box bg-yellow">
+            <span class="info-box-icon"><i class="fa fa-clipboard"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Medicina General</span>
+              <span class="info-box-number">3</span>
+              <div class="progress">
+                <div class="progress-bar" style="width: 100%"></div>
+              </div>
             </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box bg-red">
+            <span class="info-box-icon"><i class="fa fa-clipboard"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text">Nutricionista</span>
+              <span class="info-box-number">3</span>
+              <div class="progress">
+                <div class="progress-bar" style="width: 100%"></div>
+              </div>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- Main content -->
+
+    
+      
+        
             <!-- /.box-body -->
                 </div>
                 <!-- /.col -->

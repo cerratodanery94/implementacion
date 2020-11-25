@@ -51,7 +51,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Editar parametro</title>
+  <title>Editar párametro</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -65,7 +65,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
  
   <link rel="stylesheet" href="../vistas/dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="../vistas/plugins/sweetalert/dist/sweetalert2.min.css">
-
+  <link rel="icon" href="../vistas/Img/Home.png">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <!-- Site wrapper -->
@@ -108,11 +108,15 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-     ACTUALIZAR ROL
-        
+    <h1><i class="fa fa-refresh" aria-hidden="true"></i>
+       Actualizar roles del sistema
+        <small>ClimeHome</small>
       </h1>
-      
+      <ol class="breadcrumb">
+        <li><a href="../vistas/mostrar_roles_vista.php"><i class="fa fa-lock"></i> Roles</a></li>
+        <li class="active"><i class="fa fa-refresh"></i> Actualizar rol</li>
+      </ol>
+    </section>
     </section>
 
     <!-- Main content -->
@@ -128,20 +132,30 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
            <form action="" method="POST" name="form_rol">
         <div id="alerta1"></div>
         <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">ROL</label>
+                <div class="input-group">
+                <span class="input-group-addon">Nombre del rol</span>
                   <input type="hidden" name="id_r" id="id_r" value="<?php echo $id_r?>">
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="ROL"  name="rol" id="rol" value="<?php echo $rol?>" >
+                  <span class="		glyphicon glyphicon-ok-circle form-control-feedback"></span>
                 </div>
+                </div>
+
+
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputEmail1">DESCRIPCIÓN</label>
+                <div class="input-group">
+                <span class="input-group-addon">Descripción del rol</span>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control " placeholder="DESCRIPCIÓN"  name="descrip" id="descrip" value="<?php echo $descrip?>">
+                  <span class="		glyphicon glyphicon-ok-circle form-control-feedback"></span>
+                </div>
+                </div>
+                </div>
                 </div>
               
               <div class="box-footer">
               <div class="col text-center">
-             
-                <button type="button" onclick="validar_rol();"  class="btn btn-primary  btn-flat margin">ACTUALIZAR</button>
-                <a href="../vistas/mostrar_roles_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
+              
+                <button type="button" onclick="validar_rol();"  class="btn btn-lg btn btn-primary"><i class="fa fa-refresh" aria-hidden="true"></i> ACTUALIZAR</button>
+                <a href="../vistas/mostrar_roles_vista.php" class="btn btn-lg  btn bg-red" ><i class="fa fa-times-circle-o" aria-hidden="true"></i> CANCELAR</a>
                 </div>
               </div>
             </form>

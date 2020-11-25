@@ -20,7 +20,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>INSERTAR PERMISOS</title>
+  <title>Insertar permisos</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -82,11 +82,14 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-     INSERTAR PERMISOS
-        
+    <h1><i class="fa fa-lock" aria-hidden="true"></i>
+  Insertar permisos<i class="fas fa-suitcase-rolling    "></i>
+        <small>ClimeHome</small>
       </h1>
-      
+      <ol class="breadcrumb">
+        <li><a href="insertar_permisos.php"><i class="fa fa-lock"></i>Permiso</a></li>
+        <li class="active"><i class="fa fa-search-plus"></i> Buscar rol</li>
+      </ol>
     </section>
 
     <!-- Main content -->
@@ -100,8 +103,10 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
             <div class="box-body">
               
             <form action="" method="POST">
-            <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                <label for="exampleInputPassword1">ROL</label>
+
+             <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <div class="input-group">
+                <span class="input-group-addon">Nombre del rol</span>
                 <select class="form-control" name="rol" id="rol" required>
         <option value="">SELECCIONE EL ROL AL QUE QUIERE ASIGNAR PERMISO:</option>
                 <?php
@@ -112,6 +117,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
           }
         ?>
         </select>
+                </div>
                 </div>
             
            
@@ -480,8 +486,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
               </table>
                 <div class="box-footer">
             <div class="col text-center">
-            <button type="submit"  class="btn btn-primary btn-flat margin">CREAR</button>
-            <a href="../vistas/index2.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
+            <button type="submit"  class="btn btn-lg btn btn-primary">  <i class="fa fa-check-circle-o" aria-hidden="true"></i> CREAR</button>
+            <a href="../vistas/editar_permisos.php"  class="btn btn-lg  btn bg-red" ><i class="fa fa-times-circle-o" aria-hidden="true"></i> CANCELAR</a>
             </div>
             </div>
               </form>

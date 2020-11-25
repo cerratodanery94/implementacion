@@ -1,3 +1,4 @@
+
 <?php	
 	try{
 		require '../modelos/conectar.php';
@@ -426,7 +427,7 @@ $resultado9->execute(array(
                     icon: "success",
                     type: "success"
                     }).then(function() {
-                    window.location = "../vistas/index2.php";
+                    window.location = "../vistas/insertar_permisos.php";
                     });
                   </script>';	
 	   } 

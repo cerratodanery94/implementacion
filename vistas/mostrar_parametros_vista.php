@@ -18,7 +18,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>30
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Mostrar Parametros </title>
+  <title>Mostrar Párametros </title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -30,6 +30,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>30
   <!-- DataTables -->
   <link rel="stylesheet" href="../vistas/plugins/datatables/dataTables.bootstrap.css">
   <!-- Theme style -->
+  <link rel="icon" href="Img/Home.png">
   <link rel="stylesheet" href="../vistas/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
    folder instead of downloading all of them to reduce the load. -->
@@ -81,11 +82,14 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>30
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        LISTA DE PARAMETROS
-        
+    <h1><i class="fa fa-lock" aria-hidden="true"></i>
+       Párametros
+        <small>ClimeHome</small>
       </h1>
-      
+      <ol class="breadcrumb">
+        <li><a href="mostrar_parametros_vista.php"><i class="fa fa-lock"></i>   Párametros</a></li>
+        <li class="active"><i class="fa fa-list-alt"></i> Lista de párametros</li>
+      </ol>
     </section>
 
     <!-- Main content -->

@@ -24,13 +24,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="../vistas/Plugins/sweetalert/dist/sweetalert2.min.css">
   <script src="../vistas/Js/jquery-3.4.1.min.js"></script>
+  <link rel="icon" href="Img/Home.png">
 </head>
 <body class="hold-transition register-page">
 
 
 <div class="register-box">
   <div class="register-logo">
-    <b>Iniciar</b>Sesión
+    <b>CLIME</b>HOME
     <br></br>
   </div>
   <div class="register-box-body">
@@ -40,15 +41,18 @@
                 <div class="col-12 user-img">
                     <img src="../vistas/Img/User_icono2.png" th:src="@{/img/user.png}"/>
                 </div>
-    
+
+    <div class="login-box-body">
+    <H6 class="login-box-msg">INGRESA TUS DATOS PARA INICIAR SESIÓN</H6>
+
       <div class="form-group has-feedback">
-        <input type="text" autocomplete="off" class="form-control"  style="text-transform:uppercase" placeholder="NOMBRE DE USUARIO"  name="login" id="login" value="ADMINISTRADOR">
+        <input type="text" autocomplete="off" class="form-control"  style="text-transform:uppercase" placeholder="Nombre de usuario"  name="login" id="login" value="">
         <span class="	glyphicon glyphicon-user form-control-feedback"></span>
       </div>
 
       <div class="form-group has-feedback">
         <div class="input-group">
-        <input id="contra2" autocomplete="off" type="password" class="form-control" placeholder="CONTRASEÑA" name="contra2" value="Hola123@" >
+        <input id="contra2" autocomplete="off" type="password" class="form-control" placeholder="CONTRASEÑA" name="contra2" value="" >
         <div class="input-group-append">
         <button id="show_password" class="btn btn-primary" type="button" onclick="mostrarPassword_login()"><span class="fa fa-eye-slash icon2"></span></button>
         </div>

@@ -7,9 +7,10 @@ if (!isset($_SESSION["id_us"])) {
 $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
 VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
   $resultado2=$conexion->prepare($sql2);	
-$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>34,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA AÑADIR ROL',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
+$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>36,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA AÑADIR PERMISOS',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
+
 $ROL = $_SESSION['ROL'];
-$_SESSION['PANTALLA'] = 34;
+$_SESSION['PANTALLA'] = 36;
 $PANTALLA = $_SESSION['PANTALLA'];
 $sql3 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO = :pantalla ";
 $resultado3=$conexion->prepare($sql3);	
@@ -27,14 +28,13 @@ $MEDICO=$DATOS['PERM_EXP_MEDICO'];
 $CITAS=$DATOS['PERM_CITAS'];
 $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 
-
 ?>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Registrar Producto</title>
+  <title>Registrar Usuarios</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -48,7 +48,6 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
   <link rel="stylesheet" href="../vistas/dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="../vistas/Plugins/sweetalert/dist/sweetalert2.min.css">
 
-  <link rel="icon" href="Img/Home.png">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <!-- Site wrapper -->
@@ -56,7 +55,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 
 <header class="main-header">
     <!-- Logo -->
-    <a href="#" class="logo">
+    <a href="../../index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>H</span>
       <!-- logo for regular state and mobile devices -->
@@ -89,82 +88,174 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 
   <?php require '../vistas/barra.php';  ?>
 
+
   <!-- =============================================== -->
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-    <h1><i class="fa fa-lock" aria-hidden="true"></i>
-      Crear nuevo rol
-        <small>ClimeHome</small>
+      <h1>
+    ASIGNACION DE PERMISOS
+        
       </h1>
-      <ol class="breadcrumb">
-      <li><a href="mostrar_roles_vista.php"><i class="fa fa-lock"></i> Roles</a></li>
-        <li class="active"><i class="fa fa-list-alt"></i> Lista de roles</li>
-      </ol>
+      
+      
     </section>
 
     <!-- Main content -->
+    <div class="col-100 forgot">
+    <div style='float:center;margin:auto;width:500px;' class="row">
+
+           <div class="col-md-10">
+           </div>
     <section class="content">
-      <div class="row">
-        <div class="col-xs-12">
-        <div class="box box-primary">
-            <div class="box-header">
-            </div>
-            <!--llamar funciones-->
-            <div class="box-body">
-           <div>
-        <form action="" method="POST" name="form_rol">
-        <div id="alerta1"></div>
+
+      <!-- Default box -->
+      <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title">ASIGNAR PERMISOS</h3>
+
+          
+        </div>
+        <div class="box-body">
         
-        <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                <div class="input-group">
-                <span class="input-group-addon">Nombre del rol</span>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder=""  name="rol" id="rol" >
-                  <span class="		glyphicon glyphicon-ok-circle form-control-feedback"></span>
-                </div>
-                </div>
+        <form action="" method="POST" role="form" name="Form_registrar">
+        <div id="alerta"></div>
+<div class="form-group">
+        <label for="exampleInputPassword1">ROL</label>
+ <select class="form-control" name="rol" id="r">
+        <option value="0">SELECCIONE ROL:</option>
+        <?php
+        require '../modelos/conectar.php';
+        $resultado = $conexion -> query ("SELECT * FROM TBL_ROL");
+        while ($registro=$resultado->fetch(PDO::FETCH_ASSOC)) {
+        echo '<option value="'.$registro["ROL_CODIGO"].'">'.$registro["ROL_NOMBRE"].'</option>';
+        }
+        ?>
+</select>
+        </div>
+        
+        <div class="form-group">
+        <label for="exampleInputPassword1">PANTALLA</label>
+ <select class="form-control" name="pantalla" id="o">
+        <option value="0">SELECCIONE LA PANTALLA:</option>
+        <?php
+        require '../modelos/conectar.php';
+        $resultado = $conexion -> query ("SELECT * FROM TBL_OBJETOS where obj_codigo in (1,11,10,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,33,32,34,35,36,38,40,41,42) ");
+        while ($registro=$resultado->fetch(PDO::FETCH_ASSOC)) {
+        echo '<option value="'.$registro["OBJ_CODIGO"].'">'.$registro["OBJ_NOMBRE"].'</option>';
+        }
+        ?>
+</select>
+        </div>
 
-                <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                <div class="input-group">
-                <span class="input-group-addon">Descripción del rol</span>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control " placeholder=""  name="descrip" id="descrip">
-                  <span class="		glyphicon glyphicon-ok-circle form-control-feedback"></span>
-                </div>
-                </div>
+        <div class="form-group ">
+        <div class="form-group ">
+    <label for="exampleInputPassword1">
+    
+    <input value="1"   type="checkbox" name="a" >
+    CONSULTAR
+    </label>
+    <br>
+    <label for="exampleInputPassword1">
+    
+    <input value="1"   type="checkbox" name="b" >
+    INSERTAR
+    </label>
+    <br>
+    <label for="exampleInputPassword1">
+    
+    <input value="1"   type="checkbox" name="c" >
+    ACTUALIZAR
+    </label>
+    <br>
+    <label for="exampleInputPassword1">
+    <input value="1"   type="checkbox" name="d" >
+    ELIMINAR
+    </label>
+    <br>
+
+    <label for="exampleInputPassword1">
+    <input value="1"   type="checkbox" name="e" >
+    ACCESSO USUARIO
+    </label>
+    <br>
+
+    <label for="exampleInputPassword1">
+    <input value="1"   type="checkbox" name="f" >
+    ACCESSO EMPLEADOS
+    </label>
+    <br>
+
+    <label for="exampleInputPassword1">
+    <input value="1"   type="checkbox" name="g" >
+    ACCESSO PACIENTES
+    </label>
+    <br>
+
+    <label for="exampleInputPassword1">
+    <input value="1"   type="checkbox" name="h" >
+    ACCESSO EXP NUTRICIONISTA
+    </label>
+    <br>
+
+    <label for="exampleInputPassword1">
+    <input value="1"   type="checkbox" name="i" >
+    ACCESSO EXP MEDICO
+    </label>
+    <br>
+
+    <label for="exampleInputPassword1">
+    <input value="1"   type="checkbox" name="j" >
+    ACCESSO CITAS
+    </label>
+    <br>
+
+    <label for="exampleInputPassword1">
+    <input value="1"   type="checkbox" name="k" >
+    ACCESSO SEGURIDAD
+    </label>
+    <br>
+
+   
+    </div>
+    <div class="box-footer">
+      <div class="col text-center">
+        <button type="button" onclick="validar_permiso();"  class="btn btn-primary"> CREAR</button>
+        
+        </div>
+      </div>
+   
+    </form>
 
 
-              <div class="box-footer">
-              <div class="col text-center">
-                <button type="button"  class="btn btn-lg btn btn-primary"  onclick="validar_rol();"> <i class="fa fa-check-circle-o" aria-hidden="true"></i> CREAR</button>
-                <a href="../vistas/mostrar_roles_vista.php" class="btn btn-lg  btn bg-red" ><i class="fa fa-times-circle-o" aria-hidden="true"></i> CANCELAR</a>
-                </div>
-              </div>
-            </form>
+       </div>
+        
+
+     
+  
         </div>
         <!-- /.box-body -->
         
         <!-- /.box-footer-->
       </div>
       <!-- /.box -->
-      </div>
-      </div>
+
+    
     <!-- /.content -->
     </div>
     </div>
-
+  </div>
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 1.1.0
+      <b>Version</b> 2.3.8
     </div>
-    <strong>Copyright &copy; 2020 <a>System 32</a>.</strong> All rights
+    <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
     reserved.
   </footer>
-
-
 
  
   <!-- /.control-sidebar -->
@@ -176,7 +267,6 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 <script src="../vistas/js/validar_sistema.js"></script>
 <!-- jQuery 2.2.3 -->
 <script src="../vistas/plugins/jQuery/jquery-2.2.3.min.js"></script>
-<script src="../vistas/plugins/jQuery/jquery.mask.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="../vistas/bootstrap/js/bootstrap.min.js"></script>
 <!-- SlimScroll -->
@@ -188,7 +278,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 <!-- AdminLTE for demo purposes -->
 <script src="../vistas/dist/js/demo.js"></script>
 <script src="../vistas/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
-
 </body>
 </html>
-<?php require "../modelos/insertar_rol_modelo.php" ?>
+<?php require "../modelos/insertar_mant_modelo.php" ?>
+<?php require "../modelos/insertar_permisos_modelo.php" ?>

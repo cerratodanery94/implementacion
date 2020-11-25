@@ -37,13 +37,11 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../vistas/dist/css/skins/_all-skins.min.css">
+  <link rel="icon" href="Img/Home.png">
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-
-
 <div class="wrapper">
-
 <header class="main-header">
     <!-- Logo -->
     <a href="#" class="logo">
@@ -86,11 +84,13 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        LISTA DE USUARIOS
-        
+    <h1><i class="fa fa-list-alt" aria-hidden="true"></i>
+      Lista de usuarios
+        <small>ClimeHome</small>
       </h1>
-      
+      <ol class="breadcrumb">
+        <li><a href="../vistas/mostrar_vista.php"><i class="fa fa-user"></i>Usuarios</a></li>
+        <li class="active"><i class="fa fa-list"></i> Lista de usuarios</li>
     </section>
 
     <!-- Main content -->
@@ -104,7 +104,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
             <div class="box-body">
             <?php if ($_SESSION['cu']== 1 and $_SESSION['iu']== 1){ ?>
             <div>
-             <a href="../vistas/insertar_mant_vista.php" class="btn bg-blue btn-flat margin">AGREGAR USUARIO <i class="fa fa-plus" aria-hidden="true"></i> </a>
+             <a href="../vistas/insertar_mant_vista.php" class="btn bg-blue btn-flat margin">AGREGAR USUARIO <i class="fa  fa-plus-circle" aria-hidden="true"></i> </a>
                </div>
                <?php } ?>
               <table id="example1" class="table table-bordered table-striped">

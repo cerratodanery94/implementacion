@@ -46,20 +46,13 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../vistas/dist/css/AdminLTE.min.css">
-
+  <link rel="icon" href="Img/Home.png">
   <link rel="stylesheet" type="text/css" href="../vistas/select2/select2.min.css">
-
-
-
-  
- 
   <link rel="stylesheet" href="../vistas/dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="../vistas/Plugins/sweetalert/dist/sweetalert2.min.css">
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-
-
 <!-- Site wrapper -->
 <div class="wrapper">
 
@@ -101,11 +94,14 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-       CREAR EXPEDIENTE MÉDICO
-        
+    <h1><i class="fa fa-search-plus" aria-hidden="true"></i>
+     Buscar expedientes médicos
+        <small>ClimeHome</small>
       </h1>
-      
+      <ol class="breadcrumb">
+        <li><a href="mostrar_expediented_vista.php"><i class="fa fa-folder-open"></i>Expedientes médicos</a></li>
+        <li class="active"><i class="fa fa-search-plus"></i> Buscar expedientes</li>
+      </ol>
     </section>
 
     <!-- Main content -->
@@ -122,82 +118,106 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 
 <div class="panel-body" id="formularioregistros">
   <form action="../vistas/insertar_expediented_vista.php" method="get" >
-  <label for="exampleInputEmail1">BUSCAR PACIENTE</label> <br>
-        <input type="text" size="33" autocomplete="off"  placeholder="INGRESE UN NUMERO DE IDENTIDAD" name="buscar" id="buscar">
-        <button type="submit" class="btn btn-primary" >BUSCAR</button>
+
+
+  <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <div class="input-group">
+                <span class="input-group-addon">Ingrese número de identidad</span>
+                  <input type="text" size="33" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder=""  name="buscar" id="buscar">
+                  <span class="	glyphicon glyphicon-credit-card form-control-feedback"></span>
+                </div>
+                </div>
+        <button type="submit" class="btn btn btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></i> BUSCAR</button>
         </div>
        <?php
        if(!empty($_GET)){
         $buscar=$_GET['buscar']; 
        if($_GET['buscar'] == NULL ){
 
-        echo'ESCRIBA UN NUMERO DE IDENTIDAD ';
+        echo'Ingrese número de identidad de un paciente'; 
     }
 
     else{ 
-      
        $resultado = $conexion -> query ("SELECT * FROM tbl_personas where PER_NUMERO_IDENTIDAD like'%".$buscar."%' ");
        $resultado->execute();
       while ($registro=$resultado->fetch(PDO::FETCH_ASSOC)) {?> 
-            
-           <div class="form-group col-lg-6 col-md-6 col-xs-12">
-             <br>
-                  <label for="exampleInputEmail1">NOMBRES</label>
+        <section class="content">
+        <ol class="breadcrumb">
+        <li><a href="#"><i class=""></i>Expediente médico</a></li>
+        <li class="active">Paciente</li>
+        <li class="active">Agregar expediente</li>
+      </ol>
+     
+      <div class="form-group col-lg-6 col-md-6 col-xs-12">
+        <div class="input-group">
+                <span class="input-group-addon">Nombres</span>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="NOMBRES"  name="nombres" id="nombres" value="<?php echo $registro['PER_NOMBRES']?>" readonly   >
-         </div>
+                  <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                </div>
+                </div>
            
-         
-         <div class="form-group col-lg-6 col-md-6 col-xs-12">
-         <br>
-                  <label for="exampleInputEmail1">APELLIDOS</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="APELLIDOS"  name="apellidos" id="apellidos" value="<?php echo $registro['PER_APELLIDOS']?>" readonly   >
-         </div>
-
-         <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">FECHA NACIMIENTO</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="FECHA NACIMIENTO"  name="FECHA NACIMIENTO" id="FECHA NACIMIENTO" value="<?php echo $registro['PER_FECHA_NACIMIENTO']?>" readonly   >
-          </div>
-
-
-          <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">NUMERO DE IDENTIDAD</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="IDENTIDAD"  name="identidad" id="identidad" value="<?php echo $registro['PER_NUMERO_IDENTIDAD']?>" readonly    >
-          </div>
-           
-          </form> 
-
-          <form action="" method="post" name="form_doctora" enctype="multipart/form-data" >
-          
-               
-           <input type="hidden" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="NOMBRES"  name="id" id="id" value="<?php echo $registro['PER_CODIGO']?>"   >
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">APUNTES DE LA CONSULTA</label>
-
-                  <textarea class="form-control" name="apuntes" id="apuntes" rows="10" cols="50"  > </textarea >
+                <div class="input-group">
+                <span class="input-group-addon">Apellidos</span>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="APELLIDOS"  name="apellidos" id="apellidos" value="<?php echo $registro['PER_APELLIDOS']?>" readonly   >
+                  <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                  </div>
                 </div>
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">MEDICAMENTO</label>
+                <div class="input-group">
+                <span class="input-group-addon">Identidad</span>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="IDENTIDAD"  name="identidad" id="identidad" value="<?php echo $registro['PER_NUMERO_IDENTIDAD']?>" readonly    >
+                  <span class="	glyphicon glyphicon-credit-card form-control-feedback"></span>
+                </div>
+                </div>
 
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <div class="input-group">
+                <span class="input-group-addon">Fecha de nacimiento</span>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="FECHA NACIMIENTO"  name="FECHA NACIMIENTO" id="FECHA NACIMIENTO" value="<?php echo $registro['PER_FECHA_NACIMIENTO']?>" readonly   >
+                  <span class="	glyphicon glyphicon glyphicon-gift form-control-feedback"></span>
+                </div>
+                </div>
+          </form> 
+          <form action="" method="post" name="form_doctora" enctype="multipart/form-data" >
+          
+           <input type="hidden" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="NOMBRES"  name="id" id="id" value="<?php echo $registro['PER_CODIGO']?>"   >
+           <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <div class="input-group">
+                <span class="input-group-addon">Descripciones médicas</span>
+                  <textarea class="form-control" name="apuntes" id="apuntes" rows="10" cols="50"  > </textarea >
+                  <span class="glyphicon glyphicon-option-vertical form-control-feedback"></span>
+                </div>
+                </div> 
+    
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <div class="input-group">
+                <span class="input-group-addon">Medicamentos</span>
                   <textarea class="form-control" name="medicamento" id="medicamento" rows="10" cols="50"  > </textarea >
+                  <span class="		glyphicon glyphicon-option-vertical form-control-feedback"></span>
+                </div>
+                </div> 
+              
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <div class="input-group">
+                <span class="input-group-addon">Fecha de registro</span>
+                  <input type="text" autocomplete="off" class="form-control nombres" placeholder="FECHA DE CREACION" name="fecha_de_creacion" id="fecha_de_creacion" value="<?php echo date("m/d/Y"); ?> " readonly>
+                  <span class="	glyphicon glyphicon-time form-control-feedback"></span>
+                </div>
                 </div>
                 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">FOTO IRIS</label>
+                  <label for="exampleInputPassword1">Fotografía de iris</label>
                   <input type="file"  name="foto[]" id="foto" multiple>
                 </div>
                
-
-                <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">FECHA DE CREACION</label>
-                  <input type="text" autocomplete="off" class="form-control nombres" placeholder="FECHA DE CREACION" name="fecha_de_creacion" id="fecha_de_creacion" value="<?php echo date("m/d/Y"); ?> " readonly>
-                </div>
+               
          
                 <div class="box-footer">
               <div class="col text-center">
-              <button type="button" onclick="validar_doctora();" class="btn btn-primary btn-flat margin">CREAR</button>
-                <a href="../vistas/mostrar_expediented_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
-               
+              <button type="button" onclick="validar_doctora();" class="btn btn-lg btn btn-primary"><i class="fa fa-check-circle-o" aria-hidden="true"></i> CREAR</button>
+                <a href="../vistas/mostrar_expediented_vista.php" class="btn btn-lg  btn bg-red" ><i class="fa fa-times-circle-o" aria-hidden="true"></i> CANCELAR</a>
               </div>
               </div>
                 </form>

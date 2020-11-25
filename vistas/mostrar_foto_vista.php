@@ -57,7 +57,7 @@ try {
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title> Mostrar Galeria</title>
+  <title> Fotografia del iris</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -68,7 +68,7 @@ try {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../vistas/dist/css/AdminLTE.min.css">
- 
+  <link rel="icon" href="Img/Home.png">
   <link rel="stylesheet" href="../vistas/dist/css/skins/_all-skins.min.css">
 
 </head>
@@ -115,26 +115,32 @@ try {
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-     FOTOGRAFIA DEL IRIS DEL PACIENTE
-        
+    <h1><i class="fa fa-eye" aria-hidden="true"></i>
+      Fotografias del pacientes
+        <small>ClimeHome</small>
       </h1>
-      
+      <ol class="breadcrumb">
+        <li><a href="mostrar_expediented_vista.php"><i class="fa fa-folder-open"></i>Expedientes médicos</a></li>
+        <li class="active"><i class="fa fa-eye"></i> Fotografía del paciente</li>
+      </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
-        <div class="box box-primary">
-            <div class="box-header">
-            </div>
+       </div>
+        <section class="content">
+        <ol class="breadcrumb">
+        <li><a href="#"><i class=""></i>Expediente médico</a></li>
+        <li class="active">Fotografía</li>
+        <li class="active">Iris del ojo</li>
+      </ol>
             <!--llamar funciones-->
             <div class="box-body">
-           <div>
               <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
                 <ol class="carousel-indicators">
-                  
+        
                 <?php
                 $i = 0;
               foreach ($total as $row) {
@@ -175,7 +181,7 @@ try {
                   <span class="fa fa-angle-right"></span>
                 </a>
               </div>
-            </div>
+            </>
             <!-- /.box-body -->
           </div>
         <!-- /.box-body -->
@@ -185,7 +191,7 @@ try {
       <!-- /.box -->
       <div class="col text-center ">
               
-              <a href="../vistas/mostrar_expediented_vista.php" class="btn bg-red btn-flat margin" >ATRAS</a>
+              <a href="../vistas/mostrar_expediented_vista.php" class="btn btn-lg  btn bg-red" ><i class="fa  fa-arrow-circle-o-left" aria-hidden="true"></i> ATRÁS</a>
        </div>
     </section>
     <!-- /.content -->

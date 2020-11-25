@@ -38,6 +38,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>17
    folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../vistas/dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="../vistas/Plugins/sweetalert/dist/sweetalert2.min.css">
+  <link rel="icon" href="Img/Home.png">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 
@@ -83,11 +84,13 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>17
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        LISTA DE PACIENTES
-        
+    <h1><i class="fa fa-list-alt" aria-hidden="true"></i>
+      Lista de pacientes
+        <small>ClimeHome</small>
       </h1>
-      
+      <ol class="breadcrumb">
+        <li><a href="../vistas/mostrar_pacientes_vista.php"><i class="fa fa-users"></i>Pacientes</a></li>
+        <li class="active"><i class="fa fa-list"></i> Lista de pacientes</li>
     </section>
 
     <!-- Main content -->
@@ -101,7 +104,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>17
             <div class="box-body">
             <?php if ($_SESSION['cpac']== 1 and $_SESSION['ipac']== 1){ ?>
               <div>
-             <a href="../vistas/insertar_pacientes_vista.php" class="btn bg-blue btn-flat margin">AGREGAR PACIENTE <i class="fa fa-plus" aria-hidden="true"></i> </a>
+             <a href="../vistas/insertar_pacientes_vista.php" class="btn bg-blue btn-flat margin">AGREGAR PACIENTE <i class="fa fa-plus-circle" aria-hidden="true"></i> </a>
            </div>
             <?php } ?>
            

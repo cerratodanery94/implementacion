@@ -344,7 +344,7 @@
                     icon: "success",
                     type: "success"
                     }).then(function() {
-                    window.location = "../vistas/index2.php";
+                    window.location = "../vistas/editar_permisos.php";
                     });
                   </script>';	
 	   } 

@@ -70,7 +70,7 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Mostrar Paciente</title>
+  <title>Mostrar Información</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -81,7 +81,8 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../vistas/dist/css/AdminLTE.min.css">
- 
+  <link rel="icon" href="../vistas/Img/Home.png">
+
   <link rel="stylesheet" href="../vistas/dist/css/skins/_all-skins.min.css">
 
 </head>
@@ -126,13 +127,14 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        INFORMACIÓN DEL PACIENTE
-        
+    <h1><i class="fa fa-file-text-o" aria-hidden="true"></i>
+      Información del paciente
+        <small>ClimeHome</small>
       </h1>
-      
+      <ol class="breadcrumb">
+      <li><a href="../vistas/mostrar_pacientes_vista.php"><i class="fa fa-users"></i>Pacientes</a></li>
+        <li class="active"><i class="fa fa-file-text-o"></i> Información del paciente</li>
     </section>
-
     <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -144,79 +146,52 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
             <div class="box-body">
            <div>
 
-        <form action=""  method="POST" name="form_empleados">
-        <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                 <label for="exampleInputEmail1">NOMBRES</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="NOMBRES"  name="nombres" id="nombres"value="<?php echo $nombres?>" readonly  >
+           <div class="form-group col-lg-6 col-md-6 col-xs-12">
+        <div class="input-group">
+                <span class="input-group-addon">Nombres</span>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder=""  name="nombres" id="nombres"value="<?php echo $nombres?>" readonly  >
+                  <span class="glyphicon glyphicon-user form-control-feedback"></span>
                 </div>
+                </div>
+
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">APELLIDOS</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control apellidos" placeholder="APELLIDOS"  name="apellidos" id="apellidos" value="<?php echo $apellidos?>" readonly >
+                <div class="input-group">
+                <span class="input-group-addon">Apellidos</span>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control apellidos" placeholder=""  name="apellidos" id="apellidos" value="<?php echo $apellidos?>" readonly >
+                  <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                  </div>
+                  </div>
                 </div>
             
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">IDENTIDAD</label>
+                <div class="input-group">
+                <span class="input-group-addon">Identidad</span>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="EDAD"  name="numero_de_identidad" id="numero_de_identidad" value="<?php echo $identidad?>" readonly >
+                  <span class="	glyphicon glyphicon-credit-card form-control-feedback"></span>
                 </div>
-                <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">RTN</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE RTN" name="rtn" id="rtn" value="<?php echo $rtn?>" readonly   >
                 </div>
+
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">NACIONALIDAD</label>
-                <select class="form-control" name="nacionalidad" id="nacionalidad" disabled>
-        <option value="0">SELECCIONE UNA NACIONALIDAD:</option>
-                <?php
-               
-        require '../modelos/conectar.php';
-        $resultado_nacionalidad = $conexion -> query ("select * from tbl_personas tu inner join tbl_paises tp on tu.PAIS_CODIGO = tp.PAIS_CODIGO where tu.PER_CODIGO = $id");
-        $pais = $resultado_nacionalidad->fetch(PDO::FETCH_ASSOC);
-         $nacionalidad = $pais['PAIS_NOMBRE'];
-          $resultado = $conexion -> query ("SELECT * FROM tbl_paises");
-          while ($registro=$resultado->fetch(PDO::FETCH_ASSOC)) {
-            $r = ($nacionalidad == $registro["PAIS_NOMBRE"]) ? 'selected' : '';
-            echo '<option value="'.$registro["PAIS_CODIGO"].'"'.$r.'>'.$registro["PAIS_NOMBRE"].'</option>';
-          }
- 
-        ?>
-        </select>
-                </div>
-                <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">PROFESION/OCUPACION</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres"placeholder="PROFESION" name="profesion" id="profesion" value="<?php echo $cargo?>" readonly   >
-                </div>
-                <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">PASAPORTE</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="PASAPORTE"  name="pasaporte" id="pasaporte" value="<?php echo $pasaporte?>" readonly >
-                </div>
-                <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1"> CELULAR</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE CELULAR" name="numero_de_celular" id="numero_de_celular" value="<?php echo $celular?>" readonly >
-                </div>
-                <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1"> TELEFONO FIJO</label>
-                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE TELEFONO FIJO" name="numero_de_telefono_fijo" id="numero_de_telefono_fijo" value="<?php echo $tel_fijo?>" readonly >
-                </div>
-                <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">FECHA DE NACIMIENTO</label>
+                <div class="input-group">
+                <span class="input-group-addon">Fecha de nacimiento</span>
                   <input type="date" autocomplete="off" class="form-control nombres" placeholder="FECHA DE NACIMIENTO" name="fecha_de_nacimiento" id="fecha_de_nacimiento"value="<?php echo $fecha_nacimiento?>" readonly >
+                  </div>
                 </div>
+
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">EDAD</label>
+                <div class="input-group">
+                <span class="input-group-addon">Edad</span>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="EDAD"  name="edad" id="edad"value="<?php echo $edad?>"readonly>
+                  <span class="glyphicon glyphicon-hourglass form-control-feedback"></span>
                 </div>
-                <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">FECHA DE CREACION</label>
-                  <input type="text" autocomplete="off" class="form-control" placeholder="FECHA DE CREACION" name="fecha_creacion" id="fecha_creacion" value="<?php echo date("m/d/Y"); ?> " readonly>
                 </div>
-                <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">CORREO</label>
-                  <input type="email" autocomplete="off" class="form-control correo" placeholder="CORREO" name="correo" id="correo" value="<?php echo $correo?>" readonly  >
-                </div>
-                <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                <label for="exampleInputPassword1">GENERO</label>
+
+
+               <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <div class="input-group">
+                <span class="input-group-addon">Género</span>
                 <select class="form-control" name="genero" id="genero" disabled>
-                 <option value="0">SELECCIONE UN GENERO:</option>
+                 <option value="0">Seleccione un género:</option>
                  <option value="FEMENINO"
                  <?php
                  if ($genero=='FEMENINO') {
@@ -234,19 +209,104 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
                  
                 </select>
                 </div>
-                <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1" >Direccion</label>
-
-                  <textarea class="form-control" name="direccion" id="direccion" rows="10" cols="50" readonly > <?php echo $direccion?>     
-                
-                </textarea >
                 </div>
+
+
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <div class="input-group">
+                <span class="input-group-addon">Nacionalidad</span>
+                <select class="form-control" name="nacionalidad" id="nacionalidad" disabled>
+        <option value="0">Seleccione una nacionalidad</option>
+                <?php
+               
+        require '../modelos/conectar.php';
+        $resultado_nacionalidad = $conexion -> query ("select * from tbl_personas tu inner join tbl_paises tp on tu.PAIS_CODIGO = tp.PAIS_CODIGO where tu.PER_CODIGO = $id");
+        $pais = $resultado_nacionalidad->fetch(PDO::FETCH_ASSOC);
+         $nacionalidad = $pais['PAIS_NOMBRE'];
+          $resultado = $conexion -> query ("SELECT * FROM tbl_paises");
+          while ($registro=$resultado->fetch(PDO::FETCH_ASSOC)) {
+            $r = ($nacionalidad == $registro["PAIS_NOMBRE"]) ? 'selected' : '';
+            echo '<option value="'.$registro["PAIS_CODIGO"].'"'.$r.'>'.$registro["PAIS_NOMBRE"].'</option>';
+          }
+ 
+        ?>
+        </select>
+                </div>
+                </div>
+
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <div class="input-group">
+                <span class="input-group-addon">Profesión</span>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres"placeholder="PROFESION" name="profesion" id="profesion" value="<?php echo $cargo?>" readonly   >
+                  <span class="glyphicon  glyphicon-sort-by-attributes form-control-feedback"></span>
+                </div>
+                </div>
+
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <div class="input-group">
+                <span class="input-group-addon">RTN</span>
+                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE RTN" name="rtn" id="rtn" value="<?php echo $rtn?>" readonly   >
+                  <span class="glyphicon glyphicon-barcode form-control-feedback"></span>
+                </div>
+                </div>
+
+                <div class="form-group col-md-6 col-xs-12">
+                <div class="input-group">
+                <span class="input-group-addon">Pasaporte</span>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="PASAPORTE"  name="pasaporte" id="pasaporte" value="<?php echo $pasaporte?>" readonly >
+                  <span class="	glyphicon glyphicon-book form-control-feedback"></span>
+                </div>
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <div class="input-group">
+                <span class="input-group-addon">Número celular</span>
+                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE CELULAR" name="numero_de_celular" id="numero_de_celular" value="<?php echo $celular?>" readonly >
+                  <span class="glyphicon glyphicon-phone form-control-feedback"></span>
+                </div>
+                </div>
+
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <div class="input-group">
+                <span class="input-group-addon">Teléfono fijo</span>
+                  <input type="text" autocomplete="off" class="form-control nombres"placeholder="NUMERO DE TELEFONO FIJO" name="numero_de_telefono_fijo" id="numero_de_telefono_fijo" value="<?php echo $tel_fijo?>" readonly >
+                  <span class="glyphicon glyphicon-earphone form-control-feedback"></span>
+                </div>
+                </div>
+
+                
+                <div class="form-group col-md-6 col-xs-12">
+                <div class="input-group">
+                <span class="input-group-addon">Correo</span>
+                  <input type="email" autocomplete="off" class="form-control correo" placeholder="CORREO" name="correo" id="correo" value="<?php echo $correo?>" readonly  >
+                  <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                </div>
+                </div>
+
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <div class="input-group">
+                <span class="input-group-addon">Fecha de registro</span>
+                  <input type="text" autocomplete="off" class="form-control" placeholder="FECHA DE CREACION" name="fecha_creacion" id="fecha_creacion" value="<?php echo date("m/d/Y"); ?> " readonly>
+                  <span class="	glyphicon glyphicon-time form-control-feedback"></span>
+                </div>
+                </div>
+
+                <div class="form-group col-md-6 col-xs-12">
+                <div class="input-group">
+                <span class="input-group-addon">Dirección</span>
+                  <textarea class="form-control" name="direccion" id="direccion" rows="10" cols="50" readonly > <?php echo $direccion?>     
+                </textarea >
+                <span class="		glyphicon glyphicon-home form-control-feedback"></span>
+                </div>
+                </div>
+                </div>
+
                 
                 <div class="box-footer"> 
-
                 <div class="col text-center">
                 <div id="alerta"></div>
-              <a href="../vistas/mostrar_pacientes_vista.php" class="btn bg-blue btn-flat margin" >ATRAS</a>
+
+                <a href="../vistas/mostrar_pacientes_vista.php" class="btn btn-lg btn bg-red" ><i class="fa  fa-arrow-circle-o-left" aria-hidden="true"></i> ATRÁS</a> 
+
                 </div>
               </div>
             </form>

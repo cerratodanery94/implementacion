@@ -86,9 +86,6 @@
             <!--llamar funciones-->
             <div class="box-body">
            
-            
-
-        
 </div>
 <!--fin centro-->
       </div>
@@ -194,7 +191,7 @@ if($result){
                     });
                   </script>
             ';
-         //echo 'Copia de seguridad realizada con éxito';
+         echo 'Copia de seguridad realizada con éxito';
          //echo '<script>alert("SE HA ACTUALIZADO PACIENTE CORRECTAMENTE");window.location.href="../vistas/backup_vista.php"</script>';
         
             

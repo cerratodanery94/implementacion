@@ -36,6 +36,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>31
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../vistas/dist/css/skins/_all-skins.min.css">
 
+  <link rel="icon" href="Img/Home.png">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 
@@ -83,10 +84,14 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>31
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-    LISTA DE ROLES
-        
+      <h1><i class="fa fa-list-alt" aria-hidden="true"></i>
+     Lista de roles 
+        <small>ClimeHome</small>
       </h1>
-      
+      <ol class="breadcrumb">
+        <li><a href="mostrar_roles_vista.php"><i class="fa fa-lock"></i> Roles</a></li>
+        <li class="active"><i class="fa fa-list-alt"></i> Lista de roles</li>
+      </ol>
     </section>
 
     <!-- Main content -->
@@ -101,7 +106,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>31
 
             <?php if ($_SESSION['croles']==1 and $_SESSION['iroles']==1 ){  ?>
               <div>
-             <a href="../vistas/insertar_rol_vista.php" class="btn bg-blue btn-flat margin">AGREGAR ROL <i class="fa fa-plus" aria-hidden="true"></i> </a>
+             <a href="../vistas/insertar_rol_vista.php" class="btn bg-blue btn-flat margin">AGREGAR ROL <i class="fa fa-plus-circle" aria-hidden="true"></i> </a>
            </div>
             <?php } ?>
            

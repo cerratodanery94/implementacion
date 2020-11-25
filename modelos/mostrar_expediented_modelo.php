@@ -33,12 +33,7 @@ try {
     $fecha=$fila['EXP_FECHA_CREACION'];
     $apuntes=$fila['EXP_ANTECEDENTES_CLINICOS'];
     $medicamento=$fila['EXP_MEDICAMENTO'];
-    
-    
-  
-  
-	  
-     
+ 
    }
   }
   
@@ -72,7 +67,7 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Registrar Usuarios</title>
+  <title>Visualizar expediente</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -83,19 +78,12 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../vistas/dist/css/AdminLTE.min.css">
-
+  <link rel="icon" href="../vistas/Img/Home.png">
   <link rel="stylesheet" type="text/css" href="../vistas/select2/select2.min.css">
-
-
-
-  
- 
   <link rel="stylesheet" href="../vistas/dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="../vistas/Plugins/sweetalert/dist/sweetalert2.min.css">
-
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-
 
 <!-- Site wrapper -->
 <div class="wrapper">
@@ -138,11 +126,14 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        EXPEDIENTE MÉDICO DEL PACIENTE
-        
+    <h1><i class="fa fa-medkit" aria-hidden="true"></i>
+       Historial médico
+        <small>ClimeHome</small>
       </h1>
-      
+      <ol class="breadcrumb">
+        <li><a href="../vistas/mostrar_expediented_vista.php"><i class="fa fa-folder-open"></i> Expedientes médicos</a></li>
+        <li class="active"><i class="fa fa-medkit"></i>  Historial médico</li>
+      </ol>
     </section>
 
     <!-- Main content -->
@@ -157,64 +148,83 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
            <div>
 
 <input type="hidden" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="NOMBRES"  name="id" id="id" value="<?php echo $id_p?>" readonly  >
-           <div class="form-group col-lg-6 col-md-6 col-xs-12">
-             <br>
-                  <label for="exampleInputEmail1">NOMBRES</label>
+<div class="form-group col-lg-6 col-md-6 col-xs-12">
+        <div class="input-group">
+                <span class="input-group-addon">Nombres</span>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="NOMBRES"  name="nombres" id="nombres" value="<?php echo $nombres?>"  readonly   >
-         </div>
+                  <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                </div>
+                </div>
            
          
-         <div class="form-group col-lg-6 col-md-6 col-xs-12">
-         <br>
-                  <label for="exampleInputEmail1">APELLIDOS</label>
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <div class="input-group">
+                <span class="input-group-addon">Apellidos</span>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="APELLIDOS"  name="apellidos" id="apellidos" value="<?php echo $apellidos?>" readonly   >
-         </div>
-
-         <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">FECHA DE NACIMIENTO</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="EDAD"  name="edad" id="edad" value="<?php echo $fecha_nacimiento?>" readonly   >
-          </div>
-          <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">EDAD</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="EDAD"  name="edad" id="edad"value="<?php echo $edad?>"readonly>
+                  <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                  </div>
                 </div>
 
-          <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">NUMERO DE IDENTIDAD</label>
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <div class="input-group">
+                <span class="input-group-addon">Identidad</span>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="IDENTIDAD"  name="identidad" id="identidad" value="<?php echo $identidad?>" readonly    >
-          </div>
+                  <span class="	glyphicon glyphicon-credit-card form-control-feedback"></span>
+                </div>
+                </div>
+
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <div class="input-group">
+                <span class="input-group-addon">Fecha de nacimiento</span>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="EDAD"  name="edad" id="edad" value="<?php echo $fecha_nacimiento?>" readonly   >
+                  <span class="	glyphicon glyphicon glyphicon-gift form-control-feedback"></span>
+                </div>
+                </div>
+
+
           <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">FECHA DE CREACION</label>
+                <div class="input-group">
+                <span class="input-group-addon">Edad</span>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="EDAD"  name="edad" id="edad"value="<?php echo $edad?>"readonly>
+                  <span class="		glyphicon glyphicon-hourglass form-control-feedback"></span>
+                </div>
+                </div>
+
+          
+
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <div class="input-group">
+                <span class="input-group-addon">Fecha de registro</span>
                   <input type="date" autocomplete="off" class="form-control nombres" placeholder="FECHA DE CREACION" name="fecha_de_creacion" id="fecha_de_creacion" value="<?php echo $fecha?>" readonly  >
+                  <span class="	glyphicon glyphicon-time form-control-feedback"></span>
+                </div>
                 </div>
           </form> 
 
           <form action="" method="post" name="frm_exp"> 
-          
-               
            <input type="hidden" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="NOMBRES"  name="id" id="id" value="<?php echo $id_u?> "   >
-        
+
            <input type="hidden" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="NOMBRES"  name="id" id="id" value="<?php echo $registro['PER_CODIGO']?>"   >
-                <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">APUNTES DE LA CONSULTA</label>
-
+           <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <div class="input-group">
+                <span class="input-group-addon">Descripciones médicas</span>
                   <textarea class="form-control" name="apuntes" id="apuntes" rows="10" cols="50" readonly  > <?php echo $apuntes?> </textarea >
+                  <span class="glyphicon glyphicon-option-vertical form-control-feedback"></span>
                 </div>
+                </div> 
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">MEDICAMENTO</label>
-
+                <div class="input-group">
+                <span class="input-group-addon">Medicamentos</span>
                   <textarea class="form-control" name="medicamento" id="medicamento" rows="10" cols="50" readonly   ><?php echo $medicamento?> </textarea >
+                  <span class="		glyphicon glyphicon-option-vertical form-control-feedback"></span>
                 </div>
-                
+                </div> 
                
                
-
-             
-         
                 <div class="box-footer">
               <div class="col text-center">
-                <a href="../vistas/mostrar_expediented_vista.php" class="btn bg-red btn-flat margin" >ATRAS</a>
+                <a href="../vistas/mostrar_expediented_vista.php" class="btn btn-lg  btn bg-red" ><i class="fa  fa-arrow-circle-o-left" aria-hidden="true"></i> ATRÁS</a>
                 </div>
               </div>
                 </form>

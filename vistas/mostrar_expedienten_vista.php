@@ -36,6 +36,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>22
   <link rel="stylesheet" href="../vistas/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
    folder instead of downloading all of them to reduce the load. -->
+   <link rel="icon" href="Img/Home.png">
   <link rel="stylesheet" href="../vistas/dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="../vistas/Plugins/sweetalert/dist/sweetalert2.min.css">
 </head>
@@ -81,11 +82,14 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>22
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        MOSTRAR EXPEDIENTES NUTRICIONISTA DE PACIENTES
-        
+    <h1><i class="fa fa-list-alt" aria-hidden="true"></i>
+        Lista de Expedientes nutricionista
+        <small>ClimeHome</small>
       </h1>
-      
+      <ol class="breadcrumb">
+        <li><a href="mostrar_expedienten_vista.php"><i class="fa fa-folder-open"></i>Expedientes Nutricionista</a></li>
+        <li class="active"><i class="fa fa-list-alt"></i> Lista de expedientes</li>
+      </ol>
     </section>
 
     <!-- Main content -->
@@ -99,7 +103,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>22
             <div class="box-body">
             <?php if ($_SESSION['cen']== 1 and $_SESSION['ien']== 1){ ?>
               <div>
-             <a href="../vistas/insertar_expedienten_vista.php" class="btn bg-blue btn-flat margin">AGREGAR EXPEDIENTE <i class="fa fa-plus" aria-hidden="true"></i> </a>
+             <a href="../vistas/insertar_expedienten_vista.php" class="btn bg-blue btn-flat margin">AGREGAR EXPEDIENTE <i class="fa fa-plus-circle" aria-hidden="true"></i> </a>
            </div>
             <?php } ?>
            

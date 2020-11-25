@@ -78,14 +78,9 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
   <link rel="stylesheet" href="../vistas/dist/css/AdminLTE.min.css">
 
   <link rel="stylesheet" type="text/css" href="../vistas/select2/select2.min.css">
-
-
-
-  
- 
   <link rel="stylesheet" href="../vistas/dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="../vistas/Plugins/sweetalert/dist/sweetalert2.min.css">
-
+  <link rel="icon" href="../vistas/Img/Home.png">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 
@@ -131,13 +126,14 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        EDITAR CITAS
-        
+    <h1><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+      Editar cita
+        <small>ClimeHome</small>
       </h1>
-      
-    </section>
-
+      <ol class="breadcrumb">
+        <li><a href="../vistas/mostrar_citas_vista.php"><i class="fa fa-calendar"></i>Citas</a></li>
+        <li class="active"><i class="fa fa-pencil-square-o"></i>Editar cita</li>
+      </ol>
     <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -153,33 +149,48 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 <!--centro-->
          <input type="hidden" name="id" id="id" value="<?php echo $id_p?>">
 
-          <div class="form-group col-lg-6 col-md-6 col-xs-12">
-             <br>
-             <label for="exampleInputEmail1">NOMBRES</label>
+         <div class="form-group col-lg-6 col-md-6 col-xs-12">
+        <div class="input-group">
+                <span class="input-group-addon">Nombres</span>
              <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="NOMBRES"  name="nombres" id="nombres" value="<?php echo $nombres?>"  readonly   >
-          </div>
+             <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                </div>
+                </div>
            
-         <div class="form-group col-lg-6 col-md-6 col-xs-12">
-         <br>
-           <label for="exampleInputEmail1">APELLIDOS</label>
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <div class="input-group">
+                <span class="input-group-addon">Apellidos</span>
            <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="APELLIDOS"  name="apellidos" id="apellidos" value="<?php echo $apellidos?>" readonly   >
-         </div>
-
-         <div class="form-group col-lg-6 col-md-6 col-xs-12">
-           <label for="exampleInputPassword1">FECHA NACIMIENTO</label>
-           <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="FECHA NACIMIENTO"  name="fecha_nacimiento" id="fecha_nacimiento" value="<?php echo $fecha_nacimiento?>" readonly   >
-         </div>
-         <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">EDAD</label>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="EDAD"  name="edad" id="edad"value="<?php echo $edad?>"readonly>
+           <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                  </div>
                 </div>
 
 
-        <div class="form-group col-lg-6 col-md-6 col-xs-12">
-          <label for="exampleInputPassword1">NUMERO DE IDENTIDAD</label>
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <div class="input-group">
+                <span class="input-group-addon">Identidad</span>
           <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="IDENTIDAD"  name="identidad" id="identidad" value="<?php echo $identidad?>" readonly    >
-        </div> 
+          <span class="	glyphicon glyphicon-credit-card form-control-feedback"></span>
+                </div>
+                </div>
         
+
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <div class="input-group">
+                <span class="input-group-addon">Fecha de nacimiento</span>
+           <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="FECHA NACIMIENTO"  name="fecha_nacimiento" id="fecha_nacimiento" value="<?php echo $fecha_nacimiento?>" readonly   >
+           <span class="	glyphicon glyphicon glyphicon-gift form-control-feedback"></span>
+                </div>
+                </div>
+
+           <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <div class="input-group">
+                <span class="input-group-addon">Edad</span>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="EDAD"  name="edad" id="edad"value="<?php echo $edad?>"readonly>
+                  <span class="	glyphicon glyphicon-hourglass form-control-feedback"></span>
+                </div>
+                </div>
+
 
           <form action="" method="post" name="form_editar_cita"> 
           <input type="hidden" name="id_c" id="id_c" value="<?php echo $id_c?>">   
@@ -187,13 +198,16 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
           <input type="hidden" name="id_p" id="id_p" value="<?php echo $id_p?>" >
           <input type="hidden" name="id_h" id="id_h" value="<?php echo $id_h?>" >
         
-          <div class="form-group col-lg-6 col-md-6 col-xs-12"> 
-            <label for="exampleInputPassword1">FECHA DE LA CITA</label>
+          <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <div class="input-group">
+                <span class="input-group-addon">Fecha de cita</span>
             <input type="date" autocomplete="off" class="form-control nombres" name="fecha_cita" id="fecha_cita" value="<?php echo $fecha_cita?>">
+          </div>
           </div>
 
           <div class="form-group col-lg-6 col-md-6 col-xs-12">
-            <label for="exampleInputPassword1">DOCTORA</label>
+                <div class="input-group">
+                <span class="input-group-addon">Doctora</span>
             <select class="form-control" name="id_u" id="doctora">
              <option value="0">SELECCIONE DOCTORA:</option>
              <?php
@@ -215,9 +229,11 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
              
             </select>
           </div>
+          </div>
             
           <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">HORA CITA</label>
+                <div class="input-group">
+                <span class="input-group-addon">Hora de cita</span>
                 <select class="form-control" name="hora" id="hora_cita">
         <option value="0">SELECCIONE HORA CITA :</option>
                 <?php
@@ -235,10 +251,11 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
         ?>
         </select>
                 </div>
+                    </div>
 
-
-          <div class="form-group  col-lg-6 col-md-6 col-xs-12">
-            <label for="exampleInputPassword1">ESTADO</label>
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <div class="input-group">
+                <span class="input-group-addon">Estado de cita</span>
             <select class="form-control" name="estado" id="estado">
              <option value="0">SELECCIONE EL ESTADO DE LA CITA:</option>
              <option value="PENDIENTE"<?php if ($estado=='PENDIENTE') { echo 'selected';}?>>PENDIENTE</option>
@@ -247,16 +264,20 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
              <option value="NO SE PRESENTO"<?php if ($estado=='NO SE PRESENTO') { echo 'selected';}?>>NO SE PRESENTO</option>
             </select>
           </div>
+          </div>
 
           <div class="form-group col-lg-6 col-md-6 col-xs-12">
-            <label for="exampleInputPassword1">DESCRICIÓN</label>
+                <div class="input-group">
+                <span class="input-group-addon">Descripción de cita</span>
             <input type="text" style="text-transform:uppercase" autocomplete="off" class="form-control" name="descrip" id="descrip" value="<?php echo $descrip?>">
-          </div>
+            <span class="		glyphicon glyphicon-pencil form-control-feedback"></span>
+                </div>
+                </div>
          
           <div class="box-footer">
           <div class="col text-center">
-            <button type="button" onclick="validar_cita2();"  class="btn btn-primary btn-flat margin">ACTUALIZAR</button>
-            <a href="../vistas/mostrar_citas_vista.php" class="btn bg-red btn-flat margin" >ATRAS</a>
+            <button type="button" onclick="validar_cita2();"  class="btn btn-lg btn btn-primary"><i class="fa fa-refresh" aria-hidden="true"></i> ACTUALIZAR</button>
+            <a href="../vistas/mostrar_citas_vista.php"  class="btn btn-lg  btn bg-red" ><i class="fa fa-times-circle-o" aria-hidden="true"></i> CANCELAR</a>
           </div>
           </div>
           </form>

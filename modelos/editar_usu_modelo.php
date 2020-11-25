@@ -82,6 +82,7 @@ if(isset($_GET['id'])){
   <link rel="stylesheet" href="../vistas/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="../vistas/plugins/sweetalert/dist/sweetalert2.min.css">
   <link rel="stylesheet" href="../vistas/dist/css/skins/_all-skins.min.css">
+  <link rel="icon" href="../vistas/Img/Home.png">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <!-- Site wrapper -->
@@ -125,11 +126,14 @@ if(isset($_GET['id'])){
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        EDITAR INFORMACION DEL USUARIO
-        
+    <h1><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+      Editar usuario 
+
+        <small>ClimeHome</small>
       </h1>
-      
+      <ol class="breadcrumb">
+        <li><a href="../vistas/mostrar_vista.php"><i class="fa fa-user"></i>Usuarios</a></li>
+        <li class="active"><i class="fa fa-pencil-square-o"></i> Editar usuario</li>
     </section>
 
     <!-- Main content -->
@@ -146,53 +150,82 @@ if(isset($_GET['id'])){
                  <input type="hidden"  class="form-control " name="id1" value="<?php echo $id_u;?>" >
                 </div>
                 <div Id="alerta"></div>
+                
+
+                
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">NOMBRES</label>
-                  <input type="text"style="text-transform:uppercase" class="form-control apellidos" placeholder="NOMBRE"  name="nombres" id="nombre" value="<?php echo $nombre?>" >
+        <div class="input-group">
+                <span class="input-group-addon">Nombres</span>
+                  <input type="text"style="text-transform:uppercase" class="form-control apellidos" placeholder=""  name="nombres" id="nombre" value="<?php echo $nombre?>" >
+                  <span class="glyphicon glyphicon-user form-control-feedback"></span>
                 </div>
+                </div>
+                </class=>
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">APELLIDOS</label>
+                <div class="input-group">
+                <span class="input-group-addon">Apellidos</span>
                   <input type="text" style="text-transform:uppercase" class="form-control nombres" placeholder="APELLIDO"  name="apellidos" id="apellido" value="<?php echo $apellido?>" >
+                  <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                  </div>
                 </div>
+
+
                 <div class="form-group">
                   <input type="hidden" style="text-transform:uppercase" class="form-control nombres" placeholder="USUARIO"  name="usuarioa" id="usuarioa" value="<?php echo $usuario?>">
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputEmail1">USUARIO</label>
+                <div class="input-group">
+                <span class="input-group-addon">Nombre de usuario</span>
                   <input type="text" style="text-transform:uppercase" class="form-control nombres" placeholder="USUARIO"  name="usuarion" id="usum" value="<?php echo $usuario?>">
+                  <span class="	glyphicon glyphicon-option-vertical form-control-feedback"></span>
+                </div>
                 </div>
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">FECHA DE NACIMIENTO</label>
+                <div class="input-group">
+                <span class="input-group-addon">Fecha de nacimiento</span>
                   <input type="date" autocomplete="off" class="form-control" placeholder="FECHA DE NACIMIENTO" name="fecha_de_nacimiento" id="fecha_de_nacimiento" value="<?php echo $fecha_nacimiento?>">
                 </div> 
-
+                </div> 
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">IDENTIDAD</label>
+                <div class="input-group">
+                <span class="input-group-addon">Identidad</span>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="IDENTIDAD"  name="numero_de_identidad" id="numero_de_identidad"value="<?php echo $identidad?>">
+                  <span class="	glyphicon glyphicon-credit-card form-control-feedback"></span>
+                </div>
                 </div>
                
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">RTN</label>
+                <div class="input-group">
+                <span class="input-group-addon">RTN</span>
                   <input type="text" autocomplete="off" class="form-control"placeholder="RTN" name="rtn" id="rtn" value="<?php echo $rtn?>" >
+                  <span class="glyphicon glyphicon-barcode form-control-feedback"></span>
+                </div>
                 </div>
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1"> CELULAR</label>
+                <div class="input-group">
+                <span class="input-group-addon">Número celular</span>
                   <input type="text" autocomplete="off" class="form-control"placeholder="NUMERO DE CELULAR" name="numero_de_celular" id="numero_de_celular" value="<?php echo $celular?>">
+                  <span class="glyphicon glyphicon-phone form-control-feedback"></span>
+                </div>
                 </div>
                  
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1"> TELEFONO FIJO</label>
+                <div class="input-group">
+                <span class="input-group-addon">Teléfono fijo</span>
                   <input type="text" autocomplete="off" class="form-control"placeholder="TELEFONO FIJO" name="numero_de_telefono_fijo" id="numero_de_telefono_fijo" value="<?php echo $tel_fijo?>">
+                  <span class="glyphicon glyphicon-earphone form-control-feedback"></span>
+                </div>
                 </div>
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                <label for="exampleInputPassword1">GENERO</label>
+                <div class="input-group">
+                <span class="input-group-addon">Género</span>
                 <select class="form-control" name="genero" id="genero">
-                 <option value="0">SELECCIONE UN GENERO:</option>
+                 <option value="0">Seleccione un género:</option>
                  <option value="FEMENINO"
                  <?php
                  if ($genero=='FEMENINO') {
@@ -210,11 +243,13 @@ if(isset($_GET['id'])){
                  
                 </select>
                 </div>
+                </div>
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">NACIONALIDAD</label>
+                <div class="input-group">
+                <span class="input-group-addon">Nacionalidad</span>
                 <select class="form-control" name="nacionalidad" id="nacionalidad">
-        <option value="0">SELECCIONE UNA NACIONALIDAD:</option>
+        <option value="0">Seleccione una nacionalidad:</option>
                 <?php
                
         require '../modelos/conectar.php';
@@ -230,11 +265,13 @@ if(isset($_GET['id'])){
         ?>
         </select>
                 </div>
+                </div>
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                <label for="exampleInputPassword1">ESTADO</label>
+                <div class="input-group">
+                <span class="input-group-addon">Estado</span>
                 <select class="form-control" name="estado" id="combox2">
-                 <option value="0">SELECCIONE EL ESTADO:</option>
+                 <option value="0">Seleccione un estado:</option>
                  <option value="NUEVO"
                  <?php
                  if ($estado=='NUEVO') {
@@ -265,11 +302,13 @@ if(isset($_GET['id'])){
                  >VACACIONES</option>
                 </select>
                 </div>
+                </div>
                 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">ROL</label>
+                <div class="input-group">
+                <span class="input-group-addon">Rol</span>
                 <select class="form-control" name="rol_usuario" id="rol_usuario">
-        <option value="0">SELECCIONE UN ROL:</option>
+        <option value="0">Seleccione un rol:</option>
                 <?php
                
         require '../modelos/conectar.php';
@@ -285,38 +324,52 @@ if(isset($_GET['id'])){
         ?>
         </select>
                 </div>
-
-                <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">FECHA CREACION</label>
-                  <input type="text" autocomplete="off" class="form-control nombres" name="fecha_creacion" id="fecha_creacion" value="<?php echo $fecha_creacion?>"  readonly>
-                </div>
-
-                <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">FECHA DE VENCIMIENTO</label>
-                  <input type="text" autocomplete="off" class="form-control nombres" name="fecha_vencida" id="fecha_vencida"  value="<?php echo $vencimiento ?> " readonly>
-                </div> 
-
-                <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">PASAPORTE</label>
-                  <input type="text" autocomplete="off" class="form-control correo" placeholder="PASAPORTE" name="pasaporte" id="pasaporte" value="<?php echo $pasaporte?>" >
-                </div>
-
-                <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="exampleInputPassword1">Direccion</label>
-                  <textarea placeholder="DIRECCIÓN" style="text-transform:uppercase"  class="form-control"  name="direccion" id="direccion" cols="30" rows="5" ><?php echo $direccion?></textarea >
                 </div>
 
                  <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                <label for="exampleInputPassword1">CORREO</label>
+                <div class="input-group">
+                <span class="input-group-addon">Fecha de creación</span>
+                  <input type="text" autocomplete="off" class="form-control nombres" name="fecha_creacion" id="fecha_creacion" value="<?php echo $fecha_creacion?>"  readonly>
+                  <span class="	glyphicon glyphicon-time form-control-feedback"></span>
+                </div>
+                </div>
+
+                <div class="form-group col-md-6 col-xs-12">
+                <div class="input-group">
+                <span class="input-group-addon">Fecha de Vencimiento</span>
+                  <input type="text" autocomplete="off" class="form-control nombres" name="fecha_vencida" id="fecha_vencida"  value="<?php echo $vencimiento ?> " readonly>
+                  <span class="	glyphicon glyphicon-time form-control-feedback"></span>
+                </div>
+                </div> 
+
+
+                <div class="form-group col-md-6 col-xs-12">
+                <div class="input-group">
+                <span class="input-group-addon">Correo</span>
                   <input type="email" class="form-control correo" placeholder="CORREO" name="correon" id="correo" value="<?php echo $correo?>" >
+                  <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 </div>
                 </div>
-                <div class="box-footer">
-                <div class="col text-center">
-                
-    
-                <button type="button" onclick="validar_editar();" name="update" class="btn btn-primary btn-flat margin">ACTUALIZAR</button>
-                <a href="../vistas/mostrar_vista.php" class="btn bg-red btn-flat margin" >CANCELAR</a>
+                <div class="form-group col-md-6 col-xs-12">
+                <div class="input-group">
+                <span class="input-group-addon">Pasaporte</span>
+                  <input type="text" autocomplete="off" class="form-control correo" placeholder="PASAPORTE" name="pasaporte" id="pasaporte" value="<?php echo $pasaporte?>" >
+                  <span class="	glyphicon glyphicon-book form-control-feedback"></span>
+                </div>
+                </div>
+                <div class="form-group col-md-6 col-xs-12">
+                <div class="input-group">
+                <span class="input-group-addon">Dirección</span>
+                  <textarea placeholder="DIRECCIÓN" style="text-transform:uppercase"  class="form-control"  name="direccion" id="direccion" cols="30" rows="5" ><?php echo $direccion?></textarea >
+                  <span class="		glyphicon glyphicon-home form-control-feedback"></span>
+                  </div>
+                </div>
+                </div>
+
+              <div class="box-footer">
+              <div class="col text-center">
+                <button type="button" onclick="validar_editar();" name="update" class="btn btn-lg btn btn-primary"><i class="fa fa-refresh" aria-hidden="true"></i> ACTUALIZAR</button>
+                <a href="../vistas/mostrar_vista.php" class="btn btn-lg  btn bg-red" ><i class="fa fa-times-circle-o" aria-hidden="true"></i> CANCELAR</a>
                 </div>
         <!-- /.col -->
       </div>
