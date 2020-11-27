@@ -188,27 +188,27 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>23
 
           <form action="" method="post"  enctype="multipart/form-data" >
            
-          <input type="text"  class="form-control"  name="id_rol" id="id_rol" value="<?php echo $_SESSION['id_rol']?>" readonly>
-          <input type="text"  class="form-control"  name="id_obju" id="id_obju" value="<?php echo $_SESSION['id_obju']?>" readonly>
-          <input type="text"  class="form-control"  name="id_peru" id="id_peru" value="<?php echo $_SESSION['id_peru']?>" readonly>
-          <input type="text"  class="form-control"  name="id_opac" id="id_opac" value="<?php echo $_SESSION['id_opac']?>" readonly>
-          <input type="text"  class="form-control"  name="id_ppac" id="id_ppac" value="<?php echo $_SESSION['id_ppac']?>" readonly>
-          <input type="text"  class="form-control"  name="id_oed" id="id_oed" value="<?php echo $_SESSION['id_oed']?>" readonly>
-          <input type="text"  class="form-control"  name="id_ped" id="id_ped" value="<?php echo $_SESSION['id_ped']?>" readonly>
-          <input type="text"  class="form-control"  name="id_oen" id="id_oen" value="<?php echo $_SESSION['id_oen']?>" readonly>
-          <input type="text"  class="form-control"  name="id_pen" id="id_pen" value="<?php echo $_SESSION['id_pen']?>" readonly>
-          <input type="text"  class="form-control"  name="id_ocit" id="id_ocit" value="<?php echo $_SESSION['id_ocit']?>" readonly>
-          <input type="text"  class="form-control"  name="id_pcit" id="id_pcit" value="<?php echo $_SESSION['id_pcit']?>" readonly>
-          <input type="text"  class="form-control"  name="id_oparam" id="id_oparam" value="<?php echo $_SESSION['id_oparam']?>" readonly>
-          <input type="text"  class="form-control"  name="id_pparam" id="id_pparam" value="<?php echo $_SESSION['id_pparam']?>" readonly>
-          <input type="text"  class="form-control"  name="id_oroles" id="id_oroles" value="<?php echo $_SESSION['id_oroles']?>" readonly>
-          <input type="text"  class="form-control"  name="id_proles" id="id_proles" value="<?php echo $_SESSION['id_proles']?>" readonly>
-          <input type="text"  class="form-control"  name="id_obit" id="id_obit" value="<?php echo $_SESSION['id_obit']?>" readonly>
-          <input type="text"  class="form-control"  name="id_pbit" id="id_pbit" value="<?php echo $_SESSION['id_pbit']?>" readonly>
-          <input type="text"  class="form-control"  name="id_oback" id="id_oback" value="<?php echo $_SESSION['id_oback']?>" readonly>
-          <input type="text"  class="form-control"  name="id_pback" id="id_pback" value="<?php echo $_SESSION['id_pback']?>" readonly>
-          <input type="text"  class="form-control"  name="id_operm" id="id_operm" value="<?php echo $_SESSION['id_operm']?>" readonly>
-          <input type="text"  class="form-control"  name="id_pperm" id="id_pperm" value="<?php echo $_SESSION['id_pperm']?>" readonly>
+          <input type="hidden"  class="form-control"  name="id_rol" id="id_rol" value="<?php echo $_SESSION['id_rol']?>" readonly>
+          <input type="hidden"  class="form-control"  name="id_obju" id="id_obju" value="<?php echo $_SESSION['id_obju']?>" readonly>
+          <input type="hidden"  class="form-control"  name="id_peru" id="id_peru" value="<?php echo $_SESSION['id_peru']?>" readonly>
+          <input type="hidden"  class="form-control"  name="id_opac" id="id_opac" value="<?php echo $_SESSION['id_opac']?>" readonly>
+          <input type="hidden"  class="form-control"  name="id_ppac" id="id_ppac" value="<?php echo $_SESSION['id_ppac']?>" readonly>
+          <input type="hidden"  class="form-control"  name="id_oed" id="id_oed" value="<?php echo $_SESSION['id_oed']?>" readonly>
+          <input type="hidden"  class="form-control"  name="id_ped" id="id_ped" value="<?php echo $_SESSION['id_ped']?>" readonly>
+          <input type="hidden"  class="form-control"  name="id_oen" id="id_oen" value="<?php echo $_SESSION['id_oen']?>" readonly>
+          <input type="hidden"  class="form-control"  name="id_pen" id="id_pen" value="<?php echo $_SESSION['id_pen']?>" readonly>
+          <input type="hidden"  class="form-control"  name="id_ocit" id="id_ocit" value="<?php echo $_SESSION['id_ocit']?>" readonly>
+          <input type="hidden"  class="form-control"  name="id_pcit" id="id_pcit" value="<?php echo $_SESSION['id_pcit']?>" readonly>
+          <input type="hidden"  class="form-control"  name="id_oparam" id="id_oparam" value="<?php echo $_SESSION['id_oparam']?>" readonly>
+          <input type="hidden"  class="form-control"  name="id_pparam" id="id_pparam" value="<?php echo $_SESSION['id_pparam']?>" readonly>
+          <input type="hidden"  class="form-control"  name="id_oroles" id="id_oroles" value="<?php echo $_SESSION['id_oroles']?>" readonly>
+          <input type="hidden"  class="form-control"  name="id_proles" id="id_proles" value="<?php echo $_SESSION['id_proles']?>" readonly>
+          <input type="hidden"  class="form-control"  name="id_obit" id="id_obit" value="<?php echo $_SESSION['id_obit']?>" readonly>
+          <input type="hidden"  class="form-control"  name="id_pbit" id="id_pbit" value="<?php echo $_SESSION['id_pbit']?>" readonly>
+          <input type="hidden"  class="form-control"  name="id_oback" id="id_oback" value="<?php echo $_SESSION['id_oback']?>" readonly>
+          <input type="hidden"  class="form-control"  name="id_pback" id="id_pback" value="<?php echo $_SESSION['id_pback']?>" readonly>
+          <input type="hidden"  class="form-control"  name="id_operm" id="id_operm" value="<?php echo $_SESSION['id_operm']?>" readonly>
+          <input type="hidden"  class="form-control"  name="id_pperm" id="id_pperm" value="<?php echo $_SESSION['id_pperm']?>" readonly>
           <?php 
           /*OBTENER PERMISO DE USUARIOS*/
            $sql = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO=:pantalla" ;
