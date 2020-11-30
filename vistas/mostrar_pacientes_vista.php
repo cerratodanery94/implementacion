@@ -171,10 +171,10 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>17
                  <td><?php echo $fila['PER_GENERO']?></td>
                  <td><?php echo $fila['PER_TEL_FIJO']?></td>
                  <td><?php echo $fila['PER_CELULAR']?></td>
-                 <td><?php echo $fila['PER_PROFESION']?></td>
+                 <td><?php echo $fila['OCU_CODIGO']?></td>
                  <td><?php echo $fila['PER_DIRECCION']?></td>
                  <td><?php echo $fila['PER_CORREO']?></td>
-                 <td><?php echo $fila['PER_NACIONALIDAD']?></td>
+                 <td><?php echo $fila['PAIS_CODIGO']?></td>
                  <td><?php echo $fila['PER_RTN']?></td>
                  </tr>
                  <?php } ?> 

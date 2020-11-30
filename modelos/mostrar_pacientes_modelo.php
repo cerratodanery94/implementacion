@@ -32,10 +32,10 @@ try {
        $genero=$fila['PER_GENERO'];
        $tel_fijo=$fila['PER_TEL_FIJO'];
        $celular=$fila['PER_CELULAR'];
-       $cargo=$fila['PER_PROFESION'];
+       
        $direccion=$fila['PER_DIRECCION'];
        $correo=$fila['PER_CORREO'];
-       $nacionalidad=$fila['PER_NACIONALIDAD'];
+       
        $rtn=$fila['PER_RTN'];
      
    }
@@ -45,24 +45,7 @@ try {
     die('Error: ' . $e->GetMessage());
 	echo "Codigo del error" . $e->getCode();
 }
-$ROL = $_SESSION['ROL'];
-$_SESSION['PANTALLA'] = 18;
-$PANTALLA = $_SESSION['PANTALLA'];
-$sql3 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO = :pantalla ";
-$resultado3=$conexion->prepare($sql3);	
-$resultado3->execute(array(":rol"=>$ROL,":pantalla"=>$PANTALLA));
-$DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
- $CONSULTAR = $DATOS['PERM_CONSULTAR'];
- $INSERTAR = $DATOS['PERM_INSERTAR'];
- $ELIMINAR = $DATOS['PERM_ELIMINAR'];
- $ACTUALIZAR = $DATOS['PERM_ACTUALIZAR'];
- $USUARIOS=$DATOS['PERM_USUARIO'];
 
- $PACIENTES=$DATOS['PERM_PACIENTES'];
- $NUTRI=$DATOS['PERM_EXP_NUTRI'];
- $MEDICO=$DATOS['PERM_EXP_MEDICO'];
- $CITAS=$DATOS['PERM_CITAS'];
- $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 ?> 
 
 <!DOCTYPE html>
@@ -236,11 +219,26 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <div class="input-group">
-                <span class="input-group-addon">Profesión</span>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres"placeholder="PROFESION" name="profesion" id="profesion" value="<?php echo $cargo?>" readonly   >
-                  <span class="glyphicon  glyphicon-sort-by-attributes form-control-feedback"></span>
+                <span class="input-group-addon">Profesión/ocupación</span>
+                <select class="form-control" name="profesion" id="profesion" disabled>
+        <option value="0">Seleccione una profesión/ocupación:</option>
+                <?php
+               
+        require '../modelos/conectar.php';
+        $resultado_profesion = $conexion -> query ("select * from tbl_personas tu inner join tbl_ocupaciones toc on tu.OCU_CODIGO = toc.OCU_CODIGO where tu.PER_CODIGO = $id");
+        $profesion = $resultado_profesion->fetch(PDO::FETCH_ASSOC);
+         $profesion = $profesion['OCU_NOMBRE'];
+          $resultado = $conexion -> query ("SELECT * FROM tbl_ocupaciones");
+          while ($registro=$resultado->fetch(PDO::FETCH_ASSOC)) {
+            $r = ($profesion == $registro["OCU_NOMBRE"]) ? 'selected' : '';
+            echo '<option value="'.$registro["OCU_CODIGO"].'"'.$r.'>'.$registro["OCU_NOMBRE"].'</option>';
+          }
+ 
+        ?>
+        </select>
                 </div>
                 </div>
+
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <div class="input-group">

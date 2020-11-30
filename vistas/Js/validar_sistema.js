@@ -436,24 +436,10 @@ else if (validar_texto (formulario.apellidos.value)==false){
             formulario.nacionalidad.focus();
             return false;
         }  
+          
         
 
-          //VALIDAR CAMPO PROFESION
-        if (formulario.profesion.value=="") {
-            document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO PROFESION VACIO</div>';
-            formulario.profesion.focus();
-            return false;
-        }
-        else if (validar_texto (formulario.profesion.value)==false){  
-            document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO</div>';
-            formulario.profesion.focus();
-            return false;
-            }
-        else if (Validar_espacio2 (formulario.profesion.value)==false){
-            document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
-            formulario.profesion.focus();
-            return false;
-            }
+          
             //VALIDAR CAMPO PASAPORTE
             // if (formulario.pasaporte.value=="") {
             //     document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO PASAPORTE VACIO</div>';
@@ -528,6 +514,7 @@ else if (validar_tamaño (formulario.correo.value)==false){
         formulario.genero.focus();
         return false;
     }
+  
     
       //VALIDAR CAMPO DIRECCION
       if (formulario.direccion.value=="") {
@@ -839,23 +826,9 @@ else if (validar_tamaño (formulario.correo.value)==false){
                     formulario.nacionalidad.focus();
                     return false;
                     }
-                  //VALIDAR CAMPO PROFESION
-                if (formulario.profesion.value=="") {
-                    document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO PROFESION VACIO</div>';
-                    formulario.profesion.focus();
-                    return false;
-                }
+                  
                 
-                else if (Validar_espacio2 (formulario.profesion.value)==false){
-                    document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
-                    formulario.profesion.focus();
-                    return false;
-                    }
-                    else if (validar_texto (formulario.profesion.value)==false){  
-                        document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO</div>';
-                        formulario.profesion.focus();
-                        return false;
-                        }
+               
                     //VALIDAR CAMPO PASAPORTE
                  if (Validar_espacio2 (formulario.pasaporte.value)==false){
                     document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';

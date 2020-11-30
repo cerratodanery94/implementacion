@@ -9,25 +9,6 @@ VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
   $resultado2=$conexion->prepare($sql2);	
 $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>16,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA AÑADIR PACIENTES',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
 
-$ROL = $_SESSION['ROL'];
-$_SESSION['PANTALLA'] = 16;
-$PANTALLA = $_SESSION['PANTALLA'];
-$sql3 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO = :pantalla ";
-$resultado3=$conexion->prepare($sql3);	
-$resultado3->execute(array(":rol"=>$ROL,":pantalla"=>$PANTALLA));
-$DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
-$CONSULTAR = $DATOS['PERM_CONSULTAR'];
-$INSERTAR = $DATOS['PERM_INSERTAR'];
-$ELIMINAR = $DATOS['PERM_ELIMINAR'];
-$ACTUALIZAR = $DATOS['PERM_ACTUALIZAR'];
-$USUARIOS=$DATOS['PERM_USUARIO'];
-
-$PACIENTES=$DATOS['PERM_PACIENTES'];
-$NUTRI=$DATOS['PERM_EXP_NUTRI'];
-$MEDICO=$DATOS['PERM_EXP_MEDICO'];
-$CITAS=$DATOS['PERM_CITAS'];
-$SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -179,13 +160,24 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
         </select>
                 </div>
                 </div>
+
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <div class="input-group">
-                <span class="input-group-addon">Profesión</span>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="" name="profesion" id="profesion"  >
-                  <span class="glyphicon  glyphicon-sort-by-attributes form-control-feedback"></span>
+                <span class="input-group-addon">Profesión/Ocupación</span>
+                <select class="form-control" name="profesion" id="profesion">
+        <option value="0">Seleccione una profesión/ocupación:</option>
+                <?php
+        require '../modelos/conectar.php';
+          $resultado11 = $conexion -> query ("SELECT * FROM tbl_ocupaciones");
+          while ($registro11=$resultado11->fetch(PDO::FETCH_ASSOC)) {
+            echo '<option value="'.$registro11["OCU_CODIGO"].'">'.$registro11["OCU_NOMBRE"].'</option>';
+          }
+        ?>
+        </select>
                 </div>
                 </div>
+
+            
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <div class="input-group">

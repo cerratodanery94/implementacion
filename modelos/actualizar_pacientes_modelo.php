@@ -23,6 +23,7 @@ try {
         $query=$conexion->prepare
         ("UPDATE TBL_PERSONAS SET
         PAIS_CODIGO=:nacionalidad,
+        OCU_CODIGO=:ocupacion,
         PER_NUMERO_IDENTIDAD=:identidad,
         PER_PASAPORTE=:pasaporte,
         PER_NOMBRES=:nombres,
@@ -32,7 +33,6 @@ try {
         PER_GENERO=:genero,
         PER_TEL_FIJO=:tel_fijo,
         PER_CELULAR=:tel_celular,
-        PER_PROFESION=:profesion,
         PER_DIRECCION=:direccion,
         PER_CORREO=:correo,
         PER_RTN=:rtn
@@ -40,6 +40,7 @@ try {
       
          $query->execute(array(
           ":nacionalidad"=>$nacionalidad1,
+          ":ocupacion"=>$profesion1,
           ":identidad"=>$identidad1,
               ":pasaporte"=>$pasaporte1,
               ":nombres"=>$nombres1,
@@ -49,7 +50,6 @@ try {
               ":genero"=>$genero1,
               ":tel_fijo"=>$numero_de_telefono_fijo1,
               ":tel_celular"=>$numero_de_celular1,
-              ":profesion"=>$profesion1,
               ":direccion"=>$direccion1,
               ":correo"=>$correo1,
               
