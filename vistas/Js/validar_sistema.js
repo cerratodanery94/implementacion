@@ -436,6 +436,13 @@ else if (validar_texto (formulario.apellidos.value)==false){
             formulario.nacionalidad.focus();
             return false;
         }  
+
+        //VALIDAR PROFESIÓN
+        if (formulario.profesion.value==0) {
+            document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO PROFESIÓN VACIO, SELECCIONE UNA OPCION.</div>';
+            formulario.profesion.focus();
+            return false;
+        }  
           
         
 
@@ -826,8 +833,12 @@ else if (validar_tamaño (formulario.correo.value)==false){
                     formulario.nacionalidad.focus();
                     return false;
                     }
-                  
-                
+              // VALIDAR CAMPO PROFESION/OCUPACIÓN    
+                    if (formulario.profesion.value==0) {
+                        document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO PROFESION VACIO, SELECCIONE UNA OPCION.</div>';
+                        formulario.profesion.focus();
+                        return false;
+                    }
                
                     //VALIDAR CAMPO PASAPORTE
                  if (Validar_espacio2 (formulario.pasaporte.value)==false){
