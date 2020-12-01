@@ -957,42 +957,6 @@ else if(validar_numeros(formulario_exp.peso.value)==false){
         formulario_exp.estatura.focus();
         return false;
     }
-//VALIDAR PRESION ARTERIAL
-
-if (formulario_exp.presion_arterial.value==""){
-    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO PRESION ARTERIAL VACIO</div>';
-    formulario_exp.presion_arterial.focus();
-    return false;
- }
- else if (Validar_espacio2(formulario_exp.presion_arterial.value)==false){
-    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIO EN EL CAMPO</div>';
-    formulario_exp.presion_arterial.focus();
-    return false;
- }
- else if(validar_numeros(formulario_exp.presion_arterial.value)==false){
-    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INGRESAR VALORES NUMERICOS EN EL CAMPO</div>';
-    formulario_exp.presion_arterial.focus();
-    return false;
-}
- //VALIDAR TEMPERATURA
- if (formulario_exp.temperatura.value==""){
-    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO TEMPERATURA VACIO</div>';
-    formulario_exp.temperatura.focus();
-    return false;
- }
- else if (Validar_espacio2(formulario_exp.temperatura.value)==false){
-    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIO EN EL CAMPO</div>';
-    formulario_exp.temperatura.focus();
-    return false;
- }
- else if(validar_numeros(formulario_exp.temperatura.value)==false){
-    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INGRESAR VALORES NUMERICOS EN EL CAMPO</div>';
-    formulario_exp.temperatura.focus();
-    return false;
-}
-
-
-
 
 
 

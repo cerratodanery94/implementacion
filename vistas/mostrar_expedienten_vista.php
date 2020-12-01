@@ -118,8 +118,6 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>22
                   <td>NUMERO DE IDENTIDAD</td>
                   <td>PESO</td>
                   <td>ALTURA</td>
-                  <td>PRESION ARTERIAL</td>
-                  <td>TEMPERATURA</td>
                   <td>ANTECEDENTES CLINICOS</td>
                   <td>DIETA</td>
                   <td>FECHA DE CREACION</td>
@@ -149,31 +147,18 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>22
                     <a href='../modelos/eliminar_expedienten_modelo.php?id=<?php echo $fila["NUTRI_CODIGO"]?>' class="btn btne bg-maroon bnt-flat margin">
 					       <i class='fa fa-trash'></i></a> 
                   <?php } ?>
-					       
 
-                 
                  </td>
                  <td><?php echo $fila['PER_NUMERO_IDENTIDAD']?></td>
                  <td><?php echo $fila['NUTRI_PESO']?></td>
                  <td><?php echo $fila['NUTRI_ALTURA']?></td>
-                 <td><?php echo $fila['NUTRI_PRESION_ARTERIAL']?></td>
-                 <td><?php echo $fila['NUTRI_TEMPERATURA']?></td>
                  <td><?php echo $fila['NUTRI_ANTECEDENTES_CLINICOS']?></td>
                  <td><?php echo $fila['NUTRI_DIETA']?></td>
                  <td><?php echo $fila['NUTRI_FECHA_CREACION']?></td>
                  </tr>
                  <?php } ?> 
                 </tbody>
-                <tfoot>
-                <tr>
-                 <th>ID</th>
-                  <th>NUMERO DE IDENTIDAD</th>
-                  <th>NOMBRES</th>
-                  <th>APELLIDOS</th>
-                  <td>ACCIONES</td>
-
-                </tr>
-                </tfoot>
+                
               </table>
               <?php if (isset($_GET['m'])) : ?>
                 <div class="flash-data" data-flashdata="<?= $_GET['m']; ?>"></div>

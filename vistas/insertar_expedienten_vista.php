@@ -8,25 +8,6 @@ $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BI
 VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
 $resultado2=$conexion->prepare($sql2);	
 $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>20,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA AÑADIR EXPEDIENTE NUTRICIONISTA',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
-
-$ROL = $_SESSION['ROL'];
-$_SESSION['PANTALLA'] = 20;
-$PANTALLA = $_SESSION['PANTALLA'];
-$sql3 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO = :pantalla ";
-$resultado3=$conexion->prepare($sql3);	
-$resultado3->execute(array(":rol"=>$ROL,":pantalla"=>$PANTALLA));
-$DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
-$CONSULTAR = $DATOS['PERM_CONSULTAR'];
- $INSERTAR = $DATOS['PERM_INSERTAR'];
- $ELIMINAR = $DATOS['PERM_ELIMINAR'];
- $ACTUALIZAR = $DATOS['PERM_ACTUALIZAR'];
- $USUARIOS=$DATOS['PERM_USUARIO'];
-
- $PACIENTES=$DATOS['PERM_PACIENTES'];
- $NUTRI=$DATOS['PERM_EXP_NUTRI'];
- $MEDICO=$DATOS['PERM_EXP_MEDICO'];
- $CITAS=$DATOS['PERM_CITAS'];
- $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -209,21 +190,7 @@ $CONSULTAR = $DATOS['PERM_CONSULTAR'];
                 </div>
                 </div>
 
-                <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                <div class="input-group">
-                <span class="input-group-addon">Presión Arterial</span>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder=""  name="presion" id="presion_arterial">
-                 <span class="		glyphicon glyphicon-transfer form-control-feedback"></span>
-                </div>
-                </div>
-
-                <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                <div class="input-group">
-                <span class="input-group-addon">Temperatura</span>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder=""  name="temperatura" id="temperatura">
-                  <span class="	glyphicon glyphicon-dashboard	 form-control-feedback"></span>
-                </div>
-                </div>
+              
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <div class="input-group">
@@ -236,7 +203,7 @@ $CONSULTAR = $DATOS['PERM_CONSULTAR'];
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <div class="input-group">
-                <span class="input-group-addon">Descripciones Dietéticas</span>
+                <span class="input-group-addon">Dieta</span>
                   <textarea class="form-control" name="dieta" id="dieta" rows="10" cols="50"  > </textarea >
                   <span class="		glyphicon glyphicon-apple form-control-feedback"></span>
                 </div>

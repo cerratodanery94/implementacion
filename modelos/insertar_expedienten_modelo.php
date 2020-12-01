@@ -4,8 +4,6 @@
 		require '../modelos/conectar.php';
 		if (isset($_POST['peso'])&& 
 		isset($_POST['estatura'])&& 
-		isset($_POST['presion'])&& 
-		isset($_POST['temperatura'])&& 
 		isset($_POST['antecedentes'])&& 
 		isset($_POST['dieta'])&& 
 		isset($_POST['fecha_de_creacion'])&& 
@@ -14,8 +12,6 @@
 		$id=$_POST["id"];
 		$peso=$_POST["peso"];
 		$estatura=$_POST["estatura"];
-		$presion=$_POST["presion"];
-		$temperatura=$_POST["temperatura"];
 		$antecedentes=strtoupper($_POST["antecedentes"]);
 		$dieta=strtoupper ($_POST["dieta"]);
 		$fecha_de_creacion=date("Y-m-d H:m:s");
@@ -28,8 +24,6 @@
 		   NUTRI_ANTECEDENTES_CLINICOS,
 		   NUTRI_PESO,
 		   NUTRI_ALTURA,
-		   NUTRI_PRESION_ARTERIAL,
-		   NUTRI_TEMPERATURA,
 		   NUTRI_DIETA) 
 		   
 	   VALUES (
@@ -38,8 +32,6 @@
 		:antecedentes,
 		:peso,
 		:estatura,
-		:presion,
-		:temperatura,
 		:dieta
 	
 		)";
@@ -51,8 +43,6 @@
 		   ":antecedentes"=>$antecedentes,
 		   ":peso"=>$peso,
 		   ":estatura"=>$estatura,
-		   ":presion"=>$presion,
-		   ":temperatura"=>$temperatura,
 		   ":dieta"=>$dieta));
 	   
 

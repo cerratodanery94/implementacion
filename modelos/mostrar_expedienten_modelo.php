@@ -31,8 +31,6 @@ try {
     $identidad=$fila['PER_NUMERO_IDENTIDAD'];
 		$peso=$fila['NUTRI_PESO'];
 		$estatura=$fila['NUTRI_ALTURA'];
-		$presion=$fila['NUTRI_PRESION_ARTERIAL'];
-		$temperatura=$fila['NUTRI_TEMPERATURA'];
 		$antecedentes=$fila['NUTRI_ANTECEDENTES_CLINICOS'];
     $dieta=$fila['NUTRI_DIETA'];
     $fecha=$fila['NUTRI_FECHA_CREACION'];
@@ -49,24 +47,7 @@ try {
     die('Error: ' . $e->GetMessage());
 	echo "Codigo del error" . $e->getCode();
 }
-$ROL = $_SESSION['ROL'];
-$_SESSION['PANTALLA'] = 22;
-$PANTALLA = $_SESSION['PANTALLA'];
-$sql3 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO = :pantalla ";
-$resultado3=$conexion->prepare($sql3);	
-$resultado3->execute(array(":rol"=>$ROL,":pantalla"=>$PANTALLA));
-$DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
- $CONSULTAR = $DATOS['PERM_CONSULTAR'];
- $INSERTAR = $DATOS['PERM_INSERTAR'];
- $ELIMINAR = $DATOS['PERM_ELIMINAR'];
- $ACTUALIZAR = $DATOS['PERM_ACTUALIZAR'];
- $USUARIOS=$DATOS['PERM_USUARIO'];
 
- $PACIENTES=$DATOS['PERM_PACIENTES'];
- $NUTRI=$DATOS['PERM_EXP_NUTRI'];
- $MEDICO=$DATOS['PERM_EXP_MEDICO'];
- $CITAS=$DATOS['PERM_CITAS'];
- $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 ?> 
 
 <!DOCTYPE html>
@@ -232,21 +213,6 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
                 </div>
                 </div>
 
-                <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                <div class="input-group">
-                <span class="input-group-addon">Presión Arterial</span>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="PRESION ARTERIAL"  name="presion" id="presion_arterial"  value="<?php echo $presion?>" readonly>
-                  <span class="		glyphicon glyphicon-transfer form-control-feedback"></span>
-                </div>
-                </div>
-
-                <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                <div class="input-group">
-                <span class="input-group-addon">Temperatura</span>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="TEMPERATURA"  name="temperatura" id="temperatura"  value="<?php echo $temperatura?>" readonly>
-                  <span class="	glyphicon glyphicon-dashboard	 form-control-feedback"></span>
-                </div>
-                </div>
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <div class="input-group">
@@ -259,7 +225,7 @@ $DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <div class="input-group">
-                <span class="input-group-addon">Descripciones Dietéticas</span>
+                <span class="input-group-addon">Dieta</span>
                   <textarea class="form-control" name="dieta" id="dieta" rows="10" cols="50" readonly > <?php echo $dieta?> </textarea >
                   <span class="		glyphicon glyphicon-apple form-control-feedback"></span>
                 </div>
