@@ -7,20 +7,20 @@
 		$apellidos= strtoupper ($_POST["apellidos"]);
 		$identidad= $_POST["numero_de_identidad"];
 		$rtn= $_POST["rtn"];
-		$profesion= strtoupper($_POST["profesion"]);
+		$profesion= $_POST["profesion"];
 		$pasaporte= strtoupper($_POST["pasaporte"]);
 		$numero_de_celular= $_POST["numero_de_celular"];
 		$numero_de_telefono_fijo= $_POST["numero_de_telefono_fijo"];
 		$fecha_de_nacimiento= $_POST["fecha_de_nacimiento"];
 		$correo= $_POST["correo"];
 		$direccion=strtoupper($_POST["direccion"]);
-		$nacionalidad=strtoupper($_POST["nacionalidad"]);
 		$genero=$_POST["genero"];
 		$fecha_creacion= date("Y-m-d H:m:s");
 		$nacionalidad=$_POST["nacionalidad"];
 		
 	   $sql="INSERT INTO TBL_PERSONAS (
 		   PAIS_CODIGO,
+		   OCU_CODIGO,
 		   PER_NUMERO_IDENTIDAD,
 		   PER_PASAPORTE,
 		   PER_NOMBRES,
@@ -30,14 +30,13 @@
 		   PER_GENERO,
 		   PER_TEL_FIJO,
 		   PER_CELULAR,
-		   PER_PROFESION,
 		   PER_DIRECCION,
 		   PER_CORREO,
-		   PER_NACIONALIDAD,
 		   PER_RTN) 
 		   
 	   VALUES (
 		:nacionalidad,
+		:profesion,
 		:identidad,
 		:pasaporte,
 		:nombres,
@@ -47,15 +46,14 @@
 		:genero,
 		:tel_fijo,
 		:tel_celular,
-		:profesion,
 		:direccion,
 		:correo,
-		:nacionalidad,
 		:rtn)";
 
 	   $resultado=$conexion->prepare($sql);	
 	   $resultado->execute(array(
 		   ":nacionalidad"=>$nacionalidad,
+		   ":profesion"=>$profesion,
 		   ":identidad"=>$identidad,
 		   ":pasaporte"=>$pasaporte,
 		   ":nombres"=>$nombres,
@@ -65,10 +63,8 @@
 		   ":genero" =>$genero, 
 		   ":tel_fijo"=>$numero_de_telefono_fijo,
 		   ":tel_celular"=>$numero_de_celular,
-		   ":profesion"=>$profesion,
 		   ":direccion"=>$direccion,
 		   ":correo"=>$correo,
-		   ":nacionalidad"=>$nacionalidad,
 		   ":rtn"=>$rtn));
 	   
 
