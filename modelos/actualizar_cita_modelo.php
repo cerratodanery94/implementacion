@@ -17,7 +17,17 @@ try {
     $hora=$_POST["hora"];
     $estado=$_POST["estado"];
     $descrip=strtoupper($_POST['descrip']);
-        
+    $hoy=date('Y-m-d');
+		if ($fecha_cita < $hoy) {
+			echo '<script> Swal.fire({
+				position: "center",
+				icon: "error",
+				title: "NO SE PUEDE REGISTRAR CITA CON UNA FECHA INFERIOR A LA ACTUAL",
+				showConfirmButton: false,
+				timer: 3000
+			  })
+			  </script>';
+		}else{ 
         $query=$conexion->prepare
         ("UPDATE TBL_CITAS SET
         PER_CODIGO=:id_p,
@@ -71,7 +81,9 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>29
           }
       
         
-      }
+      
+    }
+    }
       
 } catch (Exception $e) {
     die('Error: ' . $e->GetMessage());

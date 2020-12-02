@@ -137,7 +137,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>31
                   <?php } ?>
 
                   <?php if ($_SESSION['croles']==1 and $_SESSION['eroles']==1 ){  ?>
-                    <a href='../vistas/mostrar_roles_vista.php?id=<?php echo $fila["ROL_CODIGO"]?>'  class="btn btne bg-maroon bnt-flat margin">
+                    <a href='../modelos/eliminar_rol_modelo.php?id=<?php echo $fila["ROL_CODIGO"]?>'  class="btn btne bg-maroon bnt-flat margin">
 				          <i class='fa fa-trash'></i></a>
                   <?php } ?>
 				          
@@ -341,7 +341,7 @@ buttons:
 </html>
 <?php 
 
-try {
+/*try {
     require '../modelos/conectar.php';
     if(isset($_GET['id'])){
         $id=$_GET['id'];
@@ -392,7 +392,7 @@ try {
 </script>';	
 
 }
-
+*/
 ?>
 
 

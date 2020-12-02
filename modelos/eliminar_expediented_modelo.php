@@ -4,6 +4,8 @@ try {
     require '../modelos/conectar.php';
 if(isset($_GET['id'])){
     $id=$_GET['id'];
+    $consulta3=$conexion->prepare("DELETE FROM tbl_imagenes WHERE EXP_CODIGO=:id");
+    $consulta3->execute(array(":id"=>$id));
     $consulta3=$conexion->prepare("DELETE FROM tbl_expedientes WHERE EXP_CODIGO=:id");
     $consulta3->execute(array(":id"=>$id));
 

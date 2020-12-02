@@ -201,10 +201,27 @@ $datos9 = $resultado9->fetch(PDO::FETCH_ASSOC);
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box bg-navy">
             <span class="info-box-icon"><i class="fa fa-user"></i></span>
-
+            <?php 
+            //usuarios
+            $sql = "SELECT COUNT(*) total FROM tbl_usuario";
+            $result = $conexion->query($sql); 
+            $total=$result->fetchColumn();
+            //pacientes
+            $sql = "SELECT COUNT(*) total FROM tbl_personas";
+            $result = $conexion->query($sql); //$pdo sería el objeto conexión
+            $totalp=$result->fetchColumn();
+            //Expediente medico
+            $sql = "SELECT COUNT(*) total FROM tbl_expedientes";
+            $result = $conexion->query($sql); //$pdo sería el objeto conexión
+            $totalem=$result->fetchColumn();
+             //expediente nutricionista
+             $sql = "SELECT COUNT(*) total FROM tbl_expediente_nutricionista";
+             $result = $conexion->query($sql); //$pdo sería el objeto conexión
+             $totalen=$result->fetchColumn();
+            ?>
             <div class="info-box-content">
               <span class="info-box-text">Usuarios</span>
-              <span class="info-box-number">6</span>
+              <span class="info-box-number"><?php echo $total; ?> </span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>
@@ -220,7 +237,7 @@ $datos9 = $resultado9->fetch(PDO::FETCH_ASSOC);
             
             <div class="info-box-content">
               <span class="info-box-text">Pacientes</span>
-              <span class="info-box-number">3</span>
+              <span class="info-box-number"><?php echo $totalp; ?></span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>
@@ -234,8 +251,8 @@ $datos9 = $resultado9->fetch(PDO::FETCH_ASSOC);
             <span class="info-box-icon"><i class="fa fa-clipboard"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Medicina General</span>
-              <span class="info-box-number">3</span>
+              <span class="info-box-text">EXPEDIENTES MÉDICOS</span>
+              <span class="info-box-number"><?php echo $totalem; ?></span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>
@@ -249,8 +266,8 @@ $datos9 = $resultado9->fetch(PDO::FETCH_ASSOC);
           <div class="info-box bg-red">
             <span class="info-box-icon"><i class="fa fa-clipboard"></i></span>
             <div class="info-box-content">
-              <span class="info-box-text">Nutricionista</span>
-              <span class="info-box-number">3</span>
+              <span class="info-box-text">EXPEDIENTES NUTRICIONISTA</span>
+              <span class="info-box-number"><?php echo $totalen; ?></span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>

@@ -14,6 +14,18 @@
 		$fecha_cita=$_POST["fecha_cita"];
         $estado=$_POST["estado"];
 		$descrip='';
+		$hoy=date('Y-m-d');
+		if ($fecha_cita < $hoy) {
+			echo '<script> Swal.fire({
+				position: "center",
+				icon: "error",
+				title: "NO SE PUEDE REGISTRAR CITA CON UNA FEHA INFERIOR A LA ACTUAL",
+				showConfirmButton: false,
+				timer: 3000
+			  })
+			  </script>';
+		}else{ 
+		
 		$consulta=$conexion->prepare("SELECT * FROM TBL_CITAS WHERE CIT_FECHA_CITA='$fecha_cita' and HOR_CODIGO='$id_h' and USU_CODIGO='$id_u'");
         $consulta->execute();
         $num_rows = $consulta->fetchColumn();
@@ -94,6 +106,7 @@
 	}
 		$resultado->closeCursor();
 		$resultado2->closeCursor();
+}
 }
 }
 	}catch(Exception $e){			

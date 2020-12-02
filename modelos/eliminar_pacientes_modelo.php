@@ -18,8 +18,10 @@ if(isset($_GET['id'])){
    
 }
 } catch (Exception $e) {
-    die('Error: ' . $e->GetMessage());
-	echo "Codigo del error" . $e->getCode();
+    if($e->getCode()==23000){
+        header('location:../vistas/blank.php');
+    }
+	
 }
 
 

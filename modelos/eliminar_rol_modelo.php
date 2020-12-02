@@ -15,15 +15,10 @@ try {
         header('location:../vistas/mostrar_roles_vista.php?m=1');
     }  
 } catch (Exception $e) {
-    echo '<script> Swal.fire({
-        position: "center",
-        icon: "error",
-        title: "¡ALGO SALIÓ MAL!",
-        text:"NO SE PUEDE ELIMANAR ESTE ROL",
-        showConfirmButton: false,
-        timer: 3000
-      })
-      </script>';
+    if($e->getCode()==23000){
+        header('location:../vistas/blank.php');
+    }
+	
     
 }
 

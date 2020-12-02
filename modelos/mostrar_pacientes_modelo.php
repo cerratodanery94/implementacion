@@ -283,7 +283,7 @@ try {
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <div class="input-group">
                 <span class="input-group-addon">Fecha de registro</span>
-                  <input type="text" autocomplete="off" class="form-control" placeholder="FECHA DE CREACION" name="fecha_creacion" id="fecha_creacion" value="<?php echo date("m/d/Y"); ?> " readonly>
+                  <input type="text" autocomplete="off" class="form-control" placeholder="FECHA DE CREACION" name="fecha_creacion" id="fecha_creacion" value="<?php echo date("d/m/Y"); ?> " readonly>
                   <span class="	glyphicon glyphicon-time form-control-feedback"></span>
                 </div>
                 </div>

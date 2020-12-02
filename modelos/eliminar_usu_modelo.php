@@ -15,8 +15,9 @@ try {
         header('location:../vistas/mostrar_vista.php?m=1');
     }  
 } catch (Exception $e) {
-    die('Error: ' . $e->GetMessage());
-	echo "Codigo del error" . $e->getCode();
+    if($e->getCode()==23000){
+        header('location:../vistas/blank.php');
+    }
 }
 
 
