@@ -187,9 +187,9 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>29
 
           <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <div class="input-group">
-                <span class="input-group-addon">Doctora</span>
+                <span class="input-group-addon">Doctora/Doctor/Nutricionista</span>
             <select class="form-control" name="id_u" id="doctora">
-             <option value="0">SELECCIONE DOCTORA:</option>
+             <option value="0">SELECCIONE DOCTORA/DOCTOR/NUTRICIONISTA:</option>
              <?php
                
                require '../modelos/conectar.php';

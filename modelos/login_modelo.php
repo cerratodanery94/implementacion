@@ -30,7 +30,7 @@ try{
 		}
 		if ($contador>0){
 		
-				if ($_SESSION["est"]=="NUEVO" and $_SESSION["ROL"]==2) {
+				if ($_SESSION["est"]=="NUEVO") {
 					    $sql8="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
 						VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
 						$resultado8=$conexion->prepare($sql8);	
@@ -43,7 +43,7 @@ try{
 				
 					header("location:../vistas/preguntas_vista.php"); 
 
-				}elseif ($_SESSION["est"]=="ACTIVO" and $_SESSION["ROL"]==2) {
+				}elseif ($_SESSION["est"]=="ACTIVO") {
 					$sql10="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
 					VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
 					$resultado10=$conexion->prepare($sql10);	
@@ -54,88 +54,9 @@ try{
 					$resultado11=$conexion->prepare($sql11);	
 					$resultado11->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>2,":accion"=>'CONSULTA',":descr"=>'VERIFICA LAS CREDENCIALES DEL USUARIO',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
 					
-					header("location:../vistas/index.php");
+					header("location:../vistas/index2.php");
 
-					}elseif ($_SESSION["est"]=="ACTIVO" and $_SESSION["ROL"]==1) {
-						$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
-						VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
-						$resultado2=$conexion->prepare($sql2);	
-						$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>2,":accion"=>'INGRESO',":descr"=>'INGRESO A LA PANTALLA DE LOGIN',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
-
-						$sql7="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
-						VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
-						$resultado7=$conexion->prepare($sql7);	
-						$resultado7->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>2,":accion"=>'CONSULTA',":descr"=>'VERIFICA LAS CREDENCIALES DEL USUARIO',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
-
-						header("location:../vistas/index2.php"); 
-
-					}elseif ($_SESSION["est"]=="NUEVO" and $_SESSION["ROL"]==1) {
-						$sql17="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
-						VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
-						$resultado17=$conexion->prepare($sql17);	
-						$resultado17->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>2,":accion"=>'INGRESO',":descr"=>'INGRESO A LA PANTALLA DE LOGIN',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
-	
-						$sql18="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
-						VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
-						$resultado18=$conexion->prepare($sql18);	
-						$resultado18->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>2,":accion"=>'CONSULTA',":descr"=>'VERIFICA LAS CREDENCIALES DEL USUARIO',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
-						
-						header("location:../vistas/preguntas_vista.php"); 
-					
-					}elseif ($_SESSION["est"]=="ACTIVO" and $_SESSION["ROL"]==3) {
-						$sql15="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
-						VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
-						$resultado15=$conexion->prepare($sql15);	
-						$resultado15->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>2,":accion"=>'INGRESO',":descr"=>'INGRESO A LA PANTALLA DE LOGIN',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
-
-						$sql16="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
-						VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
-						$resultado16=$conexion->prepare($sql16);	
-						$resultado16->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>2,":accion"=>'CONSULTA',":descr"=>'VERIFICA LAS CREDENCIALES DEL USUARIO',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
-					
-						header("location:../vistas/index2.php");  
-					
-					}elseif ($_SESSION["est"]=="NUEVO" and $_SESSION["ROL"]==3) {
-						$sql19="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
-						VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
-						$resultado19=$conexion->prepare($sql19);	
-						$resultado19->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>2,":accion"=>'INGRESO',":descr"=>'INGRESO A LA PANTALLA DE LOGIN',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
-	
-						$sql20="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
-						VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
-						$resultado20=$conexion->prepare($sql20);	
-						$resultado20->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>2,":accion"=>'CONSULTA',":descr"=>'VERIFICA LAS CREDENCIALES DEL USUARIO',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
-						
-						header("location:../vistas/preguntas_vista.php"); 
-
-					}elseif ($_SESSION["est"]=="ACTIVO" and $_SESSION["ROL"]==4) {
-							$sql23="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
-							VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
-							$resultado23=$conexion->prepare($sql23);	
-							$resultado23->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>2,":accion"=>'INGRESO',":descr"=>'INGRESO A LA PANTALLA DE LOGIN',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
-	
-							$sql24="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
-							VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
-							$resultado24=$conexion->prepare($sql24);	
-							$resultado24->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>2,":accion"=>'CONSULTA',":descr"=>'VERIFICA LAS CREDENCIALES DEL USUARIO',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
-						header("location:../vistas/index2.php");
-					
-					}elseif ($_SESSION["est"]=="NUEVO" and $_SESSION["ROL"]==4) {
-						$sql21="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
-						VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
-						$resultado21=$conexion->prepare($sql21);	
-						$resultado21->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>2,":accion"=>'INGRESO',":descr"=>'INGRESO A LA PANTALLA DE LOGIN',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
-	
-						$sql22="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
-						VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
-						$resultado22=$conexion->prepare($sql22);	
-						$resultado22->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>2,":accion"=>'CONSULTA',":descr"=>'VERIFICA LAS CREDENCIALES DEL USUARIO',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
-						
-						header("location:../vistas/preguntas_vista.php"); 
-					
 					}
-					
-					
 					elseif ($_SESSION["est"]=="BLOQUEADO" ) {
 						echo '<script> Swal.fire({
 							position: "center",

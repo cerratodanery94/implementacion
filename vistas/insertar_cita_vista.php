@@ -198,9 +198,9 @@ $CONSULTAR = $DATOS['PERM_CONSULTAR'];
 
             <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <div class="input-group">
-                <span class="input-group-addon">Doctora</span>
+                <span class="input-group-addon">Doctora/Doctor/Nutricionista</span>
              <select class="form-control" name="id_u" id="doctora">
-             <option value="0">SELECCIONE DOCTORA:</option>
+             <option value="0">SELECCIONE DOCTORA/DOCTOR/NURICIONISTA:</option>
                 <?php
                require '../modelos/conectar.php';
                $resultado = $conexion -> query ("SELECT * FROM TBL_USUARIO where ROL_CODIGO=3 or ROL_CODIGO=4");

@@ -150,7 +150,7 @@ $datos9 = $resultado9->fetch(PDO::FETCH_ASSOC);
 <div class="wrapper">
 <header class="main-header">
     <!-- Logo -->
-    <a href="#" class="logo">
+    <a href="../vistas/index2.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>C</b>H</span>
       <!-- logo for regular state and mobile devices -->
@@ -191,7 +191,7 @@ $datos9 = $resultado9->fetch(PDO::FETCH_ASSOC);
       </h1>
       <ol class="breadcrumb">
         <li><a href="../vistas/index2.php"><i class="fa fa-dashboard"></i> Inicio</a></li>
-        <li class="active">Administrador</li>
+        <li class="active"><?php echo $_SESSION["usu"];?></li>
       </ol>
     </section>
 
@@ -251,7 +251,7 @@ $datos9 = $resultado9->fetch(PDO::FETCH_ASSOC);
             <span class="info-box-icon"><i class="fa fa-clipboard"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">EXPEDIENTES MÉDICOS</span>
+              <span class="info-box-text"><p>EXPEDIENTES</p><p>MÉDICOS</p></span>
               <span class="info-box-number"><?php echo $totalem; ?></span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
@@ -266,7 +266,7 @@ $datos9 = $resultado9->fetch(PDO::FETCH_ASSOC);
           <div class="info-box bg-red">
             <span class="info-box-icon"><i class="fa fa-clipboard"></i></span>
             <div class="info-box-content">
-              <span class="info-box-text">EXPEDIENTES NUTRICIONISTA</span>
+              <span class="info-box-text"><p>EXPEDIENTES</p><p>NUTRICIONISTA</p></span>
               <span class="info-box-number"><?php echo $totalen; ?></span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
@@ -281,7 +281,7 @@ $datos9 = $resultado9->fetch(PDO::FETCH_ASSOC);
     
           <section class="content">
           <ol class="breadcrumb">
-        <li><a href="#"><i class=""></i>Configuraciones</a></li>
+        <li class="active">Configuraciones</li>
         <li class="active">Administrar</li>
       </ol>
       <!-- Small boxes (Stat box) -->
@@ -319,7 +319,7 @@ $datos9 = $resultado9->fetch(PDO::FETCH_ASSOC);
           <div class="small-box bg-yellow">
             <div class="inner">
               <h2>EXPEDIENTES</h2>
-            <P> MÉDICO </P>
+            <P> MÉDICOS </P>
             </div>
             <div class="icon">
               <i class="fa fa-clipboard"></i>
@@ -333,7 +333,7 @@ $datos9 = $resultado9->fetch(PDO::FETCH_ASSOC);
           <div class="small-box bg-red">
             <div class="inner">
               <h2>EXPEDIENTES</h2>
-              <P> NUTRICIONALES </P>
+              <P> NUTRICIONISTA </P>
             </div>
             <div class="icon">
               <i class="fa fa-clipboard"></i>
