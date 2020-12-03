@@ -112,22 +112,22 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>33
             <!--llamar funciones-->
             <div class="box-body">
             <form action="../modelos/bitacora_reporte.php" method="post">
-            <div class="form-group col-lg-6 col-md-6 col-xs-6">
+            <div class="form-group col-lg-3 col-md-3 col-xs-3">
                 <div class="input-group">
                 <span class="input-group-addon">DESDE</span>
             <input type="date" autocomplete="off" class="form-control" name="desde" id="desde">
             </div>
             </div>
-            <div class="form-group col-lg-6 col-md-6 col-xs-6">
+            <div class="form-group col-lg-3 col-md-3 col-xs-3">
                 <div class="input-group">
                 <span class="input-group-addon">HASTA</span>
             <input type="date" autocomplete="off" class="form-control" name="hasta" id="hasta">
             </div>
             </div>
-            <div class="box-footer">
-            <div class="form-group col-lg-6 col-md-6 col-xs-6">
-            <button type="submit"  class="btn bg-red btn-flat margin" ><i class="fa fa-print" aria-hidden="true"></i> IMPRIMIR</button>
-            </div>
+           
+            <div class="form-group col-lg-3 col-md-3 col-xs-3">
+            <button type="submit"  class="btn btn-block btn-danger" ><i class="fa fa-print" aria-hidden="true"></i> IMPRIMIR</button>
+            
             </div>
             
             </form>
@@ -227,8 +227,6 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>33
  <script type="text/javascript" src="../vistas/reportes/Buttons-1.6.1/js/buttons.flash.min.js"></script>
  <script type="text/javascript" src="../vistas/reportes/Buttons-1.6.1/js/buttons.html5.min.js"></script>
  <script>
- 
-
  $(document).ready(function() {
    $('#example1').DataTable({
      language: {

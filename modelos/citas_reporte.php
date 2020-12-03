@@ -2,10 +2,13 @@
 require('../vistas/fpdf/fpdf.php');
 require('../modelos/conectar.php');
 if (isset($_POST['desde']) && 
-isset($_POST['hasta']) ) {
+isset($_POST['hasta']) &&
+isset($_POST['estado'])
+ ) {
+$_SESSION["est_c"]=$_POST["estado"];
 $_SESSION["desde"]=$_POST["desde"];
 $_SESSION["hasta"]=$_POST["hasta"];
-$consulta=$conexion->prepare("SELECT * FROM tbl_bitacora b INNER JOIN tbl_usuario u on b.usu_codigo = u.usu_codigo INNER JOIN tbl_objetos o ON b.obj_codigo=o.obj_codigo WHERE b.bit_fecha BETWEEN '$_SESSION[desde]' AND '$_SESSION[hasta]' ORDER BY b.bit_codigo DESC");
+$consulta=$conexion->prepare("SELECT * from tbl_citas c INNER JOIN tbl_personas p on c.per_codigo = p.per_codigo INNER JOIN tbl_usuario u  ON c.usu_codigo=u.usu_codigo INNER JOIN tbl_horario h ON c.hor_codigo=h.hor_codigo WHERE c.cit_estado IN ($_SESSION[est_c]) AND c.cit_fecha_cita BETWEEN '$_SESSION[desde]' AND '$_SESSION[hasta]' AND c.cit_estado_registro = 'A'");
 $consulta->execute();
       $i=1;      
 class PDF extends FPDF
@@ -26,7 +29,7 @@ function Header()
     // Salto de línea
     $this->Ln(10);
     $this->SetFont('Arial','',12);
-    $this->Cell(270,15,utf8_decode('BÍTACORA DEL SISTEMA DESDE '.$_SESSION["desde"].' HASTA '.$_SESSION["hasta"]),0,0,'C');
+    $this->Cell(270,15,utf8_decode('LISTA DE CITAS DESDE '.$_SESSION["desde"].' HASTA '.$_SESSION["hasta"]),0,0,'C');
     //$this->Cell(270,15,utf8_decode('BÍTACORA DEL SISTEMA'),0,0,'C');
     $this->Ln(10);
     $this->Cell(20,15,'FECHA: ',0,0,'L',0);
@@ -38,11 +41,11 @@ function Header()
     $this->SetFont('Arial','B',12);
     $this->SetFillColor(45,65,84);
     $this->SetTextColor(255,255,255);
-    $this->Cell(60,8,utf8_decode('USUARIO'),0,0,'C',1);
-    $this->Cell(95,8,utf8_decode('PANTALLA'),0,0,'C',1);
-    $this->Cell(60,8,utf8_decode('ACCION'),0,0,'C',1);
-    $this->Cell(30,8,utf8_decode('FECHA'),0,0,'C',1);
-    $this->Cell(30,8,utf8_decode('HORA'),0,1,'C',1);
+    $this->Cell(93,8,utf8_decode('ATENCION CON'),0,0,'C',1);
+    $this->Cell(93,8,utf8_decode('PACIENTE'),0,0,'C',1);
+    $this->Cell(26,8,utf8_decode('FECHA'),0,0,'C',1);
+    $this->Cell(30,8,utf8_decode('HORA'),0,0,'C',1);
+    $this->Cell(35,8,utf8_decode('ESTADO'),0,1,'C',1);
 
     
 
@@ -73,13 +76,13 @@ while($fila=$consulta->fetch()){
     }else{
         $pdf->SetFillColor(255,255,255);
     }
-    $pdf->Cell(60,8,utf8_decode($fila['USU_USUARIO']),0,0,'C',1);
-    $pdf->Cell(95,8,utf8_decode($fila['OBJ_NOMBRE']),0,0,'C',1);
-    $pdf->Cell(60,8,utf8_decode($fila['BIT_ACCION']),0,0,'C',1);
-    $pdf->Cell(30,8,utf8_decode($fila['BIT_FECHA']),0,0,'C',1);
-    $pdf->Cell(30,8,utf8_decode($fila['BIT_HORA']),0,1,'C',1);
+    $pdf->Cell(93,8,utf8_decode($fila['USU_NOMBRES']." ". $fila['USU_APELLIDOS']),0,0,'C',1);
+    $pdf->Cell(93,8,utf8_decode($fila['PER_NOMBRES']." ". $fila['PER_APELLIDOS']),0,0,'C',1);
+    $pdf->Cell(26,8,utf8_decode($fila['CIT_FECHA_CITA']),0,0,'C',1);
+    $pdf->Cell(30,8,utf8_decode($fila['HOR_HORA']),0,0,'C',1);
+    $pdf->Cell(35,8,utf8_decode($fila['CIT_ESTADO']),0,1,'C',1);
     $i++;
    }
 }
-$pdf->Output('D','CLINICA MEDICA HOMEOPATICA CLIME HOME BITACORA DEL SISTEMA.pdf');
+$pdf->Output('D','CLINICA MEDICA HOMEOPATICA CLIME HOME LISTA DE CITAS.pdf');
 ?>
