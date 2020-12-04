@@ -171,7 +171,7 @@ function validar_telefono(parametro){
         return false;
         }
     else if (validar_texto (formulario.nombres.value)==false){
-        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO.</div>';
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO, SIN ESPACIOS AL INICIO O FINAL DEL TEXTO EN EL CAMPO.</div>';
         formulario.nombres.focus();
         return false;
         }
@@ -196,7 +196,7 @@ else if (Validar_espacio2 (formulario.apellidos.value)==false){
     return false;
     }
 else if (validar_texto (formulario.apellidos.value)==false){  
-    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO.</div>';
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO, SIN ESPACIOS AL INICIO O FINAL DEL TEXTO EN EL CAMPO</div>';
     formulario.apellidos.focus();
     return false;
     }
@@ -229,7 +229,7 @@ else if (Validar_espacio2 (formulario.usum.value)==false){
     return false;
     }
 else if (validar_texto (formulario.usum.value)==false){  
-    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO.</div>';
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO, SIN ESPACIOS AL INICIO O FINAL DEL TEXTO EN EL CAMPO</div>';
     formulario.usum.focus();
     return false;
     }
@@ -366,7 +366,7 @@ return false;
         return false;
         }
     else if (validar_texto (formulario.nombres.value)==false){
-        document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO</div>';
+        document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO, SIN ESPACIOS AL INICIO O FINAL DEL TEXTO EN EL CAMPO</div>';
         formulario.nombres.focus();
         return false;
         }
@@ -392,7 +392,7 @@ else if (Validar_espacio2 (formulario.apellidos.value)==false){
     return false;
     }
 else if (validar_texto (formulario.apellidos.value)==false){  
-    document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO</div>';
+    document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO, SIN ESPACIOS AL INICIO O FINAL DEL TEXTO EN EL CAMPO</div>';
     formulario.apellidos.focus();
     return false;
     }
@@ -552,7 +552,7 @@ else if (validar_tamaño (formulario.correo.value)==false){
             return false;
             }
         else if (validar_texto (formulario.nombres.value)==false){
-            document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO.</div>';
+            document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO, SIN ESPACIOS AL INICIO O FINAL DEL TEXTO EN EL CAMPO</div>';
             formulario.nombres.focus();
             return false;
             }
@@ -577,7 +577,7 @@ else if (validar_tamaño (formulario.correo.value)==false){
         return false;
         }
     else if (validar_texto (formulario.apellidos.value)==false){  
-        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO.</div>';
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO, SIN ESPACIOS AL INICIO O FINAL DEL TEXTO EN EL CAMPO</div>';
         formulario.apellidos.focus();
         return false;
         }
@@ -608,7 +608,7 @@ else if (validar_tamaño (formulario.correo.value)==false){
         return false;
         }
     else if (validar_texto (formulario.usum.value)==false){  
-        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO.</div>';
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO, SIN ESPACIOS AL INICIO O FINAL DEL TEXTO EN EL CAMPO</div>';
         formulario.usum.focus();
         return false;
         }            
@@ -759,7 +759,7 @@ else if (validar_tamaño (formulario.correo.value)==false){
                 return false;
                 }
             else if (validar_texto (formulario.nombres.value)==false){
-                document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO</div>';
+                document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO, SIN ESPACIOS AL INICIO O FINAL DEL TEXTO EN EL CAMPO</div>';
                 formulario.nombres.focus();
                 return false;
                 }
@@ -785,7 +785,7 @@ else if (validar_tamaño (formulario.correo.value)==false){
             return false;
             }
         else if (validar_texto (formulario.apellidos.value)==false){  
-            document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO</div>';
+            document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO, SIN ESPACIOS AL INICIO O FINAL DEL TEXTO EN EL CAMPO</div>';
             formulario.apellidos.focus();
             return false;
             }
@@ -1007,7 +1007,7 @@ else if(Validar_espacio2(formulario_exp.dieta.value)==false){
         return false;
     }
     else if(validar_texto(formulario.rol.value)==false){
-        document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO ROL NO PUEDE CONTENER NUMEROS</div>';
+        document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO, SIN ESPACIOS AL INICIO O FINAL DEL TEXTO EN EL CAMPO</div>';
         formulario.rol.focus();
         return false;
     }
@@ -1022,7 +1022,7 @@ else if(Validar_espacio2(formulario_exp.dieta.value)==false){
         return false;
     }
     else if(validar_texto(formulario.descrip.value)==false){
-        document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO DESCRIPCION NO PUEDE CONTENER NUMEROS</div>';
+        document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO, SIN ESPACIOS AL INICIO O FINAL DEL TEXTO EN EL CAMPO</div>';
         formulario.descrip.focus();
         return false;
     }
