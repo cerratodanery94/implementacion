@@ -19,7 +19,7 @@ if(isset($_GET['id'])){
 }
 } catch (Exception $e) {
     if($e->getCode()==23000){
-        header('location:../vistas/blank.php');
+        header('location:../vistas/Error_profesion.php');
     }
 	
 }

@@ -178,7 +178,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>20
                 <div class="input-group">
                 <span class="input-group-addon">Peso</span>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder=""  name="peso" id="peso">
-                  <span class="		glyphicon glyphicon-scale form-control-feedback"></span>
+                  <span class="input-group-addon">libras</span>
                 </div>
                 </div>
 
@@ -186,7 +186,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>20
                 <div class="input-group">
                 <span class="input-group-addon">Estatura</span>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder=""  name="estatura" id="estatura">
-                  <span class="		glyphicon glyphicon-indent-right form-control-feedback"></span>
+                  <span class="input-group-addon">metros</span>
                 </div>
                 </div>
 

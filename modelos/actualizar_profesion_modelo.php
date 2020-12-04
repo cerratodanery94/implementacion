@@ -27,7 +27,7 @@ try {
             Swal.fire({
             title: "¡BIEN!",
             position: "center",
-            text: "SE HA ACTUALIZADO LA PREGUNTA  CORRECTAMENTE",
+            text: "SE HA ACTUALIZADO LA PROFESIÓN | OCUPACIÓN CORRECTAMENTE",
             icon: "success",
             type: "success"
             }).then(function() {

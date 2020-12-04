@@ -51,7 +51,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Editar párametro</title>
+  <title>Editar preguntas</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -108,15 +108,14 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-    <h1><i class="fa fa-refresh" aria-hidden="true"></i>
-       Actualizar roles del sistema
+    <h1><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+       Editar preguntas de seguridad
         <small>ClimeHome</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="../vistas/mostrar_roles_vista.php"><i class="fa fa-lock"></i> Roles</a></li>
-        <li class="active"><i class="fa fa-refresh"></i> Actualizar rol</li>
+        <li><a href="../vistas/mostrar_preguntas.php"><i class="fa fa-list-alt"></i>Lista de preguntas de seguridad</a></li>
+        <li class="active"><i class="fa fa-pencil-square-o"></i> Editar preguntas de seguridad</li>
       </ol>
-    </section>
     </section>
 
     <!-- Main content -->
@@ -149,7 +148,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
               <div class="col text-center">
               
                 <button type="submit"  class="btn btn-lg btn btn-primary"><i class="fa fa-refresh" aria-hidden="true"></i> ACTUALIZAR</button>
-                <a href="../vistas/mostrar_roles_vista.php" class="btn btn-lg  btn bg-red" ><i class="fa fa-times-circle-o" aria-hidden="true"></i> CANCELAR</a>
+                <a href="../vistas/mostrar_preguntas.php" class="btn btn-lg  btn bg-red" ><i class="fa fa-times-circle-o" aria-hidden="true"></i> CANCELAR</a>
                 </div>
               </div>
             </form>

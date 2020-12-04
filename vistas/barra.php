@@ -100,11 +100,11 @@
        <li class="treeview">
       <?php if ($_SESSION['cit']==28 and $_SESSION['ccit']==1 ){  ?>
         <a href="#">
-        <i class="fa fa-folder-o"></i>
-          <span>Profesiones</span>
+        <i class="fa fa-graduation-cap"></i>
+          <span>Profesiones | Ocupaciones</span>
           </a>
             <ul class="treeview-menu">
-            <li><a href="../vistas/mostrar_profesiones.php"><i class=" fa fa-work"></i>Mostrar Profesiones</a></li>
+            <li><a href="../vistas/mostrar_profesiones.php"><i class=" fa fa-list-alt"></i>Mostrar Profesión | Ocupación </a></li>
           
         </ul>
           
@@ -112,11 +112,26 @@
       
         </a>
       </li>
+      
       <?php  }  ?> 
      <!-- Titulo de Seguridad -->
      <?php if ($_SESSION['cparam']==1 or $_SESSION['croles']==1 or $_SESSION['cbit']==1 or $_SESSION['cback']==1 or $_SESSION['cperm']==1 ){  ?>
      <li class="header">Seguridad</li>
      <?php  }  ?>  
+     
+     <li class="treeview">
+      <?php if ($_SESSION['back']==40 and $_SESSION['cback']==1 ){  ?>
+        <a href="#">
+          <i class="	glyphicon glyphicon-question-sign"></i>
+          <span>Preguntas de seguridad</span>
+        </a>
+        <!-- subtitulos de Expedientes -->
+          <ul class="treeview-menu">
+          <li><a href="../vistas/mostrar_preguntas.php"><i class="fa fa-list-alt"></i>Mostrar preguntas</a></li>
+          </ul>
+      </li>
+      <?php  }  ?> 
+
      <li class="treeview">
      <?php if ($_SESSION['param']==30 and $_SESSION['cparam']==1 ){  ?>
         <a href="#">
@@ -171,6 +186,20 @@
           <li><a href="../vistas/bitacora_vista.php"><i class="fa fa-list-alt"></i> Ver Bitácora</a></li>
           </ul>
       </li>
+    
+
+      <li class="treeview">
+      <?php if ($_SESSION['back']==40 and $_SESSION['cback']==1 ){  ?>
+        <a href="#">
+        <i class="fa fa-television" aria-hidden="true"></i>
+          <span>Pantallas</span>
+        </a>
+        <!-- subtitulos de Expedientes -->
+          <ul class="treeview-menu">
+          <li><a href="../vistas/mostrar_pantallas.php"><i class="fa fa-list-alt"></i>Mostrar pantallas</a></li>
+          </ul>
+      </li>
+      <?php  }  ?>
       <?php  }  ?>  
       <li class="treeview">
       <?php if ($_SESSION['back']==40 and $_SESSION['cback']==1 ){  ?>
@@ -185,32 +214,6 @@
       </li>
       <?php  }  ?> 
 
-      <li class="treeview">
-      <?php if ($_SESSION['back']==40 and $_SESSION['cback']==1 ){  ?>
-        <a href="#">
-          <i class="glyphicon glyphicon-cloud-upload"></i>
-          <span>Preguntas de seguridad</span>
-        </a>
-        <!-- subtitulos de Expedientes -->
-          <ul class="treeview-menu">
-          <li><a href="../vistas/mostrar_preguntas.php"><i class="	glyphicon glyphicon-cloud"></i>Mostrar preguntas</a></li>
-          </ul>
-      </li>
-      <?php  }  ?> 
-
-
-      <li class="treeview">
-      <?php if ($_SESSION['back']==40 and $_SESSION['cback']==1 ){  ?>
-        <a href="#">
-          <i class="glyphicon glyphicon-cloud-upload"></i>
-          <span>Pantallas</span>
-        </a>
-        <!-- subtitulos de Expedientes -->
-          <ul class="treeview-menu">
-          <li><a href="../vistas/mostrar_pantallas.php"><i class="	glyphicon glyphicon-cloud"></i>Mostrar pantallas</a></li>
-          </ul>
-      </li>
-      <?php  }  ?>
 
 
      

@@ -201,7 +201,7 @@ try {
                 <div class="input-group">
                 <span class="input-group-addon">Peso</span>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="PESO"  name="peso" id="peso" value="<?php echo $peso?>" readonly>
-                  <span class="		glyphicon glyphicon-scale form-control-feedback"></span>
+                  <span class="input-group-addon">libras</span>
                 </div>
                 </div>
 
@@ -209,7 +209,7 @@ try {
                 <div class="input-group">
                 <span class="input-group-addon">Estatura</span>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control nombres" placeholder="ESTATURA"  name="estatura" id="estatura"  value="<?php echo $estatura?>" readonly>
-                  <span class="		glyphicon glyphicon-indent-right form-control-feedback"></span>
+                  <span class="input-group-addon">metros</span>
                 </div>
                 </div>
 

@@ -19,7 +19,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Mostrar Citas</title>
+  <title>Mostrar Profesiones | Ocupaciones</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -82,13 +82,13 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-    <h1><i class="fa fa-calendar" aria-hidden="true"></i>
-        Lista de citas 
+    <h1><i class="fa fa-list-alt" aria-hidden="true"></i>
+        Lista de Profesiones | Ocupaciones
         <small>ClimeHome</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="mostrar_citas_vista.php"><i class="fa fa-calendar"></i>Citas</a></li>
-        <li class="active"><i class="fa fa-list-alt"></i> Lista de Profesiones</li>
+        <li><a href="mostrar_profesiones.php"><i class="fa fa-graduation-cap"></i>Profesiones | Ocupaciones</a></li>
+        <li class="active"><i class="fa fa-list-alt"></i> Lista de Profesiones | Ocupaciones</li>
       </ol>
     </section>
     <!-- Main content -->

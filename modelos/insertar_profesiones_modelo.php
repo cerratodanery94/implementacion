@@ -34,11 +34,11 @@
                     Swal.fire({
                     title: "¡BIEN!",
                     position: "center",
-                    text: "SE REGISTRO CORRECTAMENTA LA PROFESION",
+                    text: "SE REGISTRO CORRECTAMENTA LA PROFESIÓN | OCUPACIÓN",
                     icon: "success",
                     type: "success"
                     }).then(function() {
-                    window.location = "../vistas/mostrar_preguntas.php";
+                    window.location = "../vistas/mostrar_profesiones.php";
                     });
                   </script>';	
 	   } else {

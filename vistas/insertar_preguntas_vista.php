@@ -13,7 +13,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Registrar Usuarios</title>
+  <title>Registrar pregunta</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -71,13 +71,13 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-    <h1><i class="fa fa-user-plus" aria-hidden="true"></i>
-        Registrar usuarios
+    <h1><i class="fa fa-tag" aria-hidden="true"></i>
+        Registrar preguntas de seguridad
         <small>ClimeHome</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="mostrar_vista.php"><i class="fa fa-user"></i>Usuarios</a></li>
-        <li class="active"><i class="fa fa-user-plus"></i> Registrar usuarios</li>
+        <li><a href="mostrar_preguntas.php"><i class="glyphicon glyphicon-question-sign"></i>Preguntas de seguridad</a></li>
+        <li class="active"><i class="fa fa-tag"></i>  Registrar preguntas de seguridad</li>
       </ol>
     </section>
    <!-- Main content -->
@@ -96,12 +96,12 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
         <div class="form-group col-lg-6 col-md-6 col-xs-12">
         <div class="input-group">
                 <span class="input-group-addon">Pregunta de Seguridad</span>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control apellidos" placeholder="Pregunta de seguridad"  name="pregunta" id="pregunta" >
-                  <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control apellidos" placeholder=""  name="pregunta" id="pregunta" >
+                  <span class="glyphicon glyphicon-question-sign form-control-feedback"></span>
        </div>
                 </div>
 
-                <button type="submit"  class="btn btn-lg btn btn-primary">  <i class="fa fa-check-circle-o" aria-hidden="true"></i> CREAR</button>
+                <button type="submit"  class="btn btn btn btn-primary">  <i class="fa fa-check-circle-o" aria-hidden="true"></i> CREAR</button>
 
               
       <!-- /.row -->
