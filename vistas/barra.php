@@ -55,7 +55,7 @@
       <?php if ($_SESSION['ed']==24 and $_SESSION['ced']==1 ){  ?>  
         <a href="#">
           <i class="fa fa-folder-o"></i>
-          <span>Expedientes Médico </span>
+          <span>Expedientes Médicos </span>
 
           </a>
         <!-- subtitulos de Expedientes -->
@@ -95,6 +95,24 @@
         </a>
       </li>
       <?php  }  ?>  
+
+
+       <li class="treeview">
+      <?php if ($_SESSION['cit']==28 and $_SESSION['ccit']==1 ){  ?>
+        <a href="#">
+        <i class="fa fa-folder-o"></i>
+          <span>Profesiones</span>
+          </a>
+            <ul class="treeview-menu">
+            <li><a href="../vistas/mostrar_profesiones.php"><i class=" fa fa-work"></i>Mostrar Profesiones</a></li>
+          
+        </ul>
+          
+      </li>
+      
+        </a>
+      </li>
+      <?php  }  ?> 
      <!-- Titulo de Seguridad -->
      <?php if ($_SESSION['cparam']==1 or $_SESSION['croles']==1 or $_SESSION['cbit']==1 or $_SESSION['cback']==1 or $_SESSION['cperm']==1 ){  ?>
      <li class="header">Seguridad</li>
@@ -167,6 +185,35 @@
       </li>
       <?php  }  ?> 
 
+      <li class="treeview">
+      <?php if ($_SESSION['back']==40 and $_SESSION['cback']==1 ){  ?>
+        <a href="#">
+          <i class="glyphicon glyphicon-cloud-upload"></i>
+          <span>Preguntas de seguridad</span>
+        </a>
+        <!-- subtitulos de Expedientes -->
+          <ul class="treeview-menu">
+          <li><a href="../vistas/mostrar_preguntas.php"><i class="	glyphicon glyphicon-cloud"></i>Mostrar preguntas</a></li>
+          </ul>
+      </li>
+      <?php  }  ?> 
+
+
+      <li class="treeview">
+      <?php if ($_SESSION['back']==40 and $_SESSION['cback']==1 ){  ?>
+        <a href="#">
+          <i class="glyphicon glyphicon-cloud-upload"></i>
+          <span>Pantallas</span>
+        </a>
+        <!-- subtitulos de Expedientes -->
+          <ul class="treeview-menu">
+          <li><a href="../vistas/mostrar_pantallas.php"><i class="	glyphicon glyphicon-cloud"></i>Mostrar pantallas</a></li>
+          </ul>
+      </li>
+      <?php  }  ?>
+
+
+     
        
  
 
