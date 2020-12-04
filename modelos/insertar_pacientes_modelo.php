@@ -12,11 +12,28 @@
 		$numero_de_celular= $_POST["numero_de_celular"];
 		$numero_de_telefono_fijo= $_POST["numero_de_telefono_fijo"];
 		$fecha_de_nacimiento= $_POST["fecha_de_nacimiento"];
-		$correo= $_POST["correo"];
+		$correo=  strtolower($_POST["correo"]);
 		$direccion=strtoupper($_POST["direccion"]);
 		$genero=$_POST["genero"];
 		$fecha_creacion= date("Y-m-d H:m:s");
 		$nacionalidad=$_POST["nacionalidad"];
+
+		$consulta=$conexion->prepare("SELECT * FROM TBL_PERSONAS WHERE PER_NUMERO_IDENTIDAD='$identidad'");
+        $consulta->execute();
+        $num_rows = $consulta->fetchColumn();
+        
+       if ($num_rows>0){ 
+		   //echo '<script>alert("Usuario  ya se encuentran registrados ");location.href= "../vistas/insertar_mant_vista.php"</script>';
+		   echo '<script> Swal.fire({
+			position: "center",
+			icon: "error",
+			title: "LA IDENTIDAD DEL YA SE ENCUENTRA REGISTRADA ",
+			showConfirmButton: false,
+			timer: 3000
+		  })
+		  </script>';
+
+       }else{	
 		
 	   $sql="INSERT INTO TBL_PERSONAS (
 		   PAIS_CODIGO,
@@ -99,6 +116,7 @@
 	}
 		$resultado->closeCursor();
 		$resultado2->closeCursor();
+ }
 }
 	}catch(Exception $e){			
 		

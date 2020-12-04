@@ -163,7 +163,6 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
                  <option value="0">Seleccione un género:</option>
                  <option value="MUJER">FEMENINO</option>
                  <option value="MASCULINO">MASCULINO</option>
-                 <option value="OTRO">OTRO</option>
                 </select>
                 </div>
                 </div>
@@ -218,7 +217,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
                 <div class="form-group col-md-6 col-xs-12">
                 <div class="input-group">
                 <span class="input-group-addon">Correo</span>
-                  <input type="email" autocomplete="off" class="form-control correo" placeholder="" name="correo" id="correo" >
+                  <input type="email" style="text-transform:lowercase"autocomplete="off" class="form-control correo" placeholder="" name="correo" id="correo" >
                   <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 </div>
                 </div>
@@ -226,7 +225,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
                 <div class="form-group col-md-6 col-xs-12">
                 <div class="input-group">
                 <span class="input-group-addon">Pasaporte</span>
-                  <input type="text" autocomplete="off" class="form-control correo" placeholder=" " name="pasaporte" id="pasaporte" >
+                  <input type="text" style="text-transform:uppercase" autocomplete="off" class="form-control correo" placeholder=" " name="pasaporte" id="pasaporte" >
                   <span class="	glyphicon glyphicon-book form-control-feedback"></span>
                 </div>
                 </div>

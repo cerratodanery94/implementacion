@@ -8,26 +8,6 @@ $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BI
 VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
   $resultado2=$conexion->prepare($sql2);	
 $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>27,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA AÑADIR CITA',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
-
-
-$ROL = $_SESSION['ROL'];
-$_SESSION['PANTALLA'] = 27;
-$PANTALLA = $_SESSION['PANTALLA'];
-$sql3 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO = :pantalla ";
-$resultado3=$conexion->prepare($sql3);	
-$resultado3->execute(array(":rol"=>$ROL,":pantalla"=>$PANTALLA));
-$DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
-$CONSULTAR = $DATOS['PERM_CONSULTAR'];
- $INSERTAR = $DATOS['PERM_INSERTAR'];
- $ELIMINAR = $DATOS['PERM_ELIMINAR'];
- $ACTUALIZAR = $DATOS['PERM_ACTUALIZAR'];
- $USUARIOS=$DATOS['PERM_USUARIO'];
-
- $PACIENTES=$DATOS['PERM_PACIENTES'];
- $NUTRI=$DATOS['PERM_EXP_NUTRI'];
- $MEDICO=$DATOS['PERM_EXP_MEDICO'];
- $CITAS=$DATOS['PERM_CITAS'];
- $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -200,7 +180,7 @@ $CONSULTAR = $DATOS['PERM_CONSULTAR'];
                 <div class="input-group">
                 <span class="input-group-addon">Doctora/Doctor/Nutricionista</span>
              <select class="form-control" name="id_u" id="doctora">
-             <option value="0">SELECCIONE DOCTORA/DOCTOR/NURICIONISTA:</option>
+             <option value="0">SELECCIONE DOCTORA/DOCTOR/NUTRICIONISTA:</option>
                 <?php
                require '../modelos/conectar.php';
                $resultado = $conexion -> query ("SELECT * FROM TBL_USUARIO where ROL_CODIGO=3 or ROL_CODIGO=4");

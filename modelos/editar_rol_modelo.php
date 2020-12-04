@@ -26,24 +26,6 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>32
     die('Error: ' . $e->GetMessage());
 	echo "Codigo del error" . $e->getCode();
 }
-$ROL = $_SESSION['ROL'];
-$_SESSION['PANTALLA'] = 32;
-$PANTALLA = $_SESSION['PANTALLA'];
-$sql3 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO = :pantalla ";
-$resultado3=$conexion->prepare($sql3);	
-$resultado3->execute(array(":rol"=>$ROL,":pantalla"=>$PANTALLA));
-$DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
-$CONSULTAR = $DATOS['PERM_CONSULTAR'];
-$INSERTAR = $DATOS['PERM_INSERTAR'];
-$ELIMINAR = $DATOS['PERM_ELIMINAR'];
-$ACTUALIZAR = $DATOS['PERM_ACTUALIZAR'];
-$USUARIOS=$DATOS['PERM_USUARIO'];
-
-$PACIENTES=$DATOS['PERM_PACIENTES'];
-$NUTRI=$DATOS['PERM_EXP_NUTRI'];
-$MEDICO=$DATOS['PERM_EXP_MEDICO'];
-$CITAS=$DATOS['PERM_CITAS'];
-$SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 ?> 
 
 <!DOCTYPE html>
@@ -135,8 +117,9 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                 <div class="input-group">
                 <span class="input-group-addon">Nombre del rol</span>
                   <input type="hidden" name="id_r" id="id_r" value="<?php echo $id_r?>">
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="ROL"  name="rol" id="rol" value="<?php echo $rol?>" >
-                  <span class="		glyphicon glyphicon-ok-circle form-control-feedback"></span>
+                  <input type="hidden"  name="rola" id="rola" value="<?php echo $rol?>">
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="ROL"  name="roln" id="rol" value="<?php echo $rol?>" >
+                  <span class="glyphicon glyphicon-ok-circle form-control-feedback"></span>
                 </div>
                 </div>
 

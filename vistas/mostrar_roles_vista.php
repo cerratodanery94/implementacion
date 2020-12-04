@@ -155,7 +155,9 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>31
                 </tr>
                 </tfoot>
               </table>
-             
+              <?php if (isset($_GET['m'])) : ?>
+                <div class="flash-data" data-flashdata="<?= $_GET['m']; ?>"></div>
+              <?php endif; ?>
             </div>
             <!-- /.box-body -->
           </div>
@@ -208,7 +210,35 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>31
  <script type="text/javascript" src="../vistas/reportes/Buttons-1.6.1/js/dataTables.buttons.min.js"></script>
  <script type="text/javascript" src="../vistas/reportes/Buttons-1.6.1/js/buttons.flash.min.js"></script>
  <script type="text/javascript" src="../vistas/reportes/Buttons-1.6.1/js/buttons.html5.min.js"></script>
-
+ <script>
+   $('.btne').on('click',function(e){
+     e.preventDefault();
+     const href=$(this).attr('href')
+     Swal.fire({
+  title: '¿ESTA SEGURO DE ELIMINAR ESTE ROL?',
+  text: "¡NO PODRÁS REVERTIR ESTO!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'ELIMINAR',
+  cancelButtonText: 'CANCELAR',
+}).then((result) => {
+  if (result.value) {
+    document.location.href=href;
+  }
+})
+   })
+   const flashdata=$('.flash-data').data('flashdata')
+   if (flashdata) {
+    swal.fire({
+       icon:'success',
+       title:'ELIMINADO',
+       text:'SE HA ELIMINADO EL ROL CORRECTAMENTE'
+     })
+   }
+</script>
+<!-- page script -->
 <!-- page script -->
 <script type="text/javascript">
 var currentdate = new Date();
@@ -339,60 +369,6 @@ buttons:
 </script>
 </body>
 </html>
-<?php 
 
-/*try {
-    require '../modelos/conectar.php';
-    if(isset($_GET['id'])){
-        $id=$_GET['id'];
-        $consulta3=$conexion->prepare("DELETE FROM tbl_rol WHERE ROL_CODIGO=:id");
-        $consulta3->execute(array(":id"=>$id));
-        if ($consulta3) {
-          $sql9="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA) 
-          VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
-          $resultado9=$conexion->prepare($sql9);	
-          $resultado9->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>31,":accion"=>'DELETE',":descr"=>'ELIMINO UN ROL',":fecha"=>date("Y-m-d H:i:s")));
-          echo '<script>
-                          Swal.fire({
-                          title: "¡BIEN!",
-                          position: "center",
-                          text: "SE HA ELIMINADO EL ROL",
-                          icon: "success",
-                          type: "success"
-                          }).then(function() {
-                          window.location = "../vistas/mostrar_roles_vista.php";
-                          });
-                        </script>';	
-           } else {
-          //echo '<script>alert("Error al registrarse");location.href= "../vistas/insertar_mant_vista.php"</script>';	
-          echo '<script> Swal.fire({
-            position: "center",
-            icon: "error",
-            title: "¡ALGO SALIÓ MAL!",
-            text:"ERROR AL ELIMINAR ROL",
-            showConfirmButton: false,
-            timer: 3000
-            })
-            </script>';
-          }
-       
-            
-      
-    }  
-} catch (Exception $e) {
-  echo '<script>
-  Swal.fire({
-  title: "¡Error!",
-  position: "center",
-  text: "NO SE PUEDE ELIMINAR HAY REGISTROS CON ESTE ROL",
-  icon: "error"
-  }).then(function() {
-  window.location = "../vistas/mostrar_roles_vista.php";
-  });
-</script>';	
-
-}
-*/
-?>
 
 

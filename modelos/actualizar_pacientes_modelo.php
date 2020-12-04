@@ -4,7 +4,8 @@ require '../modelos/conectar.php';
 try {
     if (isset($_POST['nombres'])&& isset($_POST['apellidos'])) {
         $ide=$_POST['ide'];
-        $identidad1=$_POST["numero_de_identidad"];
+        $identidada=$_POST["identidada"];
+        $identidadn=$_POST["identidadn"];
         $pasaporte1=$_POST["pasaporte"];
         $nombres1=$_POST["nombres"];
         $apellidos1=$_POST["apellidos"];
@@ -15,11 +16,32 @@ try {
         $numero_de_celular1= $_POST["numero_de_celular"];
         $profesion1=$_POST["profesion"];
         $direccion1=$_POST["direccion"];
-        $correo1= $_POST["correo"];
+        $correo1=  strtolower($_POST["correo"]);
         $nacionalidad1=$_POST["nacionalidad"];
         $rtn1=$_POST["rtn"];
         
-      
+        if ($identidada!=$identidadn) {
+          $consulta3=$conexion->prepare("SELECT * FROM tbl_personas WHERE PER_NUMERO_IDENTIDAD=:r");
+          $consulta3->execute(array(":r"=>$identidadn));
+          if($consulta3->rowCount()>=1){
+           echo '<script>Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "¡ERROR!",
+        text:"INDENTIDAD  YA SE HA  ENCUENTRA REGISTRADA",
+        showConfirmButton: false,
+        timer: 3000
+          })
+        </script>';
+           exit();
+          }else{
+            $identidadf=$identidadn;
+          }
+        } else {
+          $identidadf=$identidada;
+        }
+            
+          
         $query=$conexion->prepare
         ("UPDATE TBL_PERSONAS SET
         PAIS_CODIGO=:nacionalidad,
@@ -41,7 +63,7 @@ try {
          $query->execute(array(
           ":nacionalidad"=>$nacionalidad1,
           ":ocupacion"=>$profesion1,
-          ":identidad"=>$identidad1,
+          ":identidad"=>$identidadf,
               ":pasaporte"=>$pasaporte1,
               ":nombres"=>$nombres1,
               ":apellidos"=>$apellidos1,

@@ -133,7 +133,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
             </div>
             
             <div class="form-group col-lg-3 col-md-3 col-xs-3">
-            <button type="submit"  class="btn btn-block btn-danger" ><i class="fa fa-print" aria-hidden="true"></i> IMPRIMIR</button>
+            <button type="submit"  class="btn btn-block btn-danger">EXPORTAR A PDF</button>
             </div>
            
             

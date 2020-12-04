@@ -139,7 +139,6 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>16
                  <option value="0">Seleccione un género:</option>
                  <option value="MUJER">FEMENINO</option>
                  <option value="MASCULINO">MASCULINO</option>
-                 <option value="OTRO">OTRO</option>
                  </select>
                 </div>
                 </div>
@@ -152,7 +151,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>16
         <option value="0">Seleccione una nacionalidad:</option>
                 <?php
         require '../modelos/conectar.php';
-          $resultado = $conexion -> query ("SELECT * FROM tbl_paises");
+          $resultado = $conexion -> query ("SELECT * FROM tbl_paises ORDER BY PAIS_NOMBRE ASC");
           while ($registro=$resultado->fetch(PDO::FETCH_ASSOC)) {
             echo '<option value="'.$registro["PAIS_CODIGO"].'">'.$registro["PAIS_NOMBRE"].'</option>';
           }
@@ -168,7 +167,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>16
         <option value="0">Seleccione una profesión/ocupación:</option>
                 <?php
         require '../modelos/conectar.php';
-          $resultado11 = $conexion -> query ("SELECT * FROM tbl_ocupaciones");
+          $resultado11 = $conexion -> query ("SELECT * FROM tbl_ocupaciones ORDER BY OCU_NOMBRE ASC");
           while ($registro11=$resultado11->fetch(PDO::FETCH_ASSOC)) {
             echo '<option value="'.$registro11["OCU_CODIGO"].'">'.$registro11["OCU_NOMBRE"].'</option>';
           }
@@ -215,7 +214,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>16
                 <div class="form-group col-md-6 col-xs-12">
                 <div class="input-group">
                 <span class="input-group-addon">Correo</span>
-                  <input type="email" autocomplete="off" class="form-control correo" placeholder="" name="correo" id="correo" >
+                  <input type="email" style="text-transform:lowercase"autocomplete="off" class="form-control correo" placeholder="" name="correo" id="correo" >
                   <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 </div>
                 </div>

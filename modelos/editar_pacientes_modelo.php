@@ -153,7 +153,8 @@ if(isset($_GET['id'])){
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <div class="input-group">
                 <span class="input-group-addon">Identidad</span>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="IDENTIDAD"  name="numero_de_identidad" id="numero_de_identidad" value="<?php echo $identidad?>"  >
+                <input type="hidden"   name="identidada" id="identidada" value="<?php echo $identidad?>"  >
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="IDENTIDAD"  name="identidadn" id="numero_de_identidad" value="<?php echo $identidad?>"  >
                   <span class="	glyphicon glyphicon-credit-card form-control-feedback"></span>
                 </div>
                 </div>
@@ -200,7 +201,7 @@ if(isset($_GET['id'])){
         $resultado_nacionalidad = $conexion -> query ("select * from tbl_personas tu inner join tbl_paises tp on tu.PAIS_CODIGO = tp.PAIS_CODIGO where tu.PER_CODIGO = $id");
         $pais = $resultado_nacionalidad->fetch(PDO::FETCH_ASSOC);
          $nacionalidad = $pais['PAIS_NOMBRE'];
-          $resultado = $conexion -> query ("SELECT * FROM tbl_paises");
+          $resultado = $conexion -> query ("SELECT * FROM tbl_paises ORDER BY PAIS_NOMBRE ASC");
           while ($registro=$resultado->fetch(PDO::FETCH_ASSOC)) {
             $r = ($nacionalidad == $registro["PAIS_NOMBRE"]) ? 'selected' : '';
             echo '<option value="'.$registro["PAIS_CODIGO"].'"'.$r.'>'.$registro["PAIS_NOMBRE"].'</option>';
@@ -223,7 +224,7 @@ if(isset($_GET['id'])){
         $resultado_profesion = $conexion -> query ("select * from tbl_personas tu inner join tbl_ocupaciones toc on tu.OCU_CODIGO = toc.OCU_CODIGO where tu.PER_CODIGO = $id");
         $profesion = $resultado_profesion->fetch(PDO::FETCH_ASSOC);
          $profesion = $profesion['OCU_NOMBRE'];
-          $resultado = $conexion -> query ("SELECT * FROM tbl_ocupaciones");
+          $resultado = $conexion -> query ("SELECT * FROM tbl_ocupaciones ORDER BY OCU_NOMBRE ASC");
           while ($registro=$resultado->fetch(PDO::FETCH_ASSOC)) {
             $r = ($profesion == $registro["OCU_NOMBRE"]) ? 'selected' : '';
             echo '<option value="'.$registro["OCU_CODIGO"].'"'.$r.'>'.$registro["OCU_NOMBRE"].'</option>';
@@ -270,7 +271,7 @@ if(isset($_GET['id'])){
                 <div class="form-group col-md-6 col-xs-12">
                 <div class="input-group">
                 <span class="input-group-addon">Correo</span>
-                  <input type="email" autocomplete="off" class="form-control " placeholder="" name="correo" id="correo" value="<?php echo $correo?>"   >
+                  <input type="email" style="text-transform:lowercase" autocomplete="off" class="form-control " placeholder="" name="correo" id="correo" value="<?php echo $correo?>"   >
                   <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 </div>
                 </div>

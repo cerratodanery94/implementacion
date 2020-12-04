@@ -8,25 +8,6 @@ $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BI
 VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha)";
   $resultado2=$conexion->prepare($sql2);	
 $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>40,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA BACKUP/RESTORE',":fecha"=>date("Y-m-d H:i:s")));
-
-$ROL = $_SESSION['ROL'];
-$_SESSION['PANTALLA'] = 40;
-$PANTALLA = $_SESSION['PANTALLA'];
-$sql3 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO = :pantalla ";
-$resultado3=$conexion->prepare($sql3);	
-$resultado3->execute(array(":rol"=>$ROL,":pantalla"=>$PANTALLA));
-$DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
- $CONSULTAR = $DATOS['PERM_CONSULTAR'];
- $INSERTAR = $DATOS['PERM_INSERTAR'];
- $ELIMINAR = $DATOS['PERM_ELIMINAR'];
- $ACTUALIZAR = $DATOS['PERM_ACTUALIZAR'];
- $USUARIOS=$DATOS['PERM_USUARIO'];
- $EMPLEADOS=$DATOS['PERM_EMPLEADOS'];
- $PACIENTES=$DATOS['PERM_PACIENTES'];
- $NUTRI=$DATOS['PERM_EXP_NUTRI'];
- $MEDICO=$DATOS['PERM_EXP_MEDICO'];
- $CITAS=$DATOS['PERM_CITAS'];
- $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 ?>
 <!DOCTYPE html>
 <html>

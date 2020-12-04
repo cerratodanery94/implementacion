@@ -34,7 +34,7 @@ $pass .=substr($caracteres,rand(0,53),1);
 		$estado="NUEVO";
 		$fecha_creacion= date("Y-m-d H:m:s");
 		$fecha_vencimiento= date("Y-m-d H:m:s",strtotime("+1 years"));
-		$correo= $_POST["correo"];
+		$correo= strtolower($_POST["correo"]) ;
 		$nacionalidad= $_POST["nacionalidad"];
 		$identidad= $_POST["numero_de_identidad"];
 		$rtn= $_POST["rtn"];
@@ -48,20 +48,25 @@ $pass .=substr($caracteres,rand(0,53),1);
 
 		$consulta=$conexion->prepare("SELECT * FROM TBL_USUARIO WHERE USU_USUARIO='$usuario'");
         $consulta->execute();
-        $num_rows = $consulta->fetchColumn();
+		$num_rows = $consulta->fetchColumn();
+
+		$consulta1=$conexion->prepare("SELECT * FROM TBL_USUARIO WHERE USU_IDENTIDAD='$identidad'");
+        $consulta1->execute();
+        $num_rows1 = $consulta1->fetchColumn();
         
-       if ($num_rows>0){ 
+       if ($num_rows>0 or $num_rows1>0){ 
 		   //echo '<script>alert("Usuario  ya se encuentran registrados ");location.href= "../vistas/insertar_mant_vista.php"</script>';
 		   echo '<script> Swal.fire({
 			position: "center",
 			icon: "error",
-			title: "USUARIO YA SE ENCUENTRA REGISTRADO",
+			title: "USUARIO Y/O IDENTIDAD YA SE ENCUENTRA REGISTRADO",
 			showConfirmButton: false,
 			timer: 3000
 		  })
 		  </script>';
-
-       }else{	
+		  
+        
+	    }else{	
 		//OBTENER CORREO
 		$sql3='SELECT * FROM TBL_PARAMETROS WHERE PARMT_CODIGO=3';
 		$resultado3=$conexion->query($sql3);	

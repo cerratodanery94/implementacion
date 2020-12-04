@@ -3,11 +3,34 @@ require '../modelos/conectar.php';
 try {
     if (isset($_POST['id_r']) && 
         isset($_POST['descrip']) && 
-        isset($_POST['rol']) ) {
+        isset($_POST['rola']) && 
+        isset($_POST['roln']) ) {
             $id_r= $_POST["id_r"];
-            $rol=strtoupper($_POST["rol"]);
+            $rola=strtoupper($_POST["rola"]);
+            $roln=strtoupper($_POST["roln"]);
             $descrip=strtoupper($_POST["descrip"]);
             
+            
+    if ($rola!=$roln) {
+      $consulta3=$conexion->prepare("SELECT * FROM tbl_rol WHERE ROL_NOMBRE=:r");
+      $consulta3->execute(array(":r"=>$roln));
+      if($consulta3->rowCount()>=1){
+       echo '<script>Swal.fire({
+		position: "center",
+		icon: "error",
+		title: "¡ERROR!",
+		text:"ROL  YA SE HA  ENCUENTRA REGISTRADO",
+		showConfirmButton: false,
+		timer: 3000
+	    })
+		</script>';
+       exit();
+			}else{
+        $rolf=$roln;
+			}
+    } else {
+      $rolf=$rola;
+    }
         
       
         $query=$conexion->prepare
@@ -18,7 +41,7 @@ try {
         WHERE ROL_CODIGO=:id_r");
       
          $query->execute(array(
-           ":rol"=>$rol,
+           ":rol"=>$rolf,
            ":descrip"=>$descrip,
            ":id_r"=>$id_r
 

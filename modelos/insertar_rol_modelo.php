@@ -5,7 +5,25 @@
         if (isset($_POST['rol']) && 
 		isset($_POST['descrip']) ) {
 		$rol=strtoupper($_POST["rol"]);
-        $descrip=strtoupper($_POST["descrip"]);
+		$descrip=strtoupper($_POST["descrip"]);
+		
+        $consulta=$conexion->prepare("SELECT * FROM TBL_ROL WHERE ROL_NOMBRE='$rol'");
+        $consulta->execute();
+        $num_rows = $consulta->fetchColumn();
+        
+       if ($num_rows>0){ 
+		  
+		   echo '<script> Swal.fire({
+			position: "center",
+			icon: "error",
+			title: "ROL YA SE ENCUENTRA REGISTRADO",
+			showConfirmButton: false,
+			timer: 3000
+		  })
+		  </script>';
+
+       }else{	
+
         $sql="INSERT INTO TBL_ROL (
             ROL_NOMBRE,
             ROL_DESCRIPCION
@@ -58,6 +76,7 @@
 		$resultado->closeCursor();
 		$resultado2->closeCursor();
 }
+ }
 	}catch(Exception $e){			
 		
         die('Error: ' . $e->GetMessage());

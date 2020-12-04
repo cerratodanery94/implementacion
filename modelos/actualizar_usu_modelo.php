@@ -9,10 +9,11 @@ try {
     $usuarion=strtoupper($_POST['usuarion']);
     $apellidos=strtoupper($_POST['apellidos']);
     $estado1=strtoupper($_POST['estado']);
-		$correon=$_POST['correon'];
+		$correon=strtolower($_POST['correon']);
     $rol1=$_POST['rol_usuario'];
     $fecha_nacimiento=$_POST['fecha_de_nacimiento'];
-    $identidad=$_POST['numero_de_identidad'];
+    $identidada=$_POST["identidada"];
+    $identidadn=$_POST["identidadn"];
     $rtn=$_POST['rtn'];
     $celular=$_POST['numero_de_celular'];
     $tel_fijo=$_POST['numero_de_telefono_fijo'];
@@ -20,7 +21,7 @@ try {
     $nacionalidad=$_POST['nacionalidad'];
     $fecha_creacion=$_POST['fecha_creacion'];
     $fecha_vencimiento=$_POST['fecha_vencida'];
-    $pasaporte=$_POST['pasaporte'];
+    $pasaporte=strtoupper($_POST['pasaporte']);
     $direccion=$_POST['direccion'];
     
     
@@ -46,6 +47,27 @@ try {
     } else {
       $usuariof=$usuarioa;
     }
+    if ($identidada!=$identidadn) {
+      $consulta3=$conexion->prepare("SELECT * FROM tbl_usuario WHERE USU_IDENTIDAD=:r");
+      $consulta3->execute(array(":r"=>$identidadn));
+      if($consulta3->rowCount()>=1){
+       echo '<script>Swal.fire({
+    position: "center",
+    icon: "error",
+    title: "¡ERROR!",
+    text:"INDENTIDAD  YA SE HA  ENCUENTRA REGISTRADA",
+    showConfirmButton: false,
+    timer: 3000
+      })
+    </script>';
+       exit();
+      }else{
+        $identidadf=$identidadn;
+      }
+    } else {
+      $identidadf=$identidada;
+    }
+    
     $consulta2=$conexion->prepare("UPDATE tbl_usuario SET 
      PAIS_CODIGO=:nacionalidad,
      USU_USUARIO=:usuario,
@@ -76,7 +98,7 @@ try {
         ":fecha_nacimiento"=>$fecha_nacimiento,
         ":celular"=>$celular,
         ":tel_fijo"=>$tel_fijo,
-        ":identidad"=>$identidad,
+        ":identidad"=>$identidadf,
         ":rtn"=>$rtn,
         ":genero"=>$genero,
         ":direccion"=>$direccion,

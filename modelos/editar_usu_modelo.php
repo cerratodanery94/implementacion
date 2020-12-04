@@ -9,25 +9,6 @@ try {
 VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
   $resultado2=$conexion->prepare($sql2);	
 $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>10,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA EDITAR USUARIOS',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
-
-$ROL = $_SESSION['ROL'];
-$_SESSION['PANTALLA'] = 10;
-$PANTALLA = $_SESSION['PANTALLA'];
-$sql3 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO = :pantalla ";
-$resultado3=$conexion->prepare($sql3);	
-$resultado3->execute(array(":rol"=>$ROL,":pantalla"=>$PANTALLA));
-$DATOS = $resultado3->fetch(PDO::FETCH_ASSOC);
-$CONSULTAR = $DATOS['PERM_CONSULTAR'];
-$INSERTAR = $DATOS['PERM_INSERTAR'];
-$ELIMINAR = $DATOS['PERM_ELIMINAR'];
-$ACTUALIZAR = $DATOS['PERM_ACTUALIZAR'];
-$USUARIOS=$DATOS['PERM_USUARIO'];
-
-$PACIENTES=$DATOS['PERM_PACIENTES'];
-$NUTRI=$DATOS['PERM_EXP_NUTRI'];
-$MEDICO=$DATOS['PERM_EXP_MEDICO'];
-$CITAS=$DATOS['PERM_CITAS'];
-$SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 if(isset($_GET['id'])){
     $id=$_GET['id'];
     $sql="SELECT * FROM TBL_USUARIO WHERE USU_CODIGO= :id";
@@ -192,7 +173,8 @@ if(isset($_GET['id'])){
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <div class="input-group">
                 <span class="input-group-addon">Identidad</span>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="IDENTIDAD"  name="numero_de_identidad" id="numero_de_identidad"value="<?php echo $identidad?>">
+                <input type="hidden"   name="identidada" id="identidada" value="<?php echo $identidad?>"  >
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="IDENTIDAD"  name="identidadn" id="numero_de_identidad" value="<?php echo $identidad?>"  >
                   <span class="	glyphicon glyphicon-credit-card form-control-feedback"></span>
                 </div>
                 </div>
@@ -346,14 +328,14 @@ if(isset($_GET['id'])){
                 <div class="form-group col-md-6 col-xs-12">
                 <div class="input-group">
                 <span class="input-group-addon">Correo</span>
-                  <input type="email" class="form-control correo" placeholder="CORREO" name="correon" id="correo" value="<?php echo $correo?>" >
+                  <input type="email" style="text-transform:lowercase"class="form-control correo" placeholder="CORREO" name="correon" id="correo" value="<?php echo $correo?>" >
                   <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 </div>
                 </div>
                 <div class="form-group col-md-6 col-xs-12">
                 <div class="input-group">
                 <span class="input-group-addon">Pasaporte</span>
-                  <input type="text" autocomplete="off" class="form-control correo" placeholder="PASAPORTE" name="pasaporte" id="pasaporte" value="<?php echo $pasaporte?>" >
+                  <input type="text" style="text-transform:uppercase" autocomplete="off" class="form-control correo" placeholder="PASAPORTE" name="pasaporte" id="pasaporte" value="<?php echo $pasaporte?>" >
                   <span class="	glyphicon glyphicon-book form-control-feedback"></span>
                 </div>
                 </div>
