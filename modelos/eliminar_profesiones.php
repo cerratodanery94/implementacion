@@ -11,7 +11,7 @@ if(isset($_GET['id'])){
         $resultado2=$conexion->prepare($sql2);	
         $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>18,":accion"=>'ELIMINAR',":descr"=>'ELIMINO UN PACIENTE',":fecha"=>date("Y-m-d H:i:s")));
 
-    header('location:../vistas/mostrar_preguntas.php?m=1');
+    header('location:../vistas/mostrar_profesiones.php?m=1');
     
     
         

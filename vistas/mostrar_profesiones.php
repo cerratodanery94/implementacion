@@ -141,7 +141,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
                  <?php } ?>
                  
                  <?php if ($_SESSION['ccit']== 1 and $_SESSION['ecit']== 1){ ?>
-                  <a href='../modelos/eliminar_profesiones.php?id=<?php echo $fila["CIT_CODIGO"]?>' class="btn btne bg-maroon bnt-flat margin">
+                  <a href='../modelos/eliminar_profesiones.php?id=<?php echo $fila["OCU_CODIGO"]?>' class="btn btne bg-maroon bnt-flat margin">
 					       <i class='fa fa-trash'></i></a> 
                  <?php } ?>
                  
