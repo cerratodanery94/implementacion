@@ -120,7 +120,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>32
                 <div class="input-group">
                 <span class="input-group-addon">Nombre de la Pantalla</span>
                   <input type="hidden" name="id" id="id" value="<?php echo $id?>">
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="pregunta"  name="nombre" id="nombre" value="<?php echo $nombre?>"  >
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="pregunta"  name="nombre" id="nombre" value="<?php echo $nombre?>" readonly  >
                   <span class="		glyphicon glyphicon-ok-circle form-control-feedback"></span>
                 </div>
                 </div>
@@ -130,7 +130,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>32
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <div class="input-group">
                 <span class="input-group-addon">Descripcion</span>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="pregunta"  name="descripcion" id="descripcion" value="<?php echo $descripcion?>" >
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="pregunta"  name="descripcion" id="descripcion" value="<?php echo $descripcion?>"  >
                   <span class="		glyphicon glyphicon-ok-circle form-control-feedback"></span>
                 </div>
                 </div>
@@ -139,7 +139,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>32
                 <div class="input-group">
                 <span class="input-group-addon">Tipo</span>
                   
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="pregunta"  name="tipo" id="tipo" value="<?php echo $tipo?>"  >
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="pregunta"  name="tipo" id="tipo" value="<?php echo $tipo?>" readonly  >
                   <span class="		glyphicon glyphicon-ok-circle form-control-feedback"></span>
                 </div>
                 </div>
