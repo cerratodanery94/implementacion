@@ -25,7 +25,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>33
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Bitácora del Sistema</title>
+  <title>Reporte Dinámico</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -93,14 +93,14 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>33
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-    <h1><i class="fa fa-caret-square-o-down" aria-hidden="true"></i>
-        Bitácora Del Sistema
+    <h1><i class="fa fa-download" aria-hidden="true"></i>
+       Generar Reporte Dinámico
         <small>ClimeHome</small>
       </h1>
       
       <ol class="breadcrumb">
-        <li><a href="bitacora_vista.php"><i class="fa fa-lock"></i>Bitácora</a></li>
-        <li class="active"><i class="fa fa-caret-square-o-down"></i> Lista de registros</li>
+        <li><a href="bitacora_vista.php">  <i class="glyphicon glyphicon-tasks"></i></i>Bitácora</a></li>
+        <li class="active"><i class="fa fa-download"></i>  Generar Reporte Dinámico</li>
       </ol>
     </section>
 
@@ -133,11 +133,11 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>33
             </div>
            
             <div class="form-group col-lg-3 col-md-3 col-xs-3">
-            <button type="button" onclick="validar_bitacora();" class="btn btn-block  btn btn-primary" >CONSULTAR</button>
+            <button type="button" onclick="validar_bitacora();" class="btn btn-block  btn btn-primary" ><i class="fa fa-bullhorn" aria-hidden="true"></i> CONSULTAR</button>
             
             </div>
             <div class="form-group col-lg-3 col-md-3 col-xs-3">
-            <a href='../modelos/bitacora_reporte.php?d=<?php echo $_SESSION['d'];?>&h=<?php echo $_SESSION['h'];?>' class="btn btn-block btn-danger">EXPORTAR A PDF</a>
+            <a href='../modelos/bitacora_reporte.php?d=<?php echo $_SESSION['d'];?>&h=<?php echo $_SESSION['h'];?>' class="btn btn-block btn-danger"><i class="fa fa-print" aria-hidden="true"></i>  EXPORTAR A PDF</a>
             </div>
             <?php
          try{

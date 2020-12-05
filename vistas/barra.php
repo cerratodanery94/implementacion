@@ -88,7 +88,7 @@
             <ul class="treeview-menu">
             <li><a href="../vistas/mostrar_citasd_vista.php"><i class=" fa fa-calendar-check-o"></i>Mostrar Citas del Dia</a></li>
           <li><a href="../vistas/mostrar_citas_vista.php"><i class="fa fa-list-alt"></i>Lista de citas</a></li>
-          <li><a href="../vistas/reporte_citas.php"><i class="fa fa-list-alt"></i>Reporte de citas con filtros</a></li>
+          <li><a href="../vistas/reporte_citas.php"><i class="fa fa-download"></i>Generar Reportes Dinámicos</a></li>
         </ul>
           
       </li>
@@ -182,7 +182,7 @@
         <!-- subtitulos de Expedientes -->
           <ul class="treeview-menu">
           <li><a href="../vistas/bitacora_vista.php"><i class="fa fa-list-alt"></i> Ver Bitácora</a></li>
-          <li><a href="../vistas/reporte_bitacora.php"><i class="fa fa-list-alt"></i>Reporte de bitácora con filtros</a></li>
+          <li><a href="../vistas/reporte_bitacora.php"><i class="fa fa-download"></i>Generar Reportes Dinámicos</a></li>
           </ul>
       </li>
     

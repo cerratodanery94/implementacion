@@ -27,7 +27,7 @@ if (isset($_POST['id_u']) && isset($_POST['est_c']) && isset($_POST['desde']) &&
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Bitácora del Sistema</title>
+  <title>Reporte Dinámico</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -95,14 +95,14 @@ if (isset($_POST['id_u']) && isset($_POST['est_c']) && isset($_POST['desde']) &&
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-    <h1><i class="fa fa-caret-square-o-down" aria-hidden="true"></i>
-        Bitácora Del Sistema
+    <h1><i class="fa fa-download" aria-hidden="true"></i>
+       Generar Reporte Dinámico
         <small>ClimeHome</small>
       </h1>
       
       <ol class="breadcrumb">
-        <li><a href="bitacora_vista.php"><i class="fa fa-lock"></i>Bitácora</a></li>
-        <li class="active"><i class="fa fa-caret-square-o-down"></i> Lista de registros</li>
+        <li><a href="mostrar_citas_vista.php"><i class="fa fa-calendar"></i>Citas Médicas</a></li>
+        <li class="active"><i class="fa fa-download"></i>  Generar Reporte Dinámico</li>
       </ol>
     </section>
 
@@ -179,12 +179,12 @@ if (isset($_POST['id_u']) && isset($_POST['est_c']) && isset($_POST['desde']) &&
               
            <td>
            <div class="form-group col-lg-12 col-md-12 col-xs-12">
-           <button type="button" onclick="validar_reporte_cita();" class="btn btn-block  btn btn-primary" >CONSULTAR</button>
+           <button type="button" onclick="validar_reporte_cita();" class="btn btn-block  btn btn-primary" > <i class="fa fa-bullhorn" aria-hidden="true"></i> CONSULTAR</button>
            
             </div>
             <div class="form-group col-lg-12 col-md-12 col-xs-12">
           
-           <a href='../modelos/citas_reporte.php?doc=<?php echo $_SESSION['doc'];?>&i=<?php echo $_SESSION['i'];?>&f=<?php echo $_SESSION['f'];?>' class="btn btn-block btn-danger">EXPORTAR A PDF</a>
+           <a href='../modelos/citas_reporte.php?doc=<?php echo $_SESSION['doc'];?>&i=<?php echo $_SESSION['i'];?>&f=<?php echo $_SESSION['f'];?>' class="btn btn-block btn-danger"><i class="fa fa-print" aria-hidden="true"></i>  EXPORTAR A PDF</a>
             </div>
            </td>
               </tr>
