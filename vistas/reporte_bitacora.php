@@ -290,6 +290,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>33
          }
      },
      
+    dom:'lrtip'
+     
    });
  });
  
