@@ -4,14 +4,22 @@ require_once "../modelos/conectar.php";
 if (!isset($_SESSION["id_us"])) {
   header('location:../vistas/login_vista.php');
 }
+
 $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
 VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
 $resultado2=$conexion->prepare($sql2);	
-$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA DE MOSTRAR CITAS',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));         
+$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>33,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA DE MOSTRAR BITACORA',":fecha"=>date("Y-m-d"),":hora"=>date(" H:i:s")));         
 $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
 VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
 $resultado2=$conexion->prepare($sql2);	
-$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28,":accion"=>'CONSULTA',":descr"=>'MUESTRA LA LISTA DE CITAS DE PACIENTES',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
+$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>33,":accion"=>'CONSULTA',":descr"=>'MUESTRA LOS REGISTROS DE LA BITACORA',":fecha"=>date("Y-m-d"),":hora"=>date(" H:i:s")));
+if (isset($_POST['id_u']) && isset($_POST['est_c']) && isset($_POST['desde']) && isset($_POST['hasta'])) {
+  
+  $_SESSION['doc']=$_POST['id_u'];
+  $_SESSION['est_c']=$_POST['est_c'];
+  $_SESSION['i']=$_POST['desde'];
+  $_SESSION['f']= $_POST['hasta'];
+   }
 
 ?>
 <!DOCTYPE html>
@@ -19,7 +27,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Mostrar Citas</title>
+  <title>Bitácora del Sistema</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -31,12 +39,16 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
   <!-- DataTables -->
   <link rel="stylesheet" href="../vistas/plugins/datatables/dataTables.bootstrap.css">
   <!-- Theme style -->
-  <link rel="icon" href="Img/Home.png">
   <link rel="stylesheet" href="../vistas/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
    folder instead of downloading all of them to reduce the load. -->
+   <!--date picker-->
+   
+
+   <link rel="stylesheet" href="../vistas/plugins/datepicker/datepicker3.css">
   <link rel="stylesheet" href="../vistas/dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="../vistas/Plugins/sweetalert/dist/sweetalert2.min.css">
+  <link rel="icon" href="Img/Home.png">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 
@@ -76,21 +88,24 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
   </header>
 
   <?php require '../vistas/barra.php';  ?>
+
   <!-- =============================================== -->
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-    <h1><i class="fa fa-calendar" aria-hidden="true"></i>
-        Lista de citas 
+    <h1><i class="fa fa-caret-square-o-down" aria-hidden="true"></i>
+        Bitácora Del Sistema
         <small>ClimeHome</small>
       </h1>
+      
       <ol class="breadcrumb">
-        <li><a href="mostrar_citas_vista.php"><i class="fa fa-calendar"></i>Citas</a></li>
-        <li class="active"><i class="fa fa-list-alt"></i> Lista de citas</li>
+        <li><a href="bitacora_vista.php"><i class="fa fa-lock"></i>Bitácora</a></li>
+        <li class="active"><i class="fa fa-caret-square-o-down"></i> Lista de registros</li>
       </ol>
     </section>
+
     <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -100,20 +115,19 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
             </div>
             <!--llamar funciones-->
             <div class="box-body">
-            <?php if ($_SESSION['ccit']== 1 and $_SESSION['icit']== 1){ ?>
-              <div>
-             <a href="../vistas/insertar_cita_vista.php" class="btn bg-blue btn-flat margin">CREAR CITA <i class="fa fa-plus-circle" aria-hidden="true"></i> </a>
-           </div>
-            <?php } ?>
-            <form action="../modelos/citas_reporte.php" method="post">
+           <div>
+            </div>
+            <!--llamar funciones-->
+            <div class="box-body">
+            <form action="../vistas/reporte_citas.php" method="post">
             <table>
               <tr>
                   <td>
               
                 <div class="form-group col-lg-12 col-md-12 col-xs-12">
                 <label for="">SELECCIONE DOCTORA/DOCTOR/NUTRICIONISTA:</label>
-             <select class="form-control" name="id_u" id="doctora">
-             <option value="0">SELECCIONE:</option>
+             <select class="form-control" name="id_u" id="doctora" required>
+             <option value="">SELECCIONE:</option>
                 <?php
                require '../modelos/conectar.php';
                $resultado = $conexion -> query ("SELECT * FROM TBL_USUARIO where ROL_CODIGO=3 or ROL_CODIGO=4");
@@ -131,8 +145,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
                  
                 <div class="form-group col-lg-12 col-md-12 col-xs-12">
                 <label for="">SELECCIONE ESTADO:</label>
-            <select class="form-control" name="estado" id="estado">
-             <option value="0">SELECCIONE:</option>
+            <select class="form-control" name="est_c" id="est_c" required>
+             <option value="">SELECCIONE:</option>
              <option value="'PENDIENTE'">PENDIENTE</option>
              <option value="'REALIZADA'">REALIZADA</option>
              <option value="'CANCELADA'">CANCELADA</option>
@@ -149,14 +163,14 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
                   <td> 
                 <div class="form-group col-lg-12 col-md-12 col-xs-12">
                 <label for="">DESDE</label>
-            <input type="date" autocomplete="off" class="form-control" name="desde" id="desde">
+            <input type="date" autocomplete="off" class="form-control" name="desde" id="desde" required>
             </div>
             </div></td>
                   <td>
                  
                 <div class="form-group col-lg-12 col-md-12 col-xs-12">
                 <label>HASTA</label>
-            <input type="date" autocomplete="off" class="form-control" name="hasta" id="hasta">
+            <input type="date" autocomplete="off" class="form-control" name="hasta" id="hasta" required>
             </div>
             
                   </td>
@@ -164,83 +178,90 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
               
            <td>
            <div class="form-group col-lg-12 col-md-12 col-xs-12">
-           <label style="color: white;">.</label>
-            <button type="submit"  class="btn btn-block btn-danger">EXPORTAR A PDF</button>
+           <button type="submit"  class="btn btn-block  btn btn-primary" >CONSULTAR</button>
+           
+            </div>
+            <div class="form-group col-lg-12 col-md-12 col-xs-12">
+          
+           <a href='../modelos/citas_reporte.php?doc=<?php echo $_SESSION['doc'];?>&i=<?php echo $_SESSION['i'];?>&f=<?php echo $_SESSION['f'];?>' class="btn btn-block btn-danger">EXPORTAR A PDF</a>
             </div>
            </td>
               </tr>
            </table>
            <br>
            
-            
-            </form>
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
+           
+            <?php
+         try{
+         if (isset($_POST['id_u']) && isset($_POST['est_c']) && isset($_POST['desde']) && isset($_POST['hasta'])) {
+          require '../modelos/conectar.php';
+          $_SESSION['doc']=$_POST['id_u'];
+          $_SESSION['est_c']=$_POST['est_c'];
+          $_SESSION['i']=$_POST['desde'];
+          $_SESSION['f']= $_POST['hasta'];
+          if ($_SESSION['i']>$_SESSION['f']) {
+            //echo '<script>alert("Usuario  ya se encuentran registrados ");location.href= "../vistas/insertar_mant_vista.php"</script>';
+            echo '<script> Swal.fire({
+              position: "center",
+              icon: "error",
+              title: "LA PRIMERA FECHA NO PUEDE SER MAYOR ALA SEGUNDA",
+              showConfirmButton: false,
+              timer: 3000
+              })
+              </script>';
+          } else {
+           
+          
+          echo'<table id="example1" class="table table-bordered table-striped">
+          <thead>
+          <tr>
+            <th>ATENCION CON</th>
+            <th>PACIENTE</th>
+            <th>FECHA</th>
+            <th>HORA DE CITA</th>
+            <th>ESTADO</th>         
+          </tr>
+          </thead>
+          <tbody>';
+                $consulta=$conexion->prepare("SELECT * from tbl_citas c INNER JOIN tbl_personas p on c.per_codigo = p.per_codigo INNER JOIN tbl_usuario u  ON c.usu_codigo=u.usu_codigo  INNER JOIN tbl_horario h ON c.hor_codigo=h.hor_codigo INNER JOIN tbl_rol r on r.rol_codigo=u.ROL_CODIGO WHERE r.rol_codigo in($_SESSION[doc]) and c.cit_estado IN ($_SESSION[est_c]) AND c.cit_fecha_cita BETWEEN '$_SESSION[i]' AND '$_SESSION[f]' AND c.cit_estado_registro = 'A'");
+                $consulta->execute();
+                  while($fila=$consulta->fetch()){  
+                    
+                    echo'<tr>
+                    <td>'; echo $fila['USU_NOMBRES']." ". $fila['USU_APELLIDOS'];
+                    echo'</td><td>';echo $fila['PER_NOMBRES']." ". $fila['PER_APELLIDOS']; 
+                    echo'</td><td>';echo $fila['CIT_FECHA_CITA'];
+                    echo'</td><td>';echo $fila['HOR_HORA'];
+                    echo'</td><td>';echo $fila['CIT_ESTADO'];
+                    echo'</td></tr>';
+                  }
+                  echo'</tbody>
+                  <tfoot>
+                  <tr>
                   <th>ATENCION CON</th>
                   <th>PACIENTE</th>
                   <th>FECHA</th>
                   <th>HORA DE CITA</th>
-                  <th>ESTADO</th>
-                  <th>DESCRIPCION</th>
-                  <th>ACCIONES</th>
+                  <th>ESTADO</th>    
+                  </tr>
+                  </tfoot>
+                </table>';
               
-               
-                  
-                  
-				          
-                </tr>
-                
-                </thead>
-                <tbody>
-                <?php
-               require '../modelos/conectar.php';
-               $consulta=$conexion->prepare("SELECT * from tbl_citas c INNER JOIN tbl_personas p on c.per_codigo = p.per_codigo INNER JOIN tbl_usuario u  ON c.usu_codigo=u.usu_codigo INNER JOIN tbl_horario h ON c.hor_codigo=h.hor_codigo WHERE CIT_ESTADO_REGISTRO = 'A'");
-               $consulta->execute();
-                 while($fila=$consulta->fetch()){?>
-                 <tr>
-                 
-                 <td><?php echo $fila['USU_NOMBRES']." ". $fila['USU_APELLIDOS']?></td>
-                 <td><?php echo $fila['PER_NOMBRES']." ". $fila['PER_APELLIDOS']?></td>        
-                 <td><?php echo $fila['CIT_FECHA_CITA']?></td>
-                 <td><?php echo $fila['HOR_HORA']?></td>
-                 <td><?php echo $fila['CIT_ESTADO']?></td>
-                 <td><?php echo $fila['CIT_DESCRIPCION']?></td>
-                
-                 
+              }
+          
+          }
+           }catch(Exception $e){			
+            die('Error: ' . $e->GetMessage());
+        echo "Codigo del error" . $e->getCode();
 
-                 <td>
-                 <?php if ($_SESSION['ccit']== 1 and $_SESSION['mcit']== 1){ ?>
-                  <a href='../modelos/editar_cita_modelo.php?id=<?php echo $fila["CIT_CODIGO"]?>' class="btn bg-blue btn-flat margin">
-                 <i class='fa fa-pencil'></i></a> 
-                 <?php } ?>
-                 
-                 <?php if ($_SESSION['ccit']== 1 and $_SESSION['ecit']== 1){ ?>
-                  <a href='../modelos/eliminar_cita_modelo.php?id=<?php echo $fila["CIT_CODIGO"]?>' class="btn btne bg-maroon bnt-flat margin">
-					       <i class='fa fa-trash'></i></a> 
-                 <?php } ?>
-                 
-                 </td>
+           }
+           ?>
+            </form>
             
-                 </tr>
-                 <?php } ?> 
-                </tbody>
-                <tfoot>
-                <tr>
-                <th>ATENCION CON</th>
-                  <th>PACIENTE</th>
-                  <th>FECHA</th>
-                  <th>HORA DE CITA</th>
-                  <th>ESTADO</th>
-                  <th>DESCRIPCION</th>
-                  <th>ACCIONES</th>
-                
-                </tr>
-                </tfoot>
-              </table>
-              <?php if (isset($_GET['m'])) : ?>
-                <div class="flash-data" data-flashdata="<?= $_GET['m']; ?>"></div>
-              <?php endif; ?>
+            
+             
+           
+             
           <!-- /.box -->
         </div>
         <!-- /.col -->
@@ -258,8 +279,6 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
     <strong>Copyright &copy; 2020 <a>System 32</a>.</strong> All rights
     reserved.
   </footer>
-
-
  
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
@@ -286,6 +305,9 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
 <!-- AdminLTE for demo purposes -->
 <script src="../vistas/dist/js/demo.js"></script>
 <script src="../vistas/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
+<!-- Date Picker-->
+<script src="../vistas/plugins/datepicker/bootstrap-datepicker.js"></script>
+<!-- page script -->
 <!-- librerias para el uso del  pdf-->
 <script type="text/javascript" src="../vistas/reportes/JSZip-2.5.0/jszip.min.js"></script>
  <script type="text/javascript" src="../vistas/reportes/pdfmake-0.1.36/pdfmake.min.js"></script>
@@ -293,34 +315,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
  <script type="text/javascript" src="../vistas/reportes/Buttons-1.6.1/js/dataTables.buttons.min.js"></script>
  <script type="text/javascript" src="../vistas/reportes/Buttons-1.6.1/js/buttons.flash.min.js"></script>
  <script type="text/javascript" src="../vistas/reportes/Buttons-1.6.1/js/buttons.html5.min.js"></script>
-<script>
-   $('.btne').on('click',function(e){
-     e.preventDefault();
-     const href=$(this).attr('href')
-     Swal.fire({
-  title: '¿ESTA SEGURO DE ELIMINAR ESTA CITA?',
-  text: "¡NO PODRÁS REVERTIR ESTO!",
-  icon: 'warning',
-  showCancelButton: true,
-  confirmButtonColor: '#3085d6',
-  cancelButtonColor: '#d33',
-  confirmButtonText: 'ELIMINAR',
-  cancelButtonText: 'CANCELAR',
-}).then((result) => {
-  if (result.value) {
-    document.location.href=href;
-  }
-})
-   })
-   const flashdata=$('.flash-data').data('flashdata')
-   if (flashdata) {
-    swal.fire({
-       icon:'success',
-       title:'ELIMINADO',
-       text:'SE HA ELIMINADO LA CITA CORRECTAMENTE'
-     })
-   }
-</script>
+</body>
+</html>
 <script>
  $(document).ready(function() {
    $('#example1').DataTable({
@@ -349,5 +345,3 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
  });
  
          </script>
-</body>
-</html>

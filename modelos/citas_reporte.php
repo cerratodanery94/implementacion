@@ -1,14 +1,14 @@
 <?php
+session_start();
 require('../vistas/fpdf/fpdf.php');
 require('../modelos/conectar.php');
-if (isset($_POST['desde']) && 
-isset($_POST['hasta']) &&
-isset($_POST['estado'])
- ) {
-$_SESSION["est_c"]=$_POST["estado"];
-$_SESSION["desde"]=$_POST["desde"];
-$_SESSION["hasta"]=$_POST["hasta"];
-$consulta=$conexion->prepare("SELECT * from tbl_citas c INNER JOIN tbl_personas p on c.per_codigo = p.per_codigo INNER JOIN tbl_usuario u  ON c.usu_codigo=u.usu_codigo INNER JOIN tbl_horario h ON c.hor_codigo=h.hor_codigo WHERE c.cit_estado IN ($_SESSION[est_c]) AND c.cit_fecha_cita BETWEEN '$_SESSION[desde]' AND '$_SESSION[hasta]' AND c.cit_estado_registro = 'A'");
+if ( isset($_GET['doc']) &&
+    isset($_GET['i']) &&
+    isset($_GET['f'])) {
+$_SESSION["doct"]=$_GET["doc"];
+$_SESSION["beg"]=$_GET["i"];
+$_SESSION["end"]=$_GET["f"];
+$consulta=$conexion->prepare("SELECT * from tbl_citas c INNER JOIN tbl_personas p on c.per_codigo = p.per_codigo INNER JOIN tbl_usuario u  ON c.usu_codigo=u.usu_codigo  INNER JOIN tbl_horario h ON c.hor_codigo=h.hor_codigo INNER JOIN tbl_rol r on r.rol_codigo=u.ROL_CODIGO WHERE r.rol_codigo in($_SESSION[doct]) and c.cit_estado IN ($_SESSION[est_c]) AND c.cit_fecha_cita BETWEEN '$_SESSION[beg]' AND '$_SESSION[end]' AND c.cit_estado_registro = 'A'");
 $consulta->execute();
       $i=1;      
 class PDF extends FPDF
@@ -29,7 +29,7 @@ function Header()
     // Salto de línea
     $this->Ln(10);
     $this->SetFont('Arial','',12);
-    $this->Cell(270,15,utf8_decode('LISTA DE CITAS DESDE '.$_SESSION["desde"].' HASTA '.$_SESSION["hasta"]),0,0,'C');
+    $this->Cell(270,15,utf8_decode('LISTA DE CITAS DESDE '.$_SESSION["beg"].' HASTA '.$_SESSION["end"]),0,0,'C');
     //$this->Cell(270,15,utf8_decode('BÍTACORA DEL SISTEMA'),0,0,'C');
     $this->Ln(10);
     $this->Cell(20,15,'FECHA: ',0,0,'L',0);
@@ -84,5 +84,7 @@ while($fila=$consulta->fetch()){
     $i++;
    }
 }
+
+
 $pdf->Output('D','CLINICA MEDICA HOMEOPATICA CLIME HOME LISTA DE CITAS.pdf');
 ?>

@@ -174,7 +174,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
         <option value="0">Seleccione una nacionalidad:</option>
                 <?php
         require '../modelos/conectar.php';
-          $resultado = $conexion -> query ("SELECT * FROM tbl_paises");
+          $resultado = $conexion -> query ("SELECT * FROM tbl_paises order by pais_nombre asc");
           while ($registro=$resultado->fetch(PDO::FETCH_ASSOC)) {
             echo '<option value="'.$registro["PAIS_CODIGO"].'">'.$registro["PAIS_NOMBRE"].'</option>';
           }

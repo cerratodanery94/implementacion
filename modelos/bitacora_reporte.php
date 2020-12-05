@@ -1,11 +1,11 @@
 <?php
 require('../vistas/fpdf/fpdf.php');
 require('../modelos/conectar.php');
-if (isset($_POST['desde']) && 
-isset($_POST['hasta']) ) {
-$_SESSION["desde"]=$_POST["desde"];
-$_SESSION["hasta"]=$_POST["hasta"];
-$consulta=$conexion->prepare("SELECT * FROM tbl_bitacora b INNER JOIN tbl_usuario u on b.usu_codigo = u.usu_codigo INNER JOIN tbl_objetos o ON b.obj_codigo=o.obj_codigo WHERE b.bit_fecha BETWEEN '$_SESSION[desde]' AND '$_SESSION[hasta]' ORDER BY b.bit_codigo DESC");
+if (isset($_GET['d']) && 
+isset($_GET['h']) ) {
+$_SESSION["desde"]=$_GET["d"];
+$_SESSION["hasta"]=$_GET["h"];
+$consulta=$conexion->prepare("SELECT * FROM tbl_bitacora b INNER JOIN tbl_usuario u on b.usu_codigo = u.usu_codigo INNER JOIN tbl_objetos o ON b.obj_codigo=o.obj_codigo WHERE b.bit_fecha BETWEEN '$_SESSION[desde]' AND '$_SESSION[hasta]' ORDER BY b.bit_fecha ASC");
 $consulta->execute();
       $i=1;      
 class PDF extends FPDF

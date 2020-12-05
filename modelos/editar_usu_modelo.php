@@ -238,7 +238,7 @@ if(isset($_GET['id'])){
         $resultado_nacionalidad = $conexion -> query ("select * from tbl_usuario tu inner join tbl_paises tp on tu.PAIS_CODIGO = tp.PAIS_CODIGO where tu.USU_CODIGO = $id");
         $pais = $resultado_nacionalidad->fetch(PDO::FETCH_ASSOC);
          $nacionalidad = $pais['PAIS_NOMBRE'];
-          $resultado = $conexion -> query ("SELECT * FROM tbl_paises");
+          $resultado = $conexion -> query ("SELECT * FROM tbl_paises order by pais_nombre asc");
           while ($registro=$resultado->fetch(PDO::FETCH_ASSOC)) {
             $r = ($nacionalidad == $registro["PAIS_NOMBRE"]) ? 'selected' : '';
             echo '<option value="'.$registro["PAIS_CODIGO"].'"'.$r.'>'.$registro["PAIS_NOMBRE"].'</option>';
