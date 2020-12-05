@@ -110,7 +110,7 @@ function validar_telefono(parametro){
                 return true;
             }
         }
-
+ 
         //VALIDAR EDAD
         function validar_edad(parametro){
             var patron=/^\d{2}$/; //00
@@ -156,6 +156,7 @@ function validar_telefono(parametro){
                         return true;
                     }
                     }
+                    
         //VALIDAR FORMULARIO INSERTAR MANT VISTA
     function validar_empleado(){
     var formulario=document.Form_registrar;
@@ -303,7 +304,7 @@ if (formulario.genero.value==0) {
     }
 //VALIDAR CAMPO ROL
 if (formulario.combox.value==0) {
-    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NACIONALIDAD VACIO</div>';
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO ROL VACIO</div>';
     formulario.combox.focus();
     return false;
 }
@@ -331,6 +332,14 @@ if (Validar_espacio2 (formulario.pasaporte.value)==false){
 document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
 formulario.pasaporte.focus();
 return false;
+}
+else if(validar_numletras(formulario.pasaporte.value)==false){
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO, SIN ESPACIOS AL INICIO O FINAL DEL TEXTO EN EL CAMPO</div>';
+    formulario.pasaporte.focus();
+    return false; 
+}
+else{
+    document.getElementById("alerta").innerHTML="";
 }
  
 
@@ -465,7 +474,11 @@ else if (validar_texto (formulario.apellidos.value)==false){
             formulario.pasaporte.focus();
             return false;
             }
-
+            else if(validar_numletras(formulario.pasaporte.value)==false){
+                document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INGRESAR DATOS ALFANUMERICOS EN EL CAMPO</div>';
+                formulario.pasaporte.focus();
+                return false; 
+            }
              //VALIDAR CAMPO CELULAR
         if (formulario.numero_de_celular.value=="") {
             document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NUMERO DE CELULAR VACIO</div>';
@@ -692,7 +705,7 @@ else if (validar_tamaño (formulario.correo.value)==false){
 
     //VALIDAR CAMPO ROL
     if (formulario.rol_usuario.value==0) {
-        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NACIONALIDAD VACIO</div>';
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO ROL VACIO</div>';
         formulario.rol_usuario.focus();
         return false;
     }
@@ -710,7 +723,12 @@ else if (validar_tamaño (formulario.correo.value)==false){
     formulario.pasaporte.focus();
     return false;
     }
-     
+    else if(validar_numletras(formulario.pasaporte.value)==false){
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INGRESAR DATOS ALFANUMERICOS EN EL CAMPO</div>';
+        formulario.pasaporte.focus();
+        return false; 
+    }
+
     //VALIDAR CORREO
     if (formulario.correo.value=="") {
         document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO CORREO VACIO</div>';
@@ -847,6 +865,14 @@ else if (validar_tamaño (formulario.correo.value)==false){
                     return false;
 
                     }
+                    else if(validar_numletras(formulario.pasaporte.value)==false){
+                        document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INGRESAR DATOS ALFANUMERICOS EN EL CAMPO</div>';
+                        formulario.pasaporte.focus();
+                        return false; 
+                    }
+                    else{
+                        document.getElementById("alerta1").innerHTML="";
+                    }
                     //  if (validar_texto (formulario.pasaporte.value)==false){  
                     //     document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO</div>';
                     //     formulario.pasaporte.focus();
@@ -920,6 +946,32 @@ else if (validar_tamaño (formulario.correo.value)==false){
             }
                 formulario.submit();
             }       
+
+            //VALIDAR EDITAR PERMISO
+            function validar_permisos(){
+            var formulario_permiso=document.formulario_permiso;
+           
+             if (formulario_permiso.buscar.value=="") {
+                document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO INGRESE EL NOMBRE DEL ROL VACIO.</div>';
+                formulario_permiso.buscar.focus();
+                return false;
+            }
+            else if (Validar_espacio2(formulario_permiso.buscar.value)==false){
+                document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIO EN EL CAMPO</div>';
+                formulario_permiso.buscar.focus();
+                return false;
+             }
+            else if(validar_texto(formulario_permiso.buscar.value)==false){
+                document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO, SIN ESPACIOS AL INICIO O FINAL DEL TEXTO EN EL CAMPO</div>';
+                formulario_buscar.buscar.focus();
+                return false;
+            }
+            else{
+                document.getElementById("alerta").innerHTML="";
+            }
+
+            formulario_permiso.submit();
+            }
 
  //VALIDAR FORMULARIO DE EXPEDIENTE
 

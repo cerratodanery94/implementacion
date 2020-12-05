@@ -97,15 +97,17 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>23
 <div id="alerta"></div>
 
 <div class="panel-body" id="formularioregistros">
-  <form action="../vistas/editar_permisos.php" method="get" >
+  <form action="../vistas/editar_permisos.php" method="get" name="formulario_permiso" >
   <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <div class="input-group">
                 <span class="input-group-addon">Ingrese el nombre del rol</span>
         <input type="text" size="50" autocomplete="off" style="text-transform:uppercase"  class="form-control" placeholder="" name="buscar" id="buscar">
         <span class="	glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
+                
                 </div>
-                <button type="submit" class="btn btn btn btn-primary" ><i class="fa fa-search-plus" aria-hidden="true"></i></i> BUSCAR</button>
+                <div id="alerta"></div>
+                <button type="button" onclick=" validar_permisos();" class="btn btn btn btn-primary" ><i class="fa fa-search-plus" aria-hidden="true"></i></i> BUSCAR</button>
         </div>
        <?php
        if(!empty($_GET)){
@@ -1006,7 +1008,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>23
               </table>
                 <div class="box-footer">
               <div class="col text-center">
-              <button type="submit"  class="btn btn-lg btn btn-primary"><i class="fa fa-refresh" aria-hidden="true"></i> ACTUALIZAR</button>
+              <button type="submit" class="btn btn-lg btn btn-primary"><i class="fa fa-refresh" aria-hidden="true"></i> ACTUALIZAR</button>
                 <a href="../vistas/editar_permisos.php?"  class="btn btn-lg  btn bg-red" ><i class="fa fa-times-circle-o" aria-hidden="true"></i> CANCELAR</a>
                
               </div>
