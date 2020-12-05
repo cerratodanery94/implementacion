@@ -118,23 +118,20 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>17
                   <td>ACCIONES</td>
                   <td>FECHA DE NACIMIENTO</td>
                   <td>EDAD</td>
-                  <td>PASPORTE</td>
-                  <td>FECHA DE CREACION</td>     
+                  <td>FECHA DE REGISTRO</td>     
                   <td>GENERO</td>
-                  <td>TELEFONO FIJO</td>
                   <td>CELULAR</td>
                   <td>PROFESION</td>
                   <td>DIRECCION</td>
-                  <td>CORREO</td>
                   <td>NACIONALIDAD</td>
-                  <td>RTN</td>
+         
                 </tr>
                 </thead>
                 <tbody>
                 <?php
                require '../modelos/conectar.php';
                require '../controladores/funciones.php';
-               $consulta=$conexion->prepare("SELECT * FROM tbl_personas where PER_CODIGO>0");
+               $consulta=$conexion->prepare("SELECT * FROM tbl_personas a iNNER JOIN tbl_paises b on a.PAIS_CODIGO=b.PAIS_CODIGO  INNER JOIN tbl_ocupaciones c on a.OCU_CODIGO=c.OCU_CODIGO where PER_CODIGO>0");
                $consulta->execute();
                  while($fila=$consulta->fetch()){?>
                  <tr> 
@@ -166,16 +163,16 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>17
                  
                  <td><?php echo $fila['PER_FECHA_NACIMIENTO']?></td>
                  <td><?php echo mi_edad($fila['PER_FECHA_NACIMIENTO'])?></td>
-                 <td><?php echo $fila['PER_PASAPORTE']?></td>
+              
                  <td><?php echo $fila['PER_FECHA_CREACION']?></td>
                  <td><?php echo $fila['PER_GENERO']?></td>
-                 <td><?php echo $fila['PER_TEL_FIJO']?></td>
+             
                  <td><?php echo $fila['PER_CELULAR']?></td>
-                 <td><?php echo $fila['OCU_CODIGO']?></td>
+                 <td><?php echo $fila['OCU_NOMBRE']?></td>
                  <td><?php echo $fila['PER_DIRECCION']?></td>
-                 <td><?php echo $fila['PER_CORREO']?></td>
-                 <td><?php echo $fila['PAIS_CODIGO']?></td>
-                 <td><?php echo $fila['PER_RTN']?></td>
+             
+                 <td><?php echo $fila['PAIS_NOMBRE']?></td>
+                
                  </tr>
                  <?php } ?> 
                 </tbody>
@@ -186,18 +183,18 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>17
                   <th>NOMBRES</th>
                   <th>APELLIDOS</th>
                   <td>ACCIONES</td>
-                  <td>PASPORTE</td>
+            
                   <td>FECHA DE NACIMIENTO</td>
                   <td>FECHA DE CREACION</td>
                   <td>EDAD</td>
                   <td>GENERO</td>
-                  <td>TELEFONO FIJO</td>
+               
                   <td>CELULAR</td>
                   <td>PROFESION</td>
                   <td>DIRECCION</td>
-                  <td>CORREO</td>
+            
                   <td>NACIONALIDAD</td>
-                  <td>RTN</td>
+  
                   
                 </tr>
                 </tfoot>
@@ -337,27 +334,7 @@ var currentdate = new Date();
                 "visible": false,
                 "searchable": false
             },
-            {
-                "targets": [ 13 ],
-                "visible": false,
-                "searchable": false
-            },        
-            {
-                "targets": [ 14 ],
-                "visible": false,
-                "searchable": false
-            },   
-            {
-                "targets": [ 15 ],
-                "visible": false,
-                "searchable": false
-            },  
-            {
-                "targets": [ 16 ],
-                "visible": false,
-                "searchable": false
-            },  
-                
+         
                     
         ],
      
@@ -427,7 +404,7 @@ buttons:
             },
             exportOptions:
              {
-                 columns: [0,1,2,3,5,6,7,8,9,10,11,12,13,14,15,16] ,//exportar solo las columnas.
+                 columns: [0,1,2,3,5,6,7,8,9,10,11,12] ,//exportar solo las columnas.
              },
                   styles:
               {

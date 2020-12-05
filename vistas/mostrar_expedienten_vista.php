@@ -117,9 +117,9 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>22
                   <th>ACCIONES</th>
                   <td>PESO</td>
                   <td>ALTURA</td>
-                  <td>ANTECEDENTES CLINICOS</td>
+                  <td>DESCRIPCIÓNES MEDICAS</td>
                   <td>DIETA</td>
-                  <td>FECHA DE CREACION</td>
+                  <td>FECHA DE REGISTRO</td>
 				          
                 </tr>
                 </thead>

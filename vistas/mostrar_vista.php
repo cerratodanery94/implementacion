@@ -170,7 +170,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
                  <td><?php echo $fila['USU_TEL_FIJO']?></td>
                  <td><?php echo $fila['USU_PASAPORTE']?></td>
                  <td><?php echo $fila['USU_DIRECCION']?></td>
-                 <td><?php echo $fila['pais_nombre']?></td>
+                 <td><?php echo $fila['PAIS_NOMBRE']?></td>
                  </tr>
                  <?php } ?>
               
