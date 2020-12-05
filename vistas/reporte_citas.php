@@ -119,15 +119,16 @@ if (isset($_POST['id_u']) && isset($_POST['est_c']) && isset($_POST['desde']) &&
             </div>
             <!--llamar funciones-->
             <div class="box-body">
-            <form action="../vistas/reporte_citas.php" method="post">
+            <form action="../vistas/reporte_citas.php" method="post" name="formulario_reporte_cita">
+            <div id="alerta"></div>
             <table>
               <tr>
                   <td>
               
                 <div class="form-group col-lg-12 col-md-12 col-xs-12">
                 <label for="">SELECCIONE DOCTORA/DOCTOR/NUTRICIONISTA:</label>
-             <select class="form-control" name="id_u" id="doctora" required>
-             <option value="">SELECCIONE:</option>
+             <select class="form-control" name="id_u" id="doctora">
+             <option value="0">SELECCIONE:</option>
                 <?php
                require '../modelos/conectar.php';
                $resultado = $conexion -> query ("SELECT * FROM TBL_USUARIO where ROL_CODIGO=3 or ROL_CODIGO=4");
@@ -145,8 +146,8 @@ if (isset($_POST['id_u']) && isset($_POST['est_c']) && isset($_POST['desde']) &&
                  
                 <div class="form-group col-lg-12 col-md-12 col-xs-12">
                 <label for="">SELECCIONE ESTADO:</label>
-            <select class="form-control" name="est_c" id="est_c" required>
-             <option value="">SELECCIONE:</option>
+            <select class="form-control" name="est_c" id="est_c">
+             <option value="0">SELECCIONE:</option>
              <option value="'PENDIENTE'">PENDIENTE</option>
              <option value="'REALIZADA'">REALIZADA</option>
              <option value="'CANCELADA'">CANCELADA</option>
@@ -163,14 +164,14 @@ if (isset($_POST['id_u']) && isset($_POST['est_c']) && isset($_POST['desde']) &&
                   <td> 
                 <div class="form-group col-lg-12 col-md-12 col-xs-12">
                 <label for="">DESDE</label>
-            <input type="date" autocomplete="off" class="form-control" name="desde" id="desde" required>
+            <input type="date" autocomplete="off" class="form-control" name="desde" id="desde">
             </div>
             </div></td>
                   <td>
                  
                 <div class="form-group col-lg-12 col-md-12 col-xs-12">
                 <label>HASTA</label>
-            <input type="date" autocomplete="off" class="form-control" name="hasta" id="hasta" required>
+            <input type="date" autocomplete="off" class="form-control" name="hasta" id="hasta">
             </div>
             
                   </td>
@@ -178,7 +179,7 @@ if (isset($_POST['id_u']) && isset($_POST['est_c']) && isset($_POST['desde']) &&
               
            <td>
            <div class="form-group col-lg-12 col-md-12 col-xs-12">
-           <button type="submit"  class="btn btn-block  btn btn-primary" >CONSULTAR</button>
+           <button type="button" onclick="validar_reporte_cita();" class="btn btn-block  btn btn-primary" >CONSULTAR</button>
            
             </div>
             <div class="form-group col-lg-12 col-md-12 col-xs-12">
@@ -286,6 +287,7 @@ if (isset($_POST['id_u']) && isset($_POST['est_c']) && isset($_POST['desde']) &&
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
+<script src="../vistas/js/validar_sistema.js"></script>
 
 <!-- jQuery 2.2.3 -->
 

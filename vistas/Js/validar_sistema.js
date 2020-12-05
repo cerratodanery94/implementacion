@@ -1339,17 +1339,63 @@ function validar_pregunta(){
         //VALIDAR FORMULARIO VISTA BITACORA LOS FILTROS
         function validar_bitacora(){
             var formulario=document.formulario_bitacora;
-
+            
             if (formulario.desde.value==""){
-                document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO FECHA DESDE VACIO</div>';
+                document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO FECHA "DESDE" VACIO</div>';
                 formulario.desde.focus();
                 return false;
              }
+
              if (formulario.hasta.value==""){
-                document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO FECHA HASTA VACIO</div>';
+                document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO FECHA "HASTA" VACIO</div>';
                 formulario.hasta.focus();
                 return false;
              }
+             
+             //VALIDAR RANGO DE FECHA
+             if(formulario.desde.value > formulario.hasta.value){
+                document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LA FECHA "DESDE" NO PUEDE SER MAYOR QUE LA FHECHA "HASTA" </div>';
+                formulario.desde.focus();
+                formulario.hasta.focus();
+                return false;
+            }
+
+            else{
+                document.getElementById("alerta").innerHTML="";
+            }
+
+                 formulario.submit();
+             }
+             //VALIDAR FORMULARIO REPORTE CITA.
+        function validar_reporte_cita(){
+            var formulario=document.formulario_reporte_cita;
+            if (formulario.doctora.value=="0"){
+                document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO "DOCTORA/DOCTOR/NUTRICIONISTA" VACIO, SELECIONAR UNA OPCIÓN.</div>';
+                formulario.doctora.focus();
+                return false;
+             }
+             if (formulario.est_c.value=="0"){
+                document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO "ESTADO" VACIO, SELECCIONAR UNA ACCIÓN</div>';
+                formulario.est_c.focus();
+                return false;
+             }
+            else if (formulario.desde.value==""){
+                document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO FECHA "DESDE" VACIO</div>';
+                formulario.desde.focus();
+                return false;
+             }
+            else if (formulario.hasta.value==""){
+                document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO FECHA "HASTA" VACIO</div>';
+                formulario.hasta.focus();
+                return false;
+             }
+             //VALIDAR RANGO DE FECHA
+             if(formulario.desde.value > formulario.hasta.value){
+                document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LA FECHA "DESDE" NO PUEDE SER MAYOR QUE LA FECHA "HASTA" </div>';
+                formulario.desde.focus();
+                formulario.hasta.focus();
+                return false;
+            }
              else{
                 document.getElementById("alerta").innerHTML="";
             }

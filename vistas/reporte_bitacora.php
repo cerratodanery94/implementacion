@@ -117,22 +117,23 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>33
             </div>
             <!--llamar funciones-->
             <div class="box-body">
-            <form action="../vistas/reporte_bitacora.php" method="post">
+            <form action="../vistas/reporte_bitacora.php" method="post" name="formulario_bitacora">
+          <div id="alerta"></div>
             <div class="form-group col-lg-3 col-md-3 col-xs-3">
                 <div class="input-group">
                 <span class="input-group-addon">DESDE</span>
-            <input type="date" autocomplete="off" class="form-control" name="desde" id="desde" required>
+            <input type="date" autocomplete="off" class="form-control" name="desde" id="desde">
             </div>
             </div>
             <div class="form-group col-lg-3 col-md-3 col-xs-3">
                 <div class="input-group">
                 <span class="input-group-addon">HASTA</span>
-            <input type="date" autocomplete="off" class="form-control" name="hasta" id="hasta"required>
+            <input type="date" autocomplete="off" class="form-control" name="hasta" id="hasta">
             </div>
             </div>
            
             <div class="form-group col-lg-3 col-md-3 col-xs-3">
-            <button type="submit"  class="btn btn-block  btn btn-primary" >CONSULTAR</button>
+            <button type="button" onclick="validar_bitacora();" class="btn btn-block  btn btn-primary" >CONSULTAR</button>
             
             </div>
             <div class="form-group col-lg-3 col-md-3 col-xs-3">
@@ -234,7 +235,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>33
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-
+<script src="../vistas/js/validar_sistema.js"></script>
 <!-- jQuery 2.2.3 -->
 
 <script src="../vistas/plugins/jQuery/jquery-2.2.3.min.js"></script>
