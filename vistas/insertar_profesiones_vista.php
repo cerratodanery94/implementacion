@@ -90,18 +90,18 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
             <!--llamar funciones-->
             <div class="box-body">
            <div>
-        <form action="" method="POST" role="" name="">
+        <form action="" method="POST" role="" name="formulario_profe">
         <div id="alerta"></div>
         
         <div class="form-group col-lg-6 col-md-6 col-xs-12">
         <div class="input-group">
                 <span class="input-group-addon">Ingresar una profesion</span>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control apellidos" placeholder="profesion/ocupacion "  name="profesion" id="profesion" >
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control apellidos" placeholder=""  name="profesion" id="profesion" >
                   <span class="form-control-feedback"><i class="fa fa-graduation-cap" aria-hidden="true"></i></span>
        </div>
                 </div>
 
-                <button type="submit"  class="btn btn btn btn-primary">  <i class="fa fa-check-circle-o" aria-hidden="true"></i> CREAR</button>
+                <button type="button" onclick=" validar_profesion();" class="btn btn btn btn-primary">  <i class="fa fa-check-circle-o" aria-hidden="true"></i> CREAR</button>
 
               
       <!-- /.row -->

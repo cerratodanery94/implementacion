@@ -111,7 +111,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>33
             </div>
             <!--llamar funciones-->
             <div class="box-body">
-            <form action="../modelos/bitacora_reporte.php" method="post">
+            <form action="../modelos/bitacora_reporte.php" method="post" name="formulario_bitacora">
+            <div id="alerta"></div>
             <div class="form-group col-lg-3 col-md-3 col-xs-3">
                 <div class="input-group">
                 <span class="input-group-addon">DESDE</span>
@@ -126,7 +127,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>33
             </div>
            
             <div class="form-group col-lg-3 col-md-3 col-xs-3">
-            <button type="submit"  class="btn btn-block btn-danger" >EXPORTAR A PDF</button>
+            <button type="button" onclick="validar_bitacora();" class="btn btn-block btn-danger" >EXPORTAR A PDF</button>
             
             </div>
             
@@ -197,7 +198,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>33
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-
+<script src="../vistas/js/validar_sistema.js"></script>
 <!-- jQuery 2.2.3 -->
 
 <script src="../vistas/plugins/jQuery/jquery-2.2.3.min.js"></script>

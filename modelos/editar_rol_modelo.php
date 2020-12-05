@@ -118,7 +118,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>32
                 <span class="input-group-addon">Nombre del rol</span>
                   <input type="hidden" name="id_r" id="id_r" value="<?php echo $id_r?>">
                   <input type="hidden"  name="rola" id="rola" value="<?php echo $rol?>">
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="ROL"  name="roln" id="rol" value="<?php echo $rol?>" >
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder=""  name="roln" id="rol" value="<?php echo $rol?>" >
                   <span class="glyphicon glyphicon-ok-circle form-control-feedback"></span>
                 </div>
                 </div>
@@ -127,7 +127,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>32
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <div class="input-group">
                 <span class="input-group-addon">Descripción del rol</span>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control " placeholder="DESCRIPCIÓN"  name="descrip" id="descrip" value="<?php echo $descrip?>">
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control " placeholder=""  name="descrip" id="descrip" value="<?php echo $descrip?>">
                   <span class="		glyphicon glyphicon-ok-circle form-control-feedback"></span>
                 </div>
                 </div>

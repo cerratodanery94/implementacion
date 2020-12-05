@@ -90,8 +90,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
             <!--llamar funciones-->
             <div class="box-body">
            <div>
-        <form action="" method="POST" role="" name="">
-        <div id="alerta"></div>
+        <form action="" method="POST" role="" name="formulario_pregunta">
+        <div id="alerta1"></div>
         
         <div class="form-group col-lg-6 col-md-6 col-xs-12">
         <div class="input-group">
@@ -101,7 +101,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
        </div>
                 </div>
 
-                <button type="submit"  class="btn btn btn btn-primary">  <i class="fa fa-check-circle-o" aria-hidden="true"></i> CREAR</button>
+                <button type="button" onclick=" validar_pregunta();"  class="btn btn btn btn-primary">  <i class="fa fa-check-circle-o" aria-hidden="true"></i> CREAR</button>
 
               
       <!-- /.row -->

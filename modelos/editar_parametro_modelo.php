@@ -154,7 +154,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <div class="input-group">
                 <span class="input-group-addon">Valor del párametro</span>
-                  <input type="text"  style="text-transform:uppercase" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="VALOR"  name="valor" id="valor" value="<?php echo $valor?>" >
+                  <input type="text"  style="text-transform:uppercase" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder=""  name="valor" id="valor" value="<?php echo $valor?>" >
                   <span class="	glyphicon glyphicon-refresh form-control-feedback"></span>
                 </div>
                 </div>

@@ -111,13 +111,13 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>32
             <!--llamar funciones-->
             <div class="box-body">
            <div>
-           <form action="" method="POST" name="form_rol">
+           <form action="" method="POST" name="form_pregunta">
         <div id="alerta1"></div>
         <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <div class="input-group">
-                <span class="input-group-addon">Nombre del rol</span>
+                <span class="input-group-addon">Ingresar pregunta</span>
                   <input type="hidden" name="id" id="id" value="<?php echo $id?>">
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="pregunta"  name="nombre" id="nombre" value="<?php echo $nombre?>" >
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder=""  name="nombre" id="nombre" value="<?php echo $nombre?>" >
                   <span class="		glyphicon glyphicon-ok-circle form-control-feedback"></span>
                 </div>
                 </div>
@@ -130,7 +130,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>32
               <div class="box-footer">
               <div class="col text-center">
               
-                <button type="submit"  class="btn btn-lg btn btn-primary"><i class="fa fa-refresh" aria-hidden="true"></i> ACTUALIZAR</button>
+                <button type="button" onclick=" validar_pregun();" class="btn btn-lg btn btn-primary"><i class="fa fa-refresh" aria-hidden="true"></i> ACTUALIZAR</button>
                 <a href="../vistas/mostrar_preguntas.php" class="btn btn-lg  btn bg-red" ><i class="fa fa-times-circle-o" aria-hidden="true"></i> CANCELAR</a>
                 </div>
               </div>

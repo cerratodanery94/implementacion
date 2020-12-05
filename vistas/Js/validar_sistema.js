@@ -156,6 +156,9 @@ function validar_telefono(parametro){
                         return true;
                     }
                     }
+
+                    //validar parametros
+                    
                     
         //VALIDAR FORMULARIO INSERTAR MANT VISTA
     function validar_empleado(){
@@ -334,7 +337,7 @@ formulario.pasaporte.focus();
 return false;
 }
 else if(validar_numletras(formulario.pasaporte.value)==false){
-    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO, SIN ESPACIOS AL INICIO O FINAL DEL TEXTO EN EL CAMPO</div>';
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INGRESAR DATOS ALFANUMERICOS EN EL CAMPO</div>';
     formulario.pasaporte.focus();
     return false; 
 }
@@ -426,7 +429,26 @@ else if (validar_texto (formulario.apellidos.value)==false){
         formulario.numero_de_identidad.focus();
         return false;
     }
-        //VALIDAR CAMPO RTN
+//VALIDAR FECHA 
+if (formulario.fecha_de_nacimiento.value==0) {
+    document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO FECHA VACIO, FAVOR ENTRODUCIR UNA FECHA</div>';
+    formulario.fecha_de_nacimiento.focus();
+    return false;
+} 
+else{
+    document.getElementById("alerta1").innerHTML="";
+}
+
+//VALIDAR CAMPO GENERO
+if (formulario.genero.value==0) {
+    document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO GENERO VACIO, FAVOR ELEGIR UN GENERO</div>';
+    formulario.genero.focus();
+    return false;
+}
+else{
+    document.getElementById("alerta1").innerHTML="";
+}
+    //VALIDAR CAMPO RTN
          
         //  if (formulario.rtn.value==""){
         //     document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO RTN VACIO</div>';
@@ -504,12 +526,7 @@ if (formulario.numero_de_telefono_fijo.value==""){
         return false; 
     }
          
-//VALIDAR FECHA 
-if (formulario.fecha_de_nacimiento.value==0) {
-    document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO FECHA VACIO, FAVOR ENTRODUCIR UNA FECHA</div>';
-    formulario.fecha_de_nacimiento.focus();
-    return false;
-}  
+ 
 //VALIDAR CORREO
 if (formulario.correo.value=="") {
 
@@ -528,12 +545,7 @@ else if (validar_tamaño (formulario.correo.value)==false){
         formulario.correo.focus();
         return false; 
      }
-    //VALIDAR CAMPO GENERO
-    if (formulario.genero.value==0) {
-        document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO GENERO VACIO, FAVOR ELEGIR UN GENERO</div>';
-        formulario.genero.focus();
-        return false;
-    }
+    
   
     
       //VALIDAR CAMPO DIRECCION
@@ -832,6 +844,18 @@ else if (validar_tamaño (formulario.correo.value)==false){
                     formulario.numero_de_identidad.focus();
                     return false;
                 }
+        //VALIDAR FECHA 
+        if (formulario.fecha_de_nacimiento.value==0) {
+            document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO FECHA VACIO, FAVOR ENTRODUCIR UNA FECHA</div>';
+            formulario.fecha_de_nacimiento.focus();
+            return false;
+        } 
+         //VALIDAR CAMPO GENERO
+         if (formulario.genero.value==0) {
+            document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO GENERO VACIO, FAVOR ELEGIR UN GENERO</div>';
+            formulario.genero.focus();
+            return false;
+        } 
                 //VALIDAR CAMPO RTN
                  
                 //  if (Validar_espacio2 (formulario.rtn.value)==false){
@@ -903,12 +927,7 @@ else if (validar_tamaño (formulario.correo.value)==false){
             return false;
             }
                  
-        //VALIDAR FECHA 
-        if (formulario.fecha_de_nacimiento.value==0) {
-            document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO FECHA VACIO, FAVOR ENTRODUCIR UNA FECHA</div>';
-            formulario.fecha_de_nacimiento.focus();
-            return false;
-        }  
+      
         //VALIDAR CORREO
         if (formulario.correo.value=="") {
         
@@ -927,12 +946,7 @@ else if (validar_tamaño (formulario.correo.value)==false){
                 formulario.correo.focus();
                 return false; 
              }
-        //VALIDAR CAMPO GENERO
-            if (formulario.genero.value==0) {
-                document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO GENERO VACIO, FAVOR ELEGIR UN GENERO</div>';
-                formulario.genero.focus();
-                return false;
-            }
+       
               //VALIDAR CAMPO DIRECCION
               if (formulario.direccion.value==0) {
                 document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO DIRECCION VACIO</div>';
@@ -1157,6 +1171,8 @@ else if (Validar_espacio2 (formulario.descrip.value)==false){
 }
 
 
+
+
 //VALIDAR FORMULARIO PARAMETROS
 function validar_parametros(){
     var formulario=document.form_parametros;
@@ -1170,11 +1186,12 @@ function validar_parametros(){
         formulario.valor.focus();
         return false;
     }
-    else if(validar_numletras(formulario.valor.value)==false){
-        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INGRESAR DATOS ALFANUMERICOS EN EL CAMPO</div>';
-        formulario.valor.focus();
-        return false; 
+    else{
+        document.getElementById("alerta").innerHTML="";
     }
+    
+    
+
     formulario.submit();
 }
 
@@ -1212,6 +1229,162 @@ if(formulario.fecha_de_creacion.value==0){
 
     formulario.submit();
 }
+
+//VALIDAR FORM PROFESIÓN
+function validar_profesion(){
+var formulario=document.formulario_profe;
+if (formulario.profesion.value=="") {
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO PROFESION/OCUPACION VACIO.</div>';
+    formulario.profesion.focus();
+    return false;
+} 
+else if(Validar_espacio2(formulario.profesion.value)==false){
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIO EN EL CAMPO</div>';
+    formulario.profesion.focus();
+    return false;
+}
+else if(validar_texto(formulario.profesion.value)==false){
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO, SIN ESPACIOS AL INICIO O FINAL DEL TEXTO EN EL CAMPO</div>';
+    formulario.profesion.focus();
+    return false;
+}
+else if(validar_tamaño(formulario.profesion.value)==false){
+    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LONGITUD DEL CAMPO PROFESION/OCUPACION</div>';
+    formulario.profesion.focus();
+    return false;
+}
+else{
+    document.getElementById("alerta").innerHTML="";
+}
+formulario.submit();
+}
+
+//VAIDAR EDITAR PROFESION/ocupacion
+function validar_profe(){
+    var formulario=document.form_profe;
+    if (formulario.nombre.value=="") {
+        document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO ACTUALIZAR PROFESION/OCUPACION VACIO.</div>';
+        formulario.nombre.focus();
+        return false;
+    } 
+    else if(Validar_espacio2(formulario.nombre.value)==false){
+        document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIO EN EL CAMPO</div>';
+        formulario.nombre.focus();
+        return false;
+    }
+    else if(validar_texto(formulario.nombre.value)==false){
+        document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO, SIN ESPACIOS AL INICIO O FINAL DEL TEXTO EN EL CAMPO</div>';
+        formulario.nombre.focus();
+        return false;
+    }
+    else if(validar_tamaño(formulario.nombre.value)==false){
+        document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LONGITUD DEL CAMPO ACTUALIZAR PROFESION/OCUPACION</div>';
+        formulario.nombre.focus();
+        return false;
+    }
+    else{
+        document.getElementById("alerta1").innerHTML="";
+    }
+    
+    formulario.submit();
+    }
+//FORMULARIO DEL PREGUNTAS
+function validar_pregunta(){
+    var formulario=document.formulario_pregunta;
+    if (formulario.pregunta.value=="") {
+        document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO PREGUNTA DE SEGURIDAD VACIO.</div>';
+        formulario.pregunta.focus();
+        return false;
+    } 
+    else if(Validar_espacio2(formulario.pregunta.value)==false){
+        document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIO EN EL CAMPO</div>';
+        formulario.pregunta.focus();
+        return false;
+    }
+    else if(validar_tamaño(formulario.pregunta.value)==false){
+        document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LONGITUD DEL CAMPO PREGUNTA DE SEGURIDAD</div>';
+        formulario.pregunta.focus();
+        return false;
+    }
+    else{
+        document.getElementById("alerta1").innerHTML="";
+    }
+    
+    formulario.submit();
+    }
+    //VALIDAR FORMULARIO EDITAR PREGUNTAS
+    function validar_pregun(){
+        var formulario=document.form_pregunta;
+        if (formulario.nombre.value=="") {
+            document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO INGRESE PREGUNTA VACIO.</div>';
+            formulario.nombre.focus();
+            return false;
+        } 
+        else if(Validar_espacio2(formulario.nombre.value)==false){
+            document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIO EN EL CAMPO</div>';
+            formulario.nombre.focus();
+            return false;
+        }
+        else if(validar_tamaño(formulario.nombre.value)==false){
+            document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LONGITUD DEL CAMPO INGRESE PREGUNTA</div>';
+            formulario.nombre.focus();
+            return false;
+        }
+        else{
+            document.getElementById("alerta1").innerHTML="";
+        }
+        
+        formulario.submit();
+        }
+        //VALIDAR FORMULARIO VISTA BITACORA LOS FILTROS
+        function validar_bitacora(){
+            var formulario=document.formulario_bitacora;
+
+            if (formulario.desde.value==""){
+                document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO FECHA DESDE VACIO</div>';
+                formulario.desde.focus();
+                return false;
+             }
+             if (formulario.hasta.value==""){
+                document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO FECHA HASTA VACIO</div>';
+                formulario.hasta.focus();
+                return false;
+             }
+             else{
+                document.getElementById("alerta").innerHTML="";
+            }
+
+                 formulario.submit();
+             }
+        //VALIDAR FORMULARIO DE PANTALLAS
+        function validar_pantalla(){
+            var formulario=document.form_pantalla;
+            if (formulario.descripcion.value=="") {
+                document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO ACTUALIZAR PROFESION/OCUPACION VACIO.</div>';
+                formulario.descripcion.focus();
+                return false;
+            } 
+            else if(Validar_espacio2(formulario.descripcion.value)==false){
+                document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIO EN EL CAMPO</div>';
+                formulario.descripcion.focus();
+                return false;
+            }
+            else if(validar_texto(formulario.descripcion.value)==false){
+                document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO, SIN ESPACIOS AL INICIO O FINAL DEL TEXTO EN EL CAMPO</div>';
+                formulario.descripcion.focus();
+                return false;
+            }
+            else if(validar_tamaño(formulario.descripcion.value)==false){
+                document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LONGITUD DEL CAMPO ACTUALIZAR PROFESION/OCUPACION</div>';
+                formulario.descripcion.focus();
+                return false;
+            }
+            else{
+                document.getElementById("alerta1").innerHTML="";
+            }
+            
+            formulario.submit();
+        }
 
 //VALIDAR FORMULARIO PARAMETROS
 function validar_permiso(){
