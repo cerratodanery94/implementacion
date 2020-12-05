@@ -266,7 +266,7 @@ buttons:
             titleAttr: 'exportar a pdf', // boton para exportar
             className: 'btn btn-danger btn-sm',// color del boton
             text:'EXPORTAR A PDF ',
-            title:'CLÍNICA MÉDICA HOMEOPATICA CLIME HOME '+'\n'+'\n'+'LISTA DE CITAS',// titulos
+            title:'CLÍNICA MÉDICA HOMEOPATICA CLIME HOME '+'\n'+'\n'+'LISTA DE PANTALLAS.',// titulos
             messageTop:datetime,   
            // orientation: 'landscape',
             processing: true,
@@ -321,7 +321,7 @@ buttons:
             },
             exportOptions:
              {
-                 columns: [0,1,2,3,4,5,6,] ,//exportar solo las columnas.
+                 columns: [0,1,2,3] ,//exportar solo las columnas.
              },
                   styles:
               {
