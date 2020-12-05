@@ -111,27 +111,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>33
             </div>
             <!--llamar funciones-->
             <div class="box-body">
-            <form action="../modelos/bitacora_reporte.php" method="post" name="formulario_bitacora">
-            <div id="alerta"></div>
-            <div class="form-group col-lg-3 col-md-3 col-xs-3">
-                <div class="input-group">
-                <span class="input-group-addon">DESDE</span>
-            <input type="date" autocomplete="off" class="form-control" name="desde" id="desde">
-            </div>
-            </div>
-            <div class="form-group col-lg-3 col-md-3 col-xs-3">
-                <div class="input-group">
-                <span class="input-group-addon">HASTA</span>
-            <input type="date" autocomplete="off" class="form-control" name="hasta" id="hasta">
-            </div>
-            </div>
-           
-            <div class="form-group col-lg-3 col-md-3 col-xs-3">
-            <button type="button" onclick="validar_bitacora();" class="btn btn-block btn-danger" >EXPORTAR A PDF</button>
             
-            </div>
-            
-            </form>
            
               <table id="example1" class="table table-bordered table-striped">
                 <thead>

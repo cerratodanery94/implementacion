@@ -105,75 +105,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
              <a href="../vistas/insertar_cita_vista.php" class="btn bg-blue btn-flat margin">CREAR CITA <i class="fa fa-plus-circle" aria-hidden="true"></i> </a>
            </div>
             <?php } ?>
-            <form action="../modelos/citas_reporte.php" method="post">
-            <table>
-              <tr>
-                  <td>
-              
-                <div class="form-group col-lg-12 col-md-12 col-xs-12">
-                <label for="">SELECCIONE DOCTORA/DOCTOR/NUTRICIONISTA:</label>
-             <select class="form-control" name="id_u" id="doctora">
-             <option value="0">SELECCIONE:</option>
-                <?php
-               require '../modelos/conectar.php';
-               $resultado = $conexion -> query ("SELECT * FROM TBL_USUARIO where ROL_CODIGO=3 or ROL_CODIGO=4");
-              while ($registro=$resultado->fetch(PDO::FETCH_ASSOC)) {
-                echo '<option value="'.$registro["ROL_CODIGO"].'">'.$registro["USU_NOMBRES"]." ".$registro["USU_APELLIDOS"].'</option>';
-               }
-               ?>
-                <option value="3,4">CUALQUIERA</option>
-              </select>
-            </div>
            
-                  </td>
-                   
-                  <td>
-                 
-                <div class="form-group col-lg-12 col-md-12 col-xs-12">
-                <label for="">SELECCIONE ESTADO:</label>
-            <select class="form-control" name="estado" id="estado">
-             <option value="0">SELECCIONE:</option>
-             <option value="'PENDIENTE'">PENDIENTE</option>
-             <option value="'REALIZADA'">REALIZADA</option>
-             <option value="'CANCELADA'">CANCELADA</option>
-             <option value="'NO SE PRESENTO'">NO SE PRESENTO</option>
-             <option value="'PENDIENTE','REALIZADA','CANCELADA','NO SE PRESENTO'">TODOS</option>
-            </select>
-          </div>
-          
-          </td>
-              <td>
-                 
-           
-                  </td>
-                  <td> 
-                <div class="form-group col-lg-12 col-md-12 col-xs-12">
-                <label for="">DESDE</label>
-            <input type="date" autocomplete="off" class="form-control" name="desde" id="desde">
-            </div>
-            </div></td>
-                  <td>
-                 
-                <div class="form-group col-lg-12 col-md-12 col-xs-12">
-                <label>HASTA</label>
-            <input type="date" autocomplete="off" class="form-control" name="hasta" id="hasta">
-            </div>
-            
-                  </td>
-                 
-              
-           <td>
-           <div class="form-group col-lg-12 col-md-12 col-xs-12">
-           <label style="color: white;">.</label>
-            <button type="submit"  class="btn btn-block btn-danger">EXPORTAR A PDF</button>
-            </div>
-           </td>
-              </tr>
-           </table>
-           <br>
-           
-            
-            </form>
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
