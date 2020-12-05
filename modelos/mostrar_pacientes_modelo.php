@@ -219,7 +219,7 @@ try {
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <div class="input-group">
-                <span class="input-group-addon">Profesión/ocupación</span>
+                <span class="input-group-addon">Profesión | Ocupación</span>
                 <select class="form-control" name="profesion" id="profesion" disabled>
         <option value="0">Seleccione una profesión/ocupación:</option>
                 <?php

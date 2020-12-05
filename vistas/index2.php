@@ -196,11 +196,16 @@ $datos9 = $resultado9->fetch(PDO::FETCH_ASSOC);
     </section>
 
     <!-- Main content -->
+    
     <section class="content">
-<div class="row">
+          <ol class="breadcrumb">
+        <li class="active">Información General</li>
+        <li class="active">ClimeHome</li>
+      </ol>
+    <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box bg-navy">
-            <span class="info-box-icon"><i class="fa fa-user"></i></span>
+          <div class="info-box">
+            <span class="info-box-icon bg-aqua"><i class="fa fa-user"></i></span>
             <?php 
             //usuarios
             $sql = "SELECT COUNT(*) total FROM tbl_usuario";
@@ -218,12 +223,29 @@ $datos9 = $resultado9->fetch(PDO::FETCH_ASSOC);
              $sql = "SELECT COUNT(*) total FROM tbl_expediente_nutricionista";
              $result = $conexion->query($sql); //$pdo sería el objeto conexión
              $totalen=$result->fetchColumn();
+             //Citas
+             $sql = "SELECT COUNT(*) total FROM tbl_citas";
+             $result = $conexion->query($sql); //$pdo sería el objeto conexión
+             $totalc=$result->fetchColumn();
+              //Profesiones
+              $sql = "SELECT COUNT(*) total FROM tbl_ocupaciones";
+              $result = $conexion->query($sql); //$pdo sería el objeto conexión
+              $totalocup=$result->fetchColumn();
+               //Parametros
+               $sql = "SELECT COUNT(*) total FROM tbl_parametros";
+               $result = $conexion->query($sql); //$pdo sería el objeto conexión
+               $totalpara=$result->fetchColumn();
+                //Bitacora
+                $sql = "SELECT COUNT(*) total FROM tbl_bitacora";
+                $result = $conexion->query($sql); //$pdo sería el objeto conexión
+                $totalbit=$result->fetchColumn();
+
             ?>
-            <div class="info-box-content">
-              <span class="info-box-text">Usuarios</span>
+           <div class="info-box-content">
+           <span class="info-box-text">Usuarios</span>
               <span class="info-box-number"><?php echo $total; ?> </span>
               <div class="progress">
-                <div class="progress-bar" style="width: 100%"></div>
+                <div class=" bg-aqua progress-bar" style="width: 100%"></div>
               </div>
             </div>
             <!-- /.info-box-content -->
@@ -232,29 +254,28 @@ $datos9 = $resultado9->fetch(PDO::FETCH_ASSOC);
         </div>
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box bg-green">
-            <span class="info-box-icon"><i class="fa fa-users"></i></span>
+          <div class="info-box">
+            <span class="info-box-icon bg-green"><i class="fa fa-users"></i></span>
+
             
             <div class="info-box-content">
               <span class="info-box-text">Pacientes</span>
               <span class="info-box-number"><?php echo $totalp; ?></span>
               <div class="progress">
-                <div class="progress-bar" style="width: 100%"></div>
+                <div class=" bg-green progress-bar" style="width: 100%"></div>
               </div>
           <!-- /.info-box -->
         </div>
         </div>
         </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box bg-yellow">
-            <span class="info-box-icon"><i class="fa fa-clipboard"></i></span>
-
+         <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-yellow"><i class="fa fa-folder-o"></i></span>
             <div class="info-box-content">
-              <span class="info-box-text"><p>EXPEDIENTES</p><p>MÉDICOS</p></span>
+              <span class="info-box-text"><p>EXPEDIENTES MÉDICOS </p><p></p></span>
               <span class="info-box-number"><?php echo $totalem; ?></span>
               <div class="progress">
-                <div class="progress-bar" style="width: 100%"></div>
+                <div class="bg-yellow progress-bar" style="width: 100%"></div>
               </div>
             </div>
             <!-- /.info-box-content -->
@@ -263,97 +284,86 @@ $datos9 = $resultado9->fetch(PDO::FETCH_ASSOC);
         </div>
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box bg-red">
-            <span class="info-box-icon"><i class="fa fa-clipboard"></i></span>
+          <div class="info-box">
+            <span class="info-box-icon bg-red"><i class="fa fa-folder-o"></i></span>
             <div class="info-box-content">
-              <span class="info-box-text"><p>EXPEDIENTES</p><p>NUTRICIONISTA</p></span>
+              <span class="info-box-text"><p>EXPEDIENTE NUTRICIONAL</p><p></p></span>
               <span class="info-box-number"><?php echo $totalen; ?></span>
               <div class="progress">
-                <div class="progress-bar" style="width: 100%"></div>
+                <div class="bg-red progress-bar" style="width: 100%"></div>
+              </div>
+            </div>
+            </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-gray"><i class="fa fa-calendar"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text"><p>CITAS</p><p></p></span>
+              <span class="info-box-number"><?php echo $totalc; ?></span>
+              <div class="progress">
+                <div class="bg-gray progress-bar" style="width: 100%"></div>
               </div>
             </div>
             <!-- /.info-box-content -->
           </div>
           <!-- /.info-box -->
         </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-purple"><i class="fa  fa-graduation-cap"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text"><p>PROFESIONES</p><p></p></span>
+              <span class="info-box-number"><?php echo $totalocup; ?></span>
+              <div class="progress">
+                <div class="bg-purple progress-bar" style="width: 100%"></div>
+              </div>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-navy"><i class="glyphicon glyphicon-briefcase"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text"><p>ROLES</p><p></p></span>
+              <span class="info-box-number"><?php echo $totalpara; ?></span>
+              <div class="progress">
+                <div class="bg-navy progress-bar" style="width: 100%"></div>
+              </div>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-black"><i class="glyphicon glyphicon-tasks"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text"><p>BITÁCORA</p><p></p></span>
+              <span class="info-box-number"><?php echo $totalbit; ?></span>
+              <div class="progress">
+                <div class="bg-black progress-bar" style="width: 100%"></div>
+              </div>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+
+
+
+
+
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        
         <!-- Main content -->
 
-    
-          <section class="content">
-          <ol class="breadcrumb">
-        <li class="active">Configuraciones</li>
-        <li class="active">Administrar</li>
-      </ol>
-      <!-- Small boxes (Stat box) -->
-      <div class="row">
-        <div class="col-lg-3 col-xs-12">
-          <!-- small box -->
-          <div class="small-box bg-navy">
-            <div class="inner">
-              <h2>USUARIOS</h2>
-              <P> CLIMEHOME </P>
-            </div>
-            <div class="icon">
-              <i class="fa fa-user"></i>
-            </div>
-            <a href="../vistas/mostrar_vista.php" class="small-box-footer">ADMINISTRAR <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-green">
-            <div class="inner">
-              <h2>PACIENTES</h2>
-              <P> CLIMEHOME </P>
-            </div>
-            <div class="icon">
-              <i class="fa fa-users"></i>
-            </div>
-            <a href="../vistas/mostrar_pacientes_vista.php" class="small-box-footer">ADMINISTRAR <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-yellow">
-            <div class="inner">
-              <h2>EXPEDIENTES</h2>
-            <P> MÉDICOS </P>
-            </div>
-            <div class="icon">
-              <i class="fa fa-clipboard"></i>
-            </div>
-            <a href="../vistas/mostrar_expediented_vista.php" class="small-box-footer">ADMINISTRAR <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-red">
-            <div class="inner">
-              <h2>EXPEDIENTES</h2>
-              <P> NUTRICIONISTA </P>
-            </div>
-            <div class="icon">
-              <i class="fa fa-clipboard"></i>
-            </div>
-            <a href="../vistas/mostrar_expedienten_vista.php" class="small-box-footer">ADMINISTRAR<i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-      </div>
-      <!-- /.row -->
-      <!-- Main row -->
-
-    </section>
-  </div>
-  </div>
-         
               <!-- /.row -->
-            </div>
-          </div>
-          <!-- /.box -->
 
     </section>
     <!-- /.content -->

@@ -162,7 +162,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>16
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <div class="input-group">
-                <span class="input-group-addon">Profesión/Ocupación</span>
+                <span class="input-group-addon">Profesión | Ocupación</span>
                 <select class="form-control" name="profesion" id="profesion">
         <option value="0">Seleccione una profesión/ocupación:</option>
                 <?php

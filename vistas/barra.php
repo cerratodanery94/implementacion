@@ -83,7 +83,7 @@
       <?php if ($_SESSION['cit']==28 and $_SESSION['ccit']==1 ){  ?>
         <a href="#">
           <i class="fa fa-calendar"></i>
-          <span>Citas</span>
+          <span>Citas Médicas</span>
           </a>
             <ul class="treeview-menu">
             <li><a href="../vistas/mostrar_citasd_vista.php"><i class=" fa fa-calendar-check-o"></i>Mostrar Citas del Dia</a></li>
@@ -105,11 +105,8 @@
           </a>
             <ul class="treeview-menu">
             <li><a href="../vistas/mostrar_profesiones.php"><i class=" fa fa-list-alt"></i>Mostrar Profesión | Ocupación </a></li>
-          
         </ul>
-          
       </li>
-      
         </a>
       </li>
       
@@ -196,7 +193,7 @@
         </a>
         <!-- subtitulos de Expedientes -->
           <ul class="treeview-menu">
-          <li><a href="../vistas/mostrar_pantallas.php"><i class="fa fa-list-alt"></i>Mostrar pantallas</a></li>
+          <li><a href="../vistas/mostrar_pantallas.php"><i class="fa fa-list-alt"></i>Mostrar lista de pantallas</a></li>
           </ul>
       </li>
       <?php  }  ?>
@@ -205,11 +202,11 @@
       <?php if ($_SESSION['back']==40 and $_SESSION['cback']==1 ){  ?>
         <a href="#">
           <i class="glyphicon glyphicon-cloud-upload"></i>
-          <span>Backup/Restore</span>
+          <span>Backup | Restore</span>
         </a>
         <!-- subtitulos de Expedientes -->
           <ul class="treeview-menu">
-          <li><a href="../vistas/backup_vista.php"><i class="	glyphicon glyphicon-cloud"></i>Backup/Restore</a></li>
+          <li><a href="../vistas/backup_vista.php"><i class="	glyphicon glyphicon-cloud-download"></i> Backup | Restore</a></li>
           </ul>
       </li>
       <?php  }  ?> 
