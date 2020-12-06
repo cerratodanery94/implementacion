@@ -113,12 +113,12 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>41
                 <thead>
                 <tr>
                   <th> ID </th>
-                  <th> ATENCION CON</th>
+                  <th> ATENCIÓN CON</th>
                   <th> PACIENTE</th>
                   <th> FECHA</th>
                   <th> HORA DE CITA</th>
                   <th> ESTADO</th>
-                  <th> DESCRIPCION</th>
+                  <th> DESCRIPCIÓN</th>
                   <th>ACCIONES</th>
                
                
@@ -164,13 +164,13 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>41
                 <tfoot>
                 <tr>
                 <th>ID</th>
-                <th>ATENCION CON</th>
+                <th>ATENCIÓN CON</th>
                   <th>PACIENTE</th>
                
                   <th>FECHA</th>
                   <th>HORA DE CITA</th>
                   <th>ESTADO</th>
-                  <th>DESCRIPCION</th>
+                  <th>DESCRIPCIÓN</th>
                   <th>ACCIONES</th>
                 
                 </tfoot>

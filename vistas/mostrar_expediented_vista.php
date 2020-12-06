@@ -84,7 +84,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>24
     <!-- Content Header (Page header) -->
     <section class="content-header">
     <h1><i class="fa fa fa-list-alt" aria-hidden="true"></i>
-       Lista de Expedientes médicos
+       Lista de Expedientes Médicos
         <small>ClimeHome</small>
       </h1>
       <ol class="breadcrumb">
@@ -113,15 +113,15 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>24
                 <thead>
                 <tr>
                   <th>N° EXP</th>
-                  <th>NUMERO DE IDENTIDAD</th>
+                  <th>NÚMERO DE IDENTIDAD</th>
                   <th>FECHA DE REGISTRO</th>
                   <th>NOMBRES</th>
                   <th>APELLIDOS</th>
-                  <td>ACCIONES</td>
+                  <th>ACCIONES</th>
                   <td>FECHA DE NACIMIENTO</td>
                   <td>EDAD</td>
-                  <td>NUMERO IDENTIDAD</td>
-                  <td>DESCRIPCIÓNES MEDICAS</td>
+                  <td>NÚMERO IDENTIDAD</td>
+                  <td>DESCRIPCIONES MÉDICAS</td>
                   <td>MEDICAMENTOS</td>   
                 </tr> 
                 </thead>
@@ -172,10 +172,11 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>24
                 <tfoot>
                 <tr>
                  <th>ID</th>
-                  <th>NUMERO DE IDENTIDAD</th>
+                  <th>NÚMERO DE IDENTIDAD</th>
+                  <th>FECHA DE REGISTRO</th>
                   <th>NOMBRES</th>
                   <th>APELLIDOS</th>
-                  <td>ACCIONES</td>
+                  <th>ACCIONES</th>
                 </tr>
                 </tfoot>
               </table>

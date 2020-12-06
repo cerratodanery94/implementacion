@@ -123,9 +123,9 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11
                   <th>IDENTIDAD</th>
                   <th>RTN</th>
                   <th>CELULAR</th>
-                  <th>TELEFONO FIJO</th>
+                  <th>TELÉFONO FIJO</th>
                   <th>PASAPORTE</th>
-                  <th>DIRECCION</th>
+                  <th>DIRECCIÓN</th>
                   <th>NACIONALIDAD</th>
                 </tr>
                 </thead>

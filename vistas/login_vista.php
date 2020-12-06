@@ -60,7 +60,7 @@
       </div>
       <div id ="alerta2"></div>
       <div class="col text-center">
-      <div><a  href="../vistas/recuperar_preg_vista.php">¿HAZ OLVIDADO TU CONTRASEÑA?</a>
+      <div><a  href="../vistas/recuperar_preg_vista.php">¿HAS OLVIDADO TU CONTRASEÑA?</a>
 </div>
 </div>
 <br></br>

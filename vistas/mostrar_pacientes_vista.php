@@ -112,17 +112,17 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>17
                 <thead>
                 <tr>
                   <th>ID</th>
-                  <th>NUMERO DE IDENTIDAD</th>
+                  <th>NÚMERO DE IDENTIDAD</th>
                   <th>NOMBRES</th>
                   <th>APELLIDOS</th>
-                  <td>ACCIONES</td>
+                  <th>ACCIONES</th>
                   <td>FECHA DE NACIMIENTO</td>
                   <td>EDAD</td>
                   <td>FECHA DE REGISTRO</td>     
-                  <td>GENERO</td>
+                  <td>GÉNERO</td>
                   <td>CELULAR</td>
-                  <td>PROFESION</td>
-                  <td>DIRECCION</td>
+                  <td>PROFESIÓN</td>
+                  <td>DIRECCIÓN</td>
                   <td>NACIONALIDAD</td>
          
                 </tr>
@@ -179,19 +179,19 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>17
                 <tfoot>
                 <tr>
                  <th>ID</th>
-                  <th>NUMERO DE IDENTIDAD</th>
+                  <th>NÚMERO DE IDENTIDAD</th>
                   <th>NOMBRES</th>
                   <th>APELLIDOS</th>
-                  <td>ACCIONES</td>
+                  <th>ACCIONES</th>
             
                   <td>FECHA DE NACIMIENTO</td>
                   <td>FECHA DE CREACION</td>
                   <td>EDAD</td>
-                  <td>GENERO</td>
+                  <td>GÉNERO</td>
                
                   <td>CELULAR</td>
-                  <td>PROFESION</td>
-                  <td>DIRECCION</td>
+                  <td>PROFESIÓN</td>
+                  <td>DIRECCIÓN</td>
             
                   <td>NACIONALIDAD</td>
   

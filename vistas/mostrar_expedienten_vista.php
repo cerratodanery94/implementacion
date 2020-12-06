@@ -83,7 +83,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>22
     <!-- Content Header (Page header) -->
     <section class="content-header">
     <h1><i class="fa fa-list-alt" aria-hidden="true"></i>
-        Lista de Expedientes nutricionista
+        Lista de Expedientes Nutricionista
         <small>ClimeHome</small>
       </h1>
       <ol class="breadcrumb">
@@ -111,13 +111,13 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>22
                 <thead>
                 <tr>
                   <th>N° EXP</th>
-                  <th>NUMERO DE IDENTIDAD</th>
+                  <th>NÚMERO DE IDENTIDAD</th>
                   <th>NOMBRES</th>
                   <th>APELLIDOS</th>
                   <th>ACCIONES</th>
                   <td>PESO</td>
                   <td>ALTURA</td>
-                  <td>DESCRIPCIÓNES MEDICAS</td>
+                  <td>DESCRIPCIONES MEDICAS</td>
                   <td>DIETA</td>
                   <td>FECHA DE REGISTRO</td>
 				          
@@ -156,7 +156,15 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>22
                  </tr>
                  <?php } ?> 
                 </tbody>
-                
+                <tfoot>
+                <tr>
+                 <th>ID</th>
+                  <th>NÚMERO DE IDENTIDAD</th>
+                  <th>NOMBRES</th>
+                  <th>APELLIDOS</th>
+                  <th>ACCIONES</th>
+                </tr>
+                </tfoot>
               </table>
               <?php if (isset($_GET['m'])) : ?>
                 <div class="flash-data" data-flashdata="<?= $_GET['m']; ?>"></div>
