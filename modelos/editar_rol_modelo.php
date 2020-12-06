@@ -90,13 +90,13 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>32
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-    <h1><i class="fa fa-refresh" aria-hidden="true"></i>
-       Actualizar roles del sistema
+    <h1><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+      Editar rol del sistema
         <small>ClimeHome</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="../vistas/mostrar_roles_vista.php"><i class="fa fa-lock"></i> Roles</a></li>
-        <li class="active"><i class="fa fa-refresh"></i> Actualizar rol</li>
+        <li><a href="../vistas/mostrar_roles_vista.php"><i class="glyphicon glyphicon-briefcase"></i> Roles</a></li>
+        <li class="active"><i class="fa fa-refresh"></i> Editar rol</li>
       </ol>
     </section>
     </section>
@@ -146,21 +146,19 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>32
         </div>
         <!-- /.box-body --> 
         <!-- /.box-footer-->
-      </div>
-      <!-- /.box -->
+        </div>
+      <!-- /.row -->
+    </section>
     <!-- /.content -->
-    </div>
-    </div>
-  </div>
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
+<footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 1.1.0
+    <strong><a>Version 2.0</a></strong> 
     </div>
-    <strong>Copyright &copy; 2020 <a>System 32</a>.</strong> All rights
-    reserved.
+    <strong>Copyright &copy; 2020 <a>| EQUIPO SYSTEM 32</a>.</strong> Todos los derechos reservados.
   </footer>
+
 
  
   <!-- /.control-sidebar -->

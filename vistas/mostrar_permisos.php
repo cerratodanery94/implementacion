@@ -87,6 +87,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>36
         <small>ClimeHome</small>
       </h1>
       <ol class="breadcrumb">
+      <li><a href="../vistas/index2.php"><i class="fa fa-home"></i>Panel de control</a></li>
         <li><a href="mostrar_permisos.php"><i class="glyphicon glyphicon-random"></i>Permisos</a></li>
         <li class="active"><i class="fa fa-list-alt"></i> Lista de permisos</li>
       </ol>
@@ -173,22 +174,20 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>36
               <?php endif; ?>
           <!-- /.box -->
         </div>
-        <!-- /.col -->
-      </div>
+       
+
+   </div>
       <!-- /.row -->
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
-  <footer class="main-footer">
+<footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 1.1.0
+    <strong><a>Version 2.0</a></strong> 
     </div>
-    <strong>Copyright &copy; 2020 <a>System 32</a>.</strong> All rights
-    reserved.
+    <strong>Copyright &copy; 2020 <a>| EQUIPO SYSTEM 32</a>.</strong> Todos los derechos reservados.
   </footer>
-
 
  
   <!-- /.control-sidebar -->

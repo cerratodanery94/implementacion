@@ -126,7 +126,8 @@ if (isset($_POST['id_u']) && isset($_POST['est_c']) && isset($_POST['desde']) &&
                   <td>
               
                 <div class="form-group col-lg-12 col-md-12 col-xs-12">
-                <label for="">SELECCIONE DOCTORA/DOCTOR/NUTRICIONISTA:</label>
+              
+                <label for=""><i class="fa fa-user-md" aria-hidden="true"></i> Doctor(a) | Nutricionista:</label>
              <select class="form-control" name="id_u" id="doctora">
              <option value="0">SELECCIONE:</option>
                 <?php
@@ -145,7 +146,7 @@ if (isset($_POST['id_u']) && isset($_POST['est_c']) && isset($_POST['desde']) &&
                   <td>
                  
                 <div class="form-group col-lg-12 col-md-12 col-xs-12">
-                <label for="">SELECCIONE ESTADO:</label>
+                <label for=""><i class="fa fa-check-circle" aria-hidden="true"></i> Estado de cita:</label>
             <select class="form-control" name="est_c" id="est_c">
              <option value="0">SELECCIONE:</option>
              <option value="'PENDIENTE'">PENDIENTE</option>
@@ -163,14 +164,14 @@ if (isset($_POST['id_u']) && isset($_POST['est_c']) && isset($_POST['desde']) &&
                   </td>
                   <td> 
                 <div class="form-group col-lg-12 col-md-12 col-xs-12">
-                <label for="">DESDE</label>
+                <label for=""><i class="fa fa-calendar-minus-o" aria-hidden="true"></i> Desde</label>
             <input type="date" autocomplete="off" class="form-control" name="desde" id="desde">
             </div>
             </div></td>
                   <td>
                  
                 <div class="form-group col-lg-12 col-md-12 col-xs-12">
-                <label>HASTA</label>
+                <label><i class="fa fa-calendar-plus-o" aria-hidden="true"></i> Hasta</label>
             <input type="date" autocomplete="off" class="form-control" name="hasta" id="hasta">
             </div>
             
@@ -179,12 +180,12 @@ if (isset($_POST['id_u']) && isset($_POST['est_c']) && isset($_POST['desde']) &&
               
            <td>
            <div class="form-group col-lg-12 col-md-12 col-xs-12">
-           <button type="button" onclick="validar_reporte_cita();" class="btn btn-block  btn btn-primary" > <i class="fa fa-bullhorn" aria-hidden="true"></i> CONSULTAR</button>
+           <button type="button" onclick="validar_reporte_cita();" class="btn btn-block  btn btn-primary" > <i class="" aria-hidden="true"></i> CONSULTAR</button>
            
             </div>
             <div class="form-group col-lg-12 col-md-12 col-xs-12">
           
-           <a href='../modelos/citas_reporte.php?doc=<?php echo $_SESSION['doc'];?>&i=<?php echo $_SESSION['i'];?>&f=<?php echo $_SESSION['f'];?>' class="btn btn-block btn-danger"><i class="fa fa-print" aria-hidden="true"></i>  EXPORTAR A PDF</a>
+           <a href='../modelos/citas_reporte.php?doc=<?php echo $_SESSION['doc'];?>&i=<?php echo $_SESSION['i'];?>&f=<?php echo $_SESSION['f'];?>' class="btn btn-block btn-danger"><i class="" aria-hidden="true"></i>  EXPORTAR A PDF</a>
             </div>
            </td>
               </tr>
@@ -267,19 +268,19 @@ if (isset($_POST['id_u']) && isset($_POST['est_c']) && isset($_POST['desde']) &&
         </div>
         <!-- /.col -->
       </div>
+      </div>
       <!-- /.row -->
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
-  <footer class="main-footer">
+<footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 1.1.0
+    <strong><a>Version 2.0</a></strong> 
     </div>
-    <strong>Copyright &copy; 2020 <a>System 32</a>.</strong> All rights
-    reserved.
+    <strong>Copyright &copy; 2020 <a>| EQUIPO SYSTEM 32</a>.</strong> Todos los derechos reservados.
   </footer>
+
  
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed

@@ -53,6 +53,7 @@
         <ul class="nav navbar-nav">
           <li class="dropdown user user-menu">
             <a href="../modelos/cerrar_sesion_modelo.php">  
+            <i class="fa fa-sign-out"></i> 
             <span class="hidden-xs">SALIR</span>
             </a>
             <ul class="dropdown-menu">

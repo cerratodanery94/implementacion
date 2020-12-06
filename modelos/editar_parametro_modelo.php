@@ -109,13 +109,13 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-    <h1><i class="fa fa-refresh" aria-hidden="true"></i>
-       Actualizar parámetros del sistema
+    <h1><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+       Editar parámetros del sistema
         <small>ClimeHome</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="../vistas/mostrar_parametros_vista.php"><i class="fa fa-lock"></i>   Parámetros</a></li>
-        <li class="active"><i class="fa fa-refresh"></i> Actualizar parámetros</li>
+        <li><a href="../vistas/mostrar_parametros_vista.php"><i class="glyphicon glyphicon-bullhorn"></i>   Parámetros</a></li>
+        <li class="active"><i class="fa fa-pencil-square-o"></i>Editar parámetros</li>
       </ol>
     </section>
     <!-- Main content -->
@@ -172,24 +172,21 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
             
         </div>
         <!-- /.box-body --> 
-        <!-- /.box-footer-->
-      </div>
-      <!-- /.box -->
+        </div>
+      <!-- /.row -->
+    </section>
     <!-- /.content -->
-    </div>
-    </div>
-  </div>
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
+<footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 1.1.0
+    <strong><a>Version 2.0</a></strong> 
     </div>
-    <strong>Copyright &copy; 2020 <a>System 32</a>.</strong> All rights
-    reserved.
+    <strong>Copyright &copy; 2020 <a>| EQUIPO SYSTEM 32</a>.</strong> Todos los derechos reservados.
   </footer>
 
->
+
+
 
  
   <!-- /.control-sidebar -->

@@ -121,23 +121,23 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>33
           <div id="alerta"></div>
             <div class="form-group col-lg-3 col-md-3 col-xs-3">
                 <div class="input-group">
-                <span class="input-group-addon">DESDE</span>
+                <span class="input-group-addon"><i class="fa fa-calendar-minus-o" aria-hidden="true"></i> Desde</span>
             <input type="date" autocomplete="off" class="form-control" name="desde" id="desde">
             </div>
             </div>
             <div class="form-group col-lg-3 col-md-3 col-xs-3">
                 <div class="input-group">
-                <span class="input-group-addon">HASTA</span>
+                <span class="input-group-addon"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i> Hasta</span>
             <input type="date" autocomplete="off" class="form-control" name="hasta" id="hasta">
             </div>
             </div>
            
             <div class="form-group col-lg-3 col-md-3 col-xs-3">
-            <button type="button" onclick="validar_bitacora();" class="btn btn-block  btn btn-primary" ><i class="fa fa-bullhorn" aria-hidden="true"></i> CONSULTAR</button>
+            <button type="button" onclick="validar_bitacora();" class="btn btn-block  btn btn-primary" ><i class="" aria-hidden="true"></i> CONSULTAR</button>
             
             </div>
             <div class="form-group col-lg-3 col-md-3 col-xs-3">
-            <a href='../modelos/bitacora_reporte.php?d=<?php echo $_SESSION['d'];?>&h=<?php echo $_SESSION['h'];?>' class="btn btn-block btn-danger"><i class="fa fa-print" aria-hidden="true"></i>  EXPORTAR A PDF</a>
+            <a href='../modelos/bitacora_reporte.php?d=<?php echo $_SESSION['d'];?>&h=<?php echo $_SESSION['h'];?>' class="btn btn-block btn-danger"><i class="" aria-hidden="true"></i>  EXPORTAR A PDF</a>
             </div>
             <?php
          try{
@@ -206,29 +206,23 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>33
            }
            ?>
             </form>
-            
-            
-             
-           
-             
+  
           <!-- /.box -->
         </div>
         <!-- /.col -->
-      </div>
+      
+   </div>
       <!-- /.row -->
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
-  <footer class="main-footer">
+<footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 1.1.0
+    <strong><a>Version 2.0</a></strong> 
     </div>
-    <strong>Copyright &copy; 2020 <a>System 32</a>.</strong> All rights
-    reserved.
+    <strong>Copyright &copy; 2020 <a>| EQUIPO SYSTEM 32</a>.</strong> Todos los derechos reservados.
   </footer>
- 
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->

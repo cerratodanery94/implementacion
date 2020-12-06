@@ -58,6 +58,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>23
         <ul class="nav navbar-nav">
           <li class="dropdown user user-menu">
             <a href="../modelos/cerrar_sesion_modelo.php">  
+            <i class="fa fa-sign-out"></i>
             <span class="hidden-xs">SALIR</span>
             </a>
             <ul class="dropdown-menu">
@@ -212,14 +213,17 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>23
       </div>
       </div>
       </div>
-      <!-- /.box -->
-
+      <!-- /.row -->
     </section>
     <!-- /.content -->
   </div>
-
-
-  
+  <!-- /.content-wrapper -->
+<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+    <strong><a>Version 2.0</a></strong> 
+    </div>
+    <strong>Copyright &copy; 2020 <a>| EQUIPO SYSTEM 32</a>.</strong> Todos los derechos reservados.
+  </footer>
 
 
 

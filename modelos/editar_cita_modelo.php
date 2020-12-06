@@ -89,7 +89,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>29
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <li class="dropdown user user-menu">
-            <a href="../modelos/cerrar_sesion_modelo.php">  
+            <a href="../modelos/cerrar_sesion_modelo.php"> 
+            <i class="fa fa-sign-out"></i> 
             <span class="hidden-xs">SALIR</span>
             </a>
             <ul class="dropdown-menu">
@@ -263,14 +264,18 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>29
           </form>
           </div>      
           </div>
-<!--fin centro-->
-          </div>
-          </div>
-          </div>
-      <!-- /.box -->
-         </section>
+      <!-- /.row -->
+    </section>
     <!-- /.content -->
-         </div>
+  </div>
+  <!-- /.content-wrapper -->
+<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+    <strong><a>Version 2.0</a></strong> 
+    </div>
+    <strong>Copyright &copy; 2020 <a>| EQUIPO SYSTEM 32</a>.</strong> Todos los derechos reservados.
+  </footer>
+
 <script src="../vistas/js/validar_sistema.js"></script>
 <!-- jQuery 2.2.3 -->
 <script src="../vistas/plugins/jQuery/jquery-2.2.3.min.js"></script>

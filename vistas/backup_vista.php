@@ -100,6 +100,7 @@ alert("texto cambiado");
         <small>ClimeHome</small>
       </h1>
       <ol class="breadcrumb">
+      <li><a href="../vistas/index2.php"><i class="fa fa-home"></i>Panel de control</a></li>
         <li><a href="backup_vista.php"><i class="fa fa-cloud"></i> Backup/Restore</a></li>
         <li class="active"></i> Sistema ClimeHome</li>
       </ol>
@@ -277,21 +278,20 @@ alert("texto cambiado");
                   </ul>
                 </div>
                 <!-- /.post -->
-              </div>
-             
-        <!-- /.box-body -->
-        
-        <!-- /.box-footer-->
-      </div>
-      <!-- /.box -->
+            
 
-    
+   </div>
+      <!-- /.row -->
+    </section>
     <!-- /.content -->
-    </div>
-    </div>
   </div>
   <!-- /.content-wrapper -->
-
+<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+    <strong><a>Version 2.0</a></strong> 
+    </div>
+    <strong>Copyright &copy; 2020 <a>| EQUIPO SYSTEM 32</a>.</strong> Todos los derechos reservados.
+  </footer>
  
  
   <!-- /.control-sidebar -->

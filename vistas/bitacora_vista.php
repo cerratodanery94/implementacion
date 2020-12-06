@@ -93,7 +93,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>33
       </h1>
       
       <ol class="breadcrumb">
-        <li><a href="bitacora_vista.php"><i class="fa fa-lock"></i>Bitácora</a></li>
+      <li><a href="../vistas/index2.php"><i class="fa fa-home"></i>Panel de control</a></li>
+        <li><a href="bitacora_vista.php"><i class="glyphicon glyphicon-tasks"></i>Bitácora</a></li>
         <li class="active"><i class="fa fa-caret-square-o-down"></i> Lista de registros</li>
       </ol>
     </section>
@@ -157,19 +158,19 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>33
           <!-- /.box -->
         </div>
         <!-- /.col -->
-      </div>
+      
+
+   </div>
       <!-- /.row -->
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
-  <footer class="main-footer">
+<footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 1.1.0
+    <strong><a>Version 2.0</a></strong> 
     </div>
-    <strong>Copyright &copy; 2020 <a>System 32</a>.</strong> All rights
-    reserved.
+    <strong>Copyright &copy; 2020 <a>| EQUIPO SYSTEM 32</a>.</strong> Todos los derechos reservados.
   </footer>
  
   <!-- /.control-sidebar -->
