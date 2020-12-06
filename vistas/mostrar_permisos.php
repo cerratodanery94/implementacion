@@ -19,7 +19,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>36
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Mostrar Citas</title>
+  <title>Mostrar Permisos</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -83,12 +83,12 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>36
     <!-- Content Header (Page header) -->
     <section class="content-header">
     <h1><i class="fa fa-calendar" aria-hidden="true"></i>
-        Lista de citas 
+        Lista de Permisos 
         <small>ClimeHome</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="mostrar_citas_vista.php"><i class="fa fa-calendar"></i>Citas</a></li>
-        <li class="active"><i class="fa fa-list-alt"></i> Lista de citas</li>
+        <li><a href="mostrar_citas_vista.php"><i class="fa fa-calendar"></i>Permisos</a></li>
+        <li class="active"><i class="fa fa-list-alt"></i> Lista de permisos</li>
       </ol>
     </section>
     <!-- Main content -->

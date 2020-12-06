@@ -18,7 +18,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>30
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Mostrar Párametros </title>
+  <title>Mostrar Parámetros </title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -83,12 +83,12 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>30
     <!-- Content Header (Page header) -->
     <section class="content-header">
     <h1><i class="fa fa-lock" aria-hidden="true"></i>
-       Párametros
+       Parámetros
         <small>ClimeHome</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="mostrar_parametros_vista.php"><i class="fa fa-lock"></i>   Párametros</a></li>
-        <li class="active"><i class="fa fa-list-alt"></i> Lista de párametros</li>
+        <li><a href="mostrar_parametros_vista.php"><i class="fa fa-lock"></i>   Parámetros</a></li>
+        <li class="active"><i class="fa fa-list-alt"></i> Lista de parámetros</li>
       </ol>
     </section>
 
@@ -106,7 +106,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>30
                 <thead>
                 <tr>
                   <th>ID</th>
-                  <th>PARAMETRO</th>
+                  <th>PARÁMETRO</th>
                   <th>DESCRIPCIÓN</th>
                   <th>VALOR</th>
                   <th>ACCIONES</th>
@@ -139,7 +139,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>30
                 <tfoot>
                 <tr>
                 <th>ID</th>
-                  <th>PARAMETRO</th>
+                  <th>PARÁMETRO</th>
                   <th>DESCRIPCIÓN</th>
                   <th>VALOR</th>
                   <th>ACCIONES</th>

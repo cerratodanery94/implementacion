@@ -123,7 +123,7 @@ alert("texto cambiado");
                   </div>
                   <!-- /.user-block -->
                   <p>
-                 Este proceso de Copia de Seguridad es importante, ya que lo  realizamos para salvaguardar los documentos, archivos, fotos, perfil de pacientes ,correos electrónico y expedientes clínicos .Se realiza con el fin de poder recuperarlos en caso que se produzca su pérdida. Esta copia de seguridad también recibe el nombre de Copia de Respaldo e incluso Backup como se denomina.
+                 Este proceso de Copia de Seguridad es importante, ya que lo realizamos para salvaguardar los documentos, archivos, fotos, perfil de pacientes, correos electrónicos y expedientes clínicos. Se realiza con el fin de poder recuperarlos en caso que se produzca su pérdida. Esta copia de seguridad también recibe el nombre de Copia de Respaldo e incluso Backup como se denomina.
                    <!--llamar funciones-->
             <div class="box-body">
             <div class="form-group col-lg-6 col-md-6 col-xs-12">
@@ -159,7 +159,7 @@ alert("texto cambiado");
 
                       <h3 class="timeline-header"><a href="#">Restauración de copia de seguridad</a></h3>
                       <div class="timeline-body">
-                      Este proceso de Restauración de copia de seguridad, restaura los documentos, archivos, fotos y perfil de pacientes ,correos electrónico y expedientes clínicos con los que contaba el Sistema ClimeHome hasta la última copia de seguridad que se ejecuto.
+                      Este proceso de Restauración de copia de seguridad, restaura los documentos, archivos, fotos y perfil de pacientes, correos electrónico y expedientes clínicos con los que contaba el Sistema ClimeHome hasta la última copia de seguridad que se ejecuto.
                       </div>
                       <div class="timeline-footer">
                       </div>

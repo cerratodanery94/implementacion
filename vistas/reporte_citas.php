@@ -216,7 +216,7 @@ if (isset($_POST['id_u']) && isset($_POST['est_c']) && isset($_POST['desde']) &&
           echo'<table id="example1" class="table table-bordered table-striped">
           <thead>
           <tr>
-            <th>ATENCION CON</th>
+            <th>ATENCIÓN CON</th>
             <th>PACIENTE</th>
             <th>FECHA</th>
             <th>HORA DE CITA</th>
@@ -239,7 +239,7 @@ if (isset($_POST['id_u']) && isset($_POST['est_c']) && isset($_POST['desde']) &&
                   echo'</tbody>
                   <tfoot>
                   <tr>
-                  <th>ATENCION CON</th>
+                  <th>ATENCIÓN CON</th>
                   <th>PACIENTE</th>
                   <th>FECHA</th>
                   <th>HORA DE CITA</th>

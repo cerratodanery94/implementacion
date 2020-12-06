@@ -51,7 +51,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Editar párametro</title>
+  <title>Editar parámetro</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -110,12 +110,12 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
     <!-- Content Header (Page header) -->
     <section class="content-header">
     <h1><i class="fa fa-refresh" aria-hidden="true"></i>
-       Actualizar párametros del sistema
+       Actualizar parámetros del sistema
         <small>ClimeHome</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="../vistas/mostrar_parametros_vista.php"><i class="fa fa-lock"></i>   Párametros</a></li>
-        <li class="active"><i class="fa fa-refresh"></i> Actualizar párametros</li>
+        <li><a href="../vistas/mostrar_parametros_vista.php"><i class="fa fa-lock"></i>   Parámetros</a></li>
+        <li class="active"><i class="fa fa-refresh"></i> Actualizar parámetros</li>
       </ol>
     </section>
     <!-- Main content -->
@@ -136,7 +136,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 
         <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <div class="input-group">
-                <span class="input-group-addon">Nombre del párametro</span>
+                <span class="input-group-addon">Nombre del parámetro</span>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="NOMBRES"  name="parametro" id="parametro"value="<?php echo $parametro?>" readonly>
                   <span class="		glyphicon glyphicon-ok-circle form-control-feedback"></span>
                 </div>
@@ -144,7 +144,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
                 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <div class="input-group">
-                <span class="input-group-addon">Descripción del párametro</span>
+                <span class="input-group-addon">Descripción del parámetro</span>
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder="DESCRIPCIÓN"  name="descrip" id="descrip" value="<?php echo $descrip?>"readonly >
                   <span class="		glyphicon glyphicon-ok-circle form-control-feedback"></span>
                 </div>
@@ -153,7 +153,7 @@ $SEGURIDAD=$DATOS['PERM_SEGURIDAD'];
 
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <div class="input-group">
-                <span class="input-group-addon">Valor del párametro</span>
+                <span class="input-group-addon">Valor del parámetro</span>
                   <input type="text"  style="text-transform:uppercase" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder=""  name="valor" id="valor" value="<?php echo $valor?>" >
                   <span class="	glyphicon glyphicon-refresh form-control-feedback"></span>
                 </div>

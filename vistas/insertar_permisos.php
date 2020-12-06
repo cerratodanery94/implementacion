@@ -125,8 +125,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
                 <thead>
                 <tr>
                   
-                  <th>MODULO</th>
-                  <th>ACCION</th>
+                  <th>MÓDULO</th>
+                  <th>ACCIÓN</th>
                   <th>¿ACCESO?</th>
              
       
@@ -510,8 +510,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
                   </td>
                 </tr><!--FINAL PREGUNTAS DE SEGURIDAD DE USUARIOS-->
                 <tr> <!--INICIO PARAMETROS-->
-                  <td>PARAMETROS</td>
-                  <td>MOSTRAR PARAMETROS</td>
+                  <td>PARÁMETROS</td>
+                  <td>MOSTRAR PARÁMETROS</td>
                   <td>
                         <select class="form-control" name="parametros_c" id="parametros_c" required>
                           <option value="">SELECCIONE :</option>
@@ -522,8 +522,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
                 </tr>
 
                 <tr> 
-                  <td>PARAMETROS</td>
-                  <td>EDITAR PARAMETROS</td>
+                  <td>PARÁMETROS</td>
+                  <td>EDITAR PARÁMETROS</td>
                   <td>
                         <select class="form-control" name="parametros_m" id="parametros_m" required>
                           <option value="">SELECCIONE :</option>
@@ -580,8 +580,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
                   </td>
                 </tr> <!--FINAL ROLES-->
                 <tr> <!--INICIO BITACORA-->
-                <td>BITACORA</td>
-                  <td>MOSTRAR BITACORA</td>
+                <td>BITÁCORA</td>
+                  <td>MOSTRAR BITÁCORA</td>
                   <td>
                         <select class="form-control" name="bit_c" id="bit_c" required>
                           <option value="">SELECCIONE :</option>
@@ -675,8 +675,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
                 <tfoot>
                 <tr>
                  
-                  <th>MODULO</th>
-                  <th>ACCION</th>
+                  <th>MÓDULO</th>
+                  <th>ACCIÓN</th>
                   <th>¿ACCESO?</th>
                 
                 </tr>
