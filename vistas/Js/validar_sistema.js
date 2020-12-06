@@ -22,7 +22,7 @@
       }
          //VALIDAR RANGO DE CAMPOS (NOMBRES,APELLIDOS Y CORREO)
          function validar_tamaño(parametro){
-             if(parametro.length >50){
+             if(parametro.length >255){
                  return false;
              }
              else{
@@ -1406,7 +1406,7 @@ function validar_pregunta(){
         function validar_pantalla(){
             var formulario=document.form_pantalla;
             if (formulario.descripcion.value=="") {
-                document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO ACTUALIZAR PROFESION/OCUPACION VACIO.</div>';
+                document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO DESCRIPCIÓN VACIO.</div>';
                 formulario.descripcion.focus();
                 return false;
             } 
@@ -1421,7 +1421,7 @@ function validar_pregunta(){
                 return false;
             }
             else if(validar_tamaño(formulario.descripcion.value)==false){
-                document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LONGITUD DEL CAMPO ACTUALIZAR PROFESION/OCUPACION</div>';
+                document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LONGITUD DEL CAMPO DESCRIPCIÓN</div>';
                 formulario.descripcion.focus();
                 return false;
             }
