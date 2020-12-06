@@ -31,7 +31,7 @@
 
 <div class="register-box">
   <div class="register-logo">
-    <b>CLIME</b>HOME
+    <b>INICIAR </b>SESIÓN
     <br></br>
   </div>
   <div class="register-box-body">

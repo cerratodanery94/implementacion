@@ -23,7 +23,7 @@
 
 <div class="register-box">
   <div class="register-logo">
-  <b>Recuperar</b>Contraseña
+  <b>Recuperar </b>Contraseña
   </div>
   <div class="register-box-body">
     <p>Ingresa su nombre usuario para la recuperacion de contraseña por preguntas de seguridad</p>

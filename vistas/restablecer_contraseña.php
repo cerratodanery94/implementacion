@@ -39,7 +39,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_usu"],":objeto"=>7
 <body class="hold-transition register-page">
 <div class="register-box">
   <div class="register-logo">
-    <b>Restablecer</b>Contraseña 
+    <b>Restablecer </b>Contraseña 
   </div>
   <div class="register-box-body">
     <p class="login-box-msg">INGRESE LOS SIGUIENTES DATOS</p>
