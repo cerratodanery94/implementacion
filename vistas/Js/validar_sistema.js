@@ -248,7 +248,9 @@ else if (validar_texto (formulario.usum.value)==false){
     document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO FECHA NACIMINETO VACIO, FAVOR ENTRODUCIR UNA FECHA</div>';
     formulario.fecha_de_nacimiento.focus();
     return false;
-} 
+} else{
+    document.getElementById("alerta").innerHTML="";
+}
 
     //VALIDAR CAMPO identidad
     if (formulario.numero_de_identidad.value=="") {
@@ -331,7 +333,7 @@ else if (validar_tamaño (formulario.correo.value)==false){
 
 //    //VALIDAR CAMPO PASAPORTE
  
-if (Validar_espacio2 (formulario.pasaporte.value)==false){
+/*if (Validar_espacio2 (formulario.pasaporte.value)==false){
 document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
 formulario.pasaporte.focus();
 return false;
@@ -343,7 +345,7 @@ else if(validar_numletras(formulario.pasaporte.value)==false){
 }
 else{
     document.getElementById("alerta").innerHTML="";
-}
+}*/
  
 
 
@@ -491,7 +493,7 @@ else{
         //         return false;
         //         } 
         //     else
-         if (Validar_espacio2 (formulario.pasaporte.value)==false){
+         /*if (Validar_espacio2 (formulario.pasaporte.value)==false){
             document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
             formulario.pasaporte.focus();
             return false;
@@ -500,7 +502,8 @@ else{
                 document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INGRESAR DATOS ALFANUMERICOS EN EL CAMPO</div>';
                 formulario.pasaporte.focus();
                 return false; 
-            }
+            }*/
+
              //VALIDAR CAMPO CELULAR
         if (formulario.numero_de_celular.value=="") {
             document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NUMERO DE CELULAR VACIO</div>';
@@ -730,7 +733,7 @@ else if (validar_tamaño (formulario.correo.value)==false){
     //     return false;
     //     } 
 
-     if (Validar_espacio2 (formulario.pasaporte.value)==false){
+    /* if (Validar_espacio2 (formulario.pasaporte.value)==false){
     document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
     formulario.pasaporte.focus();
     return false;
@@ -739,7 +742,7 @@ else if (validar_tamaño (formulario.correo.value)==false){
         document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INGRESAR DATOS ALFANUMERICOS EN EL CAMPO</div>';
         formulario.pasaporte.focus();
         return false; 
-    }
+    }*/
 
     //VALIDAR CORREO
     if (formulario.correo.value=="") {
@@ -883,7 +886,7 @@ else if (validar_tamaño (formulario.correo.value)==false){
                     }
                
                     //VALIDAR CAMPO PASAPORTE
-                 if (Validar_espacio2 (formulario.pasaporte.value)==false){
+                 /*if (Validar_espacio2 (formulario.pasaporte.value)==false){
                     document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
                     formulario.pasaporte.focus();
                     return false;
@@ -901,7 +904,8 @@ else if (validar_tamaño (formulario.correo.value)==false){
                     //     document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO EN EL CAMPO</div>';
                     //     formulario.pasaporte.focus();
                     //     return false;
-                    //     }
+                    //     }*/
+
                      //VALIDAR CAMPO CELULAR
                 if (formulario.numero_de_celular.value=="") {
                     document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO CELULAR VACIO</div>';
@@ -997,32 +1001,14 @@ else if (validar_tamaño (formulario.correo.value)==false){
         formulario_exp.peso.focus();
         return false;
      }
-     else if (Validar_espacio2(formulario_exp.peso.value)==false){
-        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIO EN EL CAMPO</div>';
-        formulario_exp.peso.focus();
-        return false;
-     }
-else if(validar_numeros(formulario_exp.peso.value)==false){
-    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INGRESAR VALORES NUMERICOS EN EL CAMPO</div>';
-    formulario_exp.peso.focus();
-    return false;
-}
+     
     //VALIDAR ESTATURA
     if (formulario_exp.estatura.value==""){
         document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO ESTATURA VACIO</div>';
         formulario_exp.estatura.focus();
         return false;
      }
-     else if (Validar_espacio2(formulario_exp.estatura.value)==false){
-        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIO EN EL CAMPO</div>';
-        formulario_exp.estatura.focus();
-        return false;
-     }
-     else if(validar_numeros(formulario_exp.estatura.value)==false){
-        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INGRESAR VALORES NUMERICOS EN EL CAMPO</div>';
-        formulario_exp.estatura.focus();
-        return false;
-    }
+    
 
 
 
@@ -1032,22 +1018,14 @@ if (formulario_exp.antecedentes.value==0){
     formulario_exp.antecedentes.focus();
     return false;
 }
-else if(Validar_espacio2(formulario_exp.antecedentes.value)==false){
-    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIO EN EL CAMPO</div>';
-    formulario_exp.antecedentes.focus();
-    return false;
-}
+
 //VALIDAR DIETA
 if (formulario_exp.dieta.value==0){
     document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO DIETA VACIO</div>';
     formulario_exp.dieta.focus();
     return false;
 }
-else if(Validar_espacio2(formulario_exp.dieta.value)==false){
-    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIO EN EL CAMPO</div>';
-    formulario_exp.dieta.focus();
-    return false;
-}
+
  //VALIDAR FECHA
 
  if (formulario_exp.fecha_de_creacion.value==""){
@@ -1431,7 +1409,93 @@ function validar_pregunta(){
             
             formulario.submit();
         }
+//VALIDAR FORMULARIO NACIONALIDADES
+function validar_pais(){
+    var formulario=document.form_pais;
+    if (formulario.pais.value=="") {
+        document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO INGRESE LA NACIONALIDAD VACIO.</div>';
+        formulario.pais.focus();
+        return false;
+    } 
+    else if(Validar_espacio2(formulario.pais.value)==false){
+        document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIO EN EL CAMPO</div>';
+        formulario.pais.focus();
+        return false;
+    }
+    else if(validar_texto(formulario.pais.value)==false){
+        document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO, SIN ESPACIOS AL INICIO O FINAL DEL TEXTO EN EL CAMPO</div>';
+        formulario.pais.focus();
+        return false;
+    }
+    else if(validar_tamaño(formulario.pais.value)==false){
+        document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LONGITUD DEL CAMPO INGRESE LA NACIONALIDAD</div>';
+        formulario.pais.focus();
+        return false;
+    }
+    else{
+        document.getElementById("alerta1").innerHTML="";
+    }
+    
+    formulario.submit();
+    }
 
+    //VALIDAR FORMULARIO EDITAR NACIONALIDADES
+    function validar_editar_pais(){
+        var formulario=document.form_editar_pais;
+        if (formulario.nombre.value=="") {
+            document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO NACIONALIDAD VACIO.</div>';
+            formulario.nombre.focus();
+            return false;
+        } 
+        else if(Validar_espacio2(formulario.nombre.value)==false){
+            document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIO EN EL CAMPO</div>';
+            formulario.nombre.focus();
+            return false;
+        }
+        else if(validar_texto(formulario.nombre.value)==false){
+            document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO, SIN ESPACIOS AL INICIO O FINAL DEL TEXTO EN EL CAMPO</div>';
+            formulario.nombre.focus();
+            return false;
+        }
+        else if(validar_tamaño(formulario.nombre.value)==false){
+            document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LONGITUD DEL CAMPO NACIONALIDAD</div>';
+            formulario.nombre.focus();
+            return false;
+        }
+        else{
+            document.getElementById("alerta1").innerHTML="";
+        }
+        
+        formulario.submit();
+        }
+//VALIDAR FORMULARIO EXPEDIENTEN
+function validar_expedienten(){
+    var formulario=document.formulario_expedienten;
+    if (formulario.buscar.value=="") {
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO INGRESE NÚMERO DE IDENTIDAD VACIO.</div>';
+        formulario.buscar.focus();
+        return false;
+    } 
+    else{
+        document.getElementById("alerta").innerHTML="";
+    }
+    
+    formulario.submit();
+    }
+ //VALIDAR FORMULARIO EXPEDIENTEd
+function validar_expediented(){
+    var formulario=document.formulario_expediented;
+    if (formulario.buscar.value=="") {
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO INGRESE NÚMERO DE IDENTIDAD VACIO.</div>';
+        formulario.buscar.focus();
+        return false;
+    } 
+    else{
+        document.getElementById("alerta").innerHTML="";
+    }
+    
+    formulario.submit();
+    }   
 //VALIDAR FORMULARIO PARAMETROS
 function validar_permiso(){
 var formulario=document.Form_registrar;

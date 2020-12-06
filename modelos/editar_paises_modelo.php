@@ -111,7 +111,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>32
             <!--llamar funciones-->
             <div class="box-body">
            <div>
-           <form action="" method="POST" name="form_pregunta">
+           <form action="" method="POST" name="form_editar_pais">
         <div id="alerta1"></div>
         <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <div class="input-group">
@@ -130,7 +130,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>32
               <div class="box-footer">
               <div class="col text-center">
               
-                <button type="submit"class="btn btn-lg btn btn-primary"><i class="fa fa-refresh" aria-hidden="true"></i> ACTUALIZAR</button>
+                <button type="button" onclick="validar_editar_pais();" class="btn btn-lg btn btn-primary"><i class="fa fa-refresh" aria-hidden="true"></i> ACTUALIZAR</button>
                 <a href="../vistas/mostrar_paises.php" class="btn btn-lg  btn bg-red" ><i class="fa fa-times-circle-o" aria-hidden="true"></i> CANCELAR</a>
                 </div>
               </div>

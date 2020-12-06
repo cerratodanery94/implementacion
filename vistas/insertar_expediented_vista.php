@@ -95,11 +95,11 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>23
             <!--llamar funciones-->
             <div class="box-body">
            <div>
-<div id="alerta"></div>
+
 
 <div class="panel-body" id="formularioregistros">
-  <form action="../vistas/insertar_expediented_vista.php" method="get" >
-
+  <form action="../vistas/insertar_expediented_vista.php" method="get" name="formulario_expediented" >
+  <div id="alerta"></div>
 
   <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <div class="input-group">
@@ -108,14 +108,14 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>23
                   <span class="	glyphicon glyphicon-credit-card form-control-feedback"></span>
                 </div>
                 </div>
-        <button type="submit" class="btn btn btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></i> BUSCAR</button>
+        <button type="submit" onclick="validar_expediented();" class="btn btn btn btn-primary"><i class="fa fa-search-plus" aria-hidden="true"></i></i> BUSCAR</button>
         </div>
        <?php
        if(!empty($_GET)){
         $buscar=$_GET['buscar']; 
        if($_GET['buscar'] == NULL ){
 
-        echo'Ingrese número de identidad de un paciente'; 
+        
     }
 
     else{ 

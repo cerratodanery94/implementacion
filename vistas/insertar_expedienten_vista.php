@@ -104,9 +104,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>20
            <div>
 
 <div class="panel-body" id="formularioregistros">
-  <form action="../vistas/insertar_expedienten_vista.php" method="get" >
+  <form action="../vistas/insertar_expedienten_vista.php" method="get" name="formulario_expedienten">
   <div id="alerta"></div>
-
 
    <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <div class="input-group">
@@ -115,7 +114,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>20
         <span class="	glyphicon glyphicon-credit-card form-control-feedback"></span>
                 </div>
                 </div>
-        <button type="submit" class="btn btn btn btn-primary" ><i class="fa fa-search-plus" aria-hidden="true"></i></i> BUSCAR</button>
+        <button type="button" onclick="validar_expedienten();" class="btn btn btn btn-primary" ><i class="fa fa-search-plus" aria-hidden="true"></i></i> BUSCAR</button>
         </div>
        <?php
        if(!empty($_GET)){
