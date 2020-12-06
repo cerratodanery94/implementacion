@@ -100,7 +100,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
             </div>
             <!--llamar funciones-->
             <div class="box-body">
-            <?php if ($_SESSION['ccit']== 1 and $_SESSION['icit']== 1){ ?>
+            <?php if ($_SESSION['cnac']== 1 and $_SESSION['inac']== 1){ ?>
               <div>
              <a href="../vistas/insertar_paises_vista.php" class="btn bg-blue btn-flat margin">AGREGAR PAIS <i class="fa fa-plus-circle" aria-hidden="true"></i> </a>
            </div>
@@ -135,12 +135,12 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
                  
 
                  <td>
-                 <?php if ($_SESSION['ccit']== 1 and $_SESSION['mcit']== 1){ ?>
+                 <?php if ($_SESSION['cnac']== 1 and $_SESSION['mnac']== 1){ ?>
                   <a href='../modelos/editar_paises_modelo.php?id=<?php echo $fila["PAIS_CODIGO"]?>' class="btn bg-blue btn-flat margin">
                  <i class='fa fa-pencil'></i></a> 
                  <?php } ?>
                  
-                 <?php if ($_SESSION['ccit']== 1 and $_SESSION['ecit']== 1){ ?>
+                 <?php if ($_SESSION['cnac']== 1 and $_SESSION['enac']== 1){ ?>
                   <a href='../modelos/eliminar_paises.php?id=<?php echo $fila["PAIS_CODIGO"]?>' class="btn btne bg-maroon bnt-flat margin">
 					       <i class='fa fa-trash'></i></a> 
                  <?php } ?>

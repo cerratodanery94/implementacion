@@ -136,7 +136,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
                  
 
                  <td>
-                 <?php if ($_SESSION['ccit']== 1 and $_SESSION['mcit']== 1){ ?>
+                 <?php if ($_SESSION['cpant']== 1 and $_SESSION['mpant']== 1){ ?>
                   <a href='../modelos/editar_pantalla_modelo.php?id=<?php echo $fila["OBJ_CODIGO"]?>' class="btn bg-blue btn-flat margin">
                  <i class='fa fa-pencil'></i></a> 
                  <?php } ?>

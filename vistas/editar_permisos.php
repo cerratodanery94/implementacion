@@ -196,7 +196,30 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>23
          $registro11=$resultado11->fetch(PDO::FETCH_ASSOC);
          $_SESSION['id_ops']=$registro11['OBJ_CODIGO'];
          $_SESSION['id_pps']=$registro11['PERM_CODIGO'];
-        
+          //nacionalidades
+          $resultado12 = $conexion -> query ("SELECT * FROM tbl_permisos tp inner join tbl_rol tr on tp.rol_codigo=tr.rol_codigo where tr.ROL_NOMBRE ='$buscar'AND tp.OBJ_CODIGO=51");
+          $resultado12->execute();
+          $registro12=$resultado12->fetch(PDO::FETCH_ASSOC);
+          $_SESSION['id_onac']=$registro12['OBJ_CODIGO'];
+          $_SESSION['id_pnac']=$registro12['PERM_CODIGO'];
+          //horario
+          $resultado13 = $conexion -> query ("SELECT * FROM tbl_permisos tp inner join tbl_rol tr on tp.rol_codigo=tr.rol_codigo where tr.ROL_NOMBRE ='$buscar'AND tp.OBJ_CODIGO=54");
+          $resultado13->execute();
+          $registro13=$resultado13->fetch(PDO::FETCH_ASSOC);
+          $_SESSION['id_ohor']=$registro13['OBJ_CODIGO'];
+          $_SESSION['id_phor']=$registro13['PERM_CODIGO'];
+          //preguntas usuarios
+          $resultado14 = $conexion -> query ("SELECT * FROM tbl_permisos tp inner join tbl_rol tr on tp.rol_codigo=tr.rol_codigo where tr.ROL_NOMBRE ='$buscar'AND tp.OBJ_CODIGO=55");
+          $resultado14->execute();
+          $registro14=$resultado14->fetch(PDO::FETCH_ASSOC);
+          $_SESSION['id_opsu']=$registro14['OBJ_CODIGO'];
+          $_SESSION['id_ppsu']=$registro14['PERM_CODIGO'];
+          //pantalla
+          $resultado15 = $conexion -> query ("SELECT * FROM tbl_permisos tp inner join tbl_rol tr on tp.rol_codigo=tr.rol_codigo where tr.ROL_NOMBRE ='$buscar'AND tp.OBJ_CODIGO=49");
+          $resultado15->execute();
+          $registro15=$resultado15->fetch(PDO::FETCH_ASSOC);
+          $_SESSION['id_opant']=$registro15['OBJ_CODIGO'];
+          $_SESSION['id_ppant']=$registro15['PERM_CODIGO'];
           ?> 
             
           </form> 
@@ -228,6 +251,14 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>23
           <input type="hidden"  class="form-control"  name="id_ppo" id="id_ppo" value="<?php echo $_SESSION['id_ppo']?>" readonly>
           <input type="hidden"  class="form-control"  name="id_ops" id="id_ops" value="<?php echo $_SESSION['id_ops']?>" readonly>
           <input type="hidden"  class="form-control"  name="id_pps" id="id_pps" value="<?php echo $_SESSION['id_pps']?>" readonly>
+          <input type="hidden"  class="form-control"  name="id_onac" id="id_onac" value="<?php echo $_SESSION['id_onac']?>" readonly>
+          <input type="hidden"  class="form-control"  name="id_pnac" id="id_pnac" value="<?php echo $_SESSION['id_pnac']?>" readonly>
+          <input type="hidden"  class="form-control"  name="id_ohor" id="id_ohor" value="<?php echo $_SESSION['id_ohor']?>" readonly>
+          <input type="hidden"  class="form-control"  name="id_phor" id="id_phor" value="<?php echo $_SESSION['id_phor']?>" readonly>
+          <input type="hidden"  class="form-control"  name="id_opsu" id="id_opsu" value="<?php echo $_SESSION['id_opsu']?>" readonly>
+          <input type="hidden"  class="form-control"  name="id_ppsu" id="id_ppsu" value="<?php echo $_SESSION['id_ppsu']?>" readonly>
+          <input type="hidden"  class="form-control"  name="id_opant" id="id_opant" value="<?php echo $_SESSION['id_opant']?>" readonly>
+          <input type="hidden"  class="form-control"  name="id_ppant" id="id_ppant" value="<?php echo $_SESSION['id_ppant']?>" readonly>
           <?php 
           /*OBTENER PERMISO DE USUARIOS*/
            $sql = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO=:pantalla" ;
@@ -308,6 +339,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>23
             $cperm= $datos['PERM_CONSULTAR'];
             $iperm= $datos['PERM_INSERTAR'];
             $mperm= $datos['PERM_ACTUALIZAR'];
+            $eperm= $datos['PERM_ELIMINAR'];
              /*OBTENER PERMISO DE PROFESION Y OCUPACION*/
            $sql10 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO=:pantalla" ;
            $resultado10=$conexion->prepare($sql10);	
@@ -326,6 +358,36 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>23
             $ips= $datos['PERM_INSERTAR'];
             $mps= $datos['PERM_ACTUALIZAR'];
             $eps= $datos['PERM_ELIMINAR'];
+             /*OBTENER PERMISOS DE NACIONALIDAD*/
+           $sql12 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO=:pantalla" ;
+           $resultado12=$conexion->prepare($sql12);	
+           $resultado12->execute(array(":rol"=>$_SESSION['id_rol'],":pantalla"=>$_SESSION['id_onac']));
+           $datos = $resultado12->fetch(PDO::FETCH_ASSOC);
+            $cnac= $datos['PERM_CONSULTAR'];
+            $inac= $datos['PERM_INSERTAR'];
+            $mnac= $datos['PERM_ACTUALIZAR'];
+            $enac= $datos['PERM_ELIMINAR'];
+            /*OBTENER PERMISOS DE HORARIO*/
+           $sql13 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO=:pantalla" ;
+           $resultado13=$conexion->prepare($sql13);	
+           $resultado13->execute(array(":rol"=>$_SESSION['id_rol'],":pantalla"=>$_SESSION['id_ohor']));
+           $datos = $resultado13->fetch(PDO::FETCH_ASSOC);
+            $chor= $datos['PERM_CONSULTAR'];
+             /*OBTENER PERMISOS DE PREGUNTAS USUARIO*/
+           $sql14 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO=:pantalla" ;
+           $resultado14=$conexion->prepare($sql14);	
+           $resultado14->execute(array(":rol"=>$_SESSION['id_rol'],":pantalla"=>$_SESSION['id_opsu']));
+           $datos = $resultado14->fetch(PDO::FETCH_ASSOC);
+            $cpsu= $datos['PERM_CONSULTAR'];
+             /*OBTENER PERMISOS DE PANTALLAS*/
+           $sql15 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO=:pantalla" ;
+           $resultado15=$conexion->prepare($sql15);	
+           $resultado15->execute(array(":rol"=>$_SESSION['id_rol'],":pantalla"=>$_SESSION['id_opant']));
+           $datos = $resultado15->fetch(PDO::FETCH_ASSOC);
+            $cpant= $datos['PERM_CONSULTAR'];
+            $mpant= $datos['PERM_ACTUALIZAR'];
+            
+
 
            
            ?>
@@ -771,6 +833,29 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>23
                         </select>
                   </td>
                 </tr> <!--FINAL CITAS-->
+                <tr> <!--INICIO HORARIOS DE CITAS-->
+                <td>HORARIOS DE CITAS</td>
+                  <td>MOSTRAR HORARIOS DE CITAS</td>
+                  <td>
+                        <select class="form-control" name="hor_c" id="hor_c" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1"
+                          <?php
+                        if ($chor==1) {
+                        echo 'selected';
+                        }
+                        ?>
+                          >SI</option>
+                          <option value="0"
+                          <?php
+                        if ($chor==0) {
+                        echo 'selected';
+                        }
+                        ?>
+                        >NO</option>
+                        </select>
+                  </td>
+                </tr><!--FINAL HORARIOS DE CITAS-->
                 <tr> <!--INICIO PROFESIONES/OCUPACIONES-->
                   <td>PROFESIONES/OCUPACIONES</td>
                   <td>MOSTRAR PROFESIONES/OCUPACIONES</td>
@@ -866,6 +951,101 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>23
                         </select>
                   </td>
                 </tr> <!--FINAL PROFESIONES/OCUPACIONES-->
+                <tr> <!--INICIO NACIONALIDADES-->
+                  <td>NACIONALIDADES</td>
+                  <td>MOSTRAR NACIONALIDADES</td>
+                  <td>
+                        <select class="form-control" name="nac_c" id="nac_c" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1"
+                          <?php
+                        if ($cnac==1) {
+                        echo 'selected';
+                        }
+                        ?>
+                          >SI</option>
+                          <option value="0"
+                          <?php
+                        if ($cnac==0) {
+                        echo 'selected';
+                        }
+                        ?>
+                        >NO</option>
+                        </select>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>NACIONALIDADES</td>
+                  <td>CREAR NACIONALIDADES </td>
+                  <td>
+                        <select class="form-control" name="nac_i" id="nac_i" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1"
+                          <?php
+                        if ($inac==1) {
+                        echo 'selected';
+                        }
+                        ?>
+                          >SI</option>
+                          <option value="0"
+                          <?php
+                        if ($inac==0) {
+                        echo 'selected';
+                        }
+                        ?>
+                        >NO</option>
+                        </select>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>NACIONALIDADES</td>
+                  <td>EDITAR NACIONALIDADES </td>
+                  <td>
+                        <select class="form-control" name="nac_m" id="nac_m" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1"
+                          <?php
+                        if ($mnac==1) {
+                        echo 'selected';
+                        }
+                        ?>
+                          >SI</option>
+                          <option value="0"
+                          <?php
+                        if ($mnac==0) {
+                        echo 'selected';
+                        }
+                        ?>
+                        >NO</option>
+                        </select>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>NACIONALIDADES</td>
+                  <td>ELIMINAR NACIONALIDADES </td>
+                  <td>
+                        <select class="form-control" name="nac_e" id="nac_e" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1"
+                          <?php
+                        if ($enac==1) {
+                        echo 'selected';
+                        }
+                        ?>
+                          >SI</option>
+                          <option value="0"
+                          <?php
+                        if ($enac==0) {
+                        echo 'selected';
+                        }
+                        ?>
+                        >NO</option>
+                        </select>
+                  </td>
+                </tr> <!--FINAL NACIONALIDADES-->
                 <tr> <!--INICIO PREGUNTAS DE SEGURIDAD-->
                   <td> PREGUNTAS DE SEGURIDAD</td>
                   <td>MOSTRAR PREGUNTAS DE SEGURIDAD</td>
@@ -961,6 +1141,29 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>23
                         </select>
                   </td>
                 </tr> <!--FINAL PREGUNTAS DE SEGURIDAD-->
+                <tr> <!--INICIO PREGUNTAS DE SEGURIDAD DE USUARIOS-->
+                <td>PREGUNTAS DE SEGURIDAD DE USUARIOS</td>
+                  <td>MOSTRAR PREGUNTAS DE SEGURIDAD DE USUARIOS</td>
+                  <td>
+                        <select class="form-control" name="psu_c" id="psu_c" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1"
+                          <?php
+                        if ($cpsu==1) {
+                        echo 'selected';
+                        }
+                        ?>
+                          >SI</option>
+                          <option value="0"
+                          <?php
+                        if ($cpsu==0) {
+                        echo 'selected';
+                        }
+                        ?>
+                        >NO</option>
+                        </select>
+                  </td>
+                </tr><!--FINAL PREGUNTAS DE SEGURIDAD DE USUARIOS-->
                 <tr> <!--INICIO PARAMETROS-->
                   <td>PARAMETROS</td>
                   <td>MOSTRAR PARAMETROS</td>
@@ -1126,6 +1329,53 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>23
                         </select>
                   </td>
                 </tr><!--FINAL bitacora-->
+                <tr> <!--INICIO PANTALLAS DEL SISTEMA-->
+                  <td>PANTALLAS DEL SISTEMA</td>
+                  <td>MOSTRAR PANTALLAS DEL SISTEMA</td>
+                  <td>
+                        <select class="form-control" name="pant_c" id="pant_c" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1"
+                          <?php
+                        if ($cpant==1) {
+                        echo 'selected';
+                        }
+                        ?>
+                          >SI</option>
+                          <option value="0"
+                          <?php
+                        if ($cpant==0) {
+                        echo 'selected';
+                        }
+                        ?>
+                        >NO</option>
+                        </select>
+                  </td>
+                </tr>
+
+                <tr> 
+                  <td>PANTALLAS DEL SISTEMA</td>
+                  <td>EDITAR PANTALLAS DEL SISTEMA</td>
+                  <td>
+                        <select class="form-control" name="pant_m" id="pant_m" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1"
+                          <?php
+                        if ($mpant==1) {
+                        echo 'selected';
+                        }
+                        ?>
+                          >SI</option>
+                          <option value="0"
+                          <?php
+                        if ($mpant==0) {
+                        echo 'selected';
+                        }
+                        ?>
+                        >NO</option>
+                        </select>
+                  </td>
+                </tr><!--FINAL PANTALLAS DEL SISTEMA-->
                 <tr> <!--INICIO BACKUP-->
                   <td>BACKUP/RESTORE</td>
                   <td>MOSTRAR BACKUP/RESTORE</td>
@@ -1219,7 +1469,31 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>23
                         >NO</option>
                         </select>
                   </td>
-                </tr><!--FINAL PERMISOS-->
+                </tr>
+                <tr> 
+                  <td>PERMISOS</td>
+                  <td>ELIMINAR PERMISOS</td>
+                  <td>
+                        <select class="form-control" name="perm_e" id="perm_e" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1"
+                          <?php
+                        if ($eperm==1) {
+                        echo 'selected';
+                        }
+                        ?>
+                          >SI</option>
+                          <option value="0"
+                          <?php
+                        if ($eperm==0) {
+                        echo 'selected';
+                        }
+                        ?>
+                        >NO</option>
+                        </select>
+                  </td>
+                </tr>
+                <!--FINAL PERMISOS-->
                 </tbody>
                 <tfoot>
                 <tr>

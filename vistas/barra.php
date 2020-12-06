@@ -113,10 +113,10 @@
       
       <?php  }  ?> 
       <li class="treeview">
-      <?php if ($_SESSION['po']==43 and $_SESSION['cpo']==1 ){  ?>
+      <?php if ($_SESSION['nac']==51 and $_SESSION['cnac']==1 ){  ?>
         <a href="#">
         <i class="fa fa-graduation-cap"></i>
-          <span>Nacionalidad</span>
+          <span>Nacionalidades</span>
           </a>
             <ul class="treeview-menu">
             <li><a href="../vistas/mostrar_paises.php"><i class=" fa fa-list-alt"></i>Mostrar Nacionalidades </a></li>
@@ -127,10 +127,10 @@
       
       <?php  }  ?> 
       <li class="treeview">
-      <?php if ($_SESSION['po']==43 and $_SESSION['cpo']==1 ){  ?>
+      <?php if ($_SESSION['hor']==54 and $_SESSION['chor']==1 ){  ?>
         <a href="#">
         <i class="fa fa-graduation-cap"></i>
-          <span>Horario</span>
+          <span>Horarios de citas</span>
           </a>
             <ul class="treeview-menu">
             <li><a href="../vistas/mostrar_horario.php"><i class=" fa fa-list-alt"></i>Mostrar Horarios de Cita </a></li>
@@ -141,7 +141,7 @@
       
       <?php  }  ?> 
      <!-- Titulo de Seguridad -->
-     <?php if ($_SESSION['cparam']==1 or $_SESSION['croles']==1 or $_SESSION['cbit']==1 or $_SESSION['cback']==1 or $_SESSION['cperm']==1 ){  ?>
+     <?php if ($_SESSION['cparam']==1 or $_SESSION['croles']==1 or $_SESSION['cbit']==1 or $_SESSION['cback']==1 or $_SESSION['cperm']==1 or $_SESSION['cps']==1 or $_SESSION['cpsu']==1 or $_SESSION['cpant']==1 ){  ?>
      <li class="header">Seguridad</li>
      <?php  }  ?>  
      
@@ -153,7 +153,19 @@
         </a>
         <!-- subtitulos de Expedientes -->
           <ul class="treeview-menu">
-          <li><a href="../vistas/mostrar_preguntas.php"><i class="fa fa-list-alt"></i>Mostrar preguntas</a></li>
+          <li><a href="../vistas/mostrar_preguntas.php"><i class="fa fa-list-alt"></i>Mostrar preguntas de seguridad</a></li>
+          </ul>
+      </li>
+      <?php  }  ?> 
+      <li class="treeview">
+      <?php if ($_SESSION['psu']==55 and $_SESSION['cpsu']==1 ){  ?>
+        <a href="#">
+          <i class="	glyphicon glyphicon-question-sign"></i>
+          <span>Preguntas de seguridad de usuarios</span>
+        </a>
+        <!-- subtitulos de Expedientes -->
+          <ul class="treeview-menu">
+          <li><a href="../vistas/mostrar_preguntas.php"><i class="fa fa-list-alt"></i>Mostrar preguntas de seguridad de usarios</a></li>
           </ul>
       </li>
       <?php  }  ?> 
@@ -190,9 +202,10 @@
         </a>
         <!-- subtitulos de Expedientes -->
           <ul class="treeview-menu">
-          <?php if ( $_SESSION['cperm']==1 and $_SESSION['iperm']==1 ){  ?>
-          <li><a href="../vistas/insertar_permisos.php"><i class="fa fa-plus-circle"></i>Añadir Permisos</a></li>
+          <?php if ( $_SESSION['cperm']==1 ){  ?>
+          <li><a href="../vistas/mostrar_permisos.php"><i class="fa fa-plus-circle"></i>Mostrar Permisos</a></li>
           <?php  }  ?> 
+          
           <?php if ( $_SESSION['cperm']==1 and $_SESSION['mperm']==1 ){  ?>
           <li><a href="../vistas/editar_permisos.php"><i class=" fa fa-pencil-square-o"></i>Editar Permisos</a></li>
           <?php  }  ?> 
@@ -216,7 +229,7 @@
     
 
       <li class="treeview">
-      <?php if ($_SESSION['back']==40 and $_SESSION['cback']==1 ){  ?>
+      <?php if ($_SESSION['pant']==49 and $_SESSION['cpant']==1 ){  ?>
         <a href="#">
         <i class="fa fa-television" aria-hidden="true"></i>
           <span>Pantallas</span>

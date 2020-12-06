@@ -58,7 +58,8 @@
         isset($_POST['id_pperm']) and
         isset($_POST['perm_c']) and
         isset($_POST['perm_i']) and 
-		isset($_POST['perm_m']) and 
+        isset($_POST['perm_m']) and 
+        isset($_POST['perm_e']) and 
         isset($_POST['id_operm']) and
         //prof y ocu
         isset($_POST['id_ppo']) and
@@ -73,7 +74,27 @@
         isset($_POST['ps_c']) and
         isset($_POST['ps_i']) and 
         isset($_POST['ps_m']) and 
-        isset($_POST['ps_e']) 
+        isset($_POST['ps_e']) and
+        //nacionalidades
+        isset($_POST['id_pnac']) and
+        isset($_POST['id_onac']) and
+        isset($_POST['nac_c']) and
+        isset($_POST['nac_i']) and 
+        isset($_POST['nac_m']) and 
+        isset($_POST['nac_e']) and
+         //horarios
+         isset($_POST['id_phor']) and
+        isset($_POST['id_ohor']) and
+         isset($_POST['hor_c']) and
+         //preg usuarios
+         isset($_POST['id_ppsu']) and
+        isset($_POST['id_opsu']) and
+       isset($_POST['psu_c']) and
+        //pantallas
+        isset($_POST['id_ppant']) and
+        isset($_POST['id_opant']) and
+        isset($_POST['pant_c']) and
+        isset($_POST['pant_m']) 
 		) {
         //Usuarios
         $id_rol=$_POST["id_rol"];  
@@ -134,6 +155,7 @@
         $c9=$_POST["perm_c"];
         $i9=$_POST["perm_i"];
         $m9=$_POST["perm_m"];
+        $e9=$_POST["perm_e"];
         $id_pperm=$_POST["id_pperm"];
          //prof y ocu
          $id_opo=$_POST["id_opo"];
@@ -149,6 +171,26 @@
          $m11=$_POST["ps_m"];
          $e11=$_POST["ps_e"];
          $id_pps=$_POST["id_pps"];
+         //nacionalidad
+         $id_onac=$_POST["id_onac"];
+         $c12=$_POST["nac_c"];
+         $i12=$_POST["nac_i"];
+         $m12=$_POST["nac_m"];
+         $e12=$_POST["nac_e"];
+         $id_pnac=$_POST["id_pnac"];
+          //horarios
+          $id_ohor=$_POST["id_ohor"];
+          $id_phor=$_POST["id_phor"];
+          $c13=$_POST['hor_c'];
+          //preg usuarios
+          $id_opsu=$_POST["id_opsu"];
+          $id_ppsu=$_POST["id_ppsu"];
+         $c14=$_POST['psu_c'];
+         //pantallas
+         $id_opant=$_POST["id_opant"];
+          $id_ppant=$_POST["id_ppant"];
+         $c15=$_POST['pant_c'];
+         $m15=$_POST['pant_m'];
 
         
         $query=$conexion->prepare
@@ -354,7 +396,7 @@
             ":c"=>$c9,
             ":i"=>$i9,
             ":m"=>$m9,
-            ":e"=>0
+            ":e"=>$e9
         ));
         //prof y ocu
         $query10=$conexion->prepare
@@ -398,10 +440,94 @@
             ":m"=>$m11,
             ":e"=>$e11
         ));
+         //nacionalidad
+         $query12=$conexion->prepare
+         ("UPDATE TBL_PERMISOS SET
+             ROL_CODIGO=:r,
+             OBJ_CODIGO=:p,
+             PERM_CONSULTAR=:c,
+             PERM_INSERTAR=:i,
+             PERM_ACTUALIZAR=:m,	
+             PERM_ELIMINAR=:e
+ 
+         WHERE PERM_CODIGO=:id_p");
+       
+          $query12->execute(array(
+             ":id_p"=>$id_pnac,
+             ":r"=>$id_rol,
+             ":p"=>$id_onac,  
+             ":c"=>$c12,
+             ":i"=>$i12,
+             ":m"=>$m12,
+             ":e"=>$e12
+         ));
+         //horario
+         $query13=$conexion->prepare
+         ("UPDATE TBL_PERMISOS SET
+             ROL_CODIGO=:r,
+             OBJ_CODIGO=:p,
+             PERM_CONSULTAR=:c,
+             PERM_INSERTAR=:i,
+             PERM_ACTUALIZAR=:m,	
+             PERM_ELIMINAR=:e
+ 
+         WHERE PERM_CODIGO=:id_p");
+       
+          $query13->execute(array(
+             ":id_p"=>$id_phor,
+             ":r"=>$id_rol,
+             ":p"=>$id_ohor,  
+             ":c"=>$c13,
+             ":i"=>0,
+             ":m"=>0,
+             ":e"=>0
+         ));
+         //preguntas usuario
+         $query14=$conexion->prepare
+         ("UPDATE TBL_PERMISOS SET
+             ROL_CODIGO=:r,
+             OBJ_CODIGO=:p,
+             PERM_CONSULTAR=:c,
+             PERM_INSERTAR=:i,
+             PERM_ACTUALIZAR=:m,	
+             PERM_ELIMINAR=:e
+ 
+         WHERE PERM_CODIGO=:id_p");
+       
+          $query14->execute(array(
+             ":id_p"=>$id_ppsu,
+             ":r"=>$id_rol,
+             ":p"=>$id_opsu,  
+             ":c"=>$c14,
+             ":i"=>0,
+             ":m"=>0,
+             ":e"=>0
+         ));
+          //pantallas
+          $query15=$conexion->prepare
+          ("UPDATE TBL_PERMISOS SET
+              ROL_CODIGO=:r,
+              OBJ_CODIGO=:p,
+              PERM_CONSULTAR=:c,
+              PERM_INSERTAR=:i,
+              PERM_ACTUALIZAR=:m,	
+              PERM_ELIMINAR=:e
+  
+          WHERE PERM_CODIGO=:id_p");
+        
+           $query15->execute(array(
+              ":id_p"=>$id_ppant,
+              ":r"=>$id_rol,
+              ":p"=>$id_opant,  
+              ":c"=>$c15,
+              ":i"=>0,
+              ":m"=>$m15,
+              ":e"=>0
+          ));
         
         
         
-       if ($query and $query1 and $query2 and $query3 and $query4 and $query5 and $query6 and $query7 and $query8 and $query9 and $query10 and $query11) {
+       if ($query and $query1 and $query2 and $query3 and $query4 and $query5 and $query6 and $query7 and $query8 and $query9 and $query10 and $query11 and $query12 and $query13 and $query14 and $query15) {
 		/*$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
 		VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
 	    $resultado2=$conexion->prepare($sql2);	
@@ -435,6 +561,11 @@
         $query9->closeCursor();
         $query10->closeCursor();
         $query11->closeCursor();
+        $query12->closeCursor();
+        $query13->closeCursor();
+        $query14->closeCursor();
+        $query15->closeCursor();
+
 
 
 	

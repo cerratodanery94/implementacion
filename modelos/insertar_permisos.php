@@ -41,6 +41,7 @@
         isset($_POST['perm_c']) and
         isset($_POST['perm_i']) and 
         isset($_POST['perm_m']) and
+        isset($_POST['perm_e']) and
         //prof y ocu
         isset($_POST['po_c']) and
         isset($_POST['po_i']) and 
@@ -50,7 +51,19 @@
         isset($_POST['ps_c']) and
         isset($_POST['ps_i']) and 
         isset($_POST['ps_m']) and 
-        isset($_POST['ps_e']) 
+        isset($_POST['ps_e']) and
+         //nacionalidades
+         isset($_POST['nac_c']) and
+         isset($_POST['nac_i']) and 
+         isset($_POST['nac_m']) and 
+         isset($_POST['nac_e']) and
+          //horarios
+          isset($_POST['hor_c']) and
+           //preg usuarios
+         isset($_POST['psu_c']) and
+          //pantallas
+          isset($_POST['pant_c']) and
+          isset($_POST['pant_m']) 
            
 		) {
         $r=$_POST["rol"];
@@ -92,6 +105,7 @@
         $c9=$_POST["perm_c"];
         $i9=$_POST["perm_i"];
         $m9=$_POST["perm_m"];
+        $e9=$_POST["perm_e"];
         //prof y ocu
         $c10=$_POST["po_c"];
         $i10=$_POST["po_i"];
@@ -102,6 +116,18 @@
         $i11=$_POST["ps_i"];
         $m11=$_POST["ps_m"];
         $e11=$_POST["ps_e"];
+         //nacionalidades
+         $c12=$_POST["nac_c"];
+         $i12=$_POST["nac_i"];
+         $m12=$_POST["nac_m"];
+         $e12=$_POST["nac_e"];
+         //horarios
+         $c13=$_POST['hor_c'];
+         //preg usuarios
+        $c14=$_POST['psu_c'];
+        //pantallas
+        $c15=$_POST['pant_c'];
+        $m15=$_POST['pant_m']; 
 
 
 
@@ -152,8 +178,26 @@
         $consulta11=$conexion->prepare("SELECT * FROM TBL_PERMISOS WHERE ROL_CODIGO='$r' and obj_codigo=46");
         $consulta11->execute();
         $num_rows11 = $consulta11->fetchColumn();
+
+        $consulta12=$conexion->prepare("SELECT * FROM TBL_PERMISOS WHERE ROL_CODIGO='$r' and obj_codigo=51");
+        $consulta12->execute();
+        $num_rows12 = $consulta12->fetchColumn();
+
+        $consulta13=$conexion->prepare("SELECT * FROM TBL_PERMISOS WHERE ROL_CODIGO='$r' and obj_codigo=54");
+        $consulta13->execute();
+        $num_rows13 = $consulta13->fetchColumn();
+
+        $consulta14=$conexion->prepare("SELECT * FROM TBL_PERMISOS WHERE ROL_CODIGO='$r' and obj_codigo=55");
+        $consulta14->execute();
+        $num_rows14 = $consulta14->fetchColumn();
+
+        $consulta15=$conexion->prepare("SELECT * FROM TBL_PERMISOS WHERE ROL_CODIGO='$r' and obj_codigo=49");
+        $consulta15->execute();
+        $num_rows15 = $consulta15->fetchColumn();
+
         
-       if ($num_rows>0 and $num_rows1>0 and $num_rows2>0 and $num_rows3>0 and $num_rows4>0 and $num_rows5>0 and $num_rows6>0 and $num_rows7>0 and $num_rows8>0 and $num_rows9>0 and $num_rows10>0 and $num_rows11>0){ 
+        
+       if ($num_rows>0 and $num_rows1>0 and $num_rows2>0 and $num_rows3>0 and $num_rows4>0 and $num_rows5>0 and $num_rows6>0 and $num_rows7>0 and $num_rows8>0 and $num_rows9>0 and $num_rows10>0 and $num_rows11>0 and $num_rows12>0 and $num_rows13>0 and $num_rows14>0 and $num_rows15>0){ 
 		  
 		   echo '<script> Swal.fire({
 			position: "center",
@@ -165,7 +209,7 @@
 		  </script>';
 
        }else{
-	 if ($c==1 and $c1==1 and $c2==1 and $c3==1 and $c4==1 and $c5==1 and $c6==1 and $c7==1 and $c8==1 and $c9==1 and $c10==1 and $c11==1){
+	 if ($c==1 and $c1==1 and $c2==1 and $c3==1 and $c4==1 and $c5==1 and $c6==1 and $c7==1 and $c8==1 and $c9==1 and $c10==1 and $c11==1 and $c12==1 and $c13==1 and $c14==1 and $c15==1){
         $sql="INSERT INTO tbl_permisos (
             ROL_CODIGO,
             OBJ_CODIGO,
@@ -438,7 +482,7 @@ $resultado9->execute(array(
 ":c"=>$c9,
 ":i"=>$i9,
 ":m"=>$m9,
-":e"=>0
+":e"=>$e9
 ));
 $sql10="INSERT INTO tbl_permisos (
   ROL_CODIGO,
@@ -492,7 +536,111 @@ $resultado11->execute(array(
  ":m"=>$m11,
  ":e"=>$e11
 ));
-       if ($resultado and $resultado1 and $resultado2 and $resultado3 and $resultado4 and $resultado5 and $resultado6 and $resultado7 and $resultado8 and $resultado9 and $resultado10  and $resultado11 ) {
+$sql12="INSERT INTO tbl_permisos (
+  ROL_CODIGO,
+  OBJ_CODIGO,
+  PERM_CONSULTAR,
+  PERM_INSERTAR,
+  PERM_ACTUALIZAR,	
+  PERM_ELIMINAR
+  ) 
+  
+VALUES (
+:r,
+:p,   
+:c,
+:i,
+:m,
+:e)";
+
+$resultado12=$conexion->prepare($sql12);	
+$resultado12->execute(array(
+ ":r"=>$r,
+ ":p"=>51,  
+ ":c"=>$c12,
+ ":i"=>$i12,
+ ":m"=>$m12,
+ ":e"=>$e12
+));
+$sql13="INSERT INTO tbl_permisos (
+  ROL_CODIGO,
+  OBJ_CODIGO,
+  PERM_CONSULTAR,
+  PERM_INSERTAR,
+  PERM_ACTUALIZAR,	
+  PERM_ELIMINAR
+  ) 
+  
+VALUES (
+:r,
+:p,   
+:c,
+:i,
+:m,
+:e)";
+
+$resultado13=$conexion->prepare($sql13);	
+$resultado13->execute(array(
+ ":r"=>$r,
+ ":p"=>54,  
+ ":c"=>$c13,
+ ":i"=>0,
+ ":m"=>0,
+ ":e"=>0
+));
+$sql14="INSERT INTO tbl_permisos (
+  ROL_CODIGO,
+  OBJ_CODIGO,
+  PERM_CONSULTAR,
+  PERM_INSERTAR,
+  PERM_ACTUALIZAR,	
+  PERM_ELIMINAR
+  ) 
+  
+VALUES (
+:r,
+:p,   
+:c,
+:i,
+:m,
+:e)";
+
+$resultado14=$conexion->prepare($sql14);	
+$resultado14->execute(array(
+ ":r"=>$r,
+ ":p"=>55,  
+ ":c"=>$c14,
+ ":i"=>0,
+ ":m"=>0,
+ ":e"=>0
+));
+$sql15="INSERT INTO tbl_permisos (
+  ROL_CODIGO,
+  OBJ_CODIGO,
+  PERM_CONSULTAR,
+  PERM_INSERTAR,
+  PERM_ACTUALIZAR,	
+  PERM_ELIMINAR
+  ) 
+  
+VALUES (
+:r,
+:p,   
+:c,
+:i,
+:m,
+:e)";
+
+$resultado15=$conexion->prepare($sql15);	
+$resultado15->execute(array(
+ ":r"=>$r,
+ ":p"=>49,  
+ ":c"=>$c15,
+ ":i"=>0,
+ ":m"=>$m15,
+ ":e"=>0
+));
+       if ($resultado and $resultado1 and $resultado2 and $resultado3 and $resultado4 and $resultado5 and $resultado6 and $resultado7 and $resultado8 and $resultado9 and $resultado10  and $resultado11 and $resultado12 and $resultado13 and $resultado14 and $resultado15 ) {
 		$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
 		VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
 	    $resultado2=$conexion->prepare($sql2);	
@@ -547,6 +695,11 @@ $resultado11->execute(array(
     $resultado9->closeCursor();
     $resultado10->closeCursor();
     $resultado11->closeCursor();
+    $resultado12->closeCursor();
+    $resultado13->closeCursor();
+    $resultado14->closeCursor();
+    $resultado15->closeCursor();
+
     }  }
 	}catch(Exception $e){			
 		

@@ -21,6 +21,9 @@ $_SESSION['back']=40;
 $_SESSION['perm']=36;
 $_SESSION['po']=43;
 $_SESSION['ps']=46;
+$_SESSION['nac']=51;
+$_SESSION['hor']=54;
+$_SESSION['psu']=55;
 $_SESSION['pant']=49;
 
 //Permisos usuarios
@@ -133,6 +136,38 @@ $datos11 = $resultado11->fetch(PDO::FETCH_ASSOC);
  $_SESSION['ips'] = $datos11['PERM_INSERTAR'];
  $_SESSION['eps'] = $datos11['PERM_ELIMINAR'];
  $_SESSION['mps']= $datos11['PERM_ACTUALIZAR'];
+ //Nacionalidades
+$sql12 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO=:pantalla" ;
+$resultado12=$conexion->prepare($sql12);	
+$resultado12->execute(array(":rol"=>$_SESSION['ROL'],":pantalla"=>$_SESSION['nac']));
+$datos12 = $resultado12->fetch(PDO::FETCH_ASSOC);
+ $p= $datos12['OBJ_CODIGO'];
+ $_SESSION['cnac']= $datos12['PERM_CONSULTAR'];
+ $_SESSION['inac'] = $datos12['PERM_INSERTAR'];
+ $_SESSION['enac'] = $datos12['PERM_ELIMINAR'];
+ $_SESSION['mnac']= $datos12['PERM_ACTUALIZAR'];
+ //Horario
+$sql13 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO=:pantalla" ;
+$resultado13=$conexion->prepare($sql13);	
+$resultado13->execute(array(":rol"=>$_SESSION['ROL'],":pantalla"=>$_SESSION['hor']));
+$datos13 = $resultado13->fetch(PDO::FETCH_ASSOC);
+ $p= $datos13['OBJ_CODIGO'];
+ $_SESSION['chor']= $datos13['PERM_CONSULTAR'];
+ //preguntas usuario
+$sql14 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO=:pantalla" ;
+$resultado14=$conexion->prepare($sql14);	
+$resultado14->execute(array(":rol"=>$_SESSION['ROL'],":pantalla"=>$_SESSION['psu']));
+$datos14 = $resultado14->fetch(PDO::FETCH_ASSOC);
+ $p= $datos14['OBJ_CODIGO'];
+ $_SESSION['cpsu']= $datos14['PERM_CONSULTAR'];
+ //pantallas
+$sql15 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO=:pantalla" ;
+$resultado15=$conexion->prepare($sql15);	
+$resultado15->execute(array(":rol"=>$_SESSION['ROL'],":pantalla"=>$_SESSION['pant']));
+$datos15 = $resultado15->fetch(PDO::FETCH_ASSOC);
+ $p= $datos15['OBJ_CODIGO'];
+ $_SESSION['cpant']= $datos15['PERM_CONSULTAR'];
+ $_SESSION['mpant']= $datos15['PERM_ACTUALIZAR'];
  
 ?>
 <!DOCTYPE html>

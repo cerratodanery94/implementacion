@@ -346,6 +346,17 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
                         </select>
                   </td>
                 </tr> <!--FINAL CITAS-->
+                <tr> <!--INICIO HORARIOS DE CITAS-->
+                <td>HORARIOS DE CITAS</td>
+                  <td>MOSTRAR HORARIOS DE CITAS</td>
+                  <td>
+                        <select class="form-control" name="hor_c" id="hor_c" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1">SI</option>
+                          <option value="0">NO</option>
+                        </select>
+                  </td>
+                </tr><!--FINAL HORARIOS DE CITAS-->
                 <tr> <!--INICIO PROFESIONES/OCUPACIONES-->
                   <td>PROFESIONES/OCUPACIONES</td>
                   <td>MOSTRAR PROFESIONES/OCUPACIONES</td>
@@ -387,6 +398,53 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
                   <td>ELIMINAR PROFESIONES/OCUPACIONES </td>
                   <td>
                         <select class="form-control" name="po_e" id="po_e" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1">SI</option>
+                          <option value="0">NO</option>
+                        </select>
+                  </td>
+                </tr> <!--FINAL PROFESIONES/OCUPACIONES-->
+                <tr> <!--INICIO NACIONALIDADES-->
+                  <td>NACIONALIDADES</td>
+                  <td>MOSTRAR NACIONALIDADES</td>
+                  <td>
+                        <select class="form-control" name="nac_c" id="nac_c" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1">SI</option>
+                          <option value="0">NO</option>
+                        </select>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>NACIONALIDADES</td>
+                  <td>CREAR NACIONALIDADES </td>
+                  <td>
+                        <select class="form-control" name="nac_i" id="nac_i" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1">SI</option>
+                          <option value="0">NO</option>
+                        </select>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>NACIONALIDADES</td>
+                  <td>EDITAR NACIONALIDADES </td>
+                  <td>
+                        <select class="form-control" name="nac_m" id="nac_m" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1">SI</option>
+                          <option value="0">NO</option>
+                        </select>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>NACIONALIDADES</td>
+                  <td>ELIMINAR NACIONALIDADES </td>
+                  <td>
+                        <select class="form-control" name="nac_e" id="nac_e" required>
                           <option value="">SELECCIONE :</option>
                           <option value="1">SI</option>
                           <option value="0">NO</option>
@@ -440,6 +498,17 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
                         </select>
                   </td>
                 </tr> <!--FINAL PREGUNTAS DE SEGURIDAD-->
+                <tr> <!--INICIO PREGUNTAS DE SEGURIDAD DE USUARIOS-->
+                <td>PREGUNTAS DE SEGURIDAD DE USUARIOS</td>
+                  <td>MOSTRAR PREGUNTAS DE SEGURIDAD DE USUARIOS</td>
+                  <td>
+                        <select class="form-control" name="psu_c" id="psu_c" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1">SI</option>
+                          <option value="0">NO</option>
+                        </select>
+                  </td>
+                </tr><!--FINAL PREGUNTAS DE SEGURIDAD DE USUARIOS-->
                 <tr> <!--INICIO PARAMETROS-->
                   <td>PARAMETROS</td>
                   <td>MOSTRAR PARAMETROS</td>
@@ -521,6 +590,29 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
                         </select>
                   </td>
                 </tr><!--FINAL bitacora-->
+                <tr> <!--INICIO PANTALLAS DEL SISTEMA-->
+                  <td>PANTALLAS DEL SISTEMA</td>
+                  <td>MOSTRAR PANTALLAS DEL SISTEMA</td>
+                  <td>
+                        <select class="form-control" name="pant_c" id="pant_c" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1">SI</option>
+                          <option value="0">NO</option>
+                        </select>
+                  </td>
+                </tr>
+
+                <tr> 
+                  <td>PANTALLAS DEL SISTEMA</td>
+                  <td>EDITAR PANTALLAS DEL SISTEMA</td>
+                  <td>
+                        <select class="form-control" name="pant_m" id="pant_m" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1">SI</option>
+                          <option value="0">NO</option>
+                        </select>
+                  </td>
+                </tr><!--FINAL PANTALLAS DEL SISTEMA-->
                 <tr> <!--INICIO BACKUP-->
                 <td>BACKUP/RESTORE</td>
                   <td>MOSTRAR BACKUP/RESTORE</td>
@@ -566,7 +658,19 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
                           <option value="0">NO</option>
                         </select>
                   </td>
-                </tr><!--FINAL PERMISOS-->
+                </tr>
+                <tr> 
+                  <td>PERMISOS</td>
+                  <td>ELIMINAR PERMISOS</td>
+                  <td>
+                        <select class="form-control" name="perm_e" id="perm_e" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1">SI</option>
+                          <option value="0">NO</option>
+                        </select>
+                  </td>
+                </tr>
+                <!--FINAL PERMISOS-->
                 </tbody>
                 <tfoot>
                 <tr>
