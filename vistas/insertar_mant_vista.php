@@ -225,7 +225,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
                 <div class="form-group col-md-6 col-xs-12">
                 <div class="input-group">
                 <span class="input-group-addon">Pasaporte</span>
-                  <input type="text" style="text-transform:uppercase" autocomplete="off" class="form-control correo" placeholder=" " name="pasaporte" id="pasaporte" >
+                  <input type="text" pattern="[A-Za-z0-9]{9,9}" maxlength="9"  title="SOLO SE PERMITEN DATOS ALFANÚMERICOS CON UN TAMAÑO MAXIMO DE 9" style="text-transform:uppercase" autocomplete="off" class="form-control correo" placeholder=" " name="pasaporte" id="pasaporte" >
                   <span class="	glyphicon glyphicon-book form-control-feedback"></span>
                 </div>
                 </div>

@@ -247,7 +247,7 @@ if(isset($_GET['id'])){
                 <div class="form-group col-md-6 col-xs-12">
                 <div class="input-group">
                 <span class="input-group-addon">Pasaporte</span>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder=""  name="pasaporte" id="pasaporte" value="<?php echo $pasaporte?>"  >
+                  <input type="text"  pattern="[A-Za-z0-9]{9,9}" maxlength="9" title="SOLO SE PERMITEN DATOS ALFANÚMERICOS CON UN TAMAÑO MAXIMO DE 9" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder=""  name="pasaporte" id="pasaporte" value="<?php echo $pasaporte?>"  >
                   <span class="	glyphicon glyphicon-book form-control-feedback"></span>
                 </div>
                 </div>
