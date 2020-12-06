@@ -114,7 +114,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>24
                 <tr>
                   <th>N° EXP</th>
                   <th>NUMERO DE IDENTIDAD</th>
-                  <th>FECHA DE CREACION</th>
+                  <th>FECHA DE REGISTRO</th>
                   <th>NOMBRES</th>
                   <th>APELLIDOS</th>
                   <td>ACCIONES</td>
