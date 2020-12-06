@@ -82,12 +82,12 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>36
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-    <h1><i class="fa fa-calendar" aria-hidden="true"></i>
+    <h1><i class="fa fa-list-alt" aria-hidden="true"></i>
         Lista de Permisos 
         <small>ClimeHome</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="mostrar_citas_vista.php"><i class="fa fa-calendar"></i>Permisos</a></li>
+        <li><a href="mostrar_permisos.php"><i class="glyphicon glyphicon-random"></i>Permisos</a></li>
         <li class="active"><i class="fa fa-list-alt"></i> Lista de permisos</li>
       </ol>
     </section>

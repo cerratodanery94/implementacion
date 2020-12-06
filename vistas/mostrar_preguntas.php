@@ -83,11 +83,11 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
     <!-- Content Header (Page header) -->
     <section class="content-header">
     <h1><i class="fa fa-list-alt" aria-hidden="true"></i>
-        Lista de preguntas de seguridad
+        Lista de preguntas de usuario
         <small>ClimeHome</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="mostrar_preguntas.php"><i class="glyphicon glyphicon-question-sign"></i>Preguntas de seguridad</a></li>
+        <li><a href="mostrar_preguntas.php"><i class="glyphicon glyphicon-question-sign"></i>Preguntas de usuario</a></li>
         <li class="active"><i class="fa fa-list-alt"></i> Lista de Preguntas de seguridad</li>
       </ol>
     </section>

@@ -89,7 +89,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>31
         <small>ClimeHome</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="mostrar_roles_vista.php"><i class="fa fa-lock"></i> Roles</a></li>
+        <li><a href="mostrar_roles_vista.php"><i class="glyphicon glyphicon-briefcase"></i> Roles</a></li>
         <li class="active"><i class="fa fa-list-alt"></i> Lista de roles</li>
       </ol>
     </section>

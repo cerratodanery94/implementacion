@@ -96,8 +96,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>32
         <small>ClimeHome</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="../vistas/mostrar_preguntas.php"><i class="fa fa-list-alt"></i>Lista de preguntas de seguridad</a></li>
-        <li class="active"><i class="fa fa-pencil-square-o"></i> Editar preguntas de seguridad</li>
+        <li><a href="mostrar_preguntas.php"><i class="glyphicon glyphicon-question-sign"></i>Preguntas de usuario</a></li>
+        <li class="active"><i class="fa fa-list-alt"></i> Lista de Preguntas de seguridad</li>
       </ol>
     </section>
 
@@ -121,9 +121,6 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>32
                   <span class="		glyphicon glyphicon-ok-circle form-control-feedback"></span>
                 </div>
                 </div>
-
-
-               
                 </div>
                 </div>
               

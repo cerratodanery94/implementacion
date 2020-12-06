@@ -19,7 +19,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Mostrar Preguntas</title>
+  <title>Mostrar horario</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -83,12 +83,12 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
     <!-- Content Header (Page header) -->
     <section class="content-header">
     <h1><i class="fa fa-list-alt" aria-hidden="true"></i>
-        Lista de preguntas de seguridad
+        Lista de Horario de citas
         <small>ClimeHome</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="mostrar_preguntas.php"><i class="glyphicon glyphicon-question-sign"></i>Preguntas de seguridad</a></li>
-        <li class="active"><i class="fa fa-list-alt"></i> Lista de Preguntas de seguridad</li>
+        <li><a href="mostrar_horario.php"><i class="fa fa-clock-o"></i>Horario de citas</a></li>
+        <li class="active"><i class="fa fa-list-alt"></i> Lista de Horario de citas</li>
       </ol>
     </section>
     <!-- Main content -->

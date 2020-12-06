@@ -82,13 +82,13 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-    <h1><i class="fa fa-lock" aria-hidden="true"></i>
+    <h1><i class="fa fa-tags" aria-hidden="true"></i>
   Insertar permisos<i class="fas fa-suitcase-rolling    "></i>
         <small>ClimeHome</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="insertar_permisos.php"><i class="fa fa-lock"></i>Permiso</a></li>
-        <li class="active"><i class="fa fa-search-plus"></i> Buscar rol</li>
+        <li><a href="mostrar_permisos.php"><i class="glyphicon glyphicon-random"></i>Permiso</a></li>
+        <li class="active"><i class="fa fa-search-plus"></i> Insertar permisos</li>
       </ol>
     </section>
 

@@ -13,7 +13,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Registrar pregunta</title>
+  <title>Insertar nacionalidad</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -72,12 +72,12 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
     <!-- Content Header (Page header) -->
     <section class="content-header">
     <h1><i class="fa fa-tag" aria-hidden="true"></i>
-        Registrar preguntas de seguridad
+       Registrar nacionalidad
         <small>ClimeHome</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="mostrar_preguntas.php"><i class="glyphicon glyphicon-question-sign"></i>Paises</a></li>
-        <li class="active"><i class="fa fa-tag"></i>  Registrar un nuevo pais</li>
+        <li><a href="mostrar_paises.php"><i class="fa fa-plane"></i>Nacionalidad</a></li>
+        <li class="active"><i class="fa fa-list-alt"></i>   Lista de nacionalidades</li>
       </ol>
     </section>
    <!-- Main content -->
@@ -95,13 +95,13 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
         
         <div class="form-group col-lg-6 col-md-6 col-xs-12">
         <div class="input-group">
-                <span class="input-group-addon">Ingresar un nuevo pais</span>
-                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control apellidos" placeholder="PAIS"  name="pais" id="pais" >
-                  <span class="glyphicon glyphicon-question-sign form-control-feedback"></span>
+                <span class="input-group-addon">Ingrese la nacionalidad</span>
+                  <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control apellidos" placeholder=""  name="pais" id="pais" >
+                  <span class="fa fa-plane form-control-feedback"></span>
        </div>
                 </div>
 
-                <button type="submit"   class="btn btn btn btn-primary">  <i class="fa fa-check-circle-o" aria-hidden="true"></i> CREAR</button>
+                <button type="submit"   class="btn btn btn btn-primary">  <i class="fa fa-check-circle-o" aria-hidden="true"></i>  CREAR</button>
                 
               
       <!-- /.row -->

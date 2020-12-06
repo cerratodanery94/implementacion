@@ -34,7 +34,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>32
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Editar preguntas</title>
+  <title>Editar nacionalidad</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -96,8 +96,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>32
         <small>ClimeHome</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="../vistas/mostrar_preguntas.php"><i class="fa fa-list-alt"></i>Lista de preguntas de seguridad</a></li>
-        <li class="active"><i class="fa fa-pencil-square-o"></i> Editar preguntas de seguridad</li>
+        <li><a href="mostrar_paises.php"><i class="fa fa-plane"></i>Nacionalidad</a></li>
+        <li class="active"><i class="fa fa-list-alt"></i>   Lista de nacionalidades</li>
       </ol>
     </section>
 
@@ -115,7 +115,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>32
         <div id="alerta1"></div>
         <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <div class="input-group">
-                <span class="input-group-addon">Ingresar un Pais</span>
+                <span class="input-group-addon">Nacionalidad</span>
                   <input type="hidden" name="id" id="id" value="<?php echo $id?>">
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder=""  name="nombre" id="nombre" value="<?php echo $nombre?>" >
                   <span class="		glyphicon glyphicon-ok-circle form-control-feedback"></span>

@@ -77,13 +77,13 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>34
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-    <h1><i class="fa fa-lock" aria-hidden="true"></i>
+    <h1><i class="fa fa-tag" aria-hidden="true"></i>
       Crear nuevo rol
         <small>ClimeHome</small>
       </h1>
       <ol class="breadcrumb">
-      <li><a href="mostrar_roles_vista.php"><i class="fa fa-lock"></i> Roles</a></li>
-        <li class="active"><i class="fa fa-list-alt"></i> Lista de roles</li>
+      <li><a href="mostrar_roles_vista.php"><i class="glyphicon glyphicon-briefcase"></i> Roles</a></li>
+        <li class="active"><i class="fa fa-tag"></i> Crear nuevo rol</li>
       </ol>
     </section>
 

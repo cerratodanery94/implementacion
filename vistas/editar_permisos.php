@@ -15,7 +15,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>23
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Buscar rol</title>
+  <title>Editar permiso</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -75,13 +75,13 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>23
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-    <h1><i class="fa fa-search-plus" aria-hidden="true"></i>
-     Buscar rol<i class="fas fa-suitcase-rolling    "></i>
+    <h1><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+     Editar permiso<i class="fas fa-suitcase-rolling    "></i>
         <small>ClimeHome</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="insertar_permisos.php"><i class="fa fa-lock"></i>Permiso</a></li>
-        <li class="active"><i class="fa fa-search-plus"></i> Buscar rol</li>
+        <li><a href="insertar_permisos.php"><i class="glyphicon glyphicon-random"></i>Permiso</a></li>
+        <li class="active"><i class="fa fa-search-plus"></i> Editar rol</li>
       </ol>
     </section>
     <!-- Main content -->

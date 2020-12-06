@@ -95,6 +95,21 @@
       
         </a>
       </li>
+       
+      <?php  }  ?> 
+      <li class="treeview">
+      <?php if ($_SESSION['hor']==54 and $_SESSION['chor']==1 ){  ?>
+        <a href="#">
+        <i class="fa fa-clock-o" aria-hidden="true"></i>
+          <span>Horarios de citas</span>
+          </a>
+            <ul class="treeview-menu">
+            <li><a href="../vistas/mostrar_horario.php"><i class=" fa fa-list-alt"></i>Mostrar Horarios de Cita </a></li>
+        </ul>
+      </li>
+        </a>
+      </li>
+      
       <?php  }  ?>  
 
 
@@ -115,7 +130,7 @@
       <li class="treeview">
       <?php if ($_SESSION['nac']==51 and $_SESSION['cnac']==1 ){  ?>
         <a href="#">
-        <i class="fa fa-graduation-cap"></i>
+        <i class="fa fa-plane" aria-hidden="true"></i>
           <span>Nacionalidades</span>
           </a>
             <ul class="treeview-menu">
@@ -124,21 +139,7 @@
       </li>
         </a>
       </li>
-      
-      <?php  }  ?> 
-      <li class="treeview">
-      <?php if ($_SESSION['hor']==54 and $_SESSION['chor']==1 ){  ?>
-        <a href="#">
-        <i class="fa fa-graduation-cap"></i>
-          <span>Horarios de citas</span>
-          </a>
-            <ul class="treeview-menu">
-            <li><a href="../vistas/mostrar_horario.php"><i class=" fa fa-list-alt"></i>Mostrar Horarios de Cita </a></li>
-        </ul>
-      </li>
-        </a>
-      </li>
-      
+     
       <?php  }  ?> 
      <!-- Titulo de Seguridad -->
      <?php if ($_SESSION['cparam']==1 or $_SESSION['croles']==1 or $_SESSION['cbit']==1 or $_SESSION['cback']==1 or $_SESSION['cperm']==1 or $_SESSION['cps']==1 or $_SESSION['cpsu']==1 or $_SESSION['cpant']==1 ){  ?>
@@ -160,12 +161,12 @@
       <li class="treeview">
       <?php if ($_SESSION['psu']==55 and $_SESSION['cpsu']==1 ){  ?>
         <a href="#">
-          <i class="	glyphicon glyphicon-question-sign"></i>
-          <span>Preguntas de seguridad de usuarios</span>
+        <i class="	glyphicon glyphicon-question-sign" aria-hidden="true"></i>
+          <span>Preguntas  de usuarios</span>
         </a>
         <!-- subtitulos de Expedientes -->
           <ul class="treeview-menu">
-          <li><a href="../vistas/mostrar_preguntas.php"><i class="fa fa-list-alt"></i>Mostrar preguntas de seguridad de usarios</a></li>
+          <li><a href="../vistas/mostrar_preguntas_seguridad.php"><i class="fa fa-list-alt"></i>Mostrar preguntas de usuarios</a></li>
           </ul>
       </li>
       <?php  }  ?> 
