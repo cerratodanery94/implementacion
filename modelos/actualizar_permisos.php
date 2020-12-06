@@ -59,7 +59,21 @@
         isset($_POST['perm_c']) and
         isset($_POST['perm_i']) and 
 		isset($_POST['perm_m']) and 
-        isset($_POST['id_operm'])
+        isset($_POST['id_operm']) and
+        //prof y ocu
+        isset($_POST['id_ppo']) and
+        isset($_POST['id_opo']) and
+        isset($_POST['po_c']) and
+        isset($_POST['po_i']) and 
+        isset($_POST['po_m']) and 
+        isset($_POST['po_e']) and
+        //prof y ocu
+        isset($_POST['id_pps']) and
+        isset($_POST['id_ops']) and
+        isset($_POST['ps_c']) and
+        isset($_POST['ps_i']) and 
+        isset($_POST['ps_m']) and 
+        isset($_POST['ps_e']) 
 		) {
         //Usuarios
         $id_rol=$_POST["id_rol"];  
@@ -121,6 +135,20 @@
         $i9=$_POST["perm_i"];
         $m9=$_POST["perm_m"];
         $id_pperm=$_POST["id_pperm"];
+         //prof y ocu
+         $id_opo=$_POST["id_opo"];
+         $c10=$_POST["po_c"];
+         $i10=$_POST["po_i"];
+         $m10=$_POST["po_m"];
+         $e10=$_POST["po_e"];
+         $id_ppo=$_POST["id_ppo"];
+         //preg de seg
+         $id_ops=$_POST["id_ops"];
+         $c11=$_POST["ps_c"];
+         $i11=$_POST["ps_i"];
+         $m11=$_POST["ps_m"];
+         $e11=$_POST["ps_e"];
+         $id_pps=$_POST["id_pps"];
 
         
         $query=$conexion->prepare
@@ -328,9 +356,52 @@
             ":m"=>$m9,
             ":e"=>0
         ));
+        //prof y ocu
+        $query10=$conexion->prepare
+        ("UPDATE TBL_PERMISOS SET
+            ROL_CODIGO=:r,
+            OBJ_CODIGO=:p,
+            PERM_CONSULTAR=:c,
+            PERM_INSERTAR=:i,
+            PERM_ACTUALIZAR=:m,	
+            PERM_ELIMINAR=:e
+
+        WHERE PERM_CODIGO=:id_p");
+      
+         $query10->execute(array(
+            ":id_p"=>$id_ppo,
+            ":r"=>$id_rol,
+            ":p"=>$id_opo,  
+            ":c"=>$c10,
+            ":i"=>$i10,
+            ":m"=>$m10,
+            ":e"=>$e10
+        ));
+        //preg seg
+        $query11=$conexion->prepare
+        ("UPDATE TBL_PERMISOS SET
+            ROL_CODIGO=:r,
+            OBJ_CODIGO=:p,
+            PERM_CONSULTAR=:c,
+            PERM_INSERTAR=:i,
+            PERM_ACTUALIZAR=:m,	
+            PERM_ELIMINAR=:e
+
+        WHERE PERM_CODIGO=:id_p");
+      
+         $query11->execute(array(
+            ":id_p"=>$id_pps,
+            ":r"=>$id_rol,
+            ":p"=>$id_ops,  
+            ":c"=>$c11,
+            ":i"=>$i11,
+            ":m"=>$m11,
+            ":e"=>$e11
+        ));
         
         
-       if ($query and $query1 and $query2 and $query3 and $query4 and $query5 and $query6 and $query7 and $query8 and $query9) {
+        
+       if ($query and $query1 and $query2 and $query3 and $query4 and $query5 and $query6 and $query7 and $query8 and $query9 and $query10 and $query11) {
 		/*$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
 		VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
 	    $resultado2=$conexion->prepare($sql2);	
@@ -362,6 +433,8 @@
         $query7->closeCursor();
         $query8->closeCursor();
         $query9->closeCursor();
+        $query10->closeCursor();
+        $query11->closeCursor();
 
 
 	

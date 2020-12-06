@@ -40,7 +40,17 @@
         //permisos
         isset($_POST['perm_c']) and
         isset($_POST['perm_i']) and 
-        isset($_POST['perm_m']) 
+        isset($_POST['perm_m']) and
+        //prof y ocu
+        isset($_POST['po_c']) and
+        isset($_POST['po_i']) and 
+        isset($_POST['po_m']) and 
+        isset($_POST['po_e']) and
+        //preguntas de seguridad
+        isset($_POST['ps_c']) and
+        isset($_POST['ps_i']) and 
+        isset($_POST['ps_m']) and 
+        isset($_POST['ps_e']) 
            
 		) {
         $r=$_POST["rol"];
@@ -82,7 +92,16 @@
         $c9=$_POST["perm_c"];
         $i9=$_POST["perm_i"];
         $m9=$_POST["perm_m"];
-         
+        //prof y ocu
+        $c10=$_POST["po_c"];
+        $i10=$_POST["po_i"];
+        $m10=$_POST["po_m"];
+        $e10=$_POST["po_e"];
+         //preg de seguridad
+        $c11=$_POST["ps_c"];
+        $i11=$_POST["ps_i"];
+        $m11=$_POST["ps_m"];
+        $e11=$_POST["ps_e"];
 
 
 
@@ -125,8 +144,16 @@
         $consulta9=$conexion->prepare("SELECT * FROM TBL_PERMISOS WHERE ROL_CODIGO='$r' and obj_codigo=36");
         $consulta9->execute();
         $num_rows9 = $consulta9->fetchColumn();
+
+        $consulta10=$conexion->prepare("SELECT * FROM TBL_PERMISOS WHERE ROL_CODIGO='$r' and obj_codigo=43");
+        $consulta10->execute();
+        $num_rows10 = $consulta10->fetchColumn();
         
-       if ($num_rows>0 and $num_rows1>0 and $num_rows2>0 and $num_rows3>0 and $num_rows4>0 and $num_rows5>0 and $num_rows6>0 and $num_rows7>0 and $num_rows8>0 and $num_rows9>0){ 
+        $consulta11=$conexion->prepare("SELECT * FROM TBL_PERMISOS WHERE ROL_CODIGO='$r' and obj_codigo=46");
+        $consulta11->execute();
+        $num_rows11 = $consulta11->fetchColumn();
+        
+       if ($num_rows>0 and $num_rows1>0 and $num_rows2>0 and $num_rows3>0 and $num_rows4>0 and $num_rows5>0 and $num_rows6>0 and $num_rows7>0 and $num_rows8>0 and $num_rows9>0 and $num_rows10>0 and $num_rows11>0){ 
 		  
 		   echo '<script> Swal.fire({
 			position: "center",
@@ -138,7 +165,7 @@
 		  </script>';
 
        }else{
-	 if ($c==1 and $c1==1 and $c2==1 and $c3==1 and $c4==1 and $c5==1 and $c6==1 and $c7==1 and $c8==1 and $c9==1 ){
+	 if ($c==1 and $c1==1 and $c2==1 and $c3==1 and $c4==1 and $c5==1 and $c6==1 and $c7==1 and $c8==1 and $c9==1 and $c10==1 and $c11==1){
         $sql="INSERT INTO tbl_permisos (
             ROL_CODIGO,
             OBJ_CODIGO,
@@ -413,7 +440,59 @@ $resultado9->execute(array(
 ":m"=>$m9,
 ":e"=>0
 ));
-       if ($resultado and $resultado1 and $resultado2 and $resultado3 and $resultado4 and $resultado5 and $resultado6 and $resultado7 and $resultado8 and $resultado9) {
+$sql10="INSERT INTO tbl_permisos (
+  ROL_CODIGO,
+  OBJ_CODIGO,
+  PERM_CONSULTAR,
+  PERM_INSERTAR,
+  PERM_ACTUALIZAR,	
+  PERM_ELIMINAR
+  ) 
+  
+VALUES (
+:r,
+:p,   
+:c,
+:i,
+:m,
+:e)";
+
+$resultado10=$conexion->prepare($sql10);	
+$resultado10->execute(array(
+ ":r"=>$r,
+ ":p"=>43,  
+ ":c"=>$c10,
+ ":i"=>$i10,
+ ":m"=>$m10,
+ ":e"=>$e10
+));
+$sql11="INSERT INTO tbl_permisos (
+  ROL_CODIGO,
+  OBJ_CODIGO,
+  PERM_CONSULTAR,
+  PERM_INSERTAR,
+  PERM_ACTUALIZAR,	
+  PERM_ELIMINAR
+  ) 
+  
+VALUES (
+:r,
+:p,   
+:c,
+:i,
+:m,
+:e)";
+
+$resultado11=$conexion->prepare($sql11);	
+$resultado11->execute(array(
+ ":r"=>$r,
+ ":p"=>46,  
+ ":c"=>$c11,
+ ":i"=>$i11,
+ ":m"=>$m11,
+ ":e"=>$e11
+));
+       if ($resultado and $resultado1 and $resultado2 and $resultado3 and $resultado4 and $resultado5 and $resultado6 and $resultado7 and $resultado8 and $resultado9 and $resultado10  and $resultado11 ) {
 		$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
 		VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
 	    $resultado2=$conexion->prepare($sql2);	
@@ -466,6 +545,8 @@ $resultado9->execute(array(
     $resultado7->closeCursor();
     $resultado8->closeCursor();
     $resultado9->closeCursor();
+    $resultado10->closeCursor();
+    $resultado11->closeCursor();
     }  }
 	}catch(Exception $e){			
 		

@@ -346,6 +346,100 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
                         </select>
                   </td>
                 </tr> <!--FINAL CITAS-->
+                <tr> <!--INICIO PROFESIONES/OCUPACIONES-->
+                  <td>PROFESIONES/OCUPACIONES</td>
+                  <td>MOSTRAR PROFESIONES/OCUPACIONES</td>
+                  <td>
+                        <select class="form-control" name="po_c" id="po_c" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1">SI</option>
+                          <option value="0">NO</option>
+                        </select>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>PROFESIONES/OCUPACIONES</td>
+                  <td>CREAR PROFESIONES/OCUPACIONES </td>
+                  <td>
+                        <select class="form-control" name="po_i" id="po_i" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1">SI</option>
+                          <option value="0">NO</option>
+                        </select>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>PROFESIONES/OCUPACIONES</td>
+                  <td>EDITAR PROFESIONES/OCUPACIONES </td>
+                  <td>
+                        <select class="form-control" name="po_m" id="po_m" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1">SI</option>
+                          <option value="0">NO</option>
+                        </select>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>PROFESIONES/OCUPACIONES</td>
+                  <td>ELIMINAR PROFESIONES/OCUPACIONES </td>
+                  <td>
+                        <select class="form-control" name="po_e" id="po_e" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1">SI</option>
+                          <option value="0">NO</option>
+                        </select>
+                  </td>
+                </tr> <!--FINAL PROFESIONES/OCUPACIONES-->
+                <tr> <!--INICIO PREGUNTAS DE SEGURIDAD-->
+                  <td> PREGUNTAS DE SEGURIDAD</td>
+                  <td>MOSTRAR PREGUNTAS DE SEGURIDAD</td>
+                  <td>
+                        <select class="form-control" name="ps_c" id="ps_c" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1">SI</option>
+                          <option value="0">NO</option>
+                        </select>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>PREGUNTAS DE SEGURIDAD</td>
+                  <td>CREAR PREGUNTAS DE SEGURIDAD </td>
+                  <td>
+                        <select class="form-control" name="ps_i" id="ps_i" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1">SI</option>
+                          <option value="0">NO</option>
+                        </select>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>PREGUNTAS DE SEGURIDAD</td>
+                  <td>EDITAR PREGUNTAS DE SEGURIDAD </td>
+                  <td>
+                        <select class="form-control" name="ps_m" id="ps_m" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1">SI</option>
+                          <option value="0">NO</option>
+                        </select>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>PREGUNTAS DE SEGURIDAD</td>
+                  <td>ELIMINAR PREGUNTAS DE SEGURIDAD </td>
+                  <td>
+                        <select class="form-control" name="ps_e" id="ps_e" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1">SI</option>
+                          <option value="0">NO</option>
+                        </select>
+                  </td>
+                </tr> <!--FINAL PREGUNTAS DE SEGURIDAD-->
                 <tr> <!--INICIO PARAMETROS-->
                   <td>PARAMETROS</td>
                   <td>MOSTRAR PARAMETROS</td>

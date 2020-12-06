@@ -151,6 +151,13 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>23
          $_SESSION['id_ocit']=$registro4['OBJ_CODIGO'];
          $_SESSION['id_pcit']=$registro4['PERM_CODIGO'];
 
+         //PROFESIONES/OCUPACIONES
+         $resultado10 = $conexion -> query ("SELECT * FROM tbl_permisos tp inner join tbl_rol tr on tp.rol_codigo=tr.rol_codigo where tr.ROL_NOMBRE ='$buscar'AND tp.OBJ_CODIGO=43");
+         $resultado10->execute();
+         $registro10=$resultado10->fetch(PDO::FETCH_ASSOC);
+         $_SESSION['id_opo']=$registro10['OBJ_CODIGO'];
+         $_SESSION['id_ppo']=$registro10['PERM_CODIGO'];
+
          //PARAMETROS
          $resultado5 = $conexion -> query ("SELECT * FROM tbl_permisos tp inner join tbl_rol tr on tp.rol_codigo=tr.rol_codigo where tr.ROL_NOMBRE ='$buscar'AND tp.OBJ_CODIGO=30");
          $resultado5->execute();
@@ -183,6 +190,12 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>23
          $registro9=$resultado9->fetch(PDO::FETCH_ASSOC);
          $_SESSION['id_operm']=$registro9['OBJ_CODIGO'];
          $_SESSION['id_pperm']=$registro9['PERM_CODIGO'];
+         //preg seg
+         $resultado11 = $conexion -> query ("SELECT * FROM tbl_permisos tp inner join tbl_rol tr on tp.rol_codigo=tr.rol_codigo where tr.ROL_NOMBRE ='$buscar'AND tp.OBJ_CODIGO=46");
+         $resultado11->execute();
+         $registro11=$resultado11->fetch(PDO::FETCH_ASSOC);
+         $_SESSION['id_ops']=$registro11['OBJ_CODIGO'];
+         $_SESSION['id_pps']=$registro11['PERM_CODIGO'];
         
           ?> 
             
@@ -211,6 +224,10 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>23
           <input type="hidden"  class="form-control"  name="id_pback" id="id_pback" value="<?php echo $_SESSION['id_pback']?>" readonly>
           <input type="hidden"  class="form-control"  name="id_operm" id="id_operm" value="<?php echo $_SESSION['id_operm']?>" readonly>
           <input type="hidden"  class="form-control"  name="id_pperm" id="id_pperm" value="<?php echo $_SESSION['id_pperm']?>" readonly>
+          <input type="hidden"  class="form-control"  name="id_opo" id="id_opo" value="<?php echo $_SESSION['id_opo']?>" readonly>
+          <input type="hidden"  class="form-control"  name="id_ppo" id="id_ppo" value="<?php echo $_SESSION['id_ppo']?>" readonly>
+          <input type="hidden"  class="form-control"  name="id_ops" id="id_ops" value="<?php echo $_SESSION['id_ops']?>" readonly>
+          <input type="hidden"  class="form-control"  name="id_pps" id="id_pps" value="<?php echo $_SESSION['id_pps']?>" readonly>
           <?php 
           /*OBTENER PERMISO DE USUARIOS*/
            $sql = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO=:pantalla" ;
@@ -291,6 +308,24 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>23
             $cperm= $datos['PERM_CONSULTAR'];
             $iperm= $datos['PERM_INSERTAR'];
             $mperm= $datos['PERM_ACTUALIZAR'];
+             /*OBTENER PERMISO DE PROFESION Y OCUPACION*/
+           $sql10 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO=:pantalla" ;
+           $resultado10=$conexion->prepare($sql10);	
+           $resultado10->execute(array(":rol"=>$_SESSION['id_rol'],":pantalla"=>$_SESSION['id_opo']));
+           $datos = $resultado10->fetch(PDO::FETCH_ASSOC);
+            $cpo= $datos['PERM_CONSULTAR'];
+            $ipo= $datos['PERM_INSERTAR'];
+            $mpo= $datos['PERM_ACTUALIZAR'];
+            $epo= $datos['PERM_ELIMINAR'];
+             /*OBTENER PERMISOS DE PREGUNTAS DE SEGURIDAD*/
+           $sql11 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO=:pantalla" ;
+           $resultado11=$conexion->prepare($sql11);	
+           $resultado11->execute(array(":rol"=>$_SESSION['id_rol'],":pantalla"=>$_SESSION['id_ops']));
+           $datos = $resultado11->fetch(PDO::FETCH_ASSOC);
+            $cps= $datos['PERM_CONSULTAR'];
+            $ips= $datos['PERM_INSERTAR'];
+            $mps= $datos['PERM_ACTUALIZAR'];
+            $eps= $datos['PERM_ELIMINAR'];
 
            
            ?>
@@ -736,6 +771,196 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>23
                         </select>
                   </td>
                 </tr> <!--FINAL CITAS-->
+                <tr> <!--INICIO PROFESIONES/OCUPACIONES-->
+                  <td>PROFESIONES/OCUPACIONES</td>
+                  <td>MOSTRAR PROFESIONES/OCUPACIONES</td>
+                  <td>
+                        <select class="form-control" name="po_c" id="po_c" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1"
+                          <?php
+                        if ($cpo==1) {
+                        echo 'selected';
+                        }
+                        ?>
+                          >SI</option>
+                          <option value="0"
+                          <?php
+                        if ($cpo==0) {
+                        echo 'selected';
+                        }
+                        ?>
+                        >NO</option>
+                        </select>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>PROFESIONES/OCUPACIONES</td>
+                  <td>CREAR PROFESIONES/OCUPACIONES </td>
+                  <td>
+                        <select class="form-control" name="po_i" id="po_i" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1"
+                          <?php
+                        if ($ipo==1) {
+                        echo 'selected';
+                        }
+                        ?>
+                          >SI</option>
+                          <option value="0"
+                          <?php
+                        if ($ipo==0) {
+                        echo 'selected';
+                        }
+                        ?>
+                        >NO</option>
+                        </select>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>PROFESIONES/OCUPACIONES</td>
+                  <td>EDITAR PROFESIONES/OCUPACIONES </td>
+                  <td>
+                        <select class="form-control" name="po_m" id="po_m" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1"
+                          <?php
+                        if ($mpo==1) {
+                        echo 'selected';
+                        }
+                        ?>
+                          >SI</option>
+                          <option value="0"
+                          <?php
+                        if ($mpo==0) {
+                        echo 'selected';
+                        }
+                        ?>
+                        >NO</option>
+                        </select>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>PROFESIONES/OCUPACIONES</td>
+                  <td>ELIMINAR PROFESIONES/OCUPACIONES </td>
+                  <td>
+                        <select class="form-control" name="po_e" id="po_e" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1"
+                          <?php
+                        if ($epo==1) {
+                        echo 'selected';
+                        }
+                        ?>
+                          >SI</option>
+                          <option value="0"
+                          <?php
+                        if ($epo==0) {
+                        echo 'selected';
+                        }
+                        ?>
+                        >NO</option>
+                        </select>
+                  </td>
+                </tr> <!--FINAL PROFESIONES/OCUPACIONES-->
+                <tr> <!--INICIO PREGUNTAS DE SEGURIDAD-->
+                  <td> PREGUNTAS DE SEGURIDAD</td>
+                  <td>MOSTRAR PREGUNTAS DE SEGURIDAD</td>
+                  <td>
+                        <select class="form-control" name="ps_c" id="ps_c" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1"
+                          <?php
+                        if ($cps==1) {
+                        echo 'selected';
+                        }
+                        ?>
+                          >SI</option>
+                          <option value="0"
+                          <?php
+                        if ($cps==0) {
+                        echo 'selected';
+                        }
+                        ?>
+                        >NO</option>
+                        </select>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>PREGUNTAS DE SEGURIDAD</td>
+                  <td>CREAR PREGUNTAS DE SEGURIDAD </td>
+                  <td>
+                        <select class="form-control" name="ps_i" id="ps_i" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1"
+                          <?php
+                        if ($ips==1) {
+                        echo 'selected';
+                        }
+                        ?>
+                          >SI</option>
+                          <option value="0"
+                          <?php
+                        if ($ips==0) {
+                        echo 'selected';
+                        }
+                        ?>
+                        >NO</option>
+                        </select>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>PREGUNTAS DE SEGURIDAD</td>
+                  <td>EDITAR PREGUNTAS DE SEGURIDAD </td>
+                  <td>
+                        <select class="form-control" name="ps_m" id="ps_m" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1"
+                          <?php
+                        if ($mps==1) {
+                        echo 'selected';
+                        }
+                        ?>
+                          >SI</option>
+                          <option value="0"
+                          <?php
+                        if ($mps==0) {
+                        echo 'selected';
+                        }
+                        ?>
+                        >NO</option>
+                        </select>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>PREGUNTAS DE SEGURIDAD</td>
+                  <td>ELIMINAR PREGUNTAS DE SEGURIDAD </td>
+                  <td>
+                        <select class="form-control" name="ps_e" id="ps_e" required>
+                          <option value="">SELECCIONE :</option>
+                          <option value="1"
+                          <?php
+                        if ($eps==1) {
+                        echo 'selected';
+                        }
+                        ?>
+                          >SI</option>
+                          <option value="0"
+                          <?php
+                        if ($eps==0) {
+                        echo 'selected';
+                        }
+                        ?>
+                        >NO</option>
+                        </select>
+                  </td>
+                </tr> <!--FINAL PREGUNTAS DE SEGURIDAD-->
                 <tr> <!--INICIO PARAMETROS-->
                   <td>PARAMETROS</td>
                   <td>MOSTRAR PARAMETROS</td>

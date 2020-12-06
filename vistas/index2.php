@@ -19,6 +19,9 @@ $_SESSION['roles']=31;
 $_SESSION['bit']=33;
 $_SESSION['back']=40;
 $_SESSION['perm']=36;
+$_SESSION['po']=43;
+$_SESSION['ps']=46;
+$_SESSION['pant']=49;
 
 //Permisos usuarios
 $sql = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO=:pantalla" ;
@@ -110,6 +113,26 @@ $datos9 = $resultado9->fetch(PDO::FETCH_ASSOC);
  $_SESSION['iperm'] = $datos9['PERM_INSERTAR'];
  $_SESSION['eperm'] = $datos9['PERM_ELIMINAR'];
  $_SESSION['mperm']= $datos9['PERM_ACTUALIZAR'];
+ //Permisos profesiones/ocupaciones
+ $sql10 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO=:pantalla" ;
+$resultado10=$conexion->prepare($sql10);	
+$resultado10->execute(array(":rol"=>$_SESSION['ROL'],":pantalla"=>$_SESSION['po']));
+$datos10 = $resultado10->fetch(PDO::FETCH_ASSOC);
+ $p= $datos10['OBJ_CODIGO'];
+ $_SESSION['cpo']= $datos10['PERM_CONSULTAR'];
+ $_SESSION['ipo'] = $datos10['PERM_INSERTAR'];
+ $_SESSION['epo'] = $datos10['PERM_ELIMINAR'];
+ $_SESSION['mpo']= $datos10['PERM_ACTUALIZAR'];
+ //Preguntas de seguridad
+ $sql11 = "select * from tbl_permisos where ROL_CODIGO = :rol and OBJ_CODIGO=:pantalla" ;
+$resultado11=$conexion->prepare($sql11);	
+$resultado11->execute(array(":rol"=>$_SESSION['ROL'],":pantalla"=>$_SESSION['ps']));
+$datos11 = $resultado11->fetch(PDO::FETCH_ASSOC);
+ $p= $datos11['OBJ_CODIGO'];
+ $_SESSION['cps']= $datos11['PERM_CONSULTAR'];
+ $_SESSION['ips'] = $datos11['PERM_INSERTAR'];
+ $_SESSION['eps'] = $datos11['PERM_ELIMINAR'];
+ $_SESSION['mps']= $datos11['PERM_ACTUALIZAR'];
  
 ?>
 <!DOCTYPE html>

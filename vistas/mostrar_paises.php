@@ -100,9 +100,9 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
             </div>
             <!--llamar funciones-->
             <div class="box-body">
-            <?php if ($_SESSION['cps']== 1 and $_SESSION['ips']== 1){ ?>
+            <?php if ($_SESSION['ccit']== 1 and $_SESSION['icit']== 1){ ?>
               <div>
-             <a href="../vistas/insertar_preguntas_vista.php" class="btn bg-blue btn-flat margin">AGREGAR PREGUNTAS <i class="fa fa-plus-circle" aria-hidden="true"></i> </a>
+             <a href="../vistas/insertar_paises_vista.php" class="btn bg-blue btn-flat margin">AGREGAR PAIS <i class="fa fa-plus-circle" aria-hidden="true"></i> </a>
            </div>
             <?php } ?>
            
@@ -110,7 +110,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
                 <thead>
                 <tr>
                   <th>ID</th>
-                  <th>PREGUNTAS</th>
+                  <th>PAIS NOMBRE</th>
                   <th>ACCIONES</th>
               
                
@@ -123,25 +123,25 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
                 <tbody>
                 <?php
                require '../modelos/conectar.php';
-               $consulta=$conexion->prepare("SELECT * from tbl_preguntas");
+               $consulta=$conexion->prepare("SELECT * from tbl_paises");
                $consulta->execute();
                  while($fila=$consulta->fetch()){?>
                  <tr>
-                 <td><?php echo $fila['PRE_CODIGO']?></td>
-                 <td><?php echo $fila['PRE_NOMBRE']?></td>
+                 <td><?php echo $fila['PAIS_CODIGO']?></td>
+                 <td><?php echo $fila['PAIS_NOMBRE']?></td>
                  
                  
                 
                  
 
                  <td>
-                 <?php if ($_SESSION['cps']== 1 and $_SESSION['mps']== 1){ ?>
-                  <a href='../modelos/editar_pregunta_modelo.php?id=<?php echo $fila["PRE_CODIGO"]?>' class="btn bg-blue btn-flat margin">
+                 <?php if ($_SESSION['ccit']== 1 and $_SESSION['mcit']== 1){ ?>
+                  <a href='../modelos/editar_paises_modelo.php?id=<?php echo $fila["PAIS_CODIGO"]?>' class="btn bg-blue btn-flat margin">
                  <i class='fa fa-pencil'></i></a> 
                  <?php } ?>
                  
-                 <?php if ($_SESSION['cps']== 1 and $_SESSION['eps']== 1){ ?>
-                  <a href='../modelos/eliminar_preguntas.php?id=<?php echo $fila["PRE_CODIGO"]?>' class="btn btne bg-maroon bnt-flat margin">
+                 <?php if ($_SESSION['ccit']== 1 and $_SESSION['ecit']== 1){ ?>
+                  <a href='../modelos/eliminar_paises.php?id=<?php echo $fila["PAIS_CODIGO"]?>' class="btn btne bg-maroon bnt-flat margin">
 					       <i class='fa fa-trash'></i></a> 
                  <?php } ?>
                  
@@ -153,7 +153,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
                 <tfoot>
                 <tr>
                  <th>ID</th>
-                  <th>PREGUNTAS</th>
+                  <th>PAIS NOMBRE</th>
                   <th>ACCIONES</th>
                 
                 </tr>
@@ -219,7 +219,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
      e.preventDefault();
      const href=$(this).attr('href')
      Swal.fire({
-  title: '¿ESTA SEGURO DE ELIMINAR ESTA PREGUNTA?',
+  title: '¿ESTA SEGURO DE ELIMINAR ESTA PAIS?',
   text: "¡NO PODRÁS REVERTIR ESTO!",
   icon: 'warning',
   showCancelButton: true,
@@ -238,7 +238,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
     swal.fire({
        icon:'success',
        title:'ELIMINADO',
-       text:'SE HA ELIMINADO LA PREGUNTA CORRECTAMENTE'
+       text:'SE HA ELIMINADO EL PAIS CORRECTAMENTE'
      })
    }
 </script>

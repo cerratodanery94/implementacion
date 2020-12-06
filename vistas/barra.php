@@ -99,7 +99,7 @@
 
 
        <li class="treeview">
-      <?php if ($_SESSION['cit']==28 and $_SESSION['ccit']==1 ){  ?>
+      <?php if ($_SESSION['po']==43 and $_SESSION['cpo']==1 ){  ?>
         <a href="#">
         <i class="fa fa-graduation-cap"></i>
           <span>Profesiones | Ocupaciones</span>
@@ -112,13 +112,41 @@
       </li>
       
       <?php  }  ?> 
+      <li class="treeview">
+      <?php if ($_SESSION['po']==43 and $_SESSION['cpo']==1 ){  ?>
+        <a href="#">
+        <i class="fa fa-graduation-cap"></i>
+          <span>Nacionalidad</span>
+          </a>
+            <ul class="treeview-menu">
+            <li><a href="../vistas/mostrar_paises.php"><i class=" fa fa-list-alt"></i>Mostrar Nacionalidades </a></li>
+        </ul>
+      </li>
+        </a>
+      </li>
+      
+      <?php  }  ?> 
+      <li class="treeview">
+      <?php if ($_SESSION['po']==43 and $_SESSION['cpo']==1 ){  ?>
+        <a href="#">
+        <i class="fa fa-graduation-cap"></i>
+          <span>Horario</span>
+          </a>
+            <ul class="treeview-menu">
+            <li><a href="../vistas/mostrar_horario.php"><i class=" fa fa-list-alt"></i>Mostrar Horarios de Cita </a></li>
+        </ul>
+      </li>
+        </a>
+      </li>
+      
+      <?php  }  ?> 
      <!-- Titulo de Seguridad -->
      <?php if ($_SESSION['cparam']==1 or $_SESSION['croles']==1 or $_SESSION['cbit']==1 or $_SESSION['cback']==1 or $_SESSION['cperm']==1 ){  ?>
      <li class="header">Seguridad</li>
      <?php  }  ?>  
      
      <li class="treeview">
-      <?php if ($_SESSION['back']==40 and $_SESSION['cback']==1 ){  ?>
+      <?php if ($_SESSION['ps']==46 and $_SESSION['cps']==1 ){  ?>
         <a href="#">
           <i class="	glyphicon glyphicon-question-sign"></i>
           <span>Preguntas de seguridad</span>

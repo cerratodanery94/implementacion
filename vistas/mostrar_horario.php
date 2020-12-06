@@ -100,18 +100,14 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
             </div>
             <!--llamar funciones-->
             <div class="box-body">
-            <?php if ($_SESSION['cps']== 1 and $_SESSION['ips']== 1){ ?>
-              <div>
-             <a href="../vistas/insertar_preguntas_vista.php" class="btn bg-blue btn-flat margin">AGREGAR PREGUNTAS <i class="fa fa-plus-circle" aria-hidden="true"></i> </a>
-           </div>
-            <?php } ?>
+            
            
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>ID</th>
-                  <th>PREGUNTAS</th>
-                  <th>ACCIONES</th>
+                  <th>HORAS</th>
+                  
               
                
                   
@@ -123,29 +119,18 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
                 <tbody>
                 <?php
                require '../modelos/conectar.php';
-               $consulta=$conexion->prepare("SELECT * from tbl_preguntas");
+               $consulta=$conexion->prepare("SELECT * from tbl_horario");
                $consulta->execute();
                  while($fila=$consulta->fetch()){?>
                  <tr>
-                 <td><?php echo $fila['PRE_CODIGO']?></td>
-                 <td><?php echo $fila['PRE_NOMBRE']?></td>
+                 <td><?php echo $fila['HOR_CODIGO']?></td>
+                 <td><?php echo $fila['HOR_HORA']?></td>
                  
                  
                 
                  
 
-                 <td>
-                 <?php if ($_SESSION['cps']== 1 and $_SESSION['mps']== 1){ ?>
-                  <a href='../modelos/editar_pregunta_modelo.php?id=<?php echo $fila["PRE_CODIGO"]?>' class="btn bg-blue btn-flat margin">
-                 <i class='fa fa-pencil'></i></a> 
-                 <?php } ?>
-                 
-                 <?php if ($_SESSION['cps']== 1 and $_SESSION['eps']== 1){ ?>
-                  <a href='../modelos/eliminar_preguntas.php?id=<?php echo $fila["PRE_CODIGO"]?>' class="btn btne bg-maroon bnt-flat margin">
-					       <i class='fa fa-trash'></i></a> 
-                 <?php } ?>
-                 
-                 </td>
+                
             
                  </tr>
                  <?php } ?> 
@@ -153,8 +138,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>28
                 <tfoot>
                 <tr>
                  <th>ID</th>
-                  <th>PREGUNTAS</th>
-                  <th>ACCIONES</th>
+                  <th>HORAS</th>
+                  
                 
                 </tr>
                 </tfoot>
