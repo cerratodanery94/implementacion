@@ -342,6 +342,7 @@ if (isset($_POST['id_u']) && isset($_POST['est_c']) && isset($_POST['desde']) &&
              "previous": "Anterior"
          }
      },
+    dom:'lrtip'
      
    });
  });

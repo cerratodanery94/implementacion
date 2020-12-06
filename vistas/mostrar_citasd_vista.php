@@ -336,7 +336,7 @@ buttons:
             },
             exportOptions:
              {
-                 columns: [0,1,2,3,4,5,6,] ,//exportar solo las columnas.
+                 columns: [0,1,2,3,4,5] ,//exportar solo las columnas.
              },
                   styles:
               {
