@@ -233,25 +233,24 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>20
                 </form>
       </div>
         <?php } }  } ?>
+        </form>
+  
+  <!-- /.box -->
 </div>
+<!-- /.col -->
 
-<!--fin centro-->
-      </div>
-      </div>
-      </div>
-      <!-- /.box -->
-      </div>
-      <!-- /.row -->
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+</div>
+<!-- /.row -->
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
 <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-    <strong><a>Version 2.0</a></strong> 
-    </div>
-    <strong>Copyright &copy; 2020 <a>| EQUIPO SYSTEM 32</a>.</strong> Todos los derechos reservados.
-  </footer>
+<div class="pull-right hidden-xs">
+<strong><a>Version 2.0</a></strong> 
+</div>
+<strong>Copyright &copy; 2020 <a>| EQUIPO SYSTEM 32</a>.</strong> Todos los derechos reservados.
+</footer>
 
   
 
