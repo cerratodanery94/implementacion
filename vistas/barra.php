@@ -204,7 +204,7 @@
         <!-- subtitulos de Expedientes -->
           <ul class="treeview-menu">
           <?php if ( $_SESSION['cperm']==1 ){  ?>
-          <li><a href="../vistas/mostrar_permisos.php"><i class="fa fa-plus-circle"></i>Mostrar Permisos</a></li>
+          <li><a href="../vistas/mostrar_permisos.php"><i class="fa fa-list-alt"></i>Mostrar Permisos</a></li>
           <?php  }  ?> 
           
           <?php if ( $_SESSION['cperm']==1 and $_SESSION['mperm']==1 ){  ?>
