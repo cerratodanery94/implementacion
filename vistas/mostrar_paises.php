@@ -266,7 +266,7 @@ buttons:
             titleAttr: 'exportar a pdf', // boton para exportar
             className: 'btn btn-danger btn-sm',// color del boton
             text:'EXPORTAR A PDF ',
-            title:'CLÍNICA MÉDICA HOMEOPATICA CLIME HOME '+'\n'+'\n'+'LISTA DE PREGUNTAS DE SEGURIDAD',// titulos
+            title:'CLÍNICA MÉDICA HOMEOPATICA CLIME HOME '+'\n'+'\n'+'LISTA DE NACIONALIDADES',// titulos
             messageTop:datetime,   
            // orientation: 'landscape',
             processing: true,
