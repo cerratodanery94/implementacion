@@ -4,9 +4,25 @@
 		require '../modelos/conectar.php';
         if (isset($_POST['pregunta']) )
 		 {
+
 		$pregunta=strtoupper($_POST["pregunta"]);
 		
-		
+		$consulta=$conexion->prepare("SELECT * FROM TBL_PREGUNTAS WHERE PRE_NOMBRE='$pregunta'");
+        $consulta->execute();
+        $num_rows = $consulta->fetchColumn();
+        
+       if ($num_rows>0){ 
+		  
+		   echo '<script> Swal.fire({
+			position: "center",
+			icon: "error",
+			title: "PREGUNTA YA SE ENCUENTRA REGISTRADA",
+			showConfirmButton: false,
+			timer: 3000
+		  })
+		  </script>';
+
+       }else{	
         $sql="INSERT INTO TBL_PREGUNTAS (
 			PRE_NOMBRE)	  
 
@@ -55,6 +71,7 @@
 	}
 		$resultado->closeCursor();
 		$resultado2->closeCursor();
+}
 }
 	}catch(Exception $e){			
 		

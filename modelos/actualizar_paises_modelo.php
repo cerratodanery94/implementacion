@@ -2,11 +2,34 @@
 
 require '../modelos/conectar.php';
 try {
-    if (isset($_POST['nombre']) && 
-        isset($_POST['id']) ) {
-
-            $id= $_POST["id"];
-            $pais=strtoupper($_POST["nombre"]);
+  if (isset($_POST['nombre']) &&
+  isset($_POST['nombrea']) && 
+      isset($_POST['id']) ) {
+        $id= $_POST["id"];
+        $paisa=strtoupper($_POST["nombrea"]);
+        $pais=strtoupper($_POST["nombre"]);
+        
+        if ($paisa!=$pais) {
+          $consulta3=$conexion->prepare("SELECT * FROM tbl_paises WHERE PAIS_NOMBRE=:r");
+          $consulta3->execute(array(":r"=>$pais));
+          if($consulta3->rowCount()>=1){
+           echo '<script>Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "¡ERROR!",
+        text:"NACIONALIDAD  YA SE HA  ENCUENTRA REGISTRADA",
+        showConfirmButton: false,
+        timer: 3000
+          })
+        </script>';
+           exit();
+          }else{
+            $paisf=$pais;
+          }
+        } else {
+          $paisf=$pais;
+        }
+            
            
         $query=$conexion->prepare
         ("UPDATE TBL_PAISES SET
@@ -14,7 +37,7 @@ try {
            WHERE PAIS_CODIGO=:id");
       
          $query->execute(array(
-           ":nombre"=>$pais,
+           ":nombre"=>$paisf,
             ":id"=>$id
 
         ));

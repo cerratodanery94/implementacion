@@ -6,7 +6,22 @@
 		 {
 		$pais=strtoupper($_POST["pais"]);
 		
-		
+		$consulta=$conexion->prepare("SELECT * FROM TBL_PAISES WHERE PAIS_NOMBRE='$pais'");
+        $consulta->execute();
+        $num_rows = $consulta->fetchColumn();
+        
+       if ($num_rows>0){ 
+		  
+		   echo '<script> Swal.fire({
+			position: "center",
+			icon: "error",
+			title: "NACIONALIDAD YA SE ENCUENTRA REGISTRADA",
+			showConfirmButton: false,
+			timer: 3000
+		  })
+		  </script>';
+
+       }else{	
         $sql="INSERT INTO TBL_PAISES (
 			PAIS_NOMBRE)	  
 
@@ -56,6 +71,7 @@
 		$resultado->closeCursor();
 		$resultado2->closeCursor();
 }
+ }
 	}catch(Exception $e){			
 		
         die('Error: ' . $e->GetMessage());

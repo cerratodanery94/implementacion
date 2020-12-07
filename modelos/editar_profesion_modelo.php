@@ -119,6 +119,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>45
                 <div class="input-group">
                 <span class="input-group-addon">Actualizar Profesión/ocupación</span>
                   <input type="hidden" name="id" id="id" value="<?php echo $id?>">
+                  <input type="hidden"  name="nombrea" id="nombrea" value="<?php echo $nombre?>" >
                   <input type="text" autocomplete="off" style="text-transform:uppercase" class="form-control" placeholder=""  name="nombre" id="nombre" value="<?php echo $nombre?>" >
                   <span class="		glyphicon glyphicon-ok-circle form-control-feedback"></span>
                 </div>

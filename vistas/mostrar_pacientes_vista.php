@@ -132,8 +132,11 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>17
                 <?php
                require '../modelos/conectar.php';
                require '../controladores/funciones.php';
-               $consulta=$conexion->prepare("SELECT * FROM tbl_personas a iNNER JOIN tbl_paises b on a.PAIS_CODIGO=b.PAIS_CODIGO  INNER JOIN tbl_ocupaciones c on a.OCU_CODIGO=c.OCU_CODIGO where PER_CODIGO>0");
+               $consulta=$conexion->prepare("SELECT * FROM tbl_personas a iNNER JOIN tbl_paises b on a.PAIS_CODIGO=b.PAIS_CODIGO  INNER JOIN tbl_ocupaciones c on a.OCU_CODIGO=c.OCU_CODIGO");
                $consulta->execute();
+
+               
+               
                  while($fila=$consulta->fetch()){?>
                  <tr> 
                  <td><?php echo $fila['PER_CODIGO']?></td>
@@ -162,12 +165,16 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>17
                  </td>
                  <td>
 
-                 <?php if ($_SESSION['cpac']== 1 and $_SESSION['epac']== 1){ ?>
+                 <?php
+                  $num_rows1 = $consulta->fetchColumn();
+                  if ($_SESSION['cpac']== 1){ ?>
                   <a href='../modelos/expediente_medico.php?id=<?php echo $fila["PER_CODIGO"]?>' class="btn btn-info bnt-flat margin">
 					       <i class=' fa fa-file-text '>  Médica</i></a> 
                  <?php } ?>
 
-                 <?php if ($_SESSION['cpac']== 1 and $_SESSION['epac']== 1){ ?>
+                 <?php
+                 $num_rows2 = $consulta->fetchColumn();
+                  if ($_SESSION['cpac']== 1){ ?>
                   <a href='../modelos/expediente_nutricionista.php?id=<?php echo $fila["PER_CODIGO"]?>' class="btn btn-info bnt-flat margin">
 					       <i class='  fa fa-file-text'>  Nutricional</i></a> 
                  <?php } ?>

@@ -2,19 +2,41 @@
 
 require '../modelos/conectar.php';
 try {
-    if (isset($_POST['nombre']) && 
-        isset($_POST['id']) ) {
+  if (isset($_POST['nombre']) &&
+  isset($_POST['nombrea']) && 
+      isset($_POST['id']) ) {
 
-            $id= $_POST["id"];
-            $pregunta=strtoupper($_POST["nombre"]);
-           
+          $id= $_POST["id"];
+          $prega=strtoupper($_POST["nombrea"]);
+          $preg=strtoupper($_POST["nombre"]);
+          if ($prega!=$preg) {
+            $consulta3=$conexion->prepare("SELECT * FROM tbl_preguntas WHERE PRE_NOMBRE=:r");
+            $consulta3->execute(array(":r"=>$preg));
+            if($consulta3->rowCount()>=1){
+             echo '<script>Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "¡ERROR!",
+          text:"PREGUNTA  YA SE HA  ENCUENTRA REGISTRADA",
+          showConfirmButton: false,
+          timer: 3000
+            })
+          </script>';
+             exit();
+            }else{
+              $pregf=$preg;
+            }
+          } else {
+            $pregf=$preg;
+          }
+
         $query=$conexion->prepare
         ("UPDATE TBL_PREGUNTAS SET
            PRE_NOMBRE=:nombre
            WHERE PRE_CODIGO=:id");
       
          $query->execute(array(
-           ":nombre"=>$pregunta,
+           ":nombre"=>$pregf,
             ":id"=>$id
 
         ));

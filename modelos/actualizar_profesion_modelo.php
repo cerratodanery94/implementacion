@@ -2,11 +2,35 @@
 
 require '../modelos/conectar.php';
 try {
-    if (isset($_POST['nombre']) && 
+    if (isset($_POST['nombre']) &&
+    isset($_POST['nombrea']) && 
         isset($_POST['id']) ) {
 
             $id= $_POST["id"];
+            $ocupaciona=strtoupper($_POST["nombrea"]);
             $ocupacion=strtoupper($_POST["nombre"]);
+
+            if ($ocupaciona!=$ocupacion) {
+              $consulta3=$conexion->prepare("SELECT * FROM tbl_ocupaciones WHERE OCU_NOMBRE=:r");
+              $consulta3->execute(array(":r"=>$ocupacion));
+              if($consulta3->rowCount()>=1){
+               echo '<script>Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "¡ERROR!",
+            text:"PROFESIÓN O OCUPACIÓN  YA SE HA  ENCUENTRA REGISTRADO",
+            showConfirmButton: false,
+            timer: 3000
+              })
+            </script>';
+               exit();
+              }else{
+                $ocupacionf=$ocupacion;
+              }
+            } else {
+              $ocupacionf=$ocupacion;
+            }
+                
            
         $query=$conexion->prepare
         ("UPDATE TBL_OCUPACIONES SET
@@ -14,7 +38,7 @@ try {
            WHERE OCU_CODIGO=:id");
       
          $query->execute(array(
-           ":nombre"=>$ocupacion,
+           ":nombre"=>$ocupacionf,
             ":id"=>$id
 
         ));
