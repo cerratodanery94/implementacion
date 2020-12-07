@@ -676,7 +676,7 @@ $resultado15->execute(array(
     $consulta12->closeCursor();
     $consulta13->closeCursor();
     $consulta14->closeCursor();
-    $consulta14->closeCursor();
+    $consulta15->closeCursor();
 
 
 		$resultado->closeCursor();
