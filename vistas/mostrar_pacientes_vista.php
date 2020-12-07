@@ -89,7 +89,6 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>17
         <small>ClimeHome</small>
       </h1>
       <ol class="breadcrumb">
-      <li><a href="../vistas/index2.php"><i class="fa fa-home"></i>Panel de control</a></li>
         <li><a href="../vistas/mostrar_pacientes_vista.php"><i class="fa fa-users"></i>Pacientes</a></li>
         <li class="active"><i class="fa fa-list"></i> Lista de pacientes</li>
     </section>
@@ -158,6 +157,17 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>17
                   <a href='../modelos/eliminar_pacientes_modelo.php?id=<?php echo $fila["PER_CODIGO"]?>' class="btn btne bg-maroon bnt-flat margin">
 					       <i class='fa fa-trash'></i></a> 
                  <?php } ?>
+
+                  
+                 <?php if ($_SESSION['cpac']== 1 and $_SESSION['epac']== 1){ ?>
+                  <a href='../modelos/ficha_reporte_general.php?id=<?php echo $fila["PER_CODIGO"]?>' class="btn btn-success bnt-flat margin">
+					       <i class='fa fa-file-o'> General</i></a> 
+                 <?php } ?>
+
+                 <?php if ($_SESSION['cpac']== 1 and $_SESSION['epac']== 1){ ?>
+                  <a href='../modelos/ficha_reporte_nutricionista.php?id=<?php echo $fila["PER_CODIGO"]?>' class="btn btn-success bnt-flat margin">
+					       <i class='fa fa-file-o'> Nutricionista</i></a> 
+                 <?php } ?>
                  
                  </td>
                  
@@ -206,21 +216,20 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>17
           <!-- /.box -->
         </div>
         <!-- /.col -->
-       
-
-   </div>
+      </div>
       <!-- /.row -->
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-<footer class="main-footer">
-    <div class="pull-right hidden-xs">
-    <strong><a>Version 2.0</a></strong> 
-    </div>
-    <strong>Copyright &copy; 2020 <a>| EQUIPO SYSTEM 32</a>.</strong> Todos los derechos reservados.
-  </footer>
 
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      <b>Version</b> 1.1.0
+    </div>
+    <strong>Copyright &copy; 2020 <a>System 32</a>.</strong> All rights
+    reserved.
+  </footer>
 
  
   <!-- /.control-sidebar -->
