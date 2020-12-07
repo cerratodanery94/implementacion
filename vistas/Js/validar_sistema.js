@@ -258,6 +258,11 @@ else if (validar_texto (formulario.usum.value)==false){
         formulario.numero_de_identidad.focus();
         return false;
     }
+    else if (formulario.numero_de_identidad.value=="0000-0000-00000") {
+        document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO IDENTIDAD  INCORRECTO</div>';
+        formulario.numero_de_identidad.focus();
+        return false;
+    }
     else if (validar_identidad(formulario.numero_de_identidad.value)==false){
         document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO IDENTIDAD INVALIDO</div>';
         formulario.numero_de_identidad.focus();
@@ -423,6 +428,11 @@ else if (validar_texto (formulario.apellidos.value)==false){
     //VALIDAR CAMPO identidad
     if (formulario.numero_de_identidad.value=="") {
         document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO IDENTIDAD VACIO</div>';
+        formulario.numero_de_identidad.focus();
+        return false;
+    }
+    else if (formulario.numero_de_identidad.value=="0000-0000-00000") {
+        document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO IDENTIDAD  INCORRECTO</div>';
         formulario.numero_de_identidad.focus();
         return false;
     }
@@ -657,6 +667,11 @@ else if (validar_tamaño (formulario.correo.value)==false){
             formulario.numero_de_identidad.focus();
             return false;
         }
+        else if (formulario.numero_de_identidad.value=="0000-0000-00000") {
+            document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO IDENTIDAD  INCORRECTO</div>';
+            formulario.numero_de_identidad.focus();
+            return false;
+        }
         else if (validar_identidad(formulario.numero_de_identidad.value)==false){
             document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO IDENTIDAD INVALIDO</div>';
             formulario.numero_de_identidad.focus();
@@ -834,6 +849,11 @@ else if (validar_tamaño (formulario.correo.value)==false){
             //VALIDAR CAMPO identidad
             if (formulario.numero_de_identidad.value=="") {
                 document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO IDENTIDAD VACIO</div>';
+                formulario.numero_de_identidad.focus();
+                return false;
+            }
+            else if (formulario.numero_de_identidad.value=="0000-0000-00000") {
+                document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>CAMPO IDENTIDAD  INCORRECTO</div>';
                 formulario.numero_de_identidad.focus();
                 return false;
             }
