@@ -252,11 +252,6 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>20
 <strong>Copyright &copy; 2020 <a>| EQUIPO SYSTEM 32</a>.</strong> Todos los derechos reservados.
 </footer>
 
-  
-
-
-
- 
 
 <script src="../vistas/js/validar_sistema.js"></script>
 <!-- jQuery 2.2.3 -->

@@ -163,13 +163,13 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>17
                  <td>
 
                  <?php if ($_SESSION['cpac']== 1 and $_SESSION['epac']== 1){ ?>
-                  <a href='../modelos/ficha_reporte_general.php?id=<?php echo $fila["PER_CODIGO"]?>' class="btn btn-success bnt-flat margin">
-					       <i class='fa fa-file-o'> General</i></a> 
+                  <a href='../modelos/ficha_reporte_general.php?id=<?php echo $fila["PER_CODIGO"]?>' class="btn btn-info bnt-flat margin">
+					       <i class=' fa fa-file-text '>  Médica</i></a> 
                  <?php } ?>
 
                  <?php if ($_SESSION['cpac']== 1 and $_SESSION['epac']== 1){ ?>
-                  <a href='../modelos/ficha_reporte_nutricionista.php?id=<?php echo $fila["PER_CODIGO"]?>' class="btn btn-success bnt-flat margin">
-					       <i class='fa fa-file-o'> Nutricionista</i></a> 
+                  <a href='../modelos/ficha_reporte_nutricionista.php?id=<?php echo $fila["PER_CODIGO"]?>' class="btn btn-info bnt-flat margin">
+					       <i class='  fa fa-file-text'>  Nutricional</i></a> 
                  <?php } ?>
                  </td>
 
@@ -217,22 +217,21 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>17
                 <div class="flash-data" data-flashdata="<?= $_GET['m']; ?>"></div>
               <?php endif; ?>
           <!-- /.box -->
-        </div>
-        <!-- /.col -->
+          </div>
+      <!-- /.row -->
       </div>
       <!-- /.row -->
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
-  <footer class="main-footer">
+<footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 1.1.0
+    <strong><a>Version 2.0</a></strong> 
     </div>
-    <strong>Copyright &copy; 2020 <a>System 32</a>.</strong> All rights
-    reserved.
+    <strong>Copyright &copy; 2020 <a>| EQUIPO SYSTEM 32</a>.</strong> Todos los derechos reservados.
   </footer>
+
 
  
   <!-- /.control-sidebar -->

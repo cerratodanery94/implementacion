@@ -102,21 +102,23 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>1,
                 </div>
 
                 <button type="button" onclick="validar_pais();"   class="btn btn btn btn-primary">  <i class="fa fa-check-circle-o" aria-hidden="true"></i>  CREAR</button>
-                
-              
+                </div>
+      <!-- /.row -->
+      </div>
+     
       <!-- /.row -->
     </section>
-    </form>
+    
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
+<footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 1.1.0
+    <strong><a>Version 2.0</a></strong> 
     </div>
-    <strong>Copyright &copy; 2020 <a>System 32</a>.</strong> All rights
-    reserved.
+    <strong>Copyright &copy; 2020 <a>| EQUIPO SYSTEM 32</a>.</strong> Todos los derechos reservados.
   </footer>
+
 
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
