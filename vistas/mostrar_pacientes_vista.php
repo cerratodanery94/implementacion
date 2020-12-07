@@ -163,12 +163,12 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>17
                  <td>
 
                  <?php if ($_SESSION['cpac']== 1 and $_SESSION['epac']== 1){ ?>
-                  <a href='../modelos/ficha_reporte_general.php?id=<?php echo $fila["PER_CODIGO"]?>' class="btn btn-info bnt-flat margin">
+                  <a href='../modelos/expediente_medico.php?id=<?php echo $fila["PER_CODIGO"]?>' class="btn btn-info bnt-flat margin">
 					       <i class=' fa fa-file-text '>  Médica</i></a> 
                  <?php } ?>
 
                  <?php if ($_SESSION['cpac']== 1 and $_SESSION['epac']== 1){ ?>
-                  <a href='../modelos/ficha_reporte_nutricionista.php?id=<?php echo $fila["PER_CODIGO"]?>' class="btn btn-info bnt-flat margin">
+                  <a href='../modelos/expediente_nutricionista.php?id=<?php echo $fila["PER_CODIGO"]?>' class="btn btn-info bnt-flat margin">
 					       <i class='  fa fa-file-text'>  Nutricional</i></a> 
                  <?php } ?>
                  </td>
