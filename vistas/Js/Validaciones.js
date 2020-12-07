@@ -285,11 +285,6 @@
                                             formulario_vista.contra2.focus();
                                             return false;  
                                         }
-                                        else if (validar_limitcontraseña (formulario_vista.contra2.value)==false){  
-                                            document.getElementById("alerta2").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>EL CAMPO CONTRASEÑA DEBE DE CONTENER AL MENOS(8) CARACTERES</div>';
-                                            formulario_vista.contra2.focus();
-                                            return false;
-                                            }
                                             else if (Validar_espacio2(formulario_vista.contra2.value)==false){  
                                                 document.getElementById("alerta2").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LIMITE DE ESPACIOS EN EL CAMPO</div>';
                                                 formulario_vista.contra2.focus();
