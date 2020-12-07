@@ -26,8 +26,42 @@ try {
 				showConfirmButton: false,
 				timer: 3000
 			  })
-			  </script>';
-		}else{ 
+        </script>';
+        
+    }
+
+    $consulta=$conexion->prepare("SELECT * FROM TBL_CITAS WHERE CIT_FECHA_CITA='$fecha_cita' and HOR_CODIGO='$id_h' and USU_CODIGO='$id_u'");
+        $consulta->execute();
+        $num_rows = $consulta->fetchColumn();
+    if($num_rows>0){
+      echo '<script> Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "NO SE PUEDE REGISTRAR CITA YA ESTA RESERVADA EN ESA FECHA Y HORA",
+        showConfirmButton: false,
+        timer: 3000
+        })
+        </script>';
+    }else{ 
+
+      $consulta3=$conexion->prepare("select COUNT(HOR_CODIGO) hora_repetida from tbl_citas WHERE PER_CODIGO = ".$id_p." and CIT_FECHA_CITA = '".$fecha_cita."' and HOR_CODIGO = ".$id_h);
+        $consulta3->execute();
+		$fila = $consulta3->fetchAll();
+		
+	
+
+    $contar_cita = $fila[0][0] ;
+    if ($contar_cita> 0) {
+			echo '<script> Swal.fire({
+				position: "center",
+				icon: "error",
+				title: "USUARIO NO PUEDE TENER 2 CITAS A LA MISMA HORA",
+				showConfirmButton: false,
+				timer: 3000
+			  })
+        </script>'; }
+        else{ 
+
         $query=$conexion->prepare
         ("UPDATE TBL_CITAS SET
         PER_CODIGO=:id_p,
@@ -84,6 +118,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>29
       
     }
     }
+  }
       
 } catch (Exception $e) {
     die('Error: ' . $e->GetMessage());

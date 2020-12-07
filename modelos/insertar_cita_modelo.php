@@ -24,7 +24,7 @@
 				timer: 3000
 			  })
 			  </script>';
-		}else{ 
+		}
 		
 		$consulta=$conexion->prepare("SELECT * FROM TBL_CITAS WHERE CIT_FECHA_CITA='$fecha_cita' and HOR_CODIGO='$id_h' and USU_CODIGO='$id_u'");
         $consulta->execute();
@@ -126,7 +126,7 @@
 		}
 	   
 }
-}
+
 }
 	}catch(Exception $e){			
 		
