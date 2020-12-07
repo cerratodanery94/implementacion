@@ -96,7 +96,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>53
         <small>ClimeHome</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="mostrar_paises.php"><i class="fa fa-plane"></i>Nacionalidad</a></li>
+        <li><a href="../vistas/mostrar_paises.php"><i class="fa fa-plane"></i>Nacionalidad</a></li>
         <li class="active"><i class="fa fa-list-alt"></i>   Lista de nacionalidades</li>
       </ol>
     </section>
