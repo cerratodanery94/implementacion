@@ -1241,11 +1241,7 @@ else if(Validar_espacio2(formulario.profesion.value)==false){
     formulario.profesion.focus();
     return false;
 }
-else if(validar_texto(formulario.profesion.value)==false){
-    document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO, SIN ESPACIOS AL INICIO O FINAL DEL TEXTO EN EL CAMPO</div>';
-    formulario.profesion.focus();
-    return false;
-}
+
 else if(validar_tamaño(formulario.profesion.value)==false){
     document.getElementById("alerta").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LONGITUD DEL CAMPO PROFESION/OCUPACION</div>';
     formulario.profesion.focus();
@@ -1270,11 +1266,11 @@ function validar_profe(){
         formulario.nombre.focus();
         return false;
     }
-    else if(validar_texto(formulario.nombre.value)==false){
+   /* else if(validar_texto(formulario.nombre.value)==false){
         document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>FAVOR INTRODUCIR DATOS TIPO TEXTO, SIN ESPACIOS AL INICIO O FINAL DEL TEXTO EN EL CAMPO</div>';
         formulario.nombre.focus();
         return false;
-    }
+    }*/
     else if(validar_tamaño(formulario.nombre.value)==false){
         document.getElementById("alerta1").innerHTML='<div class="alert alert-danger"><a href="" class="close" data-dismiss="alert">&times;</a>LONGITUD DEL CAMPO ACTUALIZAR PROFESION/OCUPACION</div>';
         formulario.nombre.focus();
