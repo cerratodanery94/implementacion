@@ -209,7 +209,7 @@
 		  </script>';
 
        }else{
-	 if ($c==1 and $c1==1 and $c2==1 and $c3==1 and $c4==1 and $c5==1 and $c6==1 and $c7==1 and $c8==1 and $c9==1 and $c10==1 and $c11==1 and $c12==1 and $c13==1 and $c14==1 and $c15==1){
+	
         $sql="INSERT INTO tbl_permisos (
             ROL_CODIGO,
             OBJ_CODIGO,
@@ -658,17 +658,7 @@ $resultado15->execute(array(
                     });
                   </script>';	
 	   } 
-     }else{
-      echo '<script> Swal.fire({
-			position: "center",
-			icon: "error",
-			title: "DEBE DE REGISTRAR EL PERMISO DE CONSULTAR PARA REALIZAR OTRAS ACCIONES",
-			showConfirmButton: false,
-			timer: 4000
-		  })
-		  </script>';
-
-     }
+     
 	  
 	   
 	 	$consulta->closeCursor();
@@ -681,6 +671,12 @@ $resultado15->execute(array(
     $consulta7->closeCursor();
     $consulta8->closeCursor();
     $consulta9->closeCursor();
+    $consulta10->closeCursor();
+    $consulta11->closeCursor();
+    $consulta12->closeCursor();
+    $consulta13->closeCursor();
+    $consulta14->closeCursor();
+    $consulta14->closeCursor();
 
 
 		$resultado->closeCursor();
