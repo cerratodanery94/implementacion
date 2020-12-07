@@ -176,7 +176,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>17
                  
                  
                  <td><?php echo $fila['PER_FECHA_NACIMIENTO']?></td>
-                 <td><?php echo mi_edad($fila['PER_FECHA_NACIMIENTO'])?></td>
+              
               
                  <td><?php echo $fila['PER_FECHA_CREACION']?></td>
                  <td><?php echo $fila['PER_GENERO']?></td>
@@ -200,7 +200,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>17
                   <th>EXPORTAR FICHA</th>
                   <td>FECHA DE NACIMIENTO</td>
                   <td>FECHA DE CREACION</td>
-                  <td>EDAD</td>
+          
                   <td>GÉNERO</td>
                
                   <td>CELULAR</td>
@@ -344,11 +344,7 @@ var currentdate = new Date();
                 "visible": false,
                 "searchable": false
             },
-            {
-                "targets": [ 13 ],
-                "visible": false,
-                "searchable": false
-            },
+            
          
                     
         ],
@@ -419,7 +415,7 @@ buttons:
             },
             exportOptions:
              {
-                 columns: [0,1,2,3,6,7,8,9,10,11,12,13] ,//exportar solo las columnas.
+                 columns: [0,1,2,3,6,7,8,9,10,11,12] ,//exportar solo las columnas.
              },
                   styles:
               {
