@@ -116,8 +116,9 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>17
                   <th>NOMBRES</th>
                   <th>APELLIDOS</th>
                   <th>ACCIONES</th>
+                  <th>EXPORTAR FICHA</th>
                   <td>FECHA DE NACIMIENTO</td>
-                  <td>EDAD</td>
+                
                   <td>FECHA DE REGISTRO</td>     
                   <td>GÉNERO</td>
                   <td>CELULAR</td>
@@ -156,9 +157,11 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>17
                  <?php if ($_SESSION['cpac']== 1 and $_SESSION['epac']== 1){ ?>
                   <a href='../modelos/eliminar_pacientes_modelo.php?id=<?php echo $fila["PER_CODIGO"]?>' class="btn btne bg-maroon bnt-flat margin">
 					       <i class='fa fa-trash'></i></a> 
-                 <?php } ?>
+                 <?php } ?>             
+                 
+                 </td>
+                 <td>
 
-                  
                  <?php if ($_SESSION['cpac']== 1 and $_SESSION['epac']== 1){ ?>
                   <a href='../modelos/ficha_reporte_general.php?id=<?php echo $fila["PER_CODIGO"]?>' class="btn btn-success bnt-flat margin">
 					       <i class='fa fa-file-o'> General</i></a> 
@@ -168,8 +171,8 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>17
                   <a href='../modelos/ficha_reporte_nutricionista.php?id=<?php echo $fila["PER_CODIGO"]?>' class="btn btn-success bnt-flat margin">
 					       <i class='fa fa-file-o'> Nutricionista</i></a> 
                  <?php } ?>
-                 
                  </td>
+
                  
                  
                  <td><?php echo $fila['PER_FECHA_NACIMIENTO']?></td>
@@ -194,7 +197,7 @@ $resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>17
                   <th>NOMBRES</th>
                   <th>APELLIDOS</th>
                   <th>ACCIONES</th>
-            
+                  <th>EXPORTAR FICHA</th>
                   <td>FECHA DE NACIMIENTO</td>
                   <td>FECHA DE CREACION</td>
                   <td>EDAD</td>
@@ -305,11 +308,7 @@ var currentdate = new Date();
   $(function () {
     $('#example1').DataTable({
      "columnDefs": [
-            {
-                "targets": [ 5 ],
-                "visible": false,
-                "searchable": false
-            },
+           
             {
                 "targets": [ 6 ],
                 "visible": false,
@@ -342,6 +341,11 @@ var currentdate = new Date();
             },
             {
                 "targets": [ 12 ],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [ 13 ],
                 "visible": false,
                 "searchable": false
             },
@@ -415,7 +419,7 @@ buttons:
             },
             exportOptions:
              {
-                 columns: [0,1,2,3,5,6,7,8,9,10,11,12] ,//exportar solo las columnas.
+                 columns: [0,1,2,3,6,7,8,9,10,11,12,13] ,//exportar solo las columnas.
              },
                   styles:
               {
