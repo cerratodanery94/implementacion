@@ -8,7 +8,7 @@ try {
   $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
 VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
   $resultado2=$conexion->prepare($sql2);	
-$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>32,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA EDITAR ROLES',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
+$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>48,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA EDITAR PREGUNTAS',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
   if(isset($_GET['id'])){
     $id=$_GET['id'];
     $sql="SELECT * FROM TBL_PREGUNTAS WHERE PRE_CODIGO= :id";

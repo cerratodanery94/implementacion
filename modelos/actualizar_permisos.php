@@ -528,11 +528,11 @@
         
         
        if ($query and $query1 and $query2 and $query3 and $query4 and $query5 and $query6 and $query7 and $query8 and $query9 and $query10 and $query11 and $query12 and $query13 and $query14 and $query15) {
-		/*$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
+		$sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
 		VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
 	    $resultado2=$conexion->prepare($sql2);	
-		$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>36,":accion"=>'NUEVO',":descr"=>'AÑADIO PERMISOS A ROL',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
-		*/
+		$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>57,":accion"=>'ACTUALIZAR',":descr"=>'ACTUALIZO PERMISOS A ROL',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
+		
 		echo '<script>
                     Swal.fire({
                     title: "¡BIEN!",

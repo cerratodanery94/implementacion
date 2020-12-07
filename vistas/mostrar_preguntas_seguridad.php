@@ -7,11 +7,11 @@ require_once "../modelos/conectar.php";
 $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
 VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
 $resultado2=$conexion->prepare($sql2);	
-$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA DE MOSTRAR USUARIOS',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));         
+$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>55,":accion"=>'INGRESO',":descr"=>'INGRESO ALA PANTALLA DE MOSTRAR PREUNTAS SEGURIDAD',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));         
 $sql2="INSERT  INTO TBL_BITACORA (BIT_CODIGO,USU_CODIGO,OBJ_CODIGO,BIT_ACCION,BIT_DESCRIPCION,BIT_FECHA,BIT_HORA) 
 VALUES (:id,:usuc,:objeto,:accion,:descr,:fecha,:hora)";
 $resultado2=$conexion->prepare($sql2);	
-$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>11,":accion"=>'CONSULTA',":descr"=>'MUESTRA LA LISTA DE USUARIOS REGISTRADOS',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
+$resultado2->execute(array(":id"=>NULL,":usuc"=>$_SESSION["id_us"],":objeto"=>55,":accion"=>'CONSULTA',":descr"=>'MUESTRA LA LISTA DE PREGUNTAS DE SEGURIDAD',":fecha"=>date("Y-m-d"),":hora"=>date("H:i:s")));
 ?>
 <!DOCTYPE html>
 <html>

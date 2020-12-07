@@ -15,9 +15,13 @@ $textypos = 5;
 $pdf->setY(12);
 $pdf->setX(10);
 
+
+
 // Agregamos los datos de la empresa
 
-$pdf->Cell(192,$textypos,"CLINICA HOMEOPATICA CLIME HOME",0,1,'C');
+$pdf->Cell(192,$textypos,utf8_decode("CLÍNICA MÉDICA HOMEOPATICA CLIMEHOME"),0,1,'C');
+
+
 
 
 $pdf->SetFont('Arial','B',13);    
